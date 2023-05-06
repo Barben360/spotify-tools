@@ -75,11 +75,11 @@ func (s *Spotify) GetNewUserToken(ctx context.Context) (string, error) {
 	defer s.authLock.Unlock()
 	if s.refreshToken != "" {
 		logger.FromContext(ctx).Debug("refreshing token")
-		token, err := s.requestTokenRefresh(ctx)
+		err := s.requestTokenRefresh(ctx)
 		if err != nil {
 			return "", err
 		}
-		return token, nil
+		return s.accessToken, nil
 	}
 	logger.FromContext(ctx).Debug("no refresh token, doing authorization flow")
 	code, err := s.requestAuthorizationCode(ctx)
@@ -203,6 +203,7 @@ type SpotifyRequestTokenResponse struct {
 }
 
 func (s *Spotify) requestToken(ctx context.Context, authorizationCode string) error {
+	logger.FromContext(ctx).Info("requesting access and refresh tokens")
 	// create request body
 	data := url.Values{}
 	data.Set("grant_type", "authorization_code")
@@ -233,7 +234,7 @@ func (s *Spotify) requestToken(ctx context.Context, authorizationCode string) er
 	}
 	if resp.StatusCode != http.StatusOK {
 		logger.FromContext(ctx).Error("got response body", zap.String("body", string(respBody)))
-		return fmt.Errorf("unexpected status code: %d", resp.StatusCode)
+		return fmt.Errorf("unexpected response status: %s", resp.Status)
 	}
 
 	// parse response body
@@ -258,14 +259,68 @@ func (s *Spotify) requestToken(ctx context.Context, authorizationCode string) er
 		return errors.New("refresh token is empty")
 	}
 	s.refreshToken = tokenResponse.RefreshToken
+	logger.FromContext(ctx).Info("got access and refresh tokens")
 	return nil
 }
 
-func (s *Spotify) requestTokenRefresh(ctx context.Context) (string, error) {
-	panic("not implemented")
+func (s *Spotify) requestTokenRefresh(ctx context.Context) error {
+	logger.FromContext(ctx).Info("refreshing access token")
+	// create request body
+	data := url.Values{}
+	data.Set("grant_type", "refresh_token")
+	data.Set("refresh_token", s.refreshToken)
+
+	// create request
+	req, err := http.NewRequestWithContext(ctx, "POST", "https://accounts.spotify.com/api/token", strings.NewReader(data.Encode()))
+	if err != nil {
+		return fmt.Errorf("could not create request: %w", err)
+	}
+
+	// add headers
+	req.Header.Set("Authorization", s.authHeader)
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+
+	// send request
+	resp, err := s.client.Do(req)
+	if err != nil {
+		return fmt.Errorf("could not send request: %w", err)
+	}
+	defer resp.Body.Close()
+
+	// read response body
+	respBody, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return fmt.Errorf("could not read response body: %w", err)
+	}
+	if resp.StatusCode != http.StatusOK {
+		logger.FromContext(ctx).Error("got response body", zap.String("body", string(respBody)))
+		return fmt.Errorf("unexpected response status: %s", resp.Status)
+	}
+
+	// parse response body
+	var tokenResponse SpotifyRequestTokenResponse
+	err = json.Unmarshal(respBody, &tokenResponse)
+	if err != nil {
+		return fmt.Errorf("could not parse response body: %w", err)
+	}
+
+	logger.FromContext(ctx).Debug("got token response",
+		zap.String("token-type", tokenResponse.TokenType),
+		zap.Int("expires-in", tokenResponse.ExpiresIn),
+		zap.String("scope", tokenResponse.Scope),
+	)
+
+	// Checking that access and refresh tokens are present
+	if tokenResponse.AccessToken == "" {
+		return errors.New("access token is empty")
+	}
+	s.accessToken = tokenResponse.AccessToken
+	logger.FromContext(ctx).Info("got new access token")
+	return nil
 }
 
 func (s *Spotify) ResetUserTokens(ctx context.Context) {
+	logger.FromContext(ctx).Info("resetting user tokens")
 	s.accessToken = ""
 	s.refreshToken = ""
 	logger.FromContext(ctx).Info("user tokens were reset")

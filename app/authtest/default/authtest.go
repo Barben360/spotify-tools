@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/Barben360/spotify-playlist-filters/app/authtest"
+	"github.com/Barben360/spotify-playlist-filters/app/services/logger"
 	"github.com/Barben360/spotify-playlist-filters/app/spotify"
 )
 
@@ -18,11 +19,16 @@ func New(ctx context.Context, spotify spotify.Spotifier) authtest.AuthTester {
 }
 
 func (a *AuthTest) TestUserAuthAndTokenRefresh(ctx context.Context) error {
+	logger.FromContext(ctx).Info("Testing user auth and token refresh")
 	a.spotify.ResetUserTokens(ctx)
 	_, err := a.spotify.GetUserToken(ctx)
 	if err != nil {
 		return err
 	}
-	// TODO: test token refresh
+	_, err = a.spotify.GetNewUserToken(ctx)
+	if err != nil {
+		return err
+	}
+	logger.FromContext(ctx).Info("User auth and token refresh test successful")
 	return nil
 }
