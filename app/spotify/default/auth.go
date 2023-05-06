@@ -101,7 +101,7 @@ func (s *Spotify) requestAuthorizationCode(ctx context.Context) (string, error) 
 		defer func() {
 			errChan <- nil
 		}()
-		return c.String(http.StatusOK, "Authorization successful! You can close this window now.")
+		return c.String(http.StatusOK, "Authorization successful! You may close this window now.")
 	})
 
 	serverErrChan := make(chan error, 1)
