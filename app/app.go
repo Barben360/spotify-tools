@@ -67,3 +67,8 @@ func New(ctx context.Context, cfg *AppConfig) (*App, error) {
 		features: features,
 	}, nil
 }
+
+func (a *App) RunAuthTest(ctx context.Context) error {
+	ctx = a.log.ToContext(ctx)
+	return a.features.AuthTest.TestUserAuthAndTokenRefresh(ctx)
+}

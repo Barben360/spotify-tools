@@ -29,6 +29,7 @@ type Spotify struct {
 	spotifyAppClientID     string
 	spotifyAppClientSecret string
 	authHeader             string
+	redirectURI            string
 	publicAPIEndpoint      string
 	serverListenPort       uint16
 	client                 *http.Client
@@ -53,6 +54,7 @@ func New(
 				),
 			),
 		),
+		redirectURI:       strings.TrimSuffix(publicAPIEndpoint, "/") + "/authorize",
 		publicAPIEndpoint: publicAPIEndpoint,
 		serverListenPort:  serverListenPort,
 		client: &http.Client{
@@ -103,22 +105,23 @@ func (s *Spotify) requestAuthorizationCode(ctx context.Context) (string, error) 
 			"playlist-modify-private",
 			"playlist-modify-public",
 		}, " ")),
-		url.PathEscape(s.publicAPIEndpoint),
+		url.PathEscape(s.redirectURI),
 		url.PathEscape(state),
 	)
 
 	timeout := 1 * time.Minute
 	logger.FromContext(ctx).Info("Please open this URL in a web browser to authorize the app to access your Spotify account", zap.String("url", url))
 
-	ctx, cancel := context.WithTimeout(ctx, timeout)
+	ctxAuth, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
 	// Start a web server to listen for the callback
 	var code string
 	var errReturn string
-	var errChan chan error
+	errChan := make(chan error, 1)
 
 	e := echo.New()
+	e.HideBanner = true
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
 		AllowOrigins: []string{s.publicAPIEndpoint},
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
@@ -146,25 +149,32 @@ func (s *Spotify) requestAuthorizationCode(ctx context.Context) (string, error) 
 		return c.String(http.StatusOK, "Authorization successful! You can close this window now.")
 	})
 
-	var serverErrChan chan error
+	serverErrChan := make(chan error, 1)
 	go func() {
+		logger.FromContext(ctx).Info("starting authentication server")
 		serverErrChan <- e.Start(fmt.Sprintf(":%d", s.serverListenPort))
+		logger.FromContext(ctx).Info("authentication server stopped")
 	}()
 
-	stopServer := func() {
+	stopServer := func(ctx context.Context) {
 		// Stopping server
-		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-		defer cancel()
+		logger.FromContext(ctx).Info("stopping authentication server")
 		err := e.Shutdown(ctx)
 		if err != nil {
 			logger.FromContext(ctx).Error("error while shutting down server, port may not be left free", zap.Error(err))
 		}
-		<-serverErrChan
+		err = <-serverErrChan
+		if err != nil && err != http.ErrServerClosed {
+			logger.FromContext(ctx).Error("error while shutting down server, port may not be left free", zap.Error(err))
+		}
 	}
 
 	select {
 	case err := <-errChan:
-		defer stopServer()
+		logger.FromContext(ctx).Debug("authorization flow finished")
+		ctx, cancel := context.WithTimeout(logger.FromContext(ctx).ToContext(context.Background()), 5*time.Second)
+		defer cancel()
+		defer stopServer(ctx)
 		if err != nil {
 			return "", err
 		}
@@ -173,9 +183,13 @@ func (s *Spotify) requestAuthorizationCode(ctx context.Context) (string, error) 
 		}
 		return code, nil
 	case err := <-serverErrChan:
+		logger.FromContext(ctx).Debug("authorization flow finished (could not start server)")
 		return "", fmt.Errorf("could not start server: %w", err)
-	case <-ctx.Done():
-		defer stopServer()
+	case <-ctxAuth.Done():
+		logger.FromContext(ctx).Debug("authorization flow finished (timeout or cancel)")
+		ctx, cancel := context.WithTimeout(logger.FromContext(ctx).ToContext(context.Background()), 5*time.Second)
+		defer cancel()
+		defer stopServer(ctx)
 		return "", fmt.Errorf("timeout while waiting for authorization code: %w", ctx.Err())
 	}
 }
@@ -193,6 +207,7 @@ func (s *Spotify) requestToken(ctx context.Context, authorizationCode string) er
 	data := url.Values{}
 	data.Set("grant_type", "authorization_code")
 	data.Set("code", authorizationCode)
+	data.Set("redirect_uri", s.redirectURI)
 
 	// create request
 	req, err := http.NewRequestWithContext(ctx, "POST", "https://accounts.spotify.com/api/token", strings.NewReader(data.Encode()))
@@ -215,6 +230,10 @@ func (s *Spotify) requestToken(ctx context.Context, authorizationCode string) er
 	respBody, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return fmt.Errorf("could not read response body: %w", err)
+	}
+	if resp.StatusCode != http.StatusOK {
+		logger.FromContext(ctx).Error("got response body", zap.String("body", string(respBody)))
+		return fmt.Errorf("unexpected status code: %d", resp.StatusCode)
 	}
 
 	// parse response body
