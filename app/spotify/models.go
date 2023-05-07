@@ -32,9 +32,9 @@ type PlaylistFilterSource struct {
 }
 
 type PlaylistFilters struct {
-	ItemNameRegexp string        `json:"item_name_regexp" validate:"omitempty"`
-	MinDuration    time.Duration `json:"duration_from" validate:"omitempty"`
-	MaxDuration    time.Duration `json:"duration_to" validate:"omitempty"`
+	ItemNameRegexp string `json:"item_name_regexp" validate:"omitempty"`
+	MinDuration    int64  `json:"min_duration" validate:"omitempty"`
+	MaxDuration    int64  `json:"max_duration" validate:"omitempty"`
 }
 
 type Playlist struct {

@@ -208,11 +208,11 @@ func (s *Spotify) UpdatePlaylistFilter(ctx context.Context, filterConfig *spotif
 				}
 			}
 			// Is it matching duration?
-			if src.Filters.MinDuration != 0 && item.Duration < src.Filters.MinDuration {
+			if src.Filters.MinDuration != 0 && item.Duration < time.Duration(src.Filters.MinDuration)*time.Second {
 				logger.FromContext(ctx).Debug("skipping item with too short duration")
 				continue
 			}
-			if src.Filters.MaxDuration != 0 && item.Duration > src.Filters.MaxDuration {
+			if src.Filters.MaxDuration != 0 && item.Duration > time.Duration(src.Filters.MaxDuration)*time.Second {
 				logger.FromContext(ctx).Debug("skipping item with too long duration")
 				continue
 			}
