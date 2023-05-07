@@ -61,6 +61,13 @@ func New(ctx context.Context) *CLI {
 		Short: "Test Spotify user authentication and token refresh",
 		RunE:  c.runApp(ctx, authTestHandler),
 	})
+
+	cmdRun.AddCommand(&cobra.Command{
+		Use:   "reset",
+		Short: "Reset Spotify user authentication",
+		Long:  "Reset Spotify user authentication by deleting the config cache file. Use this command if you want to change the Spotify user or if you have a more general issue with authentication.",
+		RunE:  c.runApp(ctx, resetHandler),
+	})
 	return c
 }
 

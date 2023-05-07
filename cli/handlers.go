@@ -9,3 +9,7 @@ import (
 func authTestHandler(ctx context.Context, appInstance *app.App) error {
 	return appInstance.RunAuthTest(ctx)
 }
+
+func resetHandler(ctx context.Context, appInstance *app.App) error {
+	return appInstance.RunReset(ctx)
+}

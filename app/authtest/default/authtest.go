@@ -20,7 +20,6 @@ func New(ctx context.Context, spotify spotify.Spotifier) authtest.AuthTester {
 
 func (a *AuthTest) TestUserAuthAndTokenRefresh(ctx context.Context) error {
 	logger.FromContext(ctx).Info("Testing user auth and token refresh")
-	a.spotify.ResetUserTokens(ctx)
 	_, err := a.spotify.GetUserToken(ctx)
 	if err != nil {
 		return err

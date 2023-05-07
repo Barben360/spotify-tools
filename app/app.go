@@ -14,7 +14,7 @@ import (
 
 type App struct {
 	log      *logger.Logger
-	features *Features
+	features *features
 }
 
 func New(ctx context.Context, cfg *AppConfig) (*App, error) {
@@ -59,8 +59,9 @@ func New(ctx context.Context, cfg *AppConfig) (*App, error) {
 		cfg.PublicAPIEndpoint,
 		cfg.ServerListenPort,
 	)
-	features := &Features{
-		AuthTest: authtestdefault.New(ctx, spotify),
+	features := &features{
+		spotify:  spotify,
+		authTest: authtestdefault.New(ctx, spotify),
 	}
 
 	return &App{
@@ -71,5 +72,11 @@ func New(ctx context.Context, cfg *AppConfig) (*App, error) {
 
 func (a *App) RunAuthTest(ctx context.Context) error {
 	ctx = a.log.ToContext(ctx)
-	return a.features.AuthTest.TestUserAuthAndTokenRefresh(ctx)
+	return a.features.authTest.TestUserAuthAndTokenRefresh(ctx)
+}
+
+func (a *App) RunReset(ctx context.Context) error {
+	ctx = a.log.ToContext(ctx)
+	a.features.spotify.ResetUserTokens(ctx)
+	return nil
 }

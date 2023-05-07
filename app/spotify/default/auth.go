@@ -8,6 +8,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
 	"time"
 
@@ -46,6 +47,21 @@ func (s *Spotify) GetNewUserToken(ctx context.Context) (string, error) {
 	err = s.requestToken(ctx, code)
 	if err != nil {
 		return "", err
+	}
+	// Writing config file
+	f, err := os.Create(s.configCacheFilePath)
+	if err != nil {
+		logger.FromContext(ctx).Error("failed to create or truncate cache config file, skipping", zap.Error(err))
+	} else {
+		err := json.NewEncoder(f).Encode(spotifyConfig{
+			Auth: &authConfig{
+				AccessToken:  s.accessToken,
+				RefreshToken: s.refreshToken,
+			},
+		})
+		if err != nil {
+			logger.FromContext(ctx).Error("failed to write cache config file, skipping", zap.Error(err))
+		}
 	}
 	return s.accessToken, nil
 }
@@ -156,7 +172,7 @@ func (s *Spotify) requestAuthorizationCode(ctx context.Context) (string, error) 
 		if err != nil {
 			return "", err
 		}
-		return "", fmt.Errorf("timeout while waiting for authorization code: %w", ctx.Err())
+		return "", fmt.Errorf("error while waiting for authorization code: %w", ctxAuth.Err())
 	}
 }
 
@@ -286,8 +302,12 @@ func (s *Spotify) requestTokenRefresh(ctx context.Context) error {
 }
 
 func (s *Spotify) ResetUserTokens(ctx context.Context) {
-	logger.FromContext(ctx).Info("resetting user tokens")
+	logger.FromContext(ctx).Info("resetting user tokens and config cache file")
 	s.accessToken = ""
 	s.refreshToken = ""
 	logger.FromContext(ctx).Info("user tokens were reset")
+	err := os.Remove(s.configCacheFilePath)
+	if err != nil {
+		logger.FromContext(ctx).Error("could not remove config cache file, skipping", zap.Error(err))
+	}
 }

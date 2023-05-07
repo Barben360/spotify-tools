@@ -3,6 +3,7 @@ package app
 import (
 	"github.com/Barben360/spotify-tools/app/authtest"
 	"github.com/Barben360/spotify-tools/app/playlistfilter"
+	"github.com/Barben360/spotify-tools/app/spotify"
 )
 
 type AppConfig struct {
@@ -14,6 +15,7 @@ type AppConfig struct {
 	PlaylistFiltersConfig  *playlistfilter.PlaylistFiltersConfig `validate:"omitempty"`
 }
 
-type Features struct {
-	AuthTest authtest.AuthTester
+type features struct {
+	spotify  spotify.Spotifier
+	authTest authtest.AuthTester
 }
