@@ -8,6 +8,7 @@ import (
 
 	authtestdefault "github.com/Barben360/spotify-tools/app/authtest/default"
 	"github.com/Barben360/spotify-tools/app/services/logger"
+	"github.com/Barben360/spotify-tools/app/spotify"
 	spotifydefault "github.com/Barben360/spotify-tools/app/spotify/default"
 
 	"github.com/go-playground/validator/v10"
@@ -91,5 +92,25 @@ func (a *App) GetPlaylist(ctx context.Context, playlistID string) error {
 	}
 	respJSON, _ := json.Marshal(resp)
 	fmt.Println(string(respJSON))
+	return nil
+}
+
+func (a *App) GetShow(ctx context.Context, showID string) error {
+	ctx = a.log.ToContext(ctx)
+	resp, err := a.features.spotify.GetShow(ctx, showID)
+	if err != nil {
+		return err
+	}
+	respJSON, _ := json.Marshal(resp)
+	fmt.Println(string(respJSON))
+	return nil
+}
+
+func (a *App) PlaylistFilter(ctx context.Context, config *spotify.PlaylistFilterConfig) error {
+	ctx = a.log.ToContext(ctx)
+	err := a.features.spotify.UpdatePlaylistFilter(ctx, config)
+	if err != nil {
+		return err
+	}
 	return nil
 }

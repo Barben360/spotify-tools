@@ -17,64 +17,70 @@ type CLI struct {
 	devMode                bool
 	publicAPIEndpoint      string
 	serverListenPort       uint16
-	// configJSONFilePath string
-	// configJSON         string
+	configJSONFilePath     string
+	configJSON             string
 }
 
 func New(ctx context.Context) *CLI {
 	c := &CLI{}
 
 	c.cmdRoot = &cobra.Command{
-		Use:   "spotify-tools",
-		Short: "A Spotify automation tool",
+		Use:     "spotify-tools",
+		Version: version,
+		Short:   "A Spotify automation tool",
 	}
 
-	cmdRun := &cobra.Command{
-		Use:   "run",
-		Short: "run a command",
+	c.cmdRoot.PersistentFlags().StringVarP(&c.spotifyAppClientID, "spotify-app-client-id", "i", "", "Spotify App Client ID")
+	err := c.cmdRoot.MarkPersistentFlagRequired("spotify-app-client-id")
+	if err != nil {
+		panic(err)
 	}
-	c.cmdRoot.AddCommand(cmdRun)
+	c.cmdRoot.PersistentFlags().StringVarP(&c.spotifyAppClientSecret, "spotify-app-client-secret", "s", "", "Spotify App Client Secret")
+	err = c.cmdRoot.MarkPersistentFlagRequired("spotify-app-client-secret")
+	if err != nil {
+		panic(err)
+	}
+	c.cmdRoot.PersistentFlags().BoolVar(&c.devMode, "dev", false, "Dev mode")
+	c.cmdRoot.PersistentFlags().StringVar(&c.publicAPIEndpoint, "public-api-endpoint", "http://localhost:8080", "Public API endpoint")
+	c.cmdRoot.PersistentFlags().Uint16Var(&c.serverListenPort, "server-listen-port", 8080, "Server listen port")
 
 	c.cmdRoot.AddCommand(&cobra.Command{
-		Use: "version",
-		Run: func(cmd *cobra.Command, args []string) {
-			cmd.Printf("spotify-tools %s\n", version)
-		},
-	})
-
-	cmdRun.PersistentFlags().StringVarP(&c.spotifyAppClientID, "spotify-app-client-id", "i", "", "Spotify App Client ID")
-	err := cmdRun.MarkPersistentFlagRequired("spotify-app-client-id")
-	if err != nil {
-		panic(err)
-	}
-	cmdRun.PersistentFlags().StringVarP(&c.spotifyAppClientSecret, "spotify-app-client-secret", "s", "", "Spotify App Client Secret")
-	err = cmdRun.MarkPersistentFlagRequired("spotify-app-client-secret")
-	if err != nil {
-		panic(err)
-	}
-	cmdRun.PersistentFlags().BoolVar(&c.devMode, "dev", false, "Dev mode")
-	cmdRun.PersistentFlags().StringVar(&c.publicAPIEndpoint, "public-api-endpoint", "http://localhost:8080", "Public API endpoint")
-	cmdRun.PersistentFlags().Uint16Var(&c.serverListenPort, "server-listen-port", 8080, "Server listen port")
-
-	cmdRun.AddCommand(&cobra.Command{
 		Use:   "auth-test",
 		Short: "Test Spotify user authentication and token refresh",
 		RunE:  c.runApp(ctx, c.authTestHandler),
 	})
 
-	cmdRun.AddCommand(&cobra.Command{
+	c.cmdRoot.AddCommand(&cobra.Command{
 		Use:   "reset",
 		Short: "Reset Spotify user authentication",
 		Long:  "Reset Spotify user authentication by deleting the config cache file. Use this command if you want to change the Spotify user or if you have a more general issue with authentication.",
 		RunE:  c.runApp(ctx, c.resetHandler),
 	})
 
-	cmdRun.AddCommand(&cobra.Command{
+	c.cmdRoot.AddCommand(&cobra.Command{
 		Use:   "get-playlist",
-		Short: "Get basic info about a Spotify playlist",
+		Short: "Get basic info about a Spotify playlist and its items",
 		Args:  cobra.ExactArgs(1),
 		RunE:  c.runApp(ctx, c.getPlaylistHandler),
 	})
+
+	c.cmdRoot.AddCommand(&cobra.Command{
+		Use:   "get-show",
+		Short: "Get basic info of a Spotify show and its episodes",
+		Args:  cobra.ExactArgs(1),
+		RunE:  c.runApp(ctx, c.getShowHandler),
+	})
+
+	cmdFilterPlaylists := &cobra.Command{
+		Use:   "filter-playlists",
+		Short: "Update Spotify playlists based on filters on other playlists/shows",
+		RunE:  c.runApp(ctx, c.filterPlaylistsHandler),
+	}
+
+	cmdFilterPlaylists.PersistentFlags().StringVarP(&c.configJSONFilePath, "config-file", "f", "", "Path to the config JSON file")
+	cmdFilterPlaylists.PersistentFlags().StringVarP(&c.configJSON, "config", "c", "", "Config JSON")
+	cmdFilterPlaylists.MarkFlagsMutuallyExclusive("config-file", "config")
+	c.cmdRoot.AddCommand(cmdFilterPlaylists)
 
 	return c
 }
