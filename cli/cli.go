@@ -8,6 +8,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var version = "dev"
+
 type CLI struct {
 	cmdRoot                *cobra.Command
 	spotifyAppClientID     string
@@ -27,21 +29,34 @@ func New(ctx context.Context) *CLI {
 		Short: "A Spotify automation tool",
 	}
 
-	c.cmdRoot.PersistentFlags().StringVarP(&c.spotifyAppClientID, "spotify-app-client-id", "i", "", "Spotify App Client ID")
-	err := c.cmdRoot.MarkPersistentFlagRequired("spotify-app-client-id")
-	if err != nil {
-		panic(err)
+	cmdRun := &cobra.Command{
+		Use:   "run",
+		Short: "run a command",
 	}
-	c.cmdRoot.PersistentFlags().StringVarP(&c.spotifyAppClientSecret, "spotify-app-client-secret", "s", "", "Spotify App Client Secret")
-	err = c.cmdRoot.MarkPersistentFlagRequired("spotify-app-client-secret")
-	if err != nil {
-		panic(err)
-	}
-	c.cmdRoot.PersistentFlags().BoolVar(&c.devMode, "dev", false, "Dev mode")
-	c.cmdRoot.PersistentFlags().StringVar(&c.publicAPIEndpoint, "public-api-endpoint", "http://localhost:8080", "Public API endpoint")
-	c.cmdRoot.PersistentFlags().Uint16Var(&c.serverListenPort, "server-listen-port", 8080, "Server listen port")
+	c.cmdRoot.AddCommand(cmdRun)
 
 	c.cmdRoot.AddCommand(&cobra.Command{
+		Use: "version",
+		Run: func(cmd *cobra.Command, args []string) {
+			cmd.Printf("spotify-tools %s\n", version)
+		},
+	})
+
+	cmdRun.PersistentFlags().StringVarP(&c.spotifyAppClientID, "spotify-app-client-id", "i", "", "Spotify App Client ID")
+	err := cmdRun.MarkPersistentFlagRequired("spotify-app-client-id")
+	if err != nil {
+		panic(err)
+	}
+	cmdRun.PersistentFlags().StringVarP(&c.spotifyAppClientSecret, "spotify-app-client-secret", "s", "", "Spotify App Client Secret")
+	err = cmdRun.MarkPersistentFlagRequired("spotify-app-client-secret")
+	if err != nil {
+		panic(err)
+	}
+	cmdRun.PersistentFlags().BoolVar(&c.devMode, "dev", false, "Dev mode")
+	cmdRun.PersistentFlags().StringVar(&c.publicAPIEndpoint, "public-api-endpoint", "http://localhost:8080", "Public API endpoint")
+	cmdRun.PersistentFlags().Uint16Var(&c.serverListenPort, "server-listen-port", 8080, "Server listen port")
+
+	cmdRun.AddCommand(&cobra.Command{
 		Use:   "auth-test",
 		Short: "Test Spotify user authentication and token refresh",
 		RunE:  c.runApp(ctx, authTestHandler),
