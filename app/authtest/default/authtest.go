@@ -3,9 +3,9 @@ package authtestdefault
 import (
 	"context"
 
-	"github.com/Barben360/spotify-playlist-filters/app/authtest"
-	"github.com/Barben360/spotify-playlist-filters/app/services/logger"
-	"github.com/Barben360/spotify-playlist-filters/app/spotify"
+	"github.com/Barben360/spotify-tools/app/authtest"
+	"github.com/Barben360/spotify-tools/app/services/logger"
+	"github.com/Barben360/spotify-tools/app/spotify"
 )
 
 type AuthTest struct {

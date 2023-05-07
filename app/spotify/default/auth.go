@@ -11,7 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Barben360/spotify-playlist-filters/app/services/logger"
+	"github.com/Barben360/spotify-tools/app/services/logger"
+
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"

@@ -4,9 +4,10 @@ import (
 	"context"
 	"errors"
 
-	authtestdefault "github.com/Barben360/spotify-playlist-filters/app/authtest/default"
-	"github.com/Barben360/spotify-playlist-filters/app/services/logger"
-	spotifydefault "github.com/Barben360/spotify-playlist-filters/app/spotify/default"
+	authtestdefault "github.com/Barben360/spotify-tools/app/authtest/default"
+	"github.com/Barben360/spotify-tools/app/services/logger"
+	spotifydefault "github.com/Barben360/spotify-tools/app/spotify/default"
+
 	"github.com/go-playground/validator/v10"
 	"go.uber.org/zap"
 )

@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Barben360/spotify-playlist-filters/app/spotify"
+	"github.com/Barben360/spotify-tools/app/spotify"
 )
 
 type Spotify struct {

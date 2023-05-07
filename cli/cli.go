@@ -3,7 +3,8 @@ package cli
 import (
 	"context"
 
-	"github.com/Barben360/spotify-playlist-filters/app"
+	"github.com/Barben360/spotify-tools/app"
+
 	"github.com/spf13/cobra"
 )
 
@@ -22,8 +23,8 @@ func New(ctx context.Context) *CLI {
 	c := &CLI{}
 
 	c.cmdRoot = &cobra.Command{
-		Use:   "spotify-playlist-filters",
-		Short: "spotify-playlist-filters is a Spotify playlist automation tool",
+		Use:   "spotify-tools",
+		Short: "A Spotify automation tool",
 	}
 
 	c.cmdRoot.PersistentFlags().StringVarP(&c.spotifyAppClientID, "spotify-app-client-id", "i", "", "Spotify App Client ID")

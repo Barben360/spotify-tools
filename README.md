@@ -1,3 +1,3 @@
-# Spotify Playlist Filters
+# Spotify Tools
 
-A CLI tool to update Spotify playlists from other playlists with configurable filters
+A CLI tool automating some specific actions on Spotify

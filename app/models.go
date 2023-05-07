@@ -1,8 +1,8 @@
 package app
 
 import (
-	"github.com/Barben360/spotify-playlist-filters/app/authtest"
-	"github.com/Barben360/spotify-playlist-filters/app/playlistfilter"
+	"github.com/Barben360/spotify-tools/app/authtest"
+	"github.com/Barben360/spotify-tools/app/playlistfilter"
 )
 
 type AppConfig struct {

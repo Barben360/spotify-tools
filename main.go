@@ -7,7 +7,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/Barben360/spotify-playlist-filters/cli"
+	"github.com/Barben360/spotify-tools/cli"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module github.com/Barben360/spotify-playlist-filters
+module github.com/Barben360/spotify-tools
 
 go 1.20
 
