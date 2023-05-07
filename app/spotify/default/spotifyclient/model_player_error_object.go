@@ -24,10 +24,7 @@ type PlayerErrorObject struct {
 	// A short description of the cause of the error. 
 	Message *string `json:"message,omitempty"`
 	Reason *PlayerErrorReasons `json:"reason,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PlayerErrorObject PlayerErrorObject
 
 // NewPlayerErrorObject instantiates a new PlayerErrorObject object
 // This constructor will assign default values to properties that have it defined,
@@ -161,31 +158,7 @@ func (o PlayerErrorObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Reason) {
 		toSerialize["reason"] = o.Reason
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PlayerErrorObject) UnmarshalJSON(bytes []byte) (err error) {
-	varPlayerErrorObject := _PlayerErrorObject{}
-
-	if err = json.Unmarshal(bytes, &varPlayerErrorObject); err == nil {
-		*o = PlayerErrorObject(varPlayerErrorObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "message")
-		delete(additionalProperties, "reason")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePlayerErrorObject struct {

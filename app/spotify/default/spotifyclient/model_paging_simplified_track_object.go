@@ -32,10 +32,7 @@ type PagingSimplifiedTrackObject struct {
 	// The total number of items available to return. 
 	Total int32 `json:"total"`
 	Items []SimplifiedTrackObject `json:"items"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PagingSimplifiedTrackObject PagingSimplifiedTrackObject
 
 // NewPagingSimplifiedTrackObject instantiates a new PagingSimplifiedTrackObject object
 // This constructor will assign default values to properties that have it defined,
@@ -250,35 +247,7 @@ func (o PagingSimplifiedTrackObject) ToMap() (map[string]interface{}, error) {
 	toSerialize["previous"] = o.Previous.Get()
 	toSerialize["total"] = o.Total
 	toSerialize["items"] = o.Items
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PagingSimplifiedTrackObject) UnmarshalJSON(bytes []byte) (err error) {
-	varPagingSimplifiedTrackObject := _PagingSimplifiedTrackObject{}
-
-	if err = json.Unmarshal(bytes, &varPagingSimplifiedTrackObject); err == nil {
-		*o = PagingSimplifiedTrackObject(varPagingSimplifiedTrackObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "limit")
-		delete(additionalProperties, "next")
-		delete(additionalProperties, "offset")
-		delete(additionalProperties, "previous")
-		delete(additionalProperties, "total")
-		delete(additionalProperties, "items")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePagingSimplifiedTrackObject struct {

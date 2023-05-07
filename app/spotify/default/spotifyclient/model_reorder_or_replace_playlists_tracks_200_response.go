@@ -20,10 +20,7 @@ var _ MappedNullable = &ReorderOrReplacePlaylistsTracks200Response{}
 // ReorderOrReplacePlaylistsTracks200Response struct for ReorderOrReplacePlaylistsTracks200Response
 type ReorderOrReplacePlaylistsTracks200Response struct {
 	SnapshotId *string `json:"snapshot_id,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _ReorderOrReplacePlaylistsTracks200Response ReorderOrReplacePlaylistsTracks200Response
 
 // NewReorderOrReplacePlaylistsTracks200Response instantiates a new ReorderOrReplacePlaylistsTracks200Response object
 // This constructor will assign default values to properties that have it defined,
@@ -87,29 +84,7 @@ func (o ReorderOrReplacePlaylistsTracks200Response) ToMap() (map[string]interfac
 	if !IsNil(o.SnapshotId) {
 		toSerialize["snapshot_id"] = o.SnapshotId
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ReorderOrReplacePlaylistsTracks200Response) UnmarshalJSON(bytes []byte) (err error) {
-	varReorderOrReplacePlaylistsTracks200Response := _ReorderOrReplacePlaylistsTracks200Response{}
-
-	if err = json.Unmarshal(bytes, &varReorderOrReplacePlaylistsTracks200Response); err == nil {
-		*o = ReorderOrReplacePlaylistsTracks200Response(varReorderOrReplacePlaylistsTracks200Response)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "snapshot_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableReorderOrReplacePlaylistsTracks200Response struct {

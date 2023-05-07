@@ -47,10 +47,7 @@ type TuneableTrackObject struct {
 	TimeSignature *int32 `json:"time_signature,omitempty"`
 	// A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry). 
 	Valence *float32 `json:"valence,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _TuneableTrackObject TuneableTrackObject
 
 // NewTuneableTrackObject instantiates a new TuneableTrackObject object
 // This constructor will assign default values to properties that have it defined,
@@ -569,42 +566,7 @@ func (o TuneableTrackObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Valence) {
 		toSerialize["valence"] = o.Valence
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *TuneableTrackObject) UnmarshalJSON(bytes []byte) (err error) {
-	varTuneableTrackObject := _TuneableTrackObject{}
-
-	if err = json.Unmarshal(bytes, &varTuneableTrackObject); err == nil {
-		*o = TuneableTrackObject(varTuneableTrackObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "acousticness")
-		delete(additionalProperties, "danceability")
-		delete(additionalProperties, "duration_ms")
-		delete(additionalProperties, "energy")
-		delete(additionalProperties, "instrumentalness")
-		delete(additionalProperties, "key")
-		delete(additionalProperties, "liveness")
-		delete(additionalProperties, "loudness")
-		delete(additionalProperties, "mode")
-		delete(additionalProperties, "popularity")
-		delete(additionalProperties, "speechiness")
-		delete(additionalProperties, "tempo")
-		delete(additionalProperties, "time_signature")
-		delete(additionalProperties, "valence")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableTuneableTrackObject struct {

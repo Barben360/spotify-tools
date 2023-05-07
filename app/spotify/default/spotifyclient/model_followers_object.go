@@ -23,10 +23,7 @@ type FollowersObject struct {
 	Href NullableString `json:"href,omitempty"`
 	// The total number of followers. 
 	Total *int32 `json:"total,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _FollowersObject FollowersObject
 
 // NewFollowersObject instantiates a new FollowersObject object
 // This constructor will assign default values to properties that have it defined,
@@ -135,30 +132,7 @@ func (o FollowersObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Total) {
 		toSerialize["total"] = o.Total
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *FollowersObject) UnmarshalJSON(bytes []byte) (err error) {
-	varFollowersObject := _FollowersObject{}
-
-	if err = json.Unmarshal(bytes, &varFollowersObject); err == nil {
-		*o = FollowersObject(varFollowersObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "total")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableFollowersObject struct {

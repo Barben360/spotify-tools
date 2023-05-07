@@ -20,10 +20,7 @@ var _ MappedNullable = &PagingTrackObjectAllOf{}
 // PagingTrackObjectAllOf struct for PagingTrackObjectAllOf
 type PagingTrackObjectAllOf struct {
 	Items []TrackObject `json:"items,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PagingTrackObjectAllOf PagingTrackObjectAllOf
 
 // NewPagingTrackObjectAllOf instantiates a new PagingTrackObjectAllOf object
 // This constructor will assign default values to properties that have it defined,
@@ -87,29 +84,7 @@ func (o PagingTrackObjectAllOf) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PagingTrackObjectAllOf) UnmarshalJSON(bytes []byte) (err error) {
-	varPagingTrackObjectAllOf := _PagingTrackObjectAllOf{}
-
-	if err = json.Unmarshal(bytes, &varPagingTrackObjectAllOf); err == nil {
-		*o = PagingTrackObjectAllOf(varPagingTrackObjectAllOf)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "items")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePagingTrackObjectAllOf struct {

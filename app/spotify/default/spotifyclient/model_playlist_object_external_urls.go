@@ -21,10 +21,7 @@ var _ MappedNullable = &PlaylistObjectExternalUrls{}
 type PlaylistObjectExternalUrls struct {
 	// The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object. 
 	Spotify *string `json:"spotify,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PlaylistObjectExternalUrls PlaylistObjectExternalUrls
 
 // NewPlaylistObjectExternalUrls instantiates a new PlaylistObjectExternalUrls object
 // This constructor will assign default values to properties that have it defined,
@@ -88,29 +85,7 @@ func (o PlaylistObjectExternalUrls) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Spotify) {
 		toSerialize["spotify"] = o.Spotify
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PlaylistObjectExternalUrls) UnmarshalJSON(bytes []byte) (err error) {
-	varPlaylistObjectExternalUrls := _PlaylistObjectExternalUrls{}
-
-	if err = json.Unmarshal(bytes, &varPlaylistObjectExternalUrls); err == nil {
-		*o = PlaylistObjectExternalUrls(varPlaylistObjectExternalUrls)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "spotify")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePlaylistObjectExternalUrls struct {

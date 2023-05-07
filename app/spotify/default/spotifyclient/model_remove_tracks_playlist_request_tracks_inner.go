@@ -21,10 +21,7 @@ var _ MappedNullable = &RemoveTracksPlaylistRequestTracksInner{}
 type RemoveTracksPlaylistRequestTracksInner struct {
 	// Spotify URI
 	Uri *string `json:"uri,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _RemoveTracksPlaylistRequestTracksInner RemoveTracksPlaylistRequestTracksInner
 
 // NewRemoveTracksPlaylistRequestTracksInner instantiates a new RemoveTracksPlaylistRequestTracksInner object
 // This constructor will assign default values to properties that have it defined,
@@ -88,29 +85,7 @@ func (o RemoveTracksPlaylistRequestTracksInner) ToMap() (map[string]interface{},
 	if !IsNil(o.Uri) {
 		toSerialize["uri"] = o.Uri
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RemoveTracksPlaylistRequestTracksInner) UnmarshalJSON(bytes []byte) (err error) {
-	varRemoveTracksPlaylistRequestTracksInner := _RemoveTracksPlaylistRequestTracksInner{}
-
-	if err = json.Unmarshal(bytes, &varRemoveTracksPlaylistRequestTracksInner); err == nil {
-		*o = RemoveTracksPlaylistRequestTracksInner(varRemoveTracksPlaylistRequestTracksInner)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "uri")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRemoveTracksPlaylistRequestTracksInner struct {

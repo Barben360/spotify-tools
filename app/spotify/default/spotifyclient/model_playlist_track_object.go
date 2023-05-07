@@ -26,10 +26,7 @@ type PlaylistTrackObject struct {
 	// Whether this track or episode is a [local file](https://developer.spotify.com/web-api/local-files-spotify-playlists/) or not. 
 	IsLocal *bool `json:"is_local,omitempty"`
 	Track *PlaylistTrackObjectTrack `json:"track,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PlaylistTrackObject PlaylistTrackObject
 
 // NewPlaylistTrackObject instantiates a new PlaylistTrackObject object
 // This constructor will assign default values to properties that have it defined,
@@ -198,32 +195,7 @@ func (o PlaylistTrackObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Track) {
 		toSerialize["track"] = o.Track
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PlaylistTrackObject) UnmarshalJSON(bytes []byte) (err error) {
-	varPlaylistTrackObject := _PlaylistTrackObject{}
-
-	if err = json.Unmarshal(bytes, &varPlaylistTrackObject); err == nil {
-		*o = PlaylistTrackObject(varPlaylistTrackObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "added_at")
-		delete(additionalProperties, "added_by")
-		delete(additionalProperties, "is_local")
-		delete(additionalProperties, "track")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePlaylistTrackObject struct {

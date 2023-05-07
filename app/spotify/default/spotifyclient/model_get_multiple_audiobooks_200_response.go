@@ -20,10 +20,7 @@ var _ MappedNullable = &GetMultipleAudiobooks200Response{}
 // GetMultipleAudiobooks200Response struct for GetMultipleAudiobooks200Response
 type GetMultipleAudiobooks200Response struct {
 	Audiobooks []AudiobookObject `json:"audiobooks"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GetMultipleAudiobooks200Response GetMultipleAudiobooks200Response
 
 // NewGetMultipleAudiobooks200Response instantiates a new GetMultipleAudiobooks200Response object
 // This constructor will assign default values to properties that have it defined,
@@ -78,29 +75,7 @@ func (o GetMultipleAudiobooks200Response) MarshalJSON() ([]byte, error) {
 func (o GetMultipleAudiobooks200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["audiobooks"] = o.Audiobooks
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetMultipleAudiobooks200Response) UnmarshalJSON(bytes []byte) (err error) {
-	varGetMultipleAudiobooks200Response := _GetMultipleAudiobooks200Response{}
-
-	if err = json.Unmarshal(bytes, &varGetMultipleAudiobooks200Response); err == nil {
-		*o = GetMultipleAudiobooks200Response(varGetMultipleAudiobooks200Response)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "audiobooks")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetMultipleAudiobooks200Response struct {

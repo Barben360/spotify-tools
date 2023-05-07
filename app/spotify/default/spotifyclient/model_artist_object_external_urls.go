@@ -21,10 +21,7 @@ var _ MappedNullable = &ArtistObjectExternalUrls{}
 type ArtistObjectExternalUrls struct {
 	// The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object. 
 	Spotify *string `json:"spotify,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _ArtistObjectExternalUrls ArtistObjectExternalUrls
 
 // NewArtistObjectExternalUrls instantiates a new ArtistObjectExternalUrls object
 // This constructor will assign default values to properties that have it defined,
@@ -88,29 +85,7 @@ func (o ArtistObjectExternalUrls) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Spotify) {
 		toSerialize["spotify"] = o.Spotify
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ArtistObjectExternalUrls) UnmarshalJSON(bytes []byte) (err error) {
-	varArtistObjectExternalUrls := _ArtistObjectExternalUrls{}
-
-	if err = json.Unmarshal(bytes, &varArtistObjectExternalUrls); err == nil {
-		*o = ArtistObjectExternalUrls(varArtistObjectExternalUrls)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "spotify")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableArtistObjectExternalUrls struct {

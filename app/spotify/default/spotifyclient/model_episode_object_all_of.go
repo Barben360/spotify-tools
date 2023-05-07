@@ -20,10 +20,7 @@ var _ MappedNullable = &EpisodeObjectAllOf{}
 // EpisodeObjectAllOf struct for EpisodeObjectAllOf
 type EpisodeObjectAllOf struct {
 	Show EpisodeObjectAllOfShow `json:"show"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _EpisodeObjectAllOf EpisodeObjectAllOf
 
 // NewEpisodeObjectAllOf instantiates a new EpisodeObjectAllOf object
 // This constructor will assign default values to properties that have it defined,
@@ -78,29 +75,7 @@ func (o EpisodeObjectAllOf) MarshalJSON() ([]byte, error) {
 func (o EpisodeObjectAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["show"] = o.Show
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *EpisodeObjectAllOf) UnmarshalJSON(bytes []byte) (err error) {
-	varEpisodeObjectAllOf := _EpisodeObjectAllOf{}
-
-	if err = json.Unmarshal(bytes, &varEpisodeObjectAllOf); err == nil {
-		*o = EpisodeObjectAllOf(varEpisodeObjectAllOf)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "show")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableEpisodeObjectAllOf struct {

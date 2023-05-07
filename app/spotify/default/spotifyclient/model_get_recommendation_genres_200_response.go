@@ -20,10 +20,7 @@ var _ MappedNullable = &GetRecommendationGenres200Response{}
 // GetRecommendationGenres200Response struct for GetRecommendationGenres200Response
 type GetRecommendationGenres200Response struct {
 	Genres []string `json:"genres"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GetRecommendationGenres200Response GetRecommendationGenres200Response
 
 // NewGetRecommendationGenres200Response instantiates a new GetRecommendationGenres200Response object
 // This constructor will assign default values to properties that have it defined,
@@ -78,29 +75,7 @@ func (o GetRecommendationGenres200Response) MarshalJSON() ([]byte, error) {
 func (o GetRecommendationGenres200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["genres"] = o.Genres
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetRecommendationGenres200Response) UnmarshalJSON(bytes []byte) (err error) {
-	varGetRecommendationGenres200Response := _GetRecommendationGenres200Response{}
-
-	if err = json.Unmarshal(bytes, &varGetRecommendationGenres200Response); err == nil {
-		*o = GetRecommendationGenres200Response(varGetRecommendationGenres200Response)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "genres")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetRecommendationGenres200Response struct {

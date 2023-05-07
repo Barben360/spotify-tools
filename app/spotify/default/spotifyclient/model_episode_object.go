@@ -19,6 +19,10 @@ var _ MappedNullable = &EpisodeObject{}
 
 // EpisodeObject struct for EpisodeObject
 type EpisodeObject struct {
+	// Fix by Barben360 
+	Episode *bool `json:"episode,omitempty"`
+	// Fix by Barben360 
+	Track *bool `json:"track,omitempty"`
 	// A URL to a 30 second preview (MP3 format) of the episode. `null` if not available. 
 	AudioPreviewUrl string `json:"audio_preview_url"`
 	// A description of the episode. HTML tags are stripped away from this field, use `html_description` field in case HTML tags are needed. 
@@ -58,10 +62,7 @@ type EpisodeObject struct {
 	Uri string `json:"uri"`
 	Restrictions *EpisodeBaseRestrictions `json:"restrictions,omitempty"`
 	Show EpisodeObjectAllOfShow `json:"show"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _EpisodeObject EpisodeObject
 
 // NewEpisodeObject instantiates a new EpisodeObject object
 // This constructor will assign default values to properties that have it defined,
@@ -97,6 +98,70 @@ func NewEpisodeObject(audioPreviewUrl string, description string, htmlDescriptio
 func NewEpisodeObjectWithDefaults() *EpisodeObject {
 	this := EpisodeObject{}
 	return &this
+}
+
+// GetEpisode returns the Episode field value if set, zero value otherwise.
+func (o *EpisodeObject) GetEpisode() bool {
+	if o == nil || IsNil(o.Episode) {
+		var ret bool
+		return ret
+	}
+	return *o.Episode
+}
+
+// GetEpisodeOk returns a tuple with the Episode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EpisodeObject) GetEpisodeOk() (*bool, bool) {
+	if o == nil || IsNil(o.Episode) {
+		return nil, false
+	}
+	return o.Episode, true
+}
+
+// HasEpisode returns a boolean if a field has been set.
+func (o *EpisodeObject) HasEpisode() bool {
+	if o != nil && !IsNil(o.Episode) {
+		return true
+	}
+
+	return false
+}
+
+// SetEpisode gets a reference to the given bool and assigns it to the Episode field.
+func (o *EpisodeObject) SetEpisode(v bool) {
+	o.Episode = &v
+}
+
+// GetTrack returns the Track field value if set, zero value otherwise.
+func (o *EpisodeObject) GetTrack() bool {
+	if o == nil || IsNil(o.Track) {
+		var ret bool
+		return ret
+	}
+	return *o.Track
+}
+
+// GetTrackOk returns a tuple with the Track field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EpisodeObject) GetTrackOk() (*bool, bool) {
+	if o == nil || IsNil(o.Track) {
+		return nil, false
+	}
+	return o.Track, true
+}
+
+// HasTrack returns a boolean if a field has been set.
+func (o *EpisodeObject) HasTrack() bool {
+	if o != nil && !IsNil(o.Track) {
+		return true
+	}
+
+	return false
+}
+
+// SetTrack gets a reference to the given bool and assigns it to the Track field.
+func (o *EpisodeObject) SetTrack(v bool) {
+	o.Track = &v
 }
 
 // GetAudioPreviewUrl returns the AudioPreviewUrl field value
@@ -632,6 +697,12 @@ func (o EpisodeObject) MarshalJSON() ([]byte, error) {
 
 func (o EpisodeObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Episode) {
+		toSerialize["episode"] = o.Episode
+	}
+	if !IsNil(o.Track) {
+		toSerialize["track"] = o.Track
+	}
 	toSerialize["audio_preview_url"] = o.AudioPreviewUrl
 	toSerialize["description"] = o.Description
 	toSerialize["html_description"] = o.HtmlDescription
@@ -657,49 +728,7 @@ func (o EpisodeObject) ToMap() (map[string]interface{}, error) {
 		toSerialize["restrictions"] = o.Restrictions
 	}
 	toSerialize["show"] = o.Show
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *EpisodeObject) UnmarshalJSON(bytes []byte) (err error) {
-	varEpisodeObject := _EpisodeObject{}
-
-	if err = json.Unmarshal(bytes, &varEpisodeObject); err == nil {
-		*o = EpisodeObject(varEpisodeObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "audio_preview_url")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "html_description")
-		delete(additionalProperties, "duration_ms")
-		delete(additionalProperties, "explicit")
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "images")
-		delete(additionalProperties, "is_externally_hosted")
-		delete(additionalProperties, "is_playable")
-		delete(additionalProperties, "language")
-		delete(additionalProperties, "languages")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "release_date")
-		delete(additionalProperties, "release_date_precision")
-		delete(additionalProperties, "resume_point")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		delete(additionalProperties, "restrictions")
-		delete(additionalProperties, "show")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableEpisodeObject struct {

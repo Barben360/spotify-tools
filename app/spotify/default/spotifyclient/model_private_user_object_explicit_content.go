@@ -23,10 +23,7 @@ type PrivateUserObjectExplicitContent struct {
 	FilterEnabled *bool `json:"filter_enabled,omitempty"`
 	// When `true`, indicates that the explicit content setting is locked and can't be changed by the user. 
 	FilterLocked *bool `json:"filter_locked,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PrivateUserObjectExplicitContent PrivateUserObjectExplicitContent
 
 // NewPrivateUserObjectExplicitContent instantiates a new PrivateUserObjectExplicitContent object
 // This constructor will assign default values to properties that have it defined,
@@ -125,30 +122,7 @@ func (o PrivateUserObjectExplicitContent) ToMap() (map[string]interface{}, error
 	if !IsNil(o.FilterLocked) {
 		toSerialize["filter_locked"] = o.FilterLocked
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PrivateUserObjectExplicitContent) UnmarshalJSON(bytes []byte) (err error) {
-	varPrivateUserObjectExplicitContent := _PrivateUserObjectExplicitContent{}
-
-	if err = json.Unmarshal(bytes, &varPrivateUserObjectExplicitContent); err == nil {
-		*o = PrivateUserObjectExplicitContent(varPrivateUserObjectExplicitContent)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "filter_enabled")
-		delete(additionalProperties, "filter_locked")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePrivateUserObjectExplicitContent struct {

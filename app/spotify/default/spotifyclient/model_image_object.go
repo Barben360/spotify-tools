@@ -25,10 +25,7 @@ type ImageObject struct {
 	Height NullableInt32 `json:"height"`
 	// The image width in pixels. 
 	Width NullableInt32 `json:"width"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _ImageObject ImageObject
 
 // NewImageObject instantiates a new ImageObject object
 // This constructor will assign default values to properties that have it defined,
@@ -139,31 +136,7 @@ func (o ImageObject) ToMap() (map[string]interface{}, error) {
 	toSerialize["url"] = o.Url
 	toSerialize["height"] = o.Height.Get()
 	toSerialize["width"] = o.Width.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ImageObject) UnmarshalJSON(bytes []byte) (err error) {
-	varImageObject := _ImageObject{}
-
-	if err = json.Unmarshal(bytes, &varImageObject); err == nil {
-		*o = ImageObject(varImageObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "height")
-		delete(additionalProperties, "width")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableImageObject struct {

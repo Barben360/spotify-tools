@@ -71,10 +71,7 @@ type AudioAnalysisObjectTrack struct {
 	Rhythmstring *string `json:"rhythmstring,omitempty"`
 	// A version number for the Rhythmstring used in the rhythmstring field.
 	RhythmVersion *float32 `json:"rhythm_version,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AudioAnalysisObjectTrack AudioAnalysisObjectTrack
 
 // NewAudioAnalysisObjectTrack instantiates a new AudioAnalysisObjectTrack object
 // This constructor will assign default values to properties that have it defined,
@@ -1013,54 +1010,7 @@ func (o AudioAnalysisObjectTrack) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RhythmVersion) {
 		toSerialize["rhythm_version"] = o.RhythmVersion
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AudioAnalysisObjectTrack) UnmarshalJSON(bytes []byte) (err error) {
-	varAudioAnalysisObjectTrack := _AudioAnalysisObjectTrack{}
-
-	if err = json.Unmarshal(bytes, &varAudioAnalysisObjectTrack); err == nil {
-		*o = AudioAnalysisObjectTrack(varAudioAnalysisObjectTrack)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "num_samples")
-		delete(additionalProperties, "duration")
-		delete(additionalProperties, "sample_md5")
-		delete(additionalProperties, "offset_seconds")
-		delete(additionalProperties, "window_seconds")
-		delete(additionalProperties, "analysis_sample_rate")
-		delete(additionalProperties, "analysis_channels")
-		delete(additionalProperties, "end_of_fade_in")
-		delete(additionalProperties, "start_of_fade_out")
-		delete(additionalProperties, "loudness")
-		delete(additionalProperties, "tempo")
-		delete(additionalProperties, "tempo_confidence")
-		delete(additionalProperties, "time_signature")
-		delete(additionalProperties, "time_signature_confidence")
-		delete(additionalProperties, "key")
-		delete(additionalProperties, "key_confidence")
-		delete(additionalProperties, "mode")
-		delete(additionalProperties, "mode_confidence")
-		delete(additionalProperties, "codestring")
-		delete(additionalProperties, "code_version")
-		delete(additionalProperties, "echoprintstring")
-		delete(additionalProperties, "echoprint_version")
-		delete(additionalProperties, "synchstring")
-		delete(additionalProperties, "synch_version")
-		delete(additionalProperties, "rhythmstring")
-		delete(additionalProperties, "rhythm_version")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAudioAnalysisObjectTrack struct {

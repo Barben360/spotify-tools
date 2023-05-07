@@ -47,10 +47,7 @@ type TrackObjectAlbum struct {
 	AlbumGroup *string `json:"album_group,omitempty"`
 	// The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist. 
 	Artists []SimplifiedArtistObject `json:"artists"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _TrackObjectAlbum TrackObjectAlbum
 
 // NewTrackObjectAlbum instantiates a new TrackObjectAlbum object
 // This constructor will assign default values to properties that have it defined,
@@ -487,43 +484,7 @@ func (o TrackObjectAlbum) ToMap() (map[string]interface{}, error) {
 		toSerialize["album_group"] = o.AlbumGroup
 	}
 	toSerialize["artists"] = o.Artists
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *TrackObjectAlbum) UnmarshalJSON(bytes []byte) (err error) {
-	varTrackObjectAlbum := _TrackObjectAlbum{}
-
-	if err = json.Unmarshal(bytes, &varTrackObjectAlbum); err == nil {
-		*o = TrackObjectAlbum(varTrackObjectAlbum)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "album_type")
-		delete(additionalProperties, "total_tracks")
-		delete(additionalProperties, "available_markets")
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "images")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "release_date")
-		delete(additionalProperties, "release_date_precision")
-		delete(additionalProperties, "restrictions")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		delete(additionalProperties, "album_group")
-		delete(additionalProperties, "artists")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableTrackObjectAlbum struct {

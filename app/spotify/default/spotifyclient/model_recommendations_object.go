@@ -23,10 +23,7 @@ type RecommendationsObject struct {
 	Seeds []RecommendationSeedObject `json:"seeds"`
 	// An array of track objects ordered according to the parameters supplied. 
 	Tracks []TrackObject `json:"tracks"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _RecommendationsObject RecommendationsObject
 
 // NewRecommendationsObject instantiates a new RecommendationsObject object
 // This constructor will assign default values to properties that have it defined,
@@ -107,30 +104,7 @@ func (o RecommendationsObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["seeds"] = o.Seeds
 	toSerialize["tracks"] = o.Tracks
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RecommendationsObject) UnmarshalJSON(bytes []byte) (err error) {
-	varRecommendationsObject := _RecommendationsObject{}
-
-	if err = json.Unmarshal(bytes, &varRecommendationsObject); err == nil {
-		*o = RecommendationsObject(varRecommendationsObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "seeds")
-		delete(additionalProperties, "tracks")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRecommendationsObject struct {

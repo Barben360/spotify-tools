@@ -21,10 +21,7 @@ var _ MappedNullable = &PagingFeaturedPlaylistObject{}
 type PagingFeaturedPlaylistObject struct {
 	Message *string `json:"message,omitempty"`
 	Playlists *PagingPlaylistObject `json:"playlists,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PagingFeaturedPlaylistObject PagingFeaturedPlaylistObject
 
 // NewPagingFeaturedPlaylistObject instantiates a new PagingFeaturedPlaylistObject object
 // This constructor will assign default values to properties that have it defined,
@@ -123,30 +120,7 @@ func (o PagingFeaturedPlaylistObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Playlists) {
 		toSerialize["playlists"] = o.Playlists
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PagingFeaturedPlaylistObject) UnmarshalJSON(bytes []byte) (err error) {
-	varPagingFeaturedPlaylistObject := _PagingFeaturedPlaylistObject{}
-
-	if err = json.Unmarshal(bytes, &varPagingFeaturedPlaylistObject); err == nil {
-		*o = PagingFeaturedPlaylistObject(varPagingFeaturedPlaylistObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "message")
-		delete(additionalProperties, "playlists")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePagingFeaturedPlaylistObject struct {

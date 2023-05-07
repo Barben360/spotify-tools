@@ -29,10 +29,7 @@ type PlaylistUserObject struct {
 	Type *string `json:"type,omitempty"`
 	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for this user. 
 	Uri *string `json:"uri,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PlaylistUserObject PlaylistUserObject
 
 // NewPlaylistUserObject instantiates a new PlaylistUserObject object
 // This constructor will assign default values to properties that have it defined,
@@ -271,34 +268,7 @@ func (o PlaylistUserObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Uri) {
 		toSerialize["uri"] = o.Uri
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PlaylistUserObject) UnmarshalJSON(bytes []byte) (err error) {
-	varPlaylistUserObject := _PlaylistUserObject{}
-
-	if err = json.Unmarshal(bytes, &varPlaylistUserObject); err == nil {
-		*o = PlaylistUserObject(varPlaylistUserObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "followers")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePlaylistUserObject struct {

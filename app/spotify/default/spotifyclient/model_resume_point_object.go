@@ -23,10 +23,7 @@ type ResumePointObject struct {
 	FullyPlayed *bool `json:"fully_played,omitempty"`
 	// The user's most recent position in the episode in milliseconds. 
 	ResumePositionMs *int32 `json:"resume_position_ms,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _ResumePointObject ResumePointObject
 
 // NewResumePointObject instantiates a new ResumePointObject object
 // This constructor will assign default values to properties that have it defined,
@@ -125,30 +122,7 @@ func (o ResumePointObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ResumePositionMs) {
 		toSerialize["resume_position_ms"] = o.ResumePositionMs
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ResumePointObject) UnmarshalJSON(bytes []byte) (err error) {
-	varResumePointObject := _ResumePointObject{}
-
-	if err = json.Unmarshal(bytes, &varResumePointObject); err == nil {
-		*o = ResumePointObject(varResumePointObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "fully_played")
-		delete(additionalProperties, "resume_position_ms")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableResumePointObject struct {

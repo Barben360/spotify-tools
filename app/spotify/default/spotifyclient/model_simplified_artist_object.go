@@ -30,10 +30,7 @@ type SimplifiedArtistObject struct {
 	Type *string `json:"type,omitempty"`
 	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the artist. 
 	Uri *string `json:"uri,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SimplifiedArtistObject SimplifiedArtistObject
 
 // NewSimplifiedArtistObject instantiates a new SimplifiedArtistObject object
 // This constructor will assign default values to properties that have it defined,
@@ -272,34 +269,7 @@ func (o SimplifiedArtistObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Uri) {
 		toSerialize["uri"] = o.Uri
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SimplifiedArtistObject) UnmarshalJSON(bytes []byte) (err error) {
-	varSimplifiedArtistObject := _SimplifiedArtistObject{}
-
-	if err = json.Unmarshal(bytes, &varSimplifiedArtistObject); err == nil {
-		*o = SimplifiedArtistObject(varSimplifiedArtistObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSimplifiedArtistObject struct {

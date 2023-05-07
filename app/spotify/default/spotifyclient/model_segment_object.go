@@ -37,10 +37,7 @@ type SegmentObject struct {
 	Pitches []float32 `json:"pitches,omitempty"`
 	// Timbre is the quality of a musical note or sound that distinguishes different types of musical instruments, or voices. It is a complex notion also referred to as sound color, texture, or tone quality, and is derived from the shape of a segment’s spectro-temporal surface, independently of pitch and loudness. The timbre feature is a vector that includes 12 unbounded values roughly centered around 0. Those values are high level abstractions of the spectral surface, ordered by degree of importance.  For completeness however, the first dimension represents the average loudness of the segment; second emphasizes brightness; third is more closely correlated to the flatness of a sound; fourth to sounds with a stronger attack; etc. See an image below representing the 12 basis functions (i.e. template segments). ![timbre basis functions](https://developer.spotify.com/assets/audio/Timbre_basis_functions.png)  The actual timbre of the segment is best described as a linear combination of these 12 basis functions weighted by the coefficient values: timbre = c1 x b1 + c2 x b2 + ... + c12 x b12, where c1 to c12 represent the 12 coefficients and b1 to b12 the 12 basis functions as displayed below. Timbre vectors are best used in comparison with each other. 
 	Timbre []float32 `json:"timbre,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SegmentObject SegmentObject
 
 // NewSegmentObject instantiates a new SegmentObject object
 // This constructor will assign default values to properties that have it defined,
@@ -384,37 +381,7 @@ func (o SegmentObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Timbre) {
 		toSerialize["timbre"] = o.Timbre
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SegmentObject) UnmarshalJSON(bytes []byte) (err error) {
-	varSegmentObject := _SegmentObject{}
-
-	if err = json.Unmarshal(bytes, &varSegmentObject); err == nil {
-		*o = SegmentObject(varSegmentObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "start")
-		delete(additionalProperties, "duration")
-		delete(additionalProperties, "confidence")
-		delete(additionalProperties, "loudness_start")
-		delete(additionalProperties, "loudness_max")
-		delete(additionalProperties, "loudness_max_time")
-		delete(additionalProperties, "loudness_end")
-		delete(additionalProperties, "pitches")
-		delete(additionalProperties, "timbre")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSegmentObject struct {

@@ -32,10 +32,7 @@ type PagingSavedAudiobookObject struct {
 	// The total number of items available to return. 
 	Total int32 `json:"total"`
 	Items []SavedAudiobookObject `json:"items"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PagingSavedAudiobookObject PagingSavedAudiobookObject
 
 // NewPagingSavedAudiobookObject instantiates a new PagingSavedAudiobookObject object
 // This constructor will assign default values to properties that have it defined,
@@ -250,35 +247,7 @@ func (o PagingSavedAudiobookObject) ToMap() (map[string]interface{}, error) {
 	toSerialize["previous"] = o.Previous.Get()
 	toSerialize["total"] = o.Total
 	toSerialize["items"] = o.Items
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PagingSavedAudiobookObject) UnmarshalJSON(bytes []byte) (err error) {
-	varPagingSavedAudiobookObject := _PagingSavedAudiobookObject{}
-
-	if err = json.Unmarshal(bytes, &varPagingSavedAudiobookObject); err == nil {
-		*o = PagingSavedAudiobookObject(varPagingSavedAudiobookObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "limit")
-		delete(additionalProperties, "next")
-		delete(additionalProperties, "offset")
-		delete(additionalProperties, "previous")
-		delete(additionalProperties, "total")
-		delete(additionalProperties, "items")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePagingSavedAudiobookObject struct {

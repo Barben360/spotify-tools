@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Episode** | Pointer to **bool** | Fix by Barben360  | [optional] 
+**Track** | Pointer to **bool** | Fix by Barben360  | [optional] 
 **AudioPreviewUrl** | **string** | A URL to a 30 second preview (MP3 format) of the episode. &#x60;null&#x60; if not available.  | 
 **Description** | **string** | A description of the episode. HTML tags are stripped away from this field, use &#x60;html_description&#x60; field in case HTML tags are needed.  | 
 **HtmlDescription** | **string** | A description of the episode. This field may contain HTML tags.  | 
@@ -43,6 +45,56 @@ will change when the set of required properties is changed
 NewSimplifiedEpisodeObjectWithDefaults instantiates a new SimplifiedEpisodeObject object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetEpisode
+
+`func (o *SimplifiedEpisodeObject) GetEpisode() bool`
+
+GetEpisode returns the Episode field if non-nil, zero value otherwise.
+
+### GetEpisodeOk
+
+`func (o *SimplifiedEpisodeObject) GetEpisodeOk() (*bool, bool)`
+
+GetEpisodeOk returns a tuple with the Episode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEpisode
+
+`func (o *SimplifiedEpisodeObject) SetEpisode(v bool)`
+
+SetEpisode sets Episode field to given value.
+
+### HasEpisode
+
+`func (o *SimplifiedEpisodeObject) HasEpisode() bool`
+
+HasEpisode returns a boolean if a field has been set.
+
+### GetTrack
+
+`func (o *SimplifiedEpisodeObject) GetTrack() bool`
+
+GetTrack returns the Track field if non-nil, zero value otherwise.
+
+### GetTrackOk
+
+`func (o *SimplifiedEpisodeObject) GetTrackOk() (*bool, bool)`
+
+GetTrackOk returns a tuple with the Track field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrack
+
+`func (o *SimplifiedEpisodeObject) SetTrack(v bool)`
+
+SetTrack sets Track field to given value.
+
+### HasTrack
+
+`func (o *SimplifiedEpisodeObject) HasTrack() bool`
+
+HasTrack returns a boolean if a field has been set.
 
 ### GetAudioPreviewUrl
 

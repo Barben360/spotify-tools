@@ -23,10 +23,7 @@ type RemoveTracksPlaylistRequest struct {
 	Tracks []RemoveTracksPlaylistRequestTracksInner `json:"tracks"`
 	// The playlist's snapshot ID against which you want to make the changes. The API will validate that the specified items exist and in the specified positions and make the changes, even if more recent changes have been made to the playlist. 
 	SnapshotId *string `json:"snapshot_id,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _RemoveTracksPlaylistRequest RemoveTracksPlaylistRequest
 
 // NewRemoveTracksPlaylistRequest instantiates a new RemoveTracksPlaylistRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -116,30 +113,7 @@ func (o RemoveTracksPlaylistRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SnapshotId) {
 		toSerialize["snapshot_id"] = o.SnapshotId
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RemoveTracksPlaylistRequest) UnmarshalJSON(bytes []byte) (err error) {
-	varRemoveTracksPlaylistRequest := _RemoveTracksPlaylistRequest{}
-
-	if err = json.Unmarshal(bytes, &varRemoveTracksPlaylistRequest); err == nil {
-		*o = RemoveTracksPlaylistRequest(varRemoveTracksPlaylistRequest)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "tracks")
-		delete(additionalProperties, "snapshot_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRemoveTracksPlaylistRequest struct {

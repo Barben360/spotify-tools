@@ -26,10 +26,7 @@ type Search200Response struct {
 	Shows *PagingSimplifiedShowObject `json:"shows,omitempty"`
 	Episodes *PagingSimplifiedEpisodeObject `json:"episodes,omitempty"`
 	Audiobooks *PagingSimplifiedAudiobookObject `json:"audiobooks,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _Search200Response Search200Response
 
 // NewSearch200Response instantiates a new Search200Response object
 // This constructor will assign default values to properties that have it defined,
@@ -303,35 +300,7 @@ func (o Search200Response) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Audiobooks) {
 		toSerialize["audiobooks"] = o.Audiobooks
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Search200Response) UnmarshalJSON(bytes []byte) (err error) {
-	varSearch200Response := _Search200Response{}
-
-	if err = json.Unmarshal(bytes, &varSearch200Response); err == nil {
-		*o = Search200Response(varSearch200Response)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "tracks")
-		delete(additionalProperties, "artists")
-		delete(additionalProperties, "albums")
-		delete(additionalProperties, "playlists")
-		delete(additionalProperties, "shows")
-		delete(additionalProperties, "episodes")
-		delete(additionalProperties, "audiobooks")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSearch200Response struct {

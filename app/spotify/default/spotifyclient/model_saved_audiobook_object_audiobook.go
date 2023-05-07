@@ -57,10 +57,7 @@ type SavedAudiobookObjectAudiobook struct {
 	// The number of chapters in this audiobook. 
 	TotalChapters int32 `json:"total_chapters"`
 	Chapters AudiobookObjectAllOfChapters `json:"chapters"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SavedAudiobookObjectAudiobook SavedAudiobookObjectAudiobook
 
 // NewSavedAudiobookObjectAudiobook instantiates a new SavedAudiobookObjectAudiobook object
 // This constructor will assign default values to properties that have it defined,
@@ -618,48 +615,7 @@ func (o SavedAudiobookObjectAudiobook) ToMap() (map[string]interface{}, error) {
 	toSerialize["uri"] = o.Uri
 	toSerialize["total_chapters"] = o.TotalChapters
 	toSerialize["chapters"] = o.Chapters
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SavedAudiobookObjectAudiobook) UnmarshalJSON(bytes []byte) (err error) {
-	varSavedAudiobookObjectAudiobook := _SavedAudiobookObjectAudiobook{}
-
-	if err = json.Unmarshal(bytes, &varSavedAudiobookObjectAudiobook); err == nil {
-		*o = SavedAudiobookObjectAudiobook(varSavedAudiobookObjectAudiobook)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "authors")
-		delete(additionalProperties, "available_markets")
-		delete(additionalProperties, "copyrights")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "html_description")
-		delete(additionalProperties, "edition")
-		delete(additionalProperties, "explicit")
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "images")
-		delete(additionalProperties, "languages")
-		delete(additionalProperties, "media_type")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "narrators")
-		delete(additionalProperties, "publisher")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		delete(additionalProperties, "total_chapters")
-		delete(additionalProperties, "chapters")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSavedAudiobookObjectAudiobook struct {

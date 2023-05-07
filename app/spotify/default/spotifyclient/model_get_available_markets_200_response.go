@@ -20,10 +20,7 @@ var _ MappedNullable = &GetAvailableMarkets200Response{}
 // GetAvailableMarkets200Response struct for GetAvailableMarkets200Response
 type GetAvailableMarkets200Response struct {
 	Markets []string `json:"markets,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GetAvailableMarkets200Response GetAvailableMarkets200Response
 
 // NewGetAvailableMarkets200Response instantiates a new GetAvailableMarkets200Response object
 // This constructor will assign default values to properties that have it defined,
@@ -87,29 +84,7 @@ func (o GetAvailableMarkets200Response) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Markets) {
 		toSerialize["markets"] = o.Markets
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetAvailableMarkets200Response) UnmarshalJSON(bytes []byte) (err error) {
-	varGetAvailableMarkets200Response := _GetAvailableMarkets200Response{}
-
-	if err = json.Unmarshal(bytes, &varGetAvailableMarkets200Response); err == nil {
-		*o = GetAvailableMarkets200Response(varGetAvailableMarkets200Response)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "markets")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetAvailableMarkets200Response struct {

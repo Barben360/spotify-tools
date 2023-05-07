@@ -23,10 +23,7 @@ type SavedTrackObject struct {
 	// The date and time the track was saved. Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ. If the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object. 
 	AddedAt *time.Time `json:"added_at,omitempty"`
 	Track *SavedTrackObjectTrack `json:"track,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SavedTrackObject SavedTrackObject
 
 // NewSavedTrackObject instantiates a new SavedTrackObject object
 // This constructor will assign default values to properties that have it defined,
@@ -125,30 +122,7 @@ func (o SavedTrackObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Track) {
 		toSerialize["track"] = o.Track
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SavedTrackObject) UnmarshalJSON(bytes []byte) (err error) {
-	varSavedTrackObject := _SavedTrackObject{}
-
-	if err = json.Unmarshal(bytes, &varSavedTrackObject); err == nil {
-		*o = SavedTrackObject(varSavedTrackObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "added_at")
-		delete(additionalProperties, "track")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSavedTrackObject struct {

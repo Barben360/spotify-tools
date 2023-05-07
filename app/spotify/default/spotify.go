@@ -15,11 +15,13 @@ import (
 	"github.com/Barben360/spotify-tools/app/services/logger"
 	"github.com/Barben360/spotify-tools/app/spotify"
 	spotifyclient "github.com/Barben360/spotify-tools/app/spotify/default/spotifyclient"
+	"github.com/Barben360/spotify-tools/app/utils"
 	"go.uber.org/zap"
 )
 
-//go:generate openapi-generator-cli generate -g go --additional-properties=disallowAdditionalPropertiesIfNotPresent=false,packageName=spotifyclient,isGoSubmodule=true,structPrefix=true -o spotifyclient -i assets/spotify-web-api/fixed-spotify-open-api.yml --git-repo-id=spotify-tools/app/default --git-user-id Barben360
-//go:generate rm -rf spotifyclient/go.mod spotifyclient/go.sum spotifyclient/git_push.sh spotifyclient/.openapi-generator/VERSION spotifyclient/test
+//go:generate rm -rf spotifyclient
+//go:generate openapi-generator-cli generate -g go --additional-properties=packageName=spotifyclient,isGoSubmodule=true,structPrefix=true -o spotifyclient -i assets/spotify-open-api.yml --git-repo-id=spotify-tools/app/default --git-user-id Barben360
+//go:generate rm -rf openapitools.json spotifyclient/go.mod spotifyclient/go.sum spotifyclient/git_push.sh spotifyclient/.openapi-generator/VERSION spotifyclient/test
 
 type Spotify struct {
 	accessToken            string
@@ -32,8 +34,8 @@ type Spotify struct {
 	publicAPIEndpoint      string
 	serverListenPort       uint16
 	configCacheFilePath    string
-	httpClient             *http.Client
-	spotifyClient          *spotifyclient.APIClient
+	httpAuthClient         *http.Client
+	httpOpenAPIClient      *spotifyclient.APIClient
 }
 
 type spotifyConfig struct {
@@ -67,15 +69,25 @@ func New(
 		redirectURI:       strings.TrimSuffix(publicAPIEndpoint, "/") + "/authorize",
 		publicAPIEndpoint: publicAPIEndpoint,
 		serverListenPort:  serverListenPort,
-		httpClient: &http.Client{
+		httpAuthClient: &http.Client{
 			Timeout: 10 * time.Second,
+			Transport: utils.NewTransport(ctx,
+				utils.WithLog(logger.FromContext(ctx), zap.DebugLevel)),
 		},
 		configCacheFilePath: filepath.Join(os.TempDir(), ".spotify-tools-cache.json"),
 	}
 
 	spotifyClientConfig := spotifyclient.NewConfiguration()
-	spotifyClientConfig.HTTPClient = ret.httpClient
-	ret.spotifyClient = spotifyclient.NewAPIClient(spotifyClientConfig)
+	spotifyClientConfig.HTTPClient = &http.Client{
+		Timeout: 10 * time.Second,
+		Transport: utils.NewTransport(ctx,
+			utils.WithLog(logger.FromContext(ctx), zap.DebugLevel),
+			utils.WithReqTransformer(func(r *http.Request) {
+				r.Header.Add("Authorization", "Bearer "+ret.accessToken)
+			}),
+		),
+	}
+	ret.httpOpenAPIClient = spotifyclient.NewAPIClient(spotifyClientConfig)
 
 	// Attempting to get the access and refresh tokens from disk
 	if f, err := os.Open(ret.configCacheFilePath); err != nil {

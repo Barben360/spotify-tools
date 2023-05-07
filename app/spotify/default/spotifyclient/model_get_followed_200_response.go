@@ -20,10 +20,7 @@ var _ MappedNullable = &GetFollowed200Response{}
 // GetFollowed200Response struct for GetFollowed200Response
 type GetFollowed200Response struct {
 	Artists CursorPagingSimplifiedArtistObject `json:"artists"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GetFollowed200Response GetFollowed200Response
 
 // NewGetFollowed200Response instantiates a new GetFollowed200Response object
 // This constructor will assign default values to properties that have it defined,
@@ -78,29 +75,7 @@ func (o GetFollowed200Response) MarshalJSON() ([]byte, error) {
 func (o GetFollowed200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["artists"] = o.Artists
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetFollowed200Response) UnmarshalJSON(bytes []byte) (err error) {
-	varGetFollowed200Response := _GetFollowed200Response{}
-
-	if err = json.Unmarshal(bytes, &varGetFollowed200Response); err == nil {
-		*o = GetFollowed200Response(varGetFollowed200Response)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "artists")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetFollowed200Response struct {

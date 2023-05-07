@@ -25,10 +25,7 @@ type TrackObjectExternalIds struct {
 	Ean *string `json:"ean,omitempty"`
 	// [Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code) 
 	Upc *string `json:"upc,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _TrackObjectExternalIds TrackObjectExternalIds
 
 // NewTrackObjectExternalIds instantiates a new TrackObjectExternalIds object
 // This constructor will assign default values to properties that have it defined,
@@ -162,31 +159,7 @@ func (o TrackObjectExternalIds) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Upc) {
 		toSerialize["upc"] = o.Upc
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *TrackObjectExternalIds) UnmarshalJSON(bytes []byte) (err error) {
-	varTrackObjectExternalIds := _TrackObjectExternalIds{}
-
-	if err = json.Unmarshal(bytes, &varTrackObjectExternalIds); err == nil {
-		*o = TrackObjectExternalIds(varTrackObjectExternalIds)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "isrc")
-		delete(additionalProperties, "ean")
-		delete(additionalProperties, "upc")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableTrackObjectExternalIds struct {

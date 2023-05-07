@@ -20,10 +20,7 @@ var _ MappedNullable = &PagingSavedAudiobookObjectAllOf{}
 // PagingSavedAudiobookObjectAllOf struct for PagingSavedAudiobookObjectAllOf
 type PagingSavedAudiobookObjectAllOf struct {
 	Items []SavedAudiobookObject `json:"items,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PagingSavedAudiobookObjectAllOf PagingSavedAudiobookObjectAllOf
 
 // NewPagingSavedAudiobookObjectAllOf instantiates a new PagingSavedAudiobookObjectAllOf object
 // This constructor will assign default values to properties that have it defined,
@@ -87,29 +84,7 @@ func (o PagingSavedAudiobookObjectAllOf) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PagingSavedAudiobookObjectAllOf) UnmarshalJSON(bytes []byte) (err error) {
-	varPagingSavedAudiobookObjectAllOf := _PagingSavedAudiobookObjectAllOf{}
-
-	if err = json.Unmarshal(bytes, &varPagingSavedAudiobookObjectAllOf); err == nil {
-		*o = PagingSavedAudiobookObjectAllOf(varPagingSavedAudiobookObjectAllOf)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "items")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePagingSavedAudiobookObjectAllOf struct {

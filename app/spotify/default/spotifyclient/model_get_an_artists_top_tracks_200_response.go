@@ -20,10 +20,7 @@ var _ MappedNullable = &GetAnArtistsTopTracks200Response{}
 // GetAnArtistsTopTracks200Response struct for GetAnArtistsTopTracks200Response
 type GetAnArtistsTopTracks200Response struct {
 	Tracks []TrackObject `json:"tracks"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GetAnArtistsTopTracks200Response GetAnArtistsTopTracks200Response
 
 // NewGetAnArtistsTopTracks200Response instantiates a new GetAnArtistsTopTracks200Response object
 // This constructor will assign default values to properties that have it defined,
@@ -78,29 +75,7 @@ func (o GetAnArtistsTopTracks200Response) MarshalJSON() ([]byte, error) {
 func (o GetAnArtistsTopTracks200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["tracks"] = o.Tracks
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetAnArtistsTopTracks200Response) UnmarshalJSON(bytes []byte) (err error) {
-	varGetAnArtistsTopTracks200Response := _GetAnArtistsTopTracks200Response{}
-
-	if err = json.Unmarshal(bytes, &varGetAnArtistsTopTracks200Response); err == nil {
-		*o = GetAnArtistsTopTracks200Response(varGetAnArtistsTopTracks200Response)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "tracks")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetAnArtistsTopTracks200Response struct {

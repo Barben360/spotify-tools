@@ -21,10 +21,7 @@ var _ MappedNullable = &SaveShowsUserRequest{}
 type SaveShowsUserRequest struct {
 	// A JSON array of the [Spotify IDs](https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids).   A maximum of 50 items can be specified in one request. *Note: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored.*
 	Ids []string `json:"ids,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SaveShowsUserRequest SaveShowsUserRequest
 
 // NewSaveShowsUserRequest instantiates a new SaveShowsUserRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -88,29 +85,7 @@ func (o SaveShowsUserRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ids) {
 		toSerialize["ids"] = o.Ids
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SaveShowsUserRequest) UnmarshalJSON(bytes []byte) (err error) {
-	varSaveShowsUserRequest := _SaveShowsUserRequest{}
-
-	if err = json.Unmarshal(bytes, &varSaveShowsUserRequest); err == nil {
-		*o = SaveShowsUserRequest(varSaveShowsUserRequest)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "ids")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSaveShowsUserRequest struct {

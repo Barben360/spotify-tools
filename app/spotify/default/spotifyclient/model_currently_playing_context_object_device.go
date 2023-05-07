@@ -33,10 +33,7 @@ type CurrentlyPlayingContextObjectDevice struct {
 	Type *string `json:"type,omitempty"`
 	// The current volume in percent.
 	VolumePercent NullableInt32 `json:"volume_percent,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CurrentlyPlayingContextObjectDevice CurrentlyPlayingContextObjectDevice
 
 // NewCurrentlyPlayingContextObjectDevice instantiates a new CurrentlyPlayingContextObjectDevice object
 // This constructor will assign default values to properties that have it defined,
@@ -330,35 +327,7 @@ func (o CurrentlyPlayingContextObjectDevice) ToMap() (map[string]interface{}, er
 	if o.VolumePercent.IsSet() {
 		toSerialize["volume_percent"] = o.VolumePercent.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CurrentlyPlayingContextObjectDevice) UnmarshalJSON(bytes []byte) (err error) {
-	varCurrentlyPlayingContextObjectDevice := _CurrentlyPlayingContextObjectDevice{}
-
-	if err = json.Unmarshal(bytes, &varCurrentlyPlayingContextObjectDevice); err == nil {
-		*o = CurrentlyPlayingContextObjectDevice(varCurrentlyPlayingContextObjectDevice)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "is_active")
-		delete(additionalProperties, "is_private_session")
-		delete(additionalProperties, "is_restricted")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "volume_percent")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCurrentlyPlayingContextObjectDevice struct {

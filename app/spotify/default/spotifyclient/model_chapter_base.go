@@ -56,10 +56,7 @@ type ChapterBase struct {
 	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the episode. 
 	Uri string `json:"uri"`
 	Restrictions *ChapterBaseRestrictions `json:"restrictions,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _ChapterBase ChapterBase
 
 // NewChapterBase instantiates a new ChapterBase object
 // This constructor will assign default values to properties that have it defined,
@@ -626,48 +623,7 @@ func (o ChapterBase) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Restrictions) {
 		toSerialize["restrictions"] = o.Restrictions
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ChapterBase) UnmarshalJSON(bytes []byte) (err error) {
-	varChapterBase := _ChapterBase{}
-
-	if err = json.Unmarshal(bytes, &varChapterBase); err == nil {
-		*o = ChapterBase(varChapterBase)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "audio_preview_url")
-		delete(additionalProperties, "available_markets")
-		delete(additionalProperties, "chapter_number")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "html_description")
-		delete(additionalProperties, "duration_ms")
-		delete(additionalProperties, "explicit")
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "images")
-		delete(additionalProperties, "is_playable")
-		delete(additionalProperties, "languages")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "release_date")
-		delete(additionalProperties, "release_date_precision")
-		delete(additionalProperties, "resume_point")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		delete(additionalProperties, "restrictions")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableChapterBase struct {

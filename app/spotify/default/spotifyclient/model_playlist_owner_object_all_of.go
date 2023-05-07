@@ -21,10 +21,7 @@ var _ MappedNullable = &PlaylistOwnerObjectAllOf{}
 type PlaylistOwnerObjectAllOf struct {
 	// The name displayed on the user's profile. `null` if not available. 
 	DisplayName NullableString `json:"display_name,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PlaylistOwnerObjectAllOf PlaylistOwnerObjectAllOf
 
 // NewPlaylistOwnerObjectAllOf instantiates a new PlaylistOwnerObjectAllOf object
 // This constructor will assign default values to properties that have it defined,
@@ -98,29 +95,7 @@ func (o PlaylistOwnerObjectAllOf) ToMap() (map[string]interface{}, error) {
 	if o.DisplayName.IsSet() {
 		toSerialize["display_name"] = o.DisplayName.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PlaylistOwnerObjectAllOf) UnmarshalJSON(bytes []byte) (err error) {
-	varPlaylistOwnerObjectAllOf := _PlaylistOwnerObjectAllOf{}
-
-	if err = json.Unmarshal(bytes, &varPlaylistOwnerObjectAllOf); err == nil {
-		*o = PlaylistOwnerObjectAllOf(varPlaylistOwnerObjectAllOf)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "display_name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePlaylistOwnerObjectAllOf struct {

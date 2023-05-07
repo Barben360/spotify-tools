@@ -20,10 +20,7 @@ var _ MappedNullable = &CursorPagingPlayHistoryObjectAllOf{}
 // CursorPagingPlayHistoryObjectAllOf struct for CursorPagingPlayHistoryObjectAllOf
 type CursorPagingPlayHistoryObjectAllOf struct {
 	Items []PlayHistoryObject `json:"items,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CursorPagingPlayHistoryObjectAllOf CursorPagingPlayHistoryObjectAllOf
 
 // NewCursorPagingPlayHistoryObjectAllOf instantiates a new CursorPagingPlayHistoryObjectAllOf object
 // This constructor will assign default values to properties that have it defined,
@@ -87,29 +84,7 @@ func (o CursorPagingPlayHistoryObjectAllOf) ToMap() (map[string]interface{}, err
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CursorPagingPlayHistoryObjectAllOf) UnmarshalJSON(bytes []byte) (err error) {
-	varCursorPagingPlayHistoryObjectAllOf := _CursorPagingPlayHistoryObjectAllOf{}
-
-	if err = json.Unmarshal(bytes, &varCursorPagingPlayHistoryObjectAllOf); err == nil {
-		*o = CursorPagingPlayHistoryObjectAllOf(varCursorPagingPlayHistoryObjectAllOf)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "items")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCursorPagingPlayHistoryObjectAllOf struct {

@@ -55,10 +55,7 @@ type AlbumObject struct {
 	Genres []string `json:"genres,omitempty"`
 	// The copyright statements of the album.
 	Copyrights []CopyrightObject `json:"copyrights,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AlbumObject AlbumObject
 
 // NewAlbumObject instantiates a new AlbumObject object
 // This constructor will assign default values to properties that have it defined,
@@ -679,48 +676,7 @@ func (o AlbumObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Copyrights) {
 		toSerialize["copyrights"] = o.Copyrights
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AlbumObject) UnmarshalJSON(bytes []byte) (err error) {
-	varAlbumObject := _AlbumObject{}
-
-	if err = json.Unmarshal(bytes, &varAlbumObject); err == nil {
-		*o = AlbumObject(varAlbumObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "album_type")
-		delete(additionalProperties, "total_tracks")
-		delete(additionalProperties, "available_markets")
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "images")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "release_date")
-		delete(additionalProperties, "release_date_precision")
-		delete(additionalProperties, "restrictions")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		delete(additionalProperties, "artists")
-		delete(additionalProperties, "tracks")
-		delete(additionalProperties, "popularity")
-		delete(additionalProperties, "label")
-		delete(additionalProperties, "external_ids")
-		delete(additionalProperties, "genres")
-		delete(additionalProperties, "copyrights")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAlbumObject struct {

@@ -8905,6 +8905,7 @@ components:
           - available_markets
           - available_markets
           restrictions: null
+          episode: true
           type: track
           external_ids: null
           uri: uri
@@ -8959,6 +8960,7 @@ components:
           track_number: 5
           href: href
           id: id
+          track: true
           is_local: true
           external_urls: null
         - disc_number: 0
@@ -8967,6 +8969,7 @@ components:
           - available_markets
           - available_markets
           restrictions: null
+          episode: true
           type: track
           external_ids: null
           uri: uri
@@ -9021,6 +9024,7 @@ components:
           track_number: 5
           href: href
           id: id
+          track: true
           is_local: true
           external_urls: null
       properties:
@@ -9444,6 +9448,7 @@ components:
         - available_markets
         - available_markets
         restrictions: null
+        episode: true
         type: track
         external_ids: null
         uri: uri
@@ -9498,9 +9503,18 @@ components:
         track_number: 5
         href: href
         id: id
+        track: true
         is_local: true
         external_urls: null
       properties:
+        episode:
+          description: |
+            Fix by Barben360
+          type: boolean
+        track:
+          description: |
+            Fix by Barben360
+          type: boolean
         album:
           $ref: '#/components/schemas/TrackObject_album'
         artists:
@@ -9592,6 +9606,14 @@ components:
       x-spotify-docs-type: SimplifiedEpisodeObject
     EpisodeBase:
       properties:
+        episode:
+          description: |
+            Fix by Barben360
+          type: boolean
+        track:
+          description: |
+            Fix by Barben360
+          type: boolean
         audio_preview_url:
           description: |
             A URL to a 30 second preview (MP3 format) of the episode. `null` if not available.
@@ -10410,6 +10432,7 @@ components:
           - available_markets
           - available_markets
           restrictions: null
+          episode: true
           type: track
           external_ids: null
           uri: uri
@@ -10464,6 +10487,7 @@ components:
           track_number: 5
           href: href
           id: id
+          track: true
           is_local: true
           external_urls: null
         - disc_number: 0
@@ -10472,6 +10496,7 @@ components:
           - available_markets
           - available_markets
           restrictions: null
+          episode: true
           type: track
           external_ids: null
           uri: uri
@@ -10526,6 +10551,7 @@ components:
           track_number: 5
           href: href
           id: id
+          track: true
           is_local: true
           external_urls: null
       properties:

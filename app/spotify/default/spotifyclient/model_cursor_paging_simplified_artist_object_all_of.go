@@ -20,10 +20,7 @@ var _ MappedNullable = &CursorPagingSimplifiedArtistObjectAllOf{}
 // CursorPagingSimplifiedArtistObjectAllOf struct for CursorPagingSimplifiedArtistObjectAllOf
 type CursorPagingSimplifiedArtistObjectAllOf struct {
 	Items []ArtistObject `json:"items,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CursorPagingSimplifiedArtistObjectAllOf CursorPagingSimplifiedArtistObjectAllOf
 
 // NewCursorPagingSimplifiedArtistObjectAllOf instantiates a new CursorPagingSimplifiedArtistObjectAllOf object
 // This constructor will assign default values to properties that have it defined,
@@ -87,29 +84,7 @@ func (o CursorPagingSimplifiedArtistObjectAllOf) ToMap() (map[string]interface{}
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CursorPagingSimplifiedArtistObjectAllOf) UnmarshalJSON(bytes []byte) (err error) {
-	varCursorPagingSimplifiedArtistObjectAllOf := _CursorPagingSimplifiedArtistObjectAllOf{}
-
-	if err = json.Unmarshal(bytes, &varCursorPagingSimplifiedArtistObjectAllOf); err == nil {
-		*o = CursorPagingSimplifiedArtistObjectAllOf(varCursorPagingSimplifiedArtistObjectAllOf)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "items")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCursorPagingSimplifiedArtistObjectAllOf struct {

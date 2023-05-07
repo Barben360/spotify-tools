@@ -23,10 +23,7 @@ type ErrorObject struct {
 	Status int32 `json:"status"`
 	// A short description of the cause of the error. 
 	Message string `json:"message"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _ErrorObject ErrorObject
 
 // NewErrorObject instantiates a new ErrorObject object
 // This constructor will assign default values to properties that have it defined,
@@ -107,30 +104,7 @@ func (o ErrorObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["status"] = o.Status
 	toSerialize["message"] = o.Message
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ErrorObject) UnmarshalJSON(bytes []byte) (err error) {
-	varErrorObject := _ErrorObject{}
-
-	if err = json.Unmarshal(bytes, &varErrorObject); err == nil {
-		*o = ErrorObject(varErrorObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "message")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableErrorObject struct {

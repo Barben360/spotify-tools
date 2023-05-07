@@ -31,10 +31,7 @@ type AudioAnalysisObject struct {
 	Segments []SegmentObject `json:"segments,omitempty"`
 	// A tatum represents the lowest regular pulse train that a listener intuitively infers from the timing of perceived musical events (segments).
 	Tatums []TimeIntervalObject `json:"tatums,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AudioAnalysisObject AudioAnalysisObject
 
 // NewAudioAnalysisObject instantiates a new AudioAnalysisObject object
 // This constructor will assign default values to properties that have it defined,
@@ -308,35 +305,7 @@ func (o AudioAnalysisObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Tatums) {
 		toSerialize["tatums"] = o.Tatums
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AudioAnalysisObject) UnmarshalJSON(bytes []byte) (err error) {
-	varAudioAnalysisObject := _AudioAnalysisObject{}
-
-	if err = json.Unmarshal(bytes, &varAudioAnalysisObject); err == nil {
-		*o = AudioAnalysisObject(varAudioAnalysisObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "meta")
-		delete(additionalProperties, "track")
-		delete(additionalProperties, "bars")
-		delete(additionalProperties, "beats")
-		delete(additionalProperties, "sections")
-		delete(additionalProperties, "segments")
-		delete(additionalProperties, "tatums")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAudioAnalysisObject struct {

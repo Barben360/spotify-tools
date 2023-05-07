@@ -20,10 +20,7 @@ var _ MappedNullable = &GetMultipleEpisodes200Response{}
 // GetMultipleEpisodes200Response struct for GetMultipleEpisodes200Response
 type GetMultipleEpisodes200Response struct {
 	Episodes []EpisodeObject `json:"episodes"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GetMultipleEpisodes200Response GetMultipleEpisodes200Response
 
 // NewGetMultipleEpisodes200Response instantiates a new GetMultipleEpisodes200Response object
 // This constructor will assign default values to properties that have it defined,
@@ -78,29 +75,7 @@ func (o GetMultipleEpisodes200Response) MarshalJSON() ([]byte, error) {
 func (o GetMultipleEpisodes200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["episodes"] = o.Episodes
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetMultipleEpisodes200Response) UnmarshalJSON(bytes []byte) (err error) {
-	varGetMultipleEpisodes200Response := _GetMultipleEpisodes200Response{}
-
-	if err = json.Unmarshal(bytes, &varGetMultipleEpisodes200Response); err == nil {
-		*o = GetMultipleEpisodes200Response(varGetMultipleEpisodes200Response)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "episodes")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetMultipleEpisodes200Response struct {

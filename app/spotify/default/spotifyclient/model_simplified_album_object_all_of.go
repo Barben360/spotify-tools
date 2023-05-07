@@ -23,10 +23,7 @@ type SimplifiedAlbumObjectAllOf struct {
 	AlbumGroup *string `json:"album_group,omitempty"`
 	// The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist. 
 	Artists []SimplifiedArtistObject `json:"artists"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SimplifiedAlbumObjectAllOf SimplifiedAlbumObjectAllOf
 
 // NewSimplifiedAlbumObjectAllOf instantiates a new SimplifiedAlbumObjectAllOf object
 // This constructor will assign default values to properties that have it defined,
@@ -116,30 +113,7 @@ func (o SimplifiedAlbumObjectAllOf) ToMap() (map[string]interface{}, error) {
 		toSerialize["album_group"] = o.AlbumGroup
 	}
 	toSerialize["artists"] = o.Artists
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SimplifiedAlbumObjectAllOf) UnmarshalJSON(bytes []byte) (err error) {
-	varSimplifiedAlbumObjectAllOf := _SimplifiedAlbumObjectAllOf{}
-
-	if err = json.Unmarshal(bytes, &varSimplifiedAlbumObjectAllOf); err == nil {
-		*o = SimplifiedAlbumObjectAllOf(varSimplifiedAlbumObjectAllOf)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "album_group")
-		delete(additionalProperties, "artists")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSimplifiedAlbumObjectAllOf struct {

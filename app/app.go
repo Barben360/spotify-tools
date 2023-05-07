@@ -2,7 +2,9 @@ package app
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
+	"fmt"
 
 	authtestdefault "github.com/Barben360/spotify-tools/app/authtest/default"
 	"github.com/Barben360/spotify-tools/app/services/logger"
@@ -78,5 +80,16 @@ func (a *App) RunAuthTest(ctx context.Context) error {
 func (a *App) RunReset(ctx context.Context) error {
 	ctx = a.log.ToContext(ctx)
 	a.features.spotify.ResetUserTokens(ctx)
+	return nil
+}
+
+func (a *App) GetPlaylist(ctx context.Context, playlistID string) error {
+	ctx = a.log.ToContext(ctx)
+	resp, err := a.features.spotify.GetPlaylist(ctx, playlistID)
+	if err != nil {
+		return err
+	}
+	respJSON, _ := json.Marshal(resp)
+	fmt.Println(string(respJSON))
 	return nil
 }

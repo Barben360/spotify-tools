@@ -20,10 +20,7 @@ var _ MappedNullable = &GetNewReleases200Response{}
 // GetNewReleases200Response struct for GetNewReleases200Response
 type GetNewReleases200Response struct {
 	Albums PagingSimplifiedAlbumObject `json:"albums"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GetNewReleases200Response GetNewReleases200Response
 
 // NewGetNewReleases200Response instantiates a new GetNewReleases200Response object
 // This constructor will assign default values to properties that have it defined,
@@ -78,29 +75,7 @@ func (o GetNewReleases200Response) MarshalJSON() ([]byte, error) {
 func (o GetNewReleases200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["albums"] = o.Albums
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetNewReleases200Response) UnmarshalJSON(bytes []byte) (err error) {
-	varGetNewReleases200Response := _GetNewReleases200Response{}
-
-	if err = json.Unmarshal(bytes, &varGetNewReleases200Response); err == nil {
-		*o = GetNewReleases200Response(varGetNewReleases200Response)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "albums")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetNewReleases200Response struct {

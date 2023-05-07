@@ -21,10 +21,7 @@ var _ MappedNullable = &SimplifiedTrackObjectExternalUrls{}
 type SimplifiedTrackObjectExternalUrls struct {
 	// The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object. 
 	Spotify *string `json:"spotify,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SimplifiedTrackObjectExternalUrls SimplifiedTrackObjectExternalUrls
 
 // NewSimplifiedTrackObjectExternalUrls instantiates a new SimplifiedTrackObjectExternalUrls object
 // This constructor will assign default values to properties that have it defined,
@@ -88,29 +85,7 @@ func (o SimplifiedTrackObjectExternalUrls) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Spotify) {
 		toSerialize["spotify"] = o.Spotify
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SimplifiedTrackObjectExternalUrls) UnmarshalJSON(bytes []byte) (err error) {
-	varSimplifiedTrackObjectExternalUrls := _SimplifiedTrackObjectExternalUrls{}
-
-	if err = json.Unmarshal(bytes, &varSimplifiedTrackObjectExternalUrls); err == nil {
-		*o = SimplifiedTrackObjectExternalUrls(varSimplifiedTrackObjectExternalUrls)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "spotify")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSimplifiedTrackObjectExternalUrls struct {

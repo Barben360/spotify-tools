@@ -23,10 +23,7 @@ type SimplifiedPlaylistObjectTracks struct {
 	Href *string `json:"href,omitempty"`
 	// Number of tracks in the playlist. 
 	Total *int32 `json:"total,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SimplifiedPlaylistObjectTracks SimplifiedPlaylistObjectTracks
 
 // NewSimplifiedPlaylistObjectTracks instantiates a new SimplifiedPlaylistObjectTracks object
 // This constructor will assign default values to properties that have it defined,
@@ -125,30 +122,7 @@ func (o SimplifiedPlaylistObjectTracks) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Total) {
 		toSerialize["total"] = o.Total
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SimplifiedPlaylistObjectTracks) UnmarshalJSON(bytes []byte) (err error) {
-	varSimplifiedPlaylistObjectTracks := _SimplifiedPlaylistObjectTracks{}
-
-	if err = json.Unmarshal(bytes, &varSimplifiedPlaylistObjectTracks); err == nil {
-		*o = SimplifiedPlaylistObjectTracks(varSimplifiedPlaylistObjectTracks)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "total")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSimplifiedPlaylistObjectTracks struct {

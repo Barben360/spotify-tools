@@ -13,7 +13,8 @@ type PlaylistFilterConfigElement struct {
 }
 
 type PlaylistFilterSource struct {
-	PlaylistID                       string           `json:"playlist_id" validate:"required"`
+	PlaylistID                       string           `json:"playlist_id" validate:"required_without=ShowID"`
+	ShowID                           string           `json:"show_id" validate:"required_without=PlaylistID"`
 	Filters                          *PlaylistFilters `json:"filters" validate:"required"`
 	AddLatestUpdateDateToDescription bool             `json:"add_latest_update_date_to_description" validate:"-"`
 	DateLocation                     string           `json:"date_location" validate:"-"`
@@ -46,5 +47,5 @@ type Item struct {
 	Name     string
 	Type     ItemType
 	Duration time.Duration
-	AddedAt  *time.Time
+	AddedAt  time.Time
 }

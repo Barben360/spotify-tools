@@ -20,10 +20,7 @@ var _ MappedNullable = &GetAnAlbum401Response{}
 // GetAnAlbum401Response struct for GetAnAlbum401Response
 type GetAnAlbum401Response struct {
 	Error ErrorObject `json:"error"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GetAnAlbum401Response GetAnAlbum401Response
 
 // NewGetAnAlbum401Response instantiates a new GetAnAlbum401Response object
 // This constructor will assign default values to properties that have it defined,
@@ -78,29 +75,7 @@ func (o GetAnAlbum401Response) MarshalJSON() ([]byte, error) {
 func (o GetAnAlbum401Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["error"] = o.Error
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetAnAlbum401Response) UnmarshalJSON(bytes []byte) (err error) {
-	varGetAnAlbum401Response := _GetAnAlbum401Response{}
-
-	if err = json.Unmarshal(bytes, &varGetAnAlbum401Response); err == nil {
-		*o = GetAnAlbum401Response(varGetAnAlbum401Response)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "error")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetAnAlbum401Response struct {

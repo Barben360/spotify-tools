@@ -21,10 +21,7 @@ var _ MappedNullable = &AudiobookBaseExternalUrls{}
 type AudiobookBaseExternalUrls struct {
 	// The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object. 
 	Spotify *string `json:"spotify,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AudiobookBaseExternalUrls AudiobookBaseExternalUrls
 
 // NewAudiobookBaseExternalUrls instantiates a new AudiobookBaseExternalUrls object
 // This constructor will assign default values to properties that have it defined,
@@ -88,29 +85,7 @@ func (o AudiobookBaseExternalUrls) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Spotify) {
 		toSerialize["spotify"] = o.Spotify
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AudiobookBaseExternalUrls) UnmarshalJSON(bytes []byte) (err error) {
-	varAudiobookBaseExternalUrls := _AudiobookBaseExternalUrls{}
-
-	if err = json.Unmarshal(bytes, &varAudiobookBaseExternalUrls); err == nil {
-		*o = AudiobookBaseExternalUrls(varAudiobookBaseExternalUrls)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "spotify")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAudiobookBaseExternalUrls struct {

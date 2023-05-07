@@ -31,10 +31,7 @@ type PlaylistOwnerObject struct {
 	Uri *string `json:"uri,omitempty"`
 	// The name displayed on the user's profile. `null` if not available. 
 	DisplayName NullableString `json:"display_name,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PlaylistOwnerObject PlaylistOwnerObject
 
 // NewPlaylistOwnerObject instantiates a new PlaylistOwnerObject object
 // This constructor will assign default values to properties that have it defined,
@@ -318,35 +315,7 @@ func (o PlaylistOwnerObject) ToMap() (map[string]interface{}, error) {
 	if o.DisplayName.IsSet() {
 		toSerialize["display_name"] = o.DisplayName.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PlaylistOwnerObject) UnmarshalJSON(bytes []byte) (err error) {
-	varPlaylistOwnerObject := _PlaylistOwnerObject{}
-
-	if err = json.Unmarshal(bytes, &varPlaylistOwnerObject); err == nil {
-		*o = PlaylistOwnerObject(varPlaylistOwnerObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "followers")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		delete(additionalProperties, "display_name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePlaylistOwnerObject struct {

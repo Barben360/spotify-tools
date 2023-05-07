@@ -19,6 +19,10 @@ var _ MappedNullable = &PlayHistoryObjectTrack{}
 
 // PlayHistoryObjectTrack The track the user listened to.
 type PlayHistoryObjectTrack struct {
+	// Fix by Barben360 
+	Episode *bool `json:"episode,omitempty"`
+	// Fix by Barben360 
+	Track *bool `json:"track,omitempty"`
 	Album *TrackObjectAlbum `json:"album,omitempty"`
 	// The artists who performed the track. Each artist object includes a link in `href` to more detailed information about the artist. 
 	Artists []ArtistObject `json:"artists,omitempty"`
@@ -54,10 +58,7 @@ type PlayHistoryObjectTrack struct {
 	Uri *string `json:"uri,omitempty"`
 	// Whether or not the track is from a local file. 
 	IsLocal *bool `json:"is_local,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PlayHistoryObjectTrack PlayHistoryObjectTrack
 
 // NewPlayHistoryObjectTrack instantiates a new PlayHistoryObjectTrack object
 // This constructor will assign default values to properties that have it defined,
@@ -74,6 +75,70 @@ func NewPlayHistoryObjectTrack() *PlayHistoryObjectTrack {
 func NewPlayHistoryObjectTrackWithDefaults() *PlayHistoryObjectTrack {
 	this := PlayHistoryObjectTrack{}
 	return &this
+}
+
+// GetEpisode returns the Episode field value if set, zero value otherwise.
+func (o *PlayHistoryObjectTrack) GetEpisode() bool {
+	if o == nil || IsNil(o.Episode) {
+		var ret bool
+		return ret
+	}
+	return *o.Episode
+}
+
+// GetEpisodeOk returns a tuple with the Episode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlayHistoryObjectTrack) GetEpisodeOk() (*bool, bool) {
+	if o == nil || IsNil(o.Episode) {
+		return nil, false
+	}
+	return o.Episode, true
+}
+
+// HasEpisode returns a boolean if a field has been set.
+func (o *PlayHistoryObjectTrack) HasEpisode() bool {
+	if o != nil && !IsNil(o.Episode) {
+		return true
+	}
+
+	return false
+}
+
+// SetEpisode gets a reference to the given bool and assigns it to the Episode field.
+func (o *PlayHistoryObjectTrack) SetEpisode(v bool) {
+	o.Episode = &v
+}
+
+// GetTrack returns the Track field value if set, zero value otherwise.
+func (o *PlayHistoryObjectTrack) GetTrack() bool {
+	if o == nil || IsNil(o.Track) {
+		var ret bool
+		return ret
+	}
+	return *o.Track
+}
+
+// GetTrackOk returns a tuple with the Track field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlayHistoryObjectTrack) GetTrackOk() (*bool, bool) {
+	if o == nil || IsNil(o.Track) {
+		return nil, false
+	}
+	return o.Track, true
+}
+
+// HasTrack returns a boolean if a field has been set.
+func (o *PlayHistoryObjectTrack) HasTrack() bool {
+	if o != nil && !IsNil(o.Track) {
+		return true
+	}
+
+	return false
+}
+
+// SetTrack gets a reference to the given bool and assigns it to the Track field.
+func (o *PlayHistoryObjectTrack) SetTrack(v bool) {
+	o.Track = &v
 }
 
 // GetAlbum returns the Album field value if set, zero value otherwise.
@@ -726,6 +791,12 @@ func (o PlayHistoryObjectTrack) MarshalJSON() ([]byte, error) {
 
 func (o PlayHistoryObjectTrack) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Episode) {
+		toSerialize["episode"] = o.Episode
+	}
+	if !IsNil(o.Track) {
+		toSerialize["track"] = o.Track
+	}
 	if !IsNil(o.Album) {
 		toSerialize["album"] = o.Album
 	}
@@ -786,48 +857,7 @@ func (o PlayHistoryObjectTrack) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsLocal) {
 		toSerialize["is_local"] = o.IsLocal
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PlayHistoryObjectTrack) UnmarshalJSON(bytes []byte) (err error) {
-	varPlayHistoryObjectTrack := _PlayHistoryObjectTrack{}
-
-	if err = json.Unmarshal(bytes, &varPlayHistoryObjectTrack); err == nil {
-		*o = PlayHistoryObjectTrack(varPlayHistoryObjectTrack)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "album")
-		delete(additionalProperties, "artists")
-		delete(additionalProperties, "available_markets")
-		delete(additionalProperties, "disc_number")
-		delete(additionalProperties, "duration_ms")
-		delete(additionalProperties, "explicit")
-		delete(additionalProperties, "external_ids")
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "is_playable")
-		delete(additionalProperties, "linked_from")
-		delete(additionalProperties, "restrictions")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "popularity")
-		delete(additionalProperties, "preview_url")
-		delete(additionalProperties, "track_number")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		delete(additionalProperties, "is_local")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePlayHistoryObjectTrack struct {

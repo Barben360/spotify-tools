@@ -21,10 +21,7 @@ var _ MappedNullable = &AlbumRestrictionObject{}
 type AlbumRestrictionObject struct {
 	// The reason for the restriction. Albums may be restricted if the content is not available in a given market, to the user's subscription type, or when the user's account is set to not play explicit content. Additional reasons may be added in the future. 
 	Reason *string `json:"reason,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AlbumRestrictionObject AlbumRestrictionObject
 
 // NewAlbumRestrictionObject instantiates a new AlbumRestrictionObject object
 // This constructor will assign default values to properties that have it defined,
@@ -88,29 +85,7 @@ func (o AlbumRestrictionObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Reason) {
 		toSerialize["reason"] = o.Reason
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AlbumRestrictionObject) UnmarshalJSON(bytes []byte) (err error) {
-	varAlbumRestrictionObject := _AlbumRestrictionObject{}
-
-	if err = json.Unmarshal(bytes, &varAlbumRestrictionObject); err == nil {
-		*o = AlbumRestrictionObject(varAlbumRestrictionObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "reason")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAlbumRestrictionObject struct {

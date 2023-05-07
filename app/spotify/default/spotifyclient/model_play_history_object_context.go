@@ -26,10 +26,7 @@ type PlayHistoryObjectContext struct {
 	ExternalUrls *ContextObjectExternalUrls `json:"external_urls,omitempty"`
 	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the context. 
 	Uri *string `json:"uri,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PlayHistoryObjectContext PlayHistoryObjectContext
 
 // NewPlayHistoryObjectContext instantiates a new PlayHistoryObjectContext object
 // This constructor will assign default values to properties that have it defined,
@@ -198,32 +195,7 @@ func (o PlayHistoryObjectContext) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Uri) {
 		toSerialize["uri"] = o.Uri
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PlayHistoryObjectContext) UnmarshalJSON(bytes []byte) (err error) {
-	varPlayHistoryObjectContext := _PlayHistoryObjectContext{}
-
-	if err = json.Unmarshal(bytes, &varPlayHistoryObjectContext); err == nil {
-		*o = PlayHistoryObjectContext(varPlayHistoryObjectContext)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "uri")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePlayHistoryObjectContext struct {

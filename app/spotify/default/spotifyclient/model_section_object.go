@@ -43,10 +43,7 @@ type SectionObject struct {
 	TimeSignature *int32 `json:"time_signature,omitempty"`
 	// The confidence, from 0.0 to 1.0, of the reliability of the `time_signature`. Sections with time signature changes may correspond to low values in this field.
 	TimeSignatureConfidence *float32 `json:"time_signature_confidence,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SectionObject SectionObject
 
 // NewSectionObject instantiates a new SectionObject object
 // This constructor will assign default values to properties that have it defined,
@@ -495,40 +492,7 @@ func (o SectionObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TimeSignatureConfidence) {
 		toSerialize["time_signature_confidence"] = o.TimeSignatureConfidence
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SectionObject) UnmarshalJSON(bytes []byte) (err error) {
-	varSectionObject := _SectionObject{}
-
-	if err = json.Unmarshal(bytes, &varSectionObject); err == nil {
-		*o = SectionObject(varSectionObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "start")
-		delete(additionalProperties, "duration")
-		delete(additionalProperties, "confidence")
-		delete(additionalProperties, "loudness")
-		delete(additionalProperties, "tempo")
-		delete(additionalProperties, "tempo_confidence")
-		delete(additionalProperties, "key")
-		delete(additionalProperties, "key_confidence")
-		delete(additionalProperties, "mode")
-		delete(additionalProperties, "mode_confidence")
-		delete(additionalProperties, "time_signature")
-		delete(additionalProperties, "time_signature_confidence")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSectionObject struct {

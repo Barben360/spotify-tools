@@ -23,10 +23,7 @@ type PlaylistObjectFollowers struct {
 	Href NullableString `json:"href,omitempty"`
 	// The total number of followers. 
 	Total *int32 `json:"total,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PlaylistObjectFollowers PlaylistObjectFollowers
 
 // NewPlaylistObjectFollowers instantiates a new PlaylistObjectFollowers object
 // This constructor will assign default values to properties that have it defined,
@@ -135,30 +132,7 @@ func (o PlaylistObjectFollowers) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Total) {
 		toSerialize["total"] = o.Total
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PlaylistObjectFollowers) UnmarshalJSON(bytes []byte) (err error) {
-	varPlaylistObjectFollowers := _PlaylistObjectFollowers{}
-
-	if err = json.Unmarshal(bytes, &varPlaylistObjectFollowers); err == nil {
-		*o = PlaylistObjectFollowers(varPlaylistObjectFollowers)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "total")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePlaylistObjectFollowers struct {

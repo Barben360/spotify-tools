@@ -39,10 +39,7 @@ type CurrentlyPlayingContextObjectActions struct {
 	TogglingRepeatTrack *bool `json:"toggling_repeat_track,omitempty"`
 	// Transfering playback between devices. Optional field.
 	TransferringPlayback *bool `json:"transferring_playback,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CurrentlyPlayingContextObjectActions CurrentlyPlayingContextObjectActions
 
 // NewCurrentlyPlayingContextObjectActions instantiates a new CurrentlyPlayingContextObjectActions object
 // This constructor will assign default values to properties that have it defined,
@@ -421,38 +418,7 @@ func (o CurrentlyPlayingContextObjectActions) ToMap() (map[string]interface{}, e
 	if !IsNil(o.TransferringPlayback) {
 		toSerialize["transferring_playback"] = o.TransferringPlayback
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CurrentlyPlayingContextObjectActions) UnmarshalJSON(bytes []byte) (err error) {
-	varCurrentlyPlayingContextObjectActions := _CurrentlyPlayingContextObjectActions{}
-
-	if err = json.Unmarshal(bytes, &varCurrentlyPlayingContextObjectActions); err == nil {
-		*o = CurrentlyPlayingContextObjectActions(varCurrentlyPlayingContextObjectActions)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "interrupting_playback")
-		delete(additionalProperties, "pausing")
-		delete(additionalProperties, "resuming")
-		delete(additionalProperties, "seeking")
-		delete(additionalProperties, "skipping_next")
-		delete(additionalProperties, "skipping_prev")
-		delete(additionalProperties, "toggling_repeat_context")
-		delete(additionalProperties, "toggling_shuffle")
-		delete(additionalProperties, "toggling_repeat_track")
-		delete(additionalProperties, "transferring_playback")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCurrentlyPlayingContextObjectActions struct {

@@ -20,10 +20,7 @@ var _ MappedNullable = &PagingPlaylistTrackObjectAllOf{}
 // PagingPlaylistTrackObjectAllOf struct for PagingPlaylistTrackObjectAllOf
 type PagingPlaylistTrackObjectAllOf struct {
 	Items []PlaylistTrackObject `json:"items,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PagingPlaylistTrackObjectAllOf PagingPlaylistTrackObjectAllOf
 
 // NewPagingPlaylistTrackObjectAllOf instantiates a new PagingPlaylistTrackObjectAllOf object
 // This constructor will assign default values to properties that have it defined,
@@ -87,29 +84,7 @@ func (o PagingPlaylistTrackObjectAllOf) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PagingPlaylistTrackObjectAllOf) UnmarshalJSON(bytes []byte) (err error) {
-	varPagingPlaylistTrackObjectAllOf := _PagingPlaylistTrackObjectAllOf{}
-
-	if err = json.Unmarshal(bytes, &varPagingPlaylistTrackObjectAllOf); err == nil {
-		*o = PagingPlaylistTrackObjectAllOf(varPagingPlaylistTrackObjectAllOf)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "items")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePagingPlaylistTrackObjectAllOf struct {

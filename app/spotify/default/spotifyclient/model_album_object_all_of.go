@@ -31,10 +31,7 @@ type AlbumObjectAllOf struct {
 	Genres []string `json:"genres,omitempty"`
 	// The copyright statements of the album.
 	Copyrights []CopyrightObject `json:"copyrights,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AlbumObjectAllOf AlbumObjectAllOf
 
 // NewAlbumObjectAllOf instantiates a new AlbumObjectAllOf object
 // This constructor will assign default values to properties that have it defined,
@@ -308,35 +305,7 @@ func (o AlbumObjectAllOf) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Copyrights) {
 		toSerialize["copyrights"] = o.Copyrights
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AlbumObjectAllOf) UnmarshalJSON(bytes []byte) (err error) {
-	varAlbumObjectAllOf := _AlbumObjectAllOf{}
-
-	if err = json.Unmarshal(bytes, &varAlbumObjectAllOf); err == nil {
-		*o = AlbumObjectAllOf(varAlbumObjectAllOf)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "artists")
-		delete(additionalProperties, "tracks")
-		delete(additionalProperties, "popularity")
-		delete(additionalProperties, "label")
-		delete(additionalProperties, "external_ids")
-		delete(additionalProperties, "genres")
-		delete(additionalProperties, "copyrights")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAlbumObjectAllOf struct {

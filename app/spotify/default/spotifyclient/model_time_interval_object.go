@@ -25,10 +25,7 @@ type TimeIntervalObject struct {
 	Duration *float32 `json:"duration,omitempty"`
 	// The confidence, from 0.0 to 1.0, of the reliability of the interval.
 	Confidence *float32 `json:"confidence,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _TimeIntervalObject TimeIntervalObject
 
 // NewTimeIntervalObject instantiates a new TimeIntervalObject object
 // This constructor will assign default values to properties that have it defined,
@@ -162,31 +159,7 @@ func (o TimeIntervalObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Confidence) {
 		toSerialize["confidence"] = o.Confidence
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *TimeIntervalObject) UnmarshalJSON(bytes []byte) (err error) {
-	varTimeIntervalObject := _TimeIntervalObject{}
-
-	if err = json.Unmarshal(bytes, &varTimeIntervalObject); err == nil {
-		*o = TimeIntervalObject(varTimeIntervalObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "start")
-		delete(additionalProperties, "duration")
-		delete(additionalProperties, "confidence")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableTimeIntervalObject struct {

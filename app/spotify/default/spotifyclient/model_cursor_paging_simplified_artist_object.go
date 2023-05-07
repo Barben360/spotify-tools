@@ -29,10 +29,7 @@ type CursorPagingSimplifiedArtistObject struct {
 	// The total number of items available to return.
 	Total *int32 `json:"total,omitempty"`
 	Items []ArtistObject `json:"items,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CursorPagingSimplifiedArtistObject CursorPagingSimplifiedArtistObject
 
 // NewCursorPagingSimplifiedArtistObject instantiates a new CursorPagingSimplifiedArtistObject object
 // This constructor will assign default values to properties that have it defined,
@@ -271,34 +268,7 @@ func (o CursorPagingSimplifiedArtistObject) ToMap() (map[string]interface{}, err
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CursorPagingSimplifiedArtistObject) UnmarshalJSON(bytes []byte) (err error) {
-	varCursorPagingSimplifiedArtistObject := _CursorPagingSimplifiedArtistObject{}
-
-	if err = json.Unmarshal(bytes, &varCursorPagingSimplifiedArtistObject); err == nil {
-		*o = CursorPagingSimplifiedArtistObject(varCursorPagingSimplifiedArtistObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "limit")
-		delete(additionalProperties, "next")
-		delete(additionalProperties, "cursors")
-		delete(additionalProperties, "total")
-		delete(additionalProperties, "items")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCursorPagingSimplifiedArtistObject struct {

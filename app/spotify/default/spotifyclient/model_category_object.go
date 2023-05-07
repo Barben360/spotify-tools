@@ -27,10 +27,7 @@ type CategoryObject struct {
 	Id string `json:"id"`
 	// The name of the category. 
 	Name string `json:"name"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CategoryObject CategoryObject
 
 // NewCategoryObject instantiates a new CategoryObject object
 // This constructor will assign default values to properties that have it defined,
@@ -163,32 +160,7 @@ func (o CategoryObject) ToMap() (map[string]interface{}, error) {
 	toSerialize["icons"] = o.Icons
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CategoryObject) UnmarshalJSON(bytes []byte) (err error) {
-	varCategoryObject := _CategoryObject{}
-
-	if err = json.Unmarshal(bytes, &varCategoryObject); err == nil {
-		*o = CategoryObject(varCategoryObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "icons")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCategoryObject struct {

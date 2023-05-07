@@ -23,10 +23,7 @@ type CursorPagingObjectCursors struct {
 	After *string `json:"after,omitempty"`
 	// The cursor to use as key to find the previous page of items.
 	Before *string `json:"before,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CursorPagingObjectCursors CursorPagingObjectCursors
 
 // NewCursorPagingObjectCursors instantiates a new CursorPagingObjectCursors object
 // This constructor will assign default values to properties that have it defined,
@@ -125,30 +122,7 @@ func (o CursorPagingObjectCursors) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Before) {
 		toSerialize["before"] = o.Before
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CursorPagingObjectCursors) UnmarshalJSON(bytes []byte) (err error) {
-	varCursorPagingObjectCursors := _CursorPagingObjectCursors{}
-
-	if err = json.Unmarshal(bytes, &varCursorPagingObjectCursors); err == nil {
-		*o = CursorPagingObjectCursors(varCursorPagingObjectCursors)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "after")
-		delete(additionalProperties, "before")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCursorPagingObjectCursors struct {

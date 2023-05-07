@@ -35,10 +35,7 @@ type CurrentlyPlayingContextObject struct {
 	// The object type of the currently playing item. Can be one of `track`, `episode`, `ad` or `unknown`. 
 	CurrentlyPlayingType *string `json:"currently_playing_type,omitempty"`
 	Actions *CurrentlyPlayingContextObjectActions `json:"actions,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CurrentlyPlayingContextObject CurrentlyPlayingContextObject
 
 // NewCurrentlyPlayingContextObject instantiates a new CurrentlyPlayingContextObject object
 // This constructor will assign default values to properties that have it defined,
@@ -417,38 +414,7 @@ func (o CurrentlyPlayingContextObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Actions) {
 		toSerialize["actions"] = o.Actions
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CurrentlyPlayingContextObject) UnmarshalJSON(bytes []byte) (err error) {
-	varCurrentlyPlayingContextObject := _CurrentlyPlayingContextObject{}
-
-	if err = json.Unmarshal(bytes, &varCurrentlyPlayingContextObject); err == nil {
-		*o = CurrentlyPlayingContextObject(varCurrentlyPlayingContextObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "device")
-		delete(additionalProperties, "repeat_state")
-		delete(additionalProperties, "shuffle_state")
-		delete(additionalProperties, "context")
-		delete(additionalProperties, "timestamp")
-		delete(additionalProperties, "progress_ms")
-		delete(additionalProperties, "is_playing")
-		delete(additionalProperties, "item")
-		delete(additionalProperties, "currently_playing_type")
-		delete(additionalProperties, "actions")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCurrentlyPlayingContextObject struct {

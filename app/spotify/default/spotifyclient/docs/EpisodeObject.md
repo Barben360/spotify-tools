@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Episode** | Pointer to **bool** | Fix by Barben360  | [optional] 
+**Track** | Pointer to **bool** | Fix by Barben360  | [optional] 
 **AudioPreviewUrl** | **string** | A URL to a 30 second preview (MP3 format) of the episode. &#x60;null&#x60; if not available.  | 
 **Description** | **string** | A description of the episode. HTML tags are stripped away from this field, use &#x60;html_description&#x60; field in case HTML tags are needed.  | 
 **HtmlDescription** | **string** | A description of the episode. This field may contain HTML tags.  | 
@@ -44,6 +46,56 @@ will change when the set of required properties is changed
 NewEpisodeObjectWithDefaults instantiates a new EpisodeObject object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetEpisode
+
+`func (o *EpisodeObject) GetEpisode() bool`
+
+GetEpisode returns the Episode field if non-nil, zero value otherwise.
+
+### GetEpisodeOk
+
+`func (o *EpisodeObject) GetEpisodeOk() (*bool, bool)`
+
+GetEpisodeOk returns a tuple with the Episode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEpisode
+
+`func (o *EpisodeObject) SetEpisode(v bool)`
+
+SetEpisode sets Episode field to given value.
+
+### HasEpisode
+
+`func (o *EpisodeObject) HasEpisode() bool`
+
+HasEpisode returns a boolean if a field has been set.
+
+### GetTrack
+
+`func (o *EpisodeObject) GetTrack() bool`
+
+GetTrack returns the Track field if non-nil, zero value otherwise.
+
+### GetTrackOk
+
+`func (o *EpisodeObject) GetTrackOk() (*bool, bool)`
+
+GetTrackOk returns a tuple with the Track field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrack
+
+`func (o *EpisodeObject) SetTrack(v bool)`
+
+SetTrack sets Track field to given value.
+
+### HasTrack
+
+`func (o *EpisodeObject) HasTrack() bool`
+
+HasTrack returns a boolean if a field has been set.
 
 ### GetAudioPreviewUrl
 

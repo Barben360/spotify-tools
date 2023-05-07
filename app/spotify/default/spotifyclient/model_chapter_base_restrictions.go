@@ -21,10 +21,7 @@ var _ MappedNullable = &ChapterBaseRestrictions{}
 type ChapterBaseRestrictions struct {
 	// The reason for the restriction. Supported values: - `market` - The content item is not available in the given market. - `product` - The content item is not available for the user's subscription type. - `explicit` - The content item is explicit and the user's account is set to not play explicit content. - `payment_required` - Payment is required to play the content item.  Additional reasons may be added in the future. **Note**: If you use this field, make sure that your application safely handles unknown values. 
 	Reason *string `json:"reason,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _ChapterBaseRestrictions ChapterBaseRestrictions
 
 // NewChapterBaseRestrictions instantiates a new ChapterBaseRestrictions object
 // This constructor will assign default values to properties that have it defined,
@@ -88,29 +85,7 @@ func (o ChapterBaseRestrictions) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Reason) {
 		toSerialize["reason"] = o.Reason
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ChapterBaseRestrictions) UnmarshalJSON(bytes []byte) (err error) {
-	varChapterBaseRestrictions := _ChapterBaseRestrictions{}
-
-	if err = json.Unmarshal(bytes, &varChapterBaseRestrictions); err == nil {
-		*o = ChapterBaseRestrictions(varChapterBaseRestrictions)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "reason")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableChapterBaseRestrictions struct {

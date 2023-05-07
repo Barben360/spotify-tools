@@ -29,10 +29,7 @@ type CursorPagingPlayHistoryObject struct {
 	// The total number of items available to return.
 	Total *int32 `json:"total,omitempty"`
 	Items []PlayHistoryObject `json:"items,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CursorPagingPlayHistoryObject CursorPagingPlayHistoryObject
 
 // NewCursorPagingPlayHistoryObject instantiates a new CursorPagingPlayHistoryObject object
 // This constructor will assign default values to properties that have it defined,
@@ -271,34 +268,7 @@ func (o CursorPagingPlayHistoryObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CursorPagingPlayHistoryObject) UnmarshalJSON(bytes []byte) (err error) {
-	varCursorPagingPlayHistoryObject := _CursorPagingPlayHistoryObject{}
-
-	if err = json.Unmarshal(bytes, &varCursorPagingPlayHistoryObject); err == nil {
-		*o = CursorPagingPlayHistoryObject(varCursorPagingPlayHistoryObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "limit")
-		delete(additionalProperties, "next")
-		delete(additionalProperties, "cursors")
-		delete(additionalProperties, "total")
-		delete(additionalProperties, "items")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCursorPagingPlayHistoryObject struct {

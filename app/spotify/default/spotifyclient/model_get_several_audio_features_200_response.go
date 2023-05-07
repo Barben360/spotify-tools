@@ -20,10 +20,7 @@ var _ MappedNullable = &GetSeveralAudioFeatures200Response{}
 // GetSeveralAudioFeatures200Response struct for GetSeveralAudioFeatures200Response
 type GetSeveralAudioFeatures200Response struct {
 	AudioFeatures []AudioFeaturesObject `json:"audio_features"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GetSeveralAudioFeatures200Response GetSeveralAudioFeatures200Response
 
 // NewGetSeveralAudioFeatures200Response instantiates a new GetSeveralAudioFeatures200Response object
 // This constructor will assign default values to properties that have it defined,
@@ -78,29 +75,7 @@ func (o GetSeveralAudioFeatures200Response) MarshalJSON() ([]byte, error) {
 func (o GetSeveralAudioFeatures200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["audio_features"] = o.AudioFeatures
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetSeveralAudioFeatures200Response) UnmarshalJSON(bytes []byte) (err error) {
-	varGetSeveralAudioFeatures200Response := _GetSeveralAudioFeatures200Response{}
-
-	if err = json.Unmarshal(bytes, &varGetSeveralAudioFeatures200Response); err == nil {
-		*o = GetSeveralAudioFeatures200Response(varGetSeveralAudioFeatures200Response)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "audio_features")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetSeveralAudioFeatures200Response struct {

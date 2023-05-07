@@ -20,10 +20,7 @@ var _ MappedNullable = &GetCategories200ResponseCategoriesAllOf{}
 // GetCategories200ResponseCategoriesAllOf struct for GetCategories200ResponseCategoriesAllOf
 type GetCategories200ResponseCategoriesAllOf struct {
 	Items []CategoryObject `json:"items,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GetCategories200ResponseCategoriesAllOf GetCategories200ResponseCategoriesAllOf
 
 // NewGetCategories200ResponseCategoriesAllOf instantiates a new GetCategories200ResponseCategoriesAllOf object
 // This constructor will assign default values to properties that have it defined,
@@ -87,29 +84,7 @@ func (o GetCategories200ResponseCategoriesAllOf) ToMap() (map[string]interface{}
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetCategories200ResponseCategoriesAllOf) UnmarshalJSON(bytes []byte) (err error) {
-	varGetCategories200ResponseCategoriesAllOf := _GetCategories200ResponseCategoriesAllOf{}
-
-	if err = json.Unmarshal(bytes, &varGetCategories200ResponseCategoriesAllOf); err == nil {
-		*o = GetCategories200ResponseCategoriesAllOf(varGetCategories200ResponseCategoriesAllOf)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "items")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetCategories200ResponseCategoriesAllOf struct {

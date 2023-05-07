@@ -28,10 +28,7 @@ type CursorPagingObject struct {
 	Cursors *CursorPagingObjectCursors `json:"cursors,omitempty"`
 	// The total number of items available to return.
 	Total *int32 `json:"total,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CursorPagingObject CursorPagingObject
 
 // NewCursorPagingObject instantiates a new CursorPagingObject object
 // This constructor will assign default values to properties that have it defined,
@@ -235,33 +232,7 @@ func (o CursorPagingObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Total) {
 		toSerialize["total"] = o.Total
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CursorPagingObject) UnmarshalJSON(bytes []byte) (err error) {
-	varCursorPagingObject := _CursorPagingObject{}
-
-	if err = json.Unmarshal(bytes, &varCursorPagingObject); err == nil {
-		*o = CursorPagingObject(varCursorPagingObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "limit")
-		delete(additionalProperties, "next")
-		delete(additionalProperties, "cursors")
-		delete(additionalProperties, "total")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCursorPagingObject struct {

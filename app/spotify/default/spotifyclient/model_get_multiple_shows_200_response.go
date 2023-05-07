@@ -20,10 +20,7 @@ var _ MappedNullable = &GetMultipleShows200Response{}
 // GetMultipleShows200Response struct for GetMultipleShows200Response
 type GetMultipleShows200Response struct {
 	Shows []SimplifiedShowObject `json:"shows"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GetMultipleShows200Response GetMultipleShows200Response
 
 // NewGetMultipleShows200Response instantiates a new GetMultipleShows200Response object
 // This constructor will assign default values to properties that have it defined,
@@ -78,29 +75,7 @@ func (o GetMultipleShows200Response) MarshalJSON() ([]byte, error) {
 func (o GetMultipleShows200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["shows"] = o.Shows
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetMultipleShows200Response) UnmarshalJSON(bytes []byte) (err error) {
-	varGetMultipleShows200Response := _GetMultipleShows200Response{}
-
-	if err = json.Unmarshal(bytes, &varGetMultipleShows200Response); err == nil {
-		*o = GetMultipleShows200Response(varGetMultipleShows200Response)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "shows")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetMultipleShows200Response struct {

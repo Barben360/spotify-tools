@@ -20,10 +20,7 @@ var _ MappedNullable = &AudiobookObjectAllOf{}
 // AudiobookObjectAllOf struct for AudiobookObjectAllOf
 type AudiobookObjectAllOf struct {
 	Chapters AudiobookObjectAllOfChapters `json:"chapters"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AudiobookObjectAllOf AudiobookObjectAllOf
 
 // NewAudiobookObjectAllOf instantiates a new AudiobookObjectAllOf object
 // This constructor will assign default values to properties that have it defined,
@@ -78,29 +75,7 @@ func (o AudiobookObjectAllOf) MarshalJSON() ([]byte, error) {
 func (o AudiobookObjectAllOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["chapters"] = o.Chapters
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AudiobookObjectAllOf) UnmarshalJSON(bytes []byte) (err error) {
-	varAudiobookObjectAllOf := _AudiobookObjectAllOf{}
-
-	if err = json.Unmarshal(bytes, &varAudiobookObjectAllOf); err == nil {
-		*o = AudiobookObjectAllOf(varAudiobookObjectAllOf)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "chapters")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAudiobookObjectAllOf struct {

@@ -23,10 +23,7 @@ type CopyrightObject struct {
 	Text *string `json:"text,omitempty"`
 	// The type of copyright: `C` = the copyright, `P` = the sound recording (performance) copyright. 
 	Type *string `json:"type,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CopyrightObject CopyrightObject
 
 // NewCopyrightObject instantiates a new CopyrightObject object
 // This constructor will assign default values to properties that have it defined,
@@ -125,30 +122,7 @@ func (o CopyrightObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CopyrightObject) UnmarshalJSON(bytes []byte) (err error) {
-	varCopyrightObject := _CopyrightObject{}
-
-	if err = json.Unmarshal(bytes, &varCopyrightObject); err == nil {
-		*o = CopyrightObject(varCopyrightObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "text")
-		delete(additionalProperties, "type")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCopyrightObject struct {

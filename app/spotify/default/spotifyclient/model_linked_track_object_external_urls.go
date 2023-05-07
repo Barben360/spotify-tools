@@ -21,10 +21,7 @@ var _ MappedNullable = &LinkedTrackObjectExternalUrls{}
 type LinkedTrackObjectExternalUrls struct {
 	// The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object. 
 	Spotify *string `json:"spotify,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _LinkedTrackObjectExternalUrls LinkedTrackObjectExternalUrls
 
 // NewLinkedTrackObjectExternalUrls instantiates a new LinkedTrackObjectExternalUrls object
 // This constructor will assign default values to properties that have it defined,
@@ -88,29 +85,7 @@ func (o LinkedTrackObjectExternalUrls) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Spotify) {
 		toSerialize["spotify"] = o.Spotify
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *LinkedTrackObjectExternalUrls) UnmarshalJSON(bytes []byte) (err error) {
-	varLinkedTrackObjectExternalUrls := _LinkedTrackObjectExternalUrls{}
-
-	if err = json.Unmarshal(bytes, &varLinkedTrackObjectExternalUrls); err == nil {
-		*o = LinkedTrackObjectExternalUrls(varLinkedTrackObjectExternalUrls)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "spotify")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableLinkedTrackObjectExternalUrls struct {

@@ -57,10 +57,7 @@ type ChapterObject struct {
 	Uri string `json:"uri"`
 	Restrictions *ChapterBaseRestrictions `json:"restrictions,omitempty"`
 	Audiobook ChapterObjectAllOfAudiobook `json:"audiobook"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _ChapterObject ChapterObject
 
 // NewChapterObject instantiates a new ChapterObject object
 // This constructor will assign default values to properties that have it defined,
@@ -653,49 +650,7 @@ func (o ChapterObject) ToMap() (map[string]interface{}, error) {
 		toSerialize["restrictions"] = o.Restrictions
 	}
 	toSerialize["audiobook"] = o.Audiobook
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ChapterObject) UnmarshalJSON(bytes []byte) (err error) {
-	varChapterObject := _ChapterObject{}
-
-	if err = json.Unmarshal(bytes, &varChapterObject); err == nil {
-		*o = ChapterObject(varChapterObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "audio_preview_url")
-		delete(additionalProperties, "available_markets")
-		delete(additionalProperties, "chapter_number")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "html_description")
-		delete(additionalProperties, "duration_ms")
-		delete(additionalProperties, "explicit")
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "images")
-		delete(additionalProperties, "is_playable")
-		delete(additionalProperties, "languages")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "release_date")
-		delete(additionalProperties, "release_date_precision")
-		delete(additionalProperties, "resume_point")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		delete(additionalProperties, "restrictions")
-		delete(additionalProperties, "audiobook")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableChapterObject struct {

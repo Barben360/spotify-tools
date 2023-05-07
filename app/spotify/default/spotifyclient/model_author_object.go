@@ -21,10 +21,7 @@ var _ MappedNullable = &AuthorObject{}
 type AuthorObject struct {
 	// The name of the author. 
 	Name *string `json:"name,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AuthorObject AuthorObject
 
 // NewAuthorObject instantiates a new AuthorObject object
 // This constructor will assign default values to properties that have it defined,
@@ -88,29 +85,7 @@ func (o AuthorObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AuthorObject) UnmarshalJSON(bytes []byte) (err error) {
-	varAuthorObject := _AuthorObject{}
-
-	if err = json.Unmarshal(bytes, &varAuthorObject); err == nil {
-		*o = AuthorObject(varAuthorObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAuthorObject struct {

@@ -50,10 +50,7 @@ type SimplifiedTrackObject struct {
 	Uri *string `json:"uri,omitempty"`
 	// Whether or not the track is from a local file. 
 	IsLocal *bool `json:"is_local,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SimplifiedTrackObject SimplifiedTrackObject
 
 // NewSimplifiedTrackObject instantiates a new SimplifiedTrackObject object
 // This constructor will assign default values to properties that have it defined,
@@ -677,45 +674,7 @@ func (o SimplifiedTrackObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsLocal) {
 		toSerialize["is_local"] = o.IsLocal
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SimplifiedTrackObject) UnmarshalJSON(bytes []byte) (err error) {
-	varSimplifiedTrackObject := _SimplifiedTrackObject{}
-
-	if err = json.Unmarshal(bytes, &varSimplifiedTrackObject); err == nil {
-		*o = SimplifiedTrackObject(varSimplifiedTrackObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "artists")
-		delete(additionalProperties, "available_markets")
-		delete(additionalProperties, "disc_number")
-		delete(additionalProperties, "duration_ms")
-		delete(additionalProperties, "explicit")
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "is_playable")
-		delete(additionalProperties, "linked_from")
-		delete(additionalProperties, "restrictions")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "preview_url")
-		delete(additionalProperties, "track_number")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		delete(additionalProperties, "is_local")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSimplifiedTrackObject struct {

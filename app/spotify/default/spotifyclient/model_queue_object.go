@@ -22,10 +22,7 @@ type QueueObject struct {
 	CurrentlyPlaying *CurrentlyPlayingObjectItem `json:"currently_playing,omitempty"`
 	// The tracks or episodes in the queue. Can be empty.
 	Queue []QueueObjectQueueInner `json:"queue,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _QueueObject QueueObject
 
 // NewQueueObject instantiates a new QueueObject object
 // This constructor will assign default values to properties that have it defined,
@@ -124,30 +121,7 @@ func (o QueueObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Queue) {
 		toSerialize["queue"] = o.Queue
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *QueueObject) UnmarshalJSON(bytes []byte) (err error) {
-	varQueueObject := _QueueObject{}
-
-	if err = json.Unmarshal(bytes, &varQueueObject); err == nil {
-		*o = QueueObject(varQueueObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "currently_playing")
-		delete(additionalProperties, "queue")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableQueueObject struct {

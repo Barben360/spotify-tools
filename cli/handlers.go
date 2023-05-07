@@ -6,10 +6,14 @@ import (
 	"github.com/Barben360/spotify-tools/app"
 )
 
-func authTestHandler(ctx context.Context, appInstance *app.App) error {
+func (c *CLI) authTestHandler(ctx context.Context, appInstance *app.App, args []string) error {
 	return appInstance.RunAuthTest(ctx)
 }
 
-func resetHandler(ctx context.Context, appInstance *app.App) error {
+func (c *CLI) resetHandler(ctx context.Context, appInstance *app.App, args []string) error {
 	return appInstance.RunReset(ctx)
+}
+
+func (c *CLI) getPlaylistHandler(ctx context.Context, appInstance *app.App, args []string) error {
+	return appInstance.GetPlaylist(ctx, args[0])
 }

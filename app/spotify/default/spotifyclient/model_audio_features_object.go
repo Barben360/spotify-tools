@@ -55,10 +55,7 @@ type AudioFeaturesObject struct {
 	Uri *string `json:"uri,omitempty"`
 	// A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry). 
 	Valence *float32 `json:"valence,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AudioFeaturesObject AudioFeaturesObject
 
 // NewAudioFeaturesObject instantiates a new AudioFeaturesObject object
 // This constructor will assign default values to properties that have it defined,
@@ -717,46 +714,7 @@ func (o AudioFeaturesObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Valence) {
 		toSerialize["valence"] = o.Valence
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AudioFeaturesObject) UnmarshalJSON(bytes []byte) (err error) {
-	varAudioFeaturesObject := _AudioFeaturesObject{}
-
-	if err = json.Unmarshal(bytes, &varAudioFeaturesObject); err == nil {
-		*o = AudioFeaturesObject(varAudioFeaturesObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "acousticness")
-		delete(additionalProperties, "analysis_url")
-		delete(additionalProperties, "danceability")
-		delete(additionalProperties, "duration_ms")
-		delete(additionalProperties, "energy")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "instrumentalness")
-		delete(additionalProperties, "key")
-		delete(additionalProperties, "liveness")
-		delete(additionalProperties, "loudness")
-		delete(additionalProperties, "mode")
-		delete(additionalProperties, "speechiness")
-		delete(additionalProperties, "tempo")
-		delete(additionalProperties, "time_signature")
-		delete(additionalProperties, "track_href")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		delete(additionalProperties, "valence")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAudioFeaturesObject struct {

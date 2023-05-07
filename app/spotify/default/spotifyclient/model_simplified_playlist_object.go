@@ -42,10 +42,7 @@ type SimplifiedPlaylistObject struct {
 	Type *string `json:"type,omitempty"`
 	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the playlist. 
 	Uri *string `json:"uri,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SimplifiedPlaylistObject SimplifiedPlaylistObject
 
 // NewSimplifiedPlaylistObject instantiates a new SimplifiedPlaylistObject object
 // This constructor will assign default values to properties that have it defined,
@@ -529,41 +526,7 @@ func (o SimplifiedPlaylistObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Uri) {
 		toSerialize["uri"] = o.Uri
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SimplifiedPlaylistObject) UnmarshalJSON(bytes []byte) (err error) {
-	varSimplifiedPlaylistObject := _SimplifiedPlaylistObject{}
-
-	if err = json.Unmarshal(bytes, &varSimplifiedPlaylistObject); err == nil {
-		*o = SimplifiedPlaylistObject(varSimplifiedPlaylistObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "collaborative")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "images")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "owner")
-		delete(additionalProperties, "public")
-		delete(additionalProperties, "snapshot_id")
-		delete(additionalProperties, "tracks")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSimplifiedPlaylistObject struct {

@@ -21,10 +21,7 @@ var _ MappedNullable = &PrivateUserObjectExternalUrls{}
 type PrivateUserObjectExternalUrls struct {
 	// The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object. 
 	Spotify *string `json:"spotify,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PrivateUserObjectExternalUrls PrivateUserObjectExternalUrls
 
 // NewPrivateUserObjectExternalUrls instantiates a new PrivateUserObjectExternalUrls object
 // This constructor will assign default values to properties that have it defined,
@@ -88,29 +85,7 @@ func (o PrivateUserObjectExternalUrls) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Spotify) {
 		toSerialize["spotify"] = o.Spotify
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PrivateUserObjectExternalUrls) UnmarshalJSON(bytes []byte) (err error) {
-	varPrivateUserObjectExternalUrls := _PrivateUserObjectExternalUrls{}
-
-	if err = json.Unmarshal(bytes, &varPrivateUserObjectExternalUrls); err == nil {
-		*o = PrivateUserObjectExternalUrls(varPrivateUserObjectExternalUrls)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "spotify")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePrivateUserObjectExternalUrls struct {

@@ -23,10 +23,7 @@ type SavedEpisodeObject struct {
 	// The date and time the episode was saved. Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ. 
 	AddedAt *time.Time `json:"added_at,omitempty"`
 	Episode *SavedEpisodeObjectEpisode `json:"episode,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SavedEpisodeObject SavedEpisodeObject
 
 // NewSavedEpisodeObject instantiates a new SavedEpisodeObject object
 // This constructor will assign default values to properties that have it defined,
@@ -125,30 +122,7 @@ func (o SavedEpisodeObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Episode) {
 		toSerialize["episode"] = o.Episode
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SavedEpisodeObject) UnmarshalJSON(bytes []byte) (err error) {
-	varSavedEpisodeObject := _SavedEpisodeObject{}
-
-	if err = json.Unmarshal(bytes, &varSavedEpisodeObject); err == nil {
-		*o = SavedEpisodeObject(varSavedEpisodeObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "added_at")
-		delete(additionalProperties, "episode")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSavedEpisodeObject struct {

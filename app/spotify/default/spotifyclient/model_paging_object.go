@@ -31,10 +31,7 @@ type PagingObject struct {
 	Previous NullableString `json:"previous"`
 	// The total number of items available to return. 
 	Total int32 `json:"total"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PagingObject PagingObject
 
 // NewPagingObject instantiates a new PagingObject object
 // This constructor will assign default values to properties that have it defined,
@@ -223,34 +220,7 @@ func (o PagingObject) ToMap() (map[string]interface{}, error) {
 	toSerialize["offset"] = o.Offset
 	toSerialize["previous"] = o.Previous.Get()
 	toSerialize["total"] = o.Total
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PagingObject) UnmarshalJSON(bytes []byte) (err error) {
-	varPagingObject := _PagingObject{}
-
-	if err = json.Unmarshal(bytes, &varPagingObject); err == nil {
-		*o = PagingObject(varPagingObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "limit")
-		delete(additionalProperties, "next")
-		delete(additionalProperties, "offset")
-		delete(additionalProperties, "previous")
-		delete(additionalProperties, "total")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePagingObject struct {

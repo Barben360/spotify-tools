@@ -33,10 +33,7 @@ type AudioAnalysisObjectMeta struct {
 	AnalysisTime *float32 `json:"analysis_time,omitempty"`
 	// The method used to read the track's audio data.
 	InputProcess *string `json:"input_process,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AudioAnalysisObjectMeta AudioAnalysisObjectMeta
 
 // NewAudioAnalysisObjectMeta instantiates a new AudioAnalysisObjectMeta object
 // This constructor will assign default values to properties that have it defined,
@@ -310,35 +307,7 @@ func (o AudioAnalysisObjectMeta) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InputProcess) {
 		toSerialize["input_process"] = o.InputProcess
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AudioAnalysisObjectMeta) UnmarshalJSON(bytes []byte) (err error) {
-	varAudioAnalysisObjectMeta := _AudioAnalysisObjectMeta{}
-
-	if err = json.Unmarshal(bytes, &varAudioAnalysisObjectMeta); err == nil {
-		*o = AudioAnalysisObjectMeta(varAudioAnalysisObjectMeta)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "analyzer_version")
-		delete(additionalProperties, "platform")
-		delete(additionalProperties, "detailed_status")
-		delete(additionalProperties, "status_code")
-		delete(additionalProperties, "timestamp")
-		delete(additionalProperties, "analysis_time")
-		delete(additionalProperties, "input_process")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAudioAnalysisObjectMeta struct {

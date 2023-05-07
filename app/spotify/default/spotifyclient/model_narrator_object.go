@@ -21,10 +21,7 @@ var _ MappedNullable = &NarratorObject{}
 type NarratorObject struct {
 	// The name of the Narrator. 
 	Name *string `json:"name,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _NarratorObject NarratorObject
 
 // NewNarratorObject instantiates a new NarratorObject object
 // This constructor will assign default values to properties that have it defined,
@@ -88,29 +85,7 @@ func (o NarratorObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *NarratorObject) UnmarshalJSON(bytes []byte) (err error) {
-	varNarratorObject := _NarratorObject{}
-
-	if err = json.Unmarshal(bytes, &varNarratorObject); err == nil {
-		*o = NarratorObject(varNarratorObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableNarratorObject struct {

@@ -21,10 +21,7 @@ var _ MappedNullable = &ContextObjectExternalUrls{}
 type ContextObjectExternalUrls struct {
 	// The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object. 
 	Spotify *string `json:"spotify,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _ContextObjectExternalUrls ContextObjectExternalUrls
 
 // NewContextObjectExternalUrls instantiates a new ContextObjectExternalUrls object
 // This constructor will assign default values to properties that have it defined,
@@ -88,29 +85,7 @@ func (o ContextObjectExternalUrls) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Spotify) {
 		toSerialize["spotify"] = o.Spotify
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ContextObjectExternalUrls) UnmarshalJSON(bytes []byte) (err error) {
-	varContextObjectExternalUrls := _ContextObjectExternalUrls{}
-
-	if err = json.Unmarshal(bytes, &varContextObjectExternalUrls); err == nil {
-		*o = ContextObjectExternalUrls(varContextObjectExternalUrls)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "spotify")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableContextObjectExternalUrls struct {

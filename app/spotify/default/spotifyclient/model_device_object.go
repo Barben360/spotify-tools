@@ -33,10 +33,7 @@ type DeviceObject struct {
 	Type *string `json:"type,omitempty"`
 	// The current volume in percent.
 	VolumePercent NullableInt32 `json:"volume_percent,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _DeviceObject DeviceObject
 
 // NewDeviceObject instantiates a new DeviceObject object
 // This constructor will assign default values to properties that have it defined,
@@ -330,35 +327,7 @@ func (o DeviceObject) ToMap() (map[string]interface{}, error) {
 	if o.VolumePercent.IsSet() {
 		toSerialize["volume_percent"] = o.VolumePercent.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DeviceObject) UnmarshalJSON(bytes []byte) (err error) {
-	varDeviceObject := _DeviceObject{}
-
-	if err = json.Unmarshal(bytes, &varDeviceObject); err == nil {
-		*o = DeviceObject(varDeviceObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "is_active")
-		delete(additionalProperties, "is_private_session")
-		delete(additionalProperties, "is_restricted")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "volume_percent")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDeviceObject struct {

@@ -32,10 +32,7 @@ type GetCategories200ResponseCategories struct {
 	// The total number of items available to return. 
 	Total int32 `json:"total"`
 	Items []CategoryObject `json:"items"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _GetCategories200ResponseCategories GetCategories200ResponseCategories
 
 // NewGetCategories200ResponseCategories instantiates a new GetCategories200ResponseCategories object
 // This constructor will assign default values to properties that have it defined,
@@ -250,35 +247,7 @@ func (o GetCategories200ResponseCategories) ToMap() (map[string]interface{}, err
 	toSerialize["previous"] = o.Previous.Get()
 	toSerialize["total"] = o.Total
 	toSerialize["items"] = o.Items
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GetCategories200ResponseCategories) UnmarshalJSON(bytes []byte) (err error) {
-	varGetCategories200ResponseCategories := _GetCategories200ResponseCategories{}
-
-	if err = json.Unmarshal(bytes, &varGetCategories200ResponseCategories); err == nil {
-		*o = GetCategories200ResponseCategories(varGetCategories200ResponseCategories)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "limit")
-		delete(additionalProperties, "next")
-		delete(additionalProperties, "offset")
-		delete(additionalProperties, "previous")
-		delete(additionalProperties, "total")
-		delete(additionalProperties, "items")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGetCategories200ResponseCategories struct {

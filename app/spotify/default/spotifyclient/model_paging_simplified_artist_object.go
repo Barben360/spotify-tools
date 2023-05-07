@@ -32,10 +32,7 @@ type PagingSimplifiedArtistObject struct {
 	// The total number of items available to return. 
 	Total int32 `json:"total"`
 	Items []SimplifiedArtistObject `json:"items"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PagingSimplifiedArtistObject PagingSimplifiedArtistObject
 
 // NewPagingSimplifiedArtistObject instantiates a new PagingSimplifiedArtistObject object
 // This constructor will assign default values to properties that have it defined,
@@ -250,35 +247,7 @@ func (o PagingSimplifiedArtistObject) ToMap() (map[string]interface{}, error) {
 	toSerialize["previous"] = o.Previous.Get()
 	toSerialize["total"] = o.Total
 	toSerialize["items"] = o.Items
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PagingSimplifiedArtistObject) UnmarshalJSON(bytes []byte) (err error) {
-	varPagingSimplifiedArtistObject := _PagingSimplifiedArtistObject{}
-
-	if err = json.Unmarshal(bytes, &varPagingSimplifiedArtistObject); err == nil {
-		*o = PagingSimplifiedArtistObject(varPagingSimplifiedArtistObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "limit")
-		delete(additionalProperties, "next")
-		delete(additionalProperties, "offset")
-		delete(additionalProperties, "previous")
-		delete(additionalProperties, "total")
-		delete(additionalProperties, "items")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePagingSimplifiedArtistObject struct {

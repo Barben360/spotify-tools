@@ -43,10 +43,7 @@ type AlbumBase struct {
 	Type string `json:"type"`
 	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the album. 
 	Uri string `json:"uri"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AlbumBase AlbumBase
 
 // NewAlbumBase instantiates a new AlbumBase object
 // This constructor will assign default values to properties that have it defined,
@@ -422,41 +419,7 @@ func (o AlbumBase) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["type"] = o.Type
 	toSerialize["uri"] = o.Uri
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AlbumBase) UnmarshalJSON(bytes []byte) (err error) {
-	varAlbumBase := _AlbumBase{}
-
-	if err = json.Unmarshal(bytes, &varAlbumBase); err == nil {
-		*o = AlbumBase(varAlbumBase)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "album_type")
-		delete(additionalProperties, "total_tracks")
-		delete(additionalProperties, "available_markets")
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "images")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "release_date")
-		delete(additionalProperties, "release_date_precision")
-		delete(additionalProperties, "restrictions")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAlbumBase struct {

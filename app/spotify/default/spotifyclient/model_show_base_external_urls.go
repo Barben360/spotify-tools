@@ -21,10 +21,7 @@ var _ MappedNullable = &ShowBaseExternalUrls{}
 type ShowBaseExternalUrls struct {
 	// The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object. 
 	Spotify *string `json:"spotify,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _ShowBaseExternalUrls ShowBaseExternalUrls
 
 // NewShowBaseExternalUrls instantiates a new ShowBaseExternalUrls object
 // This constructor will assign default values to properties that have it defined,
@@ -88,29 +85,7 @@ func (o ShowBaseExternalUrls) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Spotify) {
 		toSerialize["spotify"] = o.Spotify
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ShowBaseExternalUrls) UnmarshalJSON(bytes []byte) (err error) {
-	varShowBaseExternalUrls := _ShowBaseExternalUrls{}
-
-	if err = json.Unmarshal(bytes, &varShowBaseExternalUrls); err == nil {
-		*o = ShowBaseExternalUrls(varShowBaseExternalUrls)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "spotify")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableShowBaseExternalUrls struct {

@@ -3,10 +3,11 @@ package spotify
 import "context"
 
 type Spotifier interface {
-	SpotifierAuth
+	SpotifierAuther
+	SpotifierPlaylister
 }
 
-type SpotifierAuth interface {
+type SpotifierAuther interface {
 	// GetUserToken returns the latest user token, which may be expired.
 	// If the token has never been fetched, this will run authorization process.
 	GetUserToken(ctx context.Context) (string, error)
@@ -18,6 +19,6 @@ type SpotifierAuth interface {
 	ResetUserTokens(ctx context.Context)
 }
 
-type SpotifierPlaylist interface {
+type SpotifierPlaylister interface {
 	GetPlaylist(ctx context.Context, playlistID string) (*Playlist, error)
 }

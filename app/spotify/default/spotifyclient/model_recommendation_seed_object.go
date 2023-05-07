@@ -31,10 +31,7 @@ type RecommendationSeedObject struct {
 	InitialPoolSize *int32 `json:"initialPoolSize,omitempty"`
 	// The entity type of this seed. One of `artist`, `track` or `genre`. 
 	Type *string `json:"type,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _RecommendationSeedObject RecommendationSeedObject
 
 // NewRecommendationSeedObject instantiates a new RecommendationSeedObject object
 // This constructor will assign default values to properties that have it defined,
@@ -273,34 +270,7 @@ func (o RecommendationSeedObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RecommendationSeedObject) UnmarshalJSON(bytes []byte) (err error) {
-	varRecommendationSeedObject := _RecommendationSeedObject{}
-
-	if err = json.Unmarshal(bytes, &varRecommendationSeedObject); err == nil {
-		*o = RecommendationSeedObject(varRecommendationSeedObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "afterFilteringSize")
-		delete(additionalProperties, "afterRelinkingSize")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "initialPoolSize")
-		delete(additionalProperties, "type")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRecommendationSeedObject struct {

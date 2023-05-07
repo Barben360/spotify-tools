@@ -40,10 +40,7 @@ type PrivateUserObject struct {
 	Type *string `json:"type,omitempty"`
 	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the user. 
 	Uri *string `json:"uri,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PrivateUserObject PrivateUserObject
 
 // NewPrivateUserObject instantiates a new PrivateUserObject object
 // This constructor will assign default values to properties that have it defined,
@@ -492,40 +489,7 @@ func (o PrivateUserObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Uri) {
 		toSerialize["uri"] = o.Uri
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PrivateUserObject) UnmarshalJSON(bytes []byte) (err error) {
-	varPrivateUserObject := _PrivateUserObject{}
-
-	if err = json.Unmarshal(bytes, &varPrivateUserObject); err == nil {
-		*o = PrivateUserObject(varPrivateUserObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "country")
-		delete(additionalProperties, "display_name")
-		delete(additionalProperties, "email")
-		delete(additionalProperties, "explicit_content")
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "followers")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "images")
-		delete(additionalProperties, "product")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePrivateUserObject struct {

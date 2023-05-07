@@ -26,10 +26,7 @@ type ContextObject struct {
 	ExternalUrls *ContextObjectExternalUrls `json:"external_urls,omitempty"`
 	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the context. 
 	Uri *string `json:"uri,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _ContextObject ContextObject
 
 // NewContextObject instantiates a new ContextObject object
 // This constructor will assign default values to properties that have it defined,
@@ -198,32 +195,7 @@ func (o ContextObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Uri) {
 		toSerialize["uri"] = o.Uri
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ContextObject) UnmarshalJSON(bytes []byte) (err error) {
-	varContextObject := _ContextObject{}
-
-	if err = json.Unmarshal(bytes, &varContextObject); err == nil {
-		*o = ContextObject(varContextObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "uri")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableContextObject struct {

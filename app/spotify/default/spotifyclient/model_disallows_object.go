@@ -39,10 +39,7 @@ type DisallowsObject struct {
 	TogglingRepeatTrack *bool `json:"toggling_repeat_track,omitempty"`
 	// Transfering playback between devices. Optional field.
 	TransferringPlayback *bool `json:"transferring_playback,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _DisallowsObject DisallowsObject
 
 // NewDisallowsObject instantiates a new DisallowsObject object
 // This constructor will assign default values to properties that have it defined,
@@ -421,38 +418,7 @@ func (o DisallowsObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TransferringPlayback) {
 		toSerialize["transferring_playback"] = o.TransferringPlayback
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DisallowsObject) UnmarshalJSON(bytes []byte) (err error) {
-	varDisallowsObject := _DisallowsObject{}
-
-	if err = json.Unmarshal(bytes, &varDisallowsObject); err == nil {
-		*o = DisallowsObject(varDisallowsObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "interrupting_playback")
-		delete(additionalProperties, "pausing")
-		delete(additionalProperties, "resuming")
-		delete(additionalProperties, "seeking")
-		delete(additionalProperties, "skipping_next")
-		delete(additionalProperties, "skipping_prev")
-		delete(additionalProperties, "toggling_repeat_context")
-		delete(additionalProperties, "toggling_shuffle")
-		delete(additionalProperties, "toggling_repeat_track")
-		delete(additionalProperties, "transferring_playback")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDisallowsObject struct {

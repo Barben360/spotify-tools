@@ -25,10 +25,7 @@ type AlbumObjectAllOfExternalIds struct {
 	Ean *string `json:"ean,omitempty"`
 	// [Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code) 
 	Upc *string `json:"upc,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AlbumObjectAllOfExternalIds AlbumObjectAllOfExternalIds
 
 // NewAlbumObjectAllOfExternalIds instantiates a new AlbumObjectAllOfExternalIds object
 // This constructor will assign default values to properties that have it defined,
@@ -162,31 +159,7 @@ func (o AlbumObjectAllOfExternalIds) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Upc) {
 		toSerialize["upc"] = o.Upc
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AlbumObjectAllOfExternalIds) UnmarshalJSON(bytes []byte) (err error) {
-	varAlbumObjectAllOfExternalIds := _AlbumObjectAllOfExternalIds{}
-
-	if err = json.Unmarshal(bytes, &varAlbumObjectAllOfExternalIds); err == nil {
-		*o = AlbumObjectAllOfExternalIds(varAlbumObjectAllOfExternalIds)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "isrc")
-		delete(additionalProperties, "ean")
-		delete(additionalProperties, "upc")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAlbumObjectAllOfExternalIds struct {

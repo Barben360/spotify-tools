@@ -59,15 +59,23 @@ func New(ctx context.Context) *CLI {
 	cmdRun.AddCommand(&cobra.Command{
 		Use:   "auth-test",
 		Short: "Test Spotify user authentication and token refresh",
-		RunE:  c.runApp(ctx, authTestHandler),
+		RunE:  c.runApp(ctx, c.authTestHandler),
 	})
 
 	cmdRun.AddCommand(&cobra.Command{
 		Use:   "reset",
 		Short: "Reset Spotify user authentication",
 		Long:  "Reset Spotify user authentication by deleting the config cache file. Use this command if you want to change the Spotify user or if you have a more general issue with authentication.",
-		RunE:  c.runApp(ctx, resetHandler),
+		RunE:  c.runApp(ctx, c.resetHandler),
 	})
+
+	cmdRun.AddCommand(&cobra.Command{
+		Use:   "get-playlist",
+		Short: "Get basic info about a Spotify playlist",
+		Args:  cobra.ExactArgs(1),
+		RunE:  c.runApp(ctx, c.getPlaylistHandler),
+	})
+
 	return c
 }
 
@@ -75,7 +83,7 @@ func (c *CLI) Run(ctx context.Context) error {
 	return c.cmdRoot.ExecuteContext(ctx)
 }
 
-func (c *CLI) runApp(ctx context.Context, handler func(ctx context.Context, appInstance *app.App) error) func(cmd *cobra.Command, args []string) error {
+func (c *CLI) runApp(ctx context.Context, handler func(ctx context.Context, appInstance *app.App, args []string) error) func(cmd *cobra.Command, args []string) error {
 	return func(cmd *cobra.Command, args []string) error {
 		cfg := app.AppConfig{
 			DevMode:                c.devMode,
@@ -88,6 +96,6 @@ func (c *CLI) runApp(ctx context.Context, handler func(ctx context.Context, appI
 		if err != nil {
 			return err
 		}
-		return handler(ctx, app)
+		return handler(ctx, app, args)
 	}
 }

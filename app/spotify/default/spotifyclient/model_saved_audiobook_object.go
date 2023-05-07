@@ -23,10 +23,7 @@ type SavedAudiobookObject struct {
 	// The date and time the audiobook was saved Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ. If the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object. 
 	AddedAt *time.Time `json:"added_at,omitempty"`
 	Audiobook *SavedAudiobookObjectAudiobook `json:"audiobook,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SavedAudiobookObject SavedAudiobookObject
 
 // NewSavedAudiobookObject instantiates a new SavedAudiobookObject object
 // This constructor will assign default values to properties that have it defined,
@@ -125,30 +122,7 @@ func (o SavedAudiobookObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Audiobook) {
 		toSerialize["audiobook"] = o.Audiobook
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SavedAudiobookObject) UnmarshalJSON(bytes []byte) (err error) {
-	varSavedAudiobookObject := _SavedAudiobookObject{}
-
-	if err = json.Unmarshal(bytes, &varSavedAudiobookObject); err == nil {
-		*o = SavedAudiobookObject(varSavedAudiobookObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "added_at")
-		delete(additionalProperties, "audiobook")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSavedAudiobookObject struct {

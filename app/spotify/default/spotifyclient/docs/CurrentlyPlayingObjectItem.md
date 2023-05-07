@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Episode** | Pointer to **bool** | Fix by Barben360  | [optional] 
+**Track** | Pointer to **bool** | Fix by Barben360  | [optional] 
 **Album** | Pointer to [**TrackObjectAlbum**](TrackObjectAlbum.md) |  | [optional] 
 **Artists** | Pointer to [**[]ArtistObject**](ArtistObject.md) | The artists who performed the track. Each artist object includes a link in &#x60;href&#x60; to more detailed information about the artist.  | [optional] 
 **AvailableMarkets** | Pointer to **[]string** | A list of the countries in which the track can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.  | [optional] 
@@ -54,6 +56,56 @@ will change when the set of required properties is changed
 NewCurrentlyPlayingObjectItemWithDefaults instantiates a new CurrentlyPlayingObjectItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetEpisode
+
+`func (o *CurrentlyPlayingObjectItem) GetEpisode() bool`
+
+GetEpisode returns the Episode field if non-nil, zero value otherwise.
+
+### GetEpisodeOk
+
+`func (o *CurrentlyPlayingObjectItem) GetEpisodeOk() (*bool, bool)`
+
+GetEpisodeOk returns a tuple with the Episode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEpisode
+
+`func (o *CurrentlyPlayingObjectItem) SetEpisode(v bool)`
+
+SetEpisode sets Episode field to given value.
+
+### HasEpisode
+
+`func (o *CurrentlyPlayingObjectItem) HasEpisode() bool`
+
+HasEpisode returns a boolean if a field has been set.
+
+### GetTrack
+
+`func (o *CurrentlyPlayingObjectItem) GetTrack() bool`
+
+GetTrack returns the Track field if non-nil, zero value otherwise.
+
+### GetTrackOk
+
+`func (o *CurrentlyPlayingObjectItem) GetTrackOk() (*bool, bool)`
+
+GetTrackOk returns a tuple with the Track field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrack
+
+`func (o *CurrentlyPlayingObjectItem) SetTrack(v bool)`
+
+SetTrack sets Track field to given value.
+
+### HasTrack
+
+`func (o *CurrentlyPlayingObjectItem) HasTrack() bool`
+
+HasTrack returns a boolean if a field has been set.
 
 ### GetAlbum
 

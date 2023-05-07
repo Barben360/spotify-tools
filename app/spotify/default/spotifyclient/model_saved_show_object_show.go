@@ -52,10 +52,7 @@ type SavedShowObjectShow struct {
 	Uri string `json:"uri"`
 	// The total number of episodes in the show. 
 	TotalEpisodes int32 `json:"total_episodes"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _SavedShowObjectShow SavedShowObjectShow
 
 // NewSavedShowObjectShow instantiates a new SavedShowObjectShow object
 // This constructor will assign default values to properties that have it defined,
@@ -526,45 +523,7 @@ func (o SavedShowObjectShow) ToMap() (map[string]interface{}, error) {
 	toSerialize["type"] = o.Type
 	toSerialize["uri"] = o.Uri
 	toSerialize["total_episodes"] = o.TotalEpisodes
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SavedShowObjectShow) UnmarshalJSON(bytes []byte) (err error) {
-	varSavedShowObjectShow := _SavedShowObjectShow{}
-
-	if err = json.Unmarshal(bytes, &varSavedShowObjectShow); err == nil {
-		*o = SavedShowObjectShow(varSavedShowObjectShow)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "available_markets")
-		delete(additionalProperties, "copyrights")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "html_description")
-		delete(additionalProperties, "explicit")
-		delete(additionalProperties, "external_urls")
-		delete(additionalProperties, "href")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "images")
-		delete(additionalProperties, "is_externally_hosted")
-		delete(additionalProperties, "languages")
-		delete(additionalProperties, "media_type")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "publisher")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "uri")
-		delete(additionalProperties, "total_episodes")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSavedShowObjectShow struct {

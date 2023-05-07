@@ -24,10 +24,7 @@ type PlayHistoryObject struct {
 	// The date and time the track was played.
 	PlayedAt *time.Time `json:"played_at,omitempty"`
 	Context *PlayHistoryObjectContext `json:"context,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PlayHistoryObject PlayHistoryObject
 
 // NewPlayHistoryObject instantiates a new PlayHistoryObject object
 // This constructor will assign default values to properties that have it defined,
@@ -161,31 +158,7 @@ func (o PlayHistoryObject) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Context) {
 		toSerialize["context"] = o.Context
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PlayHistoryObject) UnmarshalJSON(bytes []byte) (err error) {
-	varPlayHistoryObject := _PlayHistoryObject{}
-
-	if err = json.Unmarshal(bytes, &varPlayHistoryObject); err == nil {
-		*o = PlayHistoryObject(varPlayHistoryObject)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "track")
-		delete(additionalProperties, "played_at")
-		delete(additionalProperties, "context")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePlayHistoryObject struct {

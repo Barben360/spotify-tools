@@ -203,7 +203,7 @@ func (s *Spotify) requestToken(ctx context.Context, authorizationCode string) er
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 	// send request
-	resp, err := s.httpClient.Do(req)
+	resp, err := s.httpAuthClient.Do(req)
 	if err != nil {
 		return fmt.Errorf("could not send request: %w", err)
 	}
@@ -263,7 +263,7 @@ func (s *Spotify) requestTokenRefresh(ctx context.Context) error {
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 	// send request
-	resp, err := s.httpClient.Do(req)
+	resp, err := s.httpAuthClient.Do(req)
 	if err != nil {
 		return fmt.Errorf("could not send request: %w", err)
 	}
@@ -310,4 +310,32 @@ func (s *Spotify) ResetUserTokens(ctx context.Context) {
 	if err != nil {
 		logger.FromContext(ctx).Error("could not remove config cache file, skipping", zap.Error(err))
 	}
+}
+
+func (s *Spotify) authExec(ctx context.Context, handler func(ctx context.Context) (*http.Response, error)) (*http.Response, error) {
+	gotNewAccessToken := false
+	if s.accessToken == "" {
+		if _, err := s.GetNewUserToken(ctx); err != nil {
+			return nil, err
+		}
+		gotNewAccessToken = true
+	}
+	httpResp, err := handler(ctx)
+	if err == nil {
+		return httpResp, nil
+	}
+	if gotNewAccessToken {
+		// No need to retry if we already got a new access token
+		return httpResp, err
+	}
+
+	if httpResp.StatusCode == http.StatusUnauthorized {
+		logger.FromContext(ctx).Info("got unauthorized error, trying to refresh access token")
+		if _, err := s.GetNewUserToken(ctx); err != nil {
+			return httpResp, err
+		}
+		logger.FromContext(ctx).Info("retrying request with new access token")
+		httpResp, err = handler(ctx)
+	}
+	return httpResp, err
 }

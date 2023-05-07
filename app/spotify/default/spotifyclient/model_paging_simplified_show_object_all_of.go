@@ -20,10 +20,7 @@ var _ MappedNullable = &PagingSimplifiedShowObjectAllOf{}
 // PagingSimplifiedShowObjectAllOf struct for PagingSimplifiedShowObjectAllOf
 type PagingSimplifiedShowObjectAllOf struct {
 	Items []SimplifiedShowObject `json:"items,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _PagingSimplifiedShowObjectAllOf PagingSimplifiedShowObjectAllOf
 
 // NewPagingSimplifiedShowObjectAllOf instantiates a new PagingSimplifiedShowObjectAllOf object
 // This constructor will assign default values to properties that have it defined,
@@ -87,29 +84,7 @@ func (o PagingSimplifiedShowObjectAllOf) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PagingSimplifiedShowObjectAllOf) UnmarshalJSON(bytes []byte) (err error) {
-	varPagingSimplifiedShowObjectAllOf := _PagingSimplifiedShowObjectAllOf{}
-
-	if err = json.Unmarshal(bytes, &varPagingSimplifiedShowObjectAllOf); err == nil {
-		*o = PagingSimplifiedShowObjectAllOf(varPagingSimplifiedShowObjectAllOf)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "items")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePagingSimplifiedShowObjectAllOf struct {
