@@ -1,0 +1,34 @@
+[
+  {
+    "target_playlist_id": "70KMN61SSTUsOxYNgbt0Zl",
+    "description": "Les intégrales des \"Grosses Têtes\" sur RTL",
+    "order_by": "release_date",
+    "add_latest_update_date_to_description": true,
+    "latest_update_date_location": "Europe/Paris",
+    "sources": [
+      {
+        "show_id": "0hBA2K37Vo1zoyShv1yPCK",
+        "filters": {
+          "item_name_regexp": "INTÉGRALE",
+          "min_duration": 3600
+        }
+      }
+    ]
+  },
+  {
+    "target_playlist_id": "0P7xtiAYwR0P4acoXIaO0w",
+    "description": "Les intégrales + best-of des \"Grosses Têtes\" sur RTL",
+    "order_by": "release_date",
+    "add_latest_update_date_to_description": true,
+    "latest_update_date_location": "Europe/Paris",
+    "sources": [
+      {
+        "show_id": "0hBA2K37Vo1zoyShv1yPCK",
+        "filters": {
+          "item_name_regexp": "INTÉGRALE|BEST OF",
+          "min_duration": 3600
+        }
+      }
+    ]
+  }
+]
