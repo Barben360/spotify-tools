@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"regexp"
 	"sort"
+	"strings"
 	"time"
 
 	"github.com/Barben360/spotify-tools/app/services/logger"
@@ -107,7 +108,10 @@ func (s *Spotify) GetPlaylist(ctx context.Context, playlistID string) (*spotify.
 	}, nil
 }
 
+var descriptionLatestUpdateDateRegexp = regexp.MustCompile(`-- Latest update: (?:.*)$`)
+
 func (s *Spotify) UpdatePlaylistFilter(ctx context.Context, filterConfig *spotify.PlaylistFilterConfig) error {
+	// Validate filter config
 	validate := validator.New()
 	err := validate.Struct(filterConfig)
 	if err != nil {
@@ -120,6 +124,15 @@ func (s *Spotify) UpdatePlaylistFilter(ctx context.Context, filterConfig *spotif
 			return errors.Join(errs...)
 		}
 		return err
+	}
+	var location *time.Location
+	if filterConfig.LatestUpdateDateLocation != "" {
+		location, err = time.LoadLocation(filterConfig.LatestUpdateDateLocation)
+		if err != nil {
+			return fmt.Errorf("invalid location %q: %w", filterConfig.LatestUpdateDateLocation, err)
+		}
+	} else {
+		location = time.UTC
 	}
 
 	logger.FromContext(ctx).Info("applying filter", zap.String("target_playlist_id", filterConfig.TargetPlaylistID), zap.String("filter_description", filterConfig.Description))
@@ -137,7 +150,7 @@ func (s *Spotify) UpdatePlaylistFilter(ctx context.Context, filterConfig *spotif
 	}
 
 	// Get target playlist
-	targetPlayist, err := s.GetPlaylist(ctx, filterConfig.TargetPlaylistID)
+	targetPlaylist, err := s.GetPlaylist(ctx, filterConfig.TargetPlaylistID)
 	if err != nil {
 		return err
 	}
@@ -147,7 +160,7 @@ func (s *Spotify) UpdatePlaylistFilter(ctx context.Context, filterConfig *spotif
 		spotify.ItemTypeTrack:   make(map[string]*spotify.Item),
 		spotify.ItemTypeEpisode: make(map[string]*spotify.Item),
 	}
-	for _, item := range targetPlayist.Items {
+	for _, item := range targetPlaylist.Items {
 		targetPlaylistItemsMap[item.Type][item.ID] = item
 	}
 
@@ -229,7 +242,7 @@ func (s *Spotify) UpdatePlaylistFilter(ctx context.Context, filterConfig *spotif
 	}
 
 	// Reorder items if needed
-	allItems := append(targetPlayist.Items, itemsToAdd...)
+	allItems := append(targetPlaylist.Items, itemsToAdd...)
 	allItemsOriginal := make([]*spotify.Item, len(allItems))
 	copy(allItemsOriginal, allItems)
 	if filterConfig.OrderBy == spotify.PlaylistOrderReleaseDate {
@@ -248,8 +261,24 @@ func (s *Spotify) UpdatePlaylistFilter(ctx context.Context, filterConfig *spotif
 	}
 
 	// If requested, update target playlist description
-	// TODO
+	if filterConfig.AddLatestUpdateDateToDescription {
+		description := targetPlaylist.Description
+		descriptionTimestampString := "-- Latest update: " + time.Now().In(location).Format("2006-01-02 15:04")
+		// Is there already a timestamp in the description?
+		if descriptionLatestUpdateDateRegexp.MatchString(description) {
+			// If yes, we replace it
+			description = descriptionLatestUpdateDateRegexp.ReplaceAllString(description, descriptionTimestampString)
+		} else {
+			// If no, we append it
+			description = description + " " + descriptionTimestampString
+		}
 
+		// Update description
+		err = s.playlistUpdateDescription(ctx, filterConfig.TargetPlaylistID, description)
+		if err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
@@ -301,6 +330,19 @@ func (s *Spotify) playlistReorder(ctx context.Context, playlistID string, items 
 		}); err != nil {
 			return err
 		}
+	}
+	return nil
+}
+
+func (s *Spotify) playlistUpdateDescription(ctx context.Context, playlistID string, description string) error {
+	description = strings.TrimSpace(description)
+	if _, err := s.authExec(ctx, func(ctx context.Context) (*http.Response, error) {
+		httpResp, err := s.httpOpenAPIClient.PlaylistsApi.ChangePlaylistDetails(ctx, playlistID).RequestBody(map[string]interface{}{
+			"description": description,
+		}).Execute()
+		return httpResp, err
+	}); err != nil {
+		return err
 	}
 	return nil
 }

@@ -13,7 +13,9 @@ type PlaylistFilterConfig struct {
 	Sources          []*PlaylistFilterSource `json:"sources" validate:"required,dive,required"`
 	// OrderBy is the order of the items in the target playlist
 	// For items having no added time (e.g. shows), the release date is used as fallback
-	OrderBy PlaylistOrder `json:"order_by" validate:"omitempty,oneof=added_at release_date"`
+	OrderBy                          PlaylistOrder `json:"order_by" validate:"omitempty,oneof=added_at release_date"`
+	AddLatestUpdateDateToDescription bool          `json:"add_latest_update_date_to_description" validate:"-"`
+	LatestUpdateDateLocation         string        `json:"latest_update_date_location" validate:"-"`
 }
 
 type PlaylistOrder string
@@ -24,10 +26,9 @@ const (
 )
 
 type PlaylistFilterSource struct {
-	PlaylistID                       string           `json:"playlist_id" validate:"required_without=ShowID"`
-	ShowID                           string           `json:"show_id" validate:"required_without=PlaylistID"`
-	Filters                          *PlaylistFilters `json:"filters" validate:"required"`
-	AddLatestUpdateDateToDescription bool             `json:"add_latest_update_date_to_description" validate:"-"`
+	PlaylistID string           `json:"playlist_id" validate:"required_without=ShowID"`
+	ShowID     string           `json:"show_id" validate:"required_without=PlaylistID"`
+	Filters    *PlaylistFilters `json:"filters" validate:"required"`
 }
 
 type PlaylistFilters struct {

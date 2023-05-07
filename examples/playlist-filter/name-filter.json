@@ -1,14 +1,15 @@
 [
   {
     "target_playlist_id": "2ztu1h5P2vx5E8tcc8yz6Z",
-    "description": "Tracks in \"La vie est belle\" playlist with a 'y' in the title",
+    "description": "Tracks in \"La vie est belle\" playlist with 'You' or 'you' in the title",
     "order_by": "release_date",
+    "add_latest_update_date_to_description": true,
+    "latest_update_date_location": "Europe/Paris",
     "sources": [
       {
         "playlist_id": "37i9dQZF1DXdrln2UyZD7F",
-        "add_latest_update_date_to_description": true,
         "filters": {
-          "item_name_regexp": "you|You"
+          "item_name_regexp": "You|you"
         }
       }
     ]
