@@ -1,0 +1,3 @@
+[submodule "app/spotify/default/assets/spotify-web-api"]
+	path = app/spotify/default/assets/spotify-web-api
+	url = git@github.com:sonallux/spotify-web-api.git

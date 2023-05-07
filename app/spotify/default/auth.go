@@ -203,7 +203,7 @@ func (s *Spotify) requestToken(ctx context.Context, authorizationCode string) er
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 	// send request
-	resp, err := s.client.Do(req)
+	resp, err := s.httpClient.Do(req)
 	if err != nil {
 		return fmt.Errorf("could not send request: %w", err)
 	}
@@ -263,7 +263,7 @@ func (s *Spotify) requestTokenRefresh(ctx context.Context) error {
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 
 	// send request
-	resp, err := s.client.Do(req)
+	resp, err := s.httpClient.Do(req)
 	if err != nil {
 		return fmt.Errorf("could not send request: %w", err)
 	}
