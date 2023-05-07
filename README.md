@@ -8,16 +8,13 @@ A CLI tool automating some specific actions on Spotify
 
 Install [OpenAPI Generator](https://openapi-generator.tech/docs/installation) (requires `npm` and `java`).
 
-The OpenAPI specification is included as a git submodule (see project [here](https://github.com/sonallux/spotify-web-api)). Therefore, think to init submodules in your repository or make a recursive clone at first.
+The [OpenAPI specification](./app/spotify/default/assets/spotify-open-api.yml) is copied from [this project](https://github.com/sonallux/spotify-web-api), and some modifications (with comments `Fix by Barben360`) are made to make it work.
 
 To update specification:
 
 ```shell
-cd ./app/openapi
-git checkout <insert-tag-here>
-cd ../..
 go generate ./...
 go mod tidy
 ```
 
-This will update files in `app/spotifyclient`
+This will update files of package `app/spotify/default/spotifyclient`.
