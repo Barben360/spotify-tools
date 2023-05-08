@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Restrictions** | Pointer to [**AlbumBaseRestrictions**](AlbumBaseRestrictions.md) |  | [optional] 
 **Type** | **string** | The object type.  | 
 **Uri** | **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the album.  | 
+**IsPlayable** | Pointer to **bool** | Fix by Barben360  | [optional] 
 
 ## Methods
 
@@ -301,6 +302,31 @@ and a boolean to check if the value has been set.
 
 SetUri sets Uri field to given value.
 
+
+### GetIsPlayable
+
+`func (o *AlbumBase) GetIsPlayable() bool`
+
+GetIsPlayable returns the IsPlayable field if non-nil, zero value otherwise.
+
+### GetIsPlayableOk
+
+`func (o *AlbumBase) GetIsPlayableOk() (*bool, bool)`
+
+GetIsPlayableOk returns a tuple with the IsPlayable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsPlayable
+
+`func (o *AlbumBase) SetIsPlayable(v bool)`
+
+SetIsPlayable sets IsPlayable field to given value.
+
+### HasIsPlayable
+
+`func (o *AlbumBase) HasIsPlayable() bool`
+
+HasIsPlayable returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

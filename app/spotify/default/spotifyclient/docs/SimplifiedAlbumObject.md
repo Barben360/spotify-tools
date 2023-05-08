@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Restrictions** | Pointer to [**AlbumBaseRestrictions**](AlbumBaseRestrictions.md) |  | [optional] 
 **Type** | **string** | The object type.  | 
 **Uri** | **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the album.  | 
+**IsPlayable** | Pointer to **bool** | Fix by Barben360  | [optional] 
 **AlbumGroup** | Pointer to **string** | The field is present when getting an artist&#39;s albums. Compare to album_type this field represents relationship between the artist and the album.  | [optional] 
 **Artists** | [**[]SimplifiedArtistObject**](SimplifiedArtistObject.md) | The artists of the album. Each artist object includes a link in &#x60;href&#x60; to more detailed information about the artist.  | 
 
@@ -303,6 +304,31 @@ and a boolean to check if the value has been set.
 
 SetUri sets Uri field to given value.
 
+
+### GetIsPlayable
+
+`func (o *SimplifiedAlbumObject) GetIsPlayable() bool`
+
+GetIsPlayable returns the IsPlayable field if non-nil, zero value otherwise.
+
+### GetIsPlayableOk
+
+`func (o *SimplifiedAlbumObject) GetIsPlayableOk() (*bool, bool)`
+
+GetIsPlayableOk returns a tuple with the IsPlayable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsPlayable
+
+`func (o *SimplifiedAlbumObject) SetIsPlayable(v bool)`
+
+SetIsPlayable sets IsPlayable field to given value.
+
+### HasIsPlayable
+
+`func (o *SimplifiedAlbumObject) HasIsPlayable() bool`
+
+HasIsPlayable returns a boolean if a field has been set.
 
 ### GetAlbumGroup
 

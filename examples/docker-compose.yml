@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  spotify-tools-grosses-tetes-filters:
+    image: barben360/spotify-tools:v1.0.0
+    container_name: spotify-tools-grosses-tetes-filters
+    restart: unless-stopped
+    environment:
+      - SPOTIFY_TOOLS_CLIENT_ID
+      - SPOTIFY_TOOLS_CLIENT_SECRET
+    ports:
+      - 8080:8080
+    volumes:
+      - ./playlist-filter:/playlist-filter
+    command: filter-playlists -f /playlist-filter/grosses-tetes.json --daemon -p 300s --dev

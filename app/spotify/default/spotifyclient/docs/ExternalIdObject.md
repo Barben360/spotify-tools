@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Isrc** | Pointer to **string** | [International Standard Recording Code](http://en.wikipedia.org/wiki/International_Standard_Recording_Code)  | [optional] 
 **Ean** | Pointer to **string** | [International Article Number](http://en.wikipedia.org/wiki/International_Article_Number_%28EAN%29)  | [optional] 
 **Upc** | Pointer to **string** | [Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code)  | [optional] 
+**Spotify** | Pointer to **string** | Fix by Barben360  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetUpc sets Upc field to given value.
 `func (o *ExternalIdObject) HasUpc() bool`
 
 HasUpc returns a boolean if a field has been set.
+
+### GetSpotify
+
+`func (o *ExternalIdObject) GetSpotify() string`
+
+GetSpotify returns the Spotify field if non-nil, zero value otherwise.
+
+### GetSpotifyOk
+
+`func (o *ExternalIdObject) GetSpotifyOk() (*string, bool)`
+
+GetSpotifyOk returns a tuple with the Spotify field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSpotify
+
+`func (o *ExternalIdObject) SetSpotify(v string)`
+
+SetSpotify sets Spotify field to given value.
+
+### HasSpotify
+
+`func (o *ExternalIdObject) HasSpotify() bool`
+
+HasSpotify returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

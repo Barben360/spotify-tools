@@ -43,6 +43,8 @@ type TrackObjectAlbum struct {
 	Type string `json:"type"`
 	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the album. 
 	Uri string `json:"uri"`
+	// Fix by Barben360 
+	IsPlayable *bool `json:"is_playable,omitempty"`
 	// The field is present when getting an artist's albums. Compare to album_type this field represents relationship between the artist and the album. 
 	AlbumGroup *string `json:"album_group,omitempty"`
 	// The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist. 
@@ -399,6 +401,38 @@ func (o *TrackObjectAlbum) SetUri(v string) {
 	o.Uri = v
 }
 
+// GetIsPlayable returns the IsPlayable field value if set, zero value otherwise.
+func (o *TrackObjectAlbum) GetIsPlayable() bool {
+	if o == nil || IsNil(o.IsPlayable) {
+		var ret bool
+		return ret
+	}
+	return *o.IsPlayable
+}
+
+// GetIsPlayableOk returns a tuple with the IsPlayable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TrackObjectAlbum) GetIsPlayableOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsPlayable) {
+		return nil, false
+	}
+	return o.IsPlayable, true
+}
+
+// HasIsPlayable returns a boolean if a field has been set.
+func (o *TrackObjectAlbum) HasIsPlayable() bool {
+	if o != nil && !IsNil(o.IsPlayable) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsPlayable gets a reference to the given bool and assigns it to the IsPlayable field.
+func (o *TrackObjectAlbum) SetIsPlayable(v bool) {
+	o.IsPlayable = &v
+}
+
 // GetAlbumGroup returns the AlbumGroup field value if set, zero value otherwise.
 func (o *TrackObjectAlbum) GetAlbumGroup() string {
 	if o == nil || IsNil(o.AlbumGroup) {
@@ -480,6 +514,9 @@ func (o TrackObjectAlbum) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["type"] = o.Type
 	toSerialize["uri"] = o.Uri
+	if !IsNil(o.IsPlayable) {
+		toSerialize["is_playable"] = o.IsPlayable
+	}
 	if !IsNil(o.AlbumGroup) {
 		toSerialize["album_group"] = o.AlbumGroup
 	}

@@ -10047,6 +10047,10 @@ components:
             The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the album.
           example: spotify:album:2up3OPMp9Tb4dAKM2erWXQ
           type: string
+        is_playable:
+          description: |
+            Fix by Barben360
+          type: boolean
       required:
       - album_type
       - available_markets
@@ -10266,6 +10270,10 @@ components:
         upc:
           description: |
             [Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code)
+          type: string
+        spotify:
+          description: |
+            Fix by Barben360
           type: string
       type: object
       x-spotify-docs-type: ExternalIdObject
