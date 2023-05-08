@@ -156,12 +156,9 @@ func (s *Spotify) UpdatePlaylistFilter(ctx context.Context, filterConfig *spotif
 	}
 
 	// Making target playlist items map
-	targetPlaylistItemsMap := map[spotify.ItemType]map[string]*spotify.Item{
-		spotify.ItemTypeTrack:   make(map[string]*spotify.Item),
-		spotify.ItemTypeEpisode: make(map[string]*spotify.Item),
-	}
+	targetPlaylistItemsMap := make(map[string]*spotify.Item)
 	for _, item := range targetPlaylist.Items {
-		targetPlaylistItemsMap[item.Type][item.ID] = item
+		targetPlaylistItemsMap[item.ID] = item
 	}
 
 	itemsToAdd := make([]*spotify.Item, 0)
@@ -195,7 +192,7 @@ func (s *Spotify) UpdatePlaylistFilter(ctx context.Context, filterConfig *spotif
 			l := &logger.Logger{Logger: logger.FromContext(ctx).With(zap.String("item_id", item.ID), zap.String("item_name", item.Name), zap.String("item_type", string(item.Type)))}
 			ctx := l.ToContext(ctx)
 			// Is it already in target playlist?
-			if _, ok := targetPlaylistItemsMap[item.Type][item.ID]; ok {
+			if _, ok := targetPlaylistItemsMap[item.ID]; ok {
 				logger.FromContext(ctx).Debug("skipping item already in target playlist")
 				continue
 			}

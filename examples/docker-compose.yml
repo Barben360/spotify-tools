@@ -3,6 +3,7 @@ version: "3.7"
 services:
   spotify-tools-grosses-tetes-filters:
     image: barben360/spotify-tools:v1.0.0
+    pull_policy: always
     container_name: spotify-tools-grosses-tetes-filters
     restart: unless-stopped
     environment:
