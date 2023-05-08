@@ -54,7 +54,7 @@ func (s *Spotify) GetNewUserToken(ctx context.Context) (string, error) {
 		logger.FromContext(ctx).Error("failed to create or truncate cache config file, skipping", zap.Error(err))
 	} else {
 		err := json.NewEncoder(f).Encode(spotifyConfig{
-			Auth: &authConfig{
+			Auth: authConfig{
 				AccessToken:  s.accessToken,
 				RefreshToken: s.refreshToken,
 			},

@@ -39,12 +39,12 @@ type Spotify struct {
 }
 
 type spotifyConfig struct {
-	Auth *authConfig `json:"auth"`
+	Auth authConfig `json:"auth,omitempty"`
 }
 
 type authConfig struct {
-	AccessToken  string `json:"access_token"`
-	RefreshToken string `json:"refresh_token"`
+	AccessToken  string `json:"access_token,omitempty"`
+	RefreshToken string `json:"refresh_token,omitempty"`
 }
 
 func New(
