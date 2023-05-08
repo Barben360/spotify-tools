@@ -1,0 +1,85 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Version",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}/main.go",
+      "args": [
+        "--version"
+      ],
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "name": "Auth test",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}/main.go",
+      "args": [
+        "auth-test",
+        "--dev"
+      ],
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "name": "Get playlist",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}/main.go",
+      "args": [
+        "get-playlist",
+        "--dev",
+        "37i9dQZF1DXdrln2UyZD7F"
+      ],
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "name": "Get show",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}/main.go",
+      "args": [
+        "get-show",
+        "--dev",
+        "0hBA2K37Vo1zoyShv1yPCK"
+      ],
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "name": "Filter playlists",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}/main.go",
+      "args": [
+        "filter-playlists",
+        "--dev",
+        "-f",
+        "${workspaceFolder}/examples/playlist-filter/name-filter.json"
+      ],
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "name": "Filter playlists (Grosses Têtes)",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}/main.go",
+      "args": [
+        "filter-playlists",
+        "--dev",
+        "-f",
+        "${workspaceFolder}/examples/playlist-filter/grosses-tetes.json"
+      ],
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

@@ -30,15 +30,25 @@ func (c *CLI) filterPlaylistsHandler(ctx context.Context, appInstance *app.App, 
 	if err != nil {
 		return err
 	}
-	errs := []error{}
-	for _, config := range cfg {
-		err := appInstance.PlaylistFilter(ctx, config)
-		if err != nil {
-			errs = append(errs, err)
+	errChan := make(chan error)
+	go func() {
+		for {
+			errs := []error{}
+			for _, config := range cfg {
+				err := appInstance.PlaylistFilter(ctx, config)
+				if err != nil {
+					errs = append(errs, err)
+				}
+			}
+			if len(errs) > 0 {
+				errChan <- errors.Join(errs...)
+				return
+			}
+			if !c.daemonMode {
+				errChan <- nil
+				return
+			}
 		}
-	}
-	if len(errs) > 0 {
-		return errors.Join(errs...)
-	}
-	return nil
+	}()
+	return <-errChan
 }
