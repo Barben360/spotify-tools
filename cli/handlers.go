@@ -3,6 +3,7 @@ package cli
 import (
 	"context"
 	"errors"
+	"time"
 
 	"github.com/Barben360/spotify-tools/app"
 	"github.com/Barben360/spotify-tools/app/spotify"
@@ -47,6 +48,12 @@ func (c *CLI) filterPlaylistsHandler(ctx context.Context, appInstance *app.App, 
 			if !c.daemonMode {
 				errChan <- nil
 				return
+			}
+			select {
+			case <-ctx.Done():
+				errChan <- nil
+			case <-time.After(c.period):
+				// continue
 			}
 		}
 	}()

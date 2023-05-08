@@ -80,6 +80,23 @@
         "${workspaceFolder}/examples/playlist-filter/grosses-tetes.json"
       ],
       "envFile": "${workspaceFolder}/.env"
-    }
+    },
+    {
+      "name": "Filter playlists (daemon)",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto",
+      "program": "${workspaceFolder}/main.go",
+      "args": [
+        "filter-playlists",
+        "--dev",
+        "-f",
+        "${workspaceFolder}/examples/playlist-filter/name-filter.json",
+        "--daemon",
+        "-p",
+        "10s"
+      ],
+      "envFile": "${workspaceFolder}/.env"
+    },
   ]
 }
