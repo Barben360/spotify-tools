@@ -39,44 +39,24 @@ func TrackObjectAsPlaylistTrackObjectTrack(v *TrackObject) PlaylistTrackObjectTr
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *PlaylistTrackObjectTrack) UnmarshalJSON(data []byte) error {
 	var err error
-	match := 0
 	// try to unmarshal data into EpisodeObject
-	err = newStrictDecoder(data).Decode(&dst.EpisodeObject)
-	if err == nil {
-		jsonEpisodeObject, _ := json.Marshal(dst.EpisodeObject)
-		if string(jsonEpisodeObject) == "{}" { // empty struct
-			dst.EpisodeObject = nil
-		} else {
-			match++
-		}
+	err = json.Unmarshal(data, &dst.EpisodeObject)
+	if err == nil && dst.EpisodeObject.Type == "episode" { 
+			return nil
 	} else {
 		dst.EpisodeObject = nil
-	}
-
-	// try to unmarshal data into TrackObject
-	err = newStrictDecoder(data).Decode(&dst.TrackObject)
-	if err == nil {
-		jsonTrackObject, _ := json.Marshal(dst.TrackObject)
-		if string(jsonTrackObject) == "{}" { // empty struct
-			dst.TrackObject = nil
+		// try to unmarshal data into TrackObject
+		err = json.Unmarshal(data, &dst.TrackObject)
+		if err == nil {
+			jsonTrackObject, _ := json.Marshal(dst.TrackObject)
+			if string(jsonTrackObject) == "{}" { // empty struct
+				return fmt.Errorf("data failed to match schemas in oneOf(PlaylistTrackObjectTrack)")
+			} 
 		} else {
-			match++
+			return fmt.Errorf("data failed to match schemas in oneOf(PlaylistTrackObjectTrack)")
 		}
-	} else {
-		dst.TrackObject = nil
 	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.EpisodeObject = nil
-		dst.TrackObject = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(PlaylistTrackObjectTrack)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(PlaylistTrackObjectTrack)")
-	}
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
@@ -144,5 +124,3 @@ func (v *NullablePlaylistTrackObjectTrack) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
