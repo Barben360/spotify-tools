@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Spotify** | Pointer to **string** | The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object.  | [optional] 
+**Spotify** | Pointer to **string** | The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.  | [optional] 
 
 ## Methods
 

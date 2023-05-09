@@ -34,7 +34,7 @@ func (r GenresApiGetRecommendationGenresRequest) Execute() (*GetRecommendationGe
 /*
 GetRecommendationGenres Get Available Genre Seeds 
 
-Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/#/operations/get-recommendations).
+Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/get-recommendations).
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

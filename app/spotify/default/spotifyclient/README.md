@@ -103,7 +103,6 @@ Class | Method | HTTP request | Description
 *ArtistsApi* | [**GetAnArtistsTopTracks**](docs/ArtistsApi.md#getanartiststoptracks) | **Get** /artists/{id}/top-tracks | Get Artist&#39;s Top Tracks 
 *ArtistsApi* | [**GetFollowed**](docs/ArtistsApi.md#getfollowed) | **Get** /me/following | Get Followed Artists 
 *ArtistsApi* | [**GetMultipleArtists**](docs/ArtistsApi.md#getmultipleartists) | **Get** /artists | Get Several Artists 
-*ArtistsApi* | [**GetUsersTopArtists**](docs/ArtistsApi.md#getuserstopartists) | **Get** /me/top/artists | Get User&#39;s Top Artists 
 *ArtistsApi* | [**UnfollowArtistsUsers**](docs/ArtistsApi.md#unfollowartistsusers) | **Delete** /me/following | Unfollow Artists or Users 
 *AudiobooksApi* | [**CheckUsersSavedAudiobooks**](docs/AudiobooksApi.md#checkuserssavedaudiobooks) | **Get** /me/audiobooks/contains | Check User&#39;s Saved Audiobooks 
 *AudiobooksApi* | [**GetAnAudiobook**](docs/AudiobooksApi.md#getanaudiobook) | **Get** /audiobooks/{id} | Get an Audiobook 
@@ -142,8 +141,7 @@ Class | Method | HTTP request | Description
 *LibraryApi* | [**GetUsersSavedEpisodes**](docs/LibraryApi.md#getuserssavedepisodes) | **Get** /me/episodes | Get User&#39;s Saved Episodes 
 *LibraryApi* | [**GetUsersSavedShows**](docs/LibraryApi.md#getuserssavedshows) | **Get** /me/shows | Get User&#39;s Saved Shows 
 *LibraryApi* | [**GetUsersSavedTracks**](docs/LibraryApi.md#getuserssavedtracks) | **Get** /me/tracks | Get User&#39;s Saved Tracks 
-*LibraryApi* | [**GetUsersTopArtists**](docs/LibraryApi.md#getuserstopartists) | **Get** /me/top/artists | Get User&#39;s Top Artists 
-*LibraryApi* | [**GetUsersTopTracks**](docs/LibraryApi.md#getuserstoptracks) | **Get** /me/top/tracks | Get User&#39;s Top Tracks 
+*LibraryApi* | [**GetUsersTopArtistsAndTracks**](docs/LibraryApi.md#getuserstopartistsandtracks) | **Get** /me/top/{type} | Get User&#39;s Top Items 
 *LibraryApi* | [**RemoveAlbumsUser**](docs/LibraryApi.md#removealbumsuser) | **Delete** /me/albums | Remove Users&#39; Saved Albums 
 *LibraryApi* | [**RemoveAudiobooksUser**](docs/LibraryApi.md#removeaudiobooksuser) | **Delete** /me/audiobooks | Remove User&#39;s Saved Audiobooks 
 *LibraryApi* | [**RemoveEpisodesUser**](docs/LibraryApi.md#removeepisodesuser) | **Delete** /me/episodes | Remove User&#39;s Saved Episodes 
@@ -207,7 +205,7 @@ Class | Method | HTTP request | Description
 *TracksApi* | [**GetSeveralTracks**](docs/TracksApi.md#getseveraltracks) | **Get** /tracks | Get Several Tracks 
 *TracksApi* | [**GetTrack**](docs/TracksApi.md#gettrack) | **Get** /tracks/{id} | Get Track 
 *TracksApi* | [**GetUsersSavedTracks**](docs/TracksApi.md#getuserssavedtracks) | **Get** /me/tracks | Get User&#39;s Saved Tracks 
-*TracksApi* | [**GetUsersTopTracks**](docs/TracksApi.md#getuserstoptracks) | **Get** /me/top/tracks | Get User&#39;s Top Tracks 
+*TracksApi* | [**GetUsersTopArtistsAndTracks**](docs/TracksApi.md#getuserstopartistsandtracks) | **Get** /me/top/{type} | Get User&#39;s Top Items 
 *TracksApi* | [**RemoveTracksPlaylist**](docs/TracksApi.md#removetracksplaylist) | **Delete** /playlists/{playlist_id}/tracks | Remove Playlist Items 
 *TracksApi* | [**RemoveTracksUser**](docs/TracksApi.md#removetracksuser) | **Delete** /me/tracks | Remove User&#39;s Saved Tracks 
 *TracksApi* | [**ReorderOrReplacePlaylistsTracks**](docs/TracksApi.md#reorderorreplaceplayliststracks) | **Put** /playlists/{playlist_id}/tracks | Update Playlist Items 
@@ -220,8 +218,7 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**GetFollowed**](docs/UsersApi.md#getfollowed) | **Get** /me/following | Get Followed Artists 
 *UsersApi* | [**GetListUsersPlaylists**](docs/UsersApi.md#getlistusersplaylists) | **Get** /users/{user_id}/playlists | Get User&#39;s Playlists 
 *UsersApi* | [**GetUsersProfile**](docs/UsersApi.md#getusersprofile) | **Get** /users/{user_id} | Get User&#39;s Profile 
-*UsersApi* | [**GetUsersTopArtists**](docs/UsersApi.md#getuserstopartists) | **Get** /me/top/artists | Get User&#39;s Top Artists 
-*UsersApi* | [**GetUsersTopTracks**](docs/UsersApi.md#getuserstoptracks) | **Get** /me/top/tracks | Get User&#39;s Top Tracks 
+*UsersApi* | [**GetUsersTopArtistsAndTracks**](docs/UsersApi.md#getuserstopartistsandtracks) | **Get** /me/top/{type} | Get User&#39;s Top Items 
 *UsersApi* | [**UnfollowArtistsUsers**](docs/UsersApi.md#unfollowartistsusers) | **Delete** /me/following | Unfollow Artists or Users 
 *UsersApi* | [**UnfollowPlaylist**](docs/UsersApi.md#unfollowplaylist) | **Delete** /playlists/{playlist_id}/followers | Unfollow Playlist 
 
@@ -309,6 +306,9 @@ Class | Method | HTTP request | Description
  - [GetRecommendationGenres200Response](docs/GetRecommendationGenres200Response.md)
  - [GetSeveralAudioFeatures200Response](docs/GetSeveralAudioFeatures200Response.md)
  - [GetSeveralChapters200Response](docs/GetSeveralChapters200Response.md)
+ - [GetUsersTopArtistsAndTracks200Response](docs/GetUsersTopArtistsAndTracks200Response.md)
+ - [GetUsersTopArtistsAndTracks200ResponseAllOf](docs/GetUsersTopArtistsAndTracks200ResponseAllOf.md)
+ - [GetUsersTopArtistsAndTracks200ResponseAllOfItemsInner](docs/GetUsersTopArtistsAndTracks200ResponseAllOfItemsInner.md)
  - [ImageObject](docs/ImageObject.md)
  - [LinkedTrackObject](docs/LinkedTrackObject.md)
  - [LinkedTrackObjectExternalUrls](docs/LinkedTrackObjectExternalUrls.md)
@@ -420,6 +420,7 @@ Class | Method | HTTP request | Description
  - [TrackObject](docs/TrackObject.md)
  - [TrackObjectAlbum](docs/TrackObjectAlbum.md)
  - [TrackObjectExternalIds](docs/TrackObjectExternalIds.md)
+ - [TrackObjectLinkedFrom](docs/TrackObjectLinkedFrom.md)
  - [TrackRestrictionObject](docs/TrackRestrictionObject.md)
  - [TransferAUsersPlaybackRequest](docs/TransferAUsersPlaybackRequest.md)
  - [TuneableTrackObject](docs/TuneableTrackObject.md)

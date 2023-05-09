@@ -17,16 +17,16 @@ import (
 // checks if the SimplifiedTrackObjectLinkedFrom type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SimplifiedTrackObjectLinkedFrom{}
 
-// SimplifiedTrackObjectLinkedFrom Part of the response when [Track Relinking](/documentation/general/guides/track-relinking-guide/) is applied and is only part of the response if the track linking, in fact, exists. The requested track has been replaced with a different track. The track in the `linked_from` object contains information about the originally requested track.
+// SimplifiedTrackObjectLinkedFrom Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking/) is applied and is only part of the response if the track linking, in fact, exists. The requested track has been replaced with a different track. The track in the `linked_from` object contains information about the originally requested track.
 type SimplifiedTrackObjectLinkedFrom struct {
 	ExternalUrls *LinkedTrackObjectExternalUrls `json:"external_urls,omitempty"`
 	// A link to the Web API endpoint providing full details of the track. 
 	Href *string `json:"href,omitempty"`
-	// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the track. 
+	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track. 
 	Id *string `json:"id,omitempty"`
 	// The object type: \"track\". 
 	Type *string `json:"type,omitempty"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the track. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track. 
 	Uri *string `json:"uri,omitempty"`
 }
 

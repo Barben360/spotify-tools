@@ -23,7 +23,7 @@ type CategoryObject struct {
 	Href string `json:"href"`
 	// The category icon, in various sizes. 
 	Icons []ImageObject `json:"icons"`
-	// The [Spotify category ID](/documentation/web-api/#spotify-uris-and-ids) of the category. 
+	// The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) of the category. 
 	Id string `json:"id"`
 	// The name of the category. 
 	Name string `json:"name"`

@@ -32,9 +32,9 @@ type SimplifiedTrackObject struct {
 	ExternalUrls *SimplifiedTrackObjectExternalUrls `json:"external_urls,omitempty"`
 	// A link to the Web API endpoint providing full details of the track.
 	Href *string `json:"href,omitempty"`
-	// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the track. 
+	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track. 
 	Id *string `json:"id,omitempty"`
-	// Part of the response when [Track Relinking](/documentation/general/guides/track-relinking-guide/) is applied. If `true`, the track is playable in the given market. Otherwise `false`. 
+	// Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking/) is applied. If `true`, the track is playable in the given market. Otherwise `false`. 
 	IsPlayable *bool `json:"is_playable,omitempty"`
 	LinkedFrom *SimplifiedTrackObjectLinkedFrom `json:"linked_from,omitempty"`
 	Restrictions *SimplifiedTrackObjectRestrictions `json:"restrictions,omitempty"`
@@ -46,7 +46,7 @@ type SimplifiedTrackObject struct {
 	TrackNumber *int32 `json:"track_number,omitempty"`
 	// The object type: \"track\". 
 	Type *string `json:"type,omitempty"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the track. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track. 
 	Uri *string `json:"uri,omitempty"`
 	// Whether or not the track is from a local file. 
 	IsLocal *bool `json:"is_local,omitempty"`

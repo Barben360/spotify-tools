@@ -611,7 +611,8 @@ func (r LibraryApiCheckUsersSavedEpisodesRequest) Execute() ([]bool, *http.Respo
 /*
 CheckUsersSavedEpisodes Check User's Saved Episodes 
 
-Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.
+Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.<br/>
+This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer)..
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1039,7 +1040,7 @@ func (r LibraryApiCreatePlaylistRequest) Execute() (*PlaylistObject, *http.Respo
 CreatePlaylist Create Playlist 
 
 Create a playlist for a Spotify user. (The playlist will be empty until
-you [add tracks](/documentation/web-api/reference/#/operations/add-tracks-to-playlist).)
+you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1963,7 +1964,8 @@ func (r LibraryApiGetUsersSavedEpisodesRequest) Execute() (*PagingSavedEpisodeOb
 /*
 GetUsersSavedEpisodes Get User's Saved Episodes 
 
-Get a list of the episodes saved in the current Spotify user's library.
+Get a list of the episodes saved in the current Spotify user's library.<br/>
+This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2402,224 +2404,69 @@ func (a *LibraryApiService) GetUsersSavedTracksExecute(r LibraryApiGetUsersSaved
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type LibraryApiGetUsersTopArtistsRequest struct {
+type LibraryApiGetUsersTopArtistsAndTracksRequest struct {
 	ctx context.Context
 	ApiService *LibraryApiService
+	type_ string
 	timeRange *string
 	limit *int32
 	offset *int32
 }
 
-func (r LibraryApiGetUsersTopArtistsRequest) TimeRange(timeRange string) LibraryApiGetUsersTopArtistsRequest {
+func (r LibraryApiGetUsersTopArtistsAndTracksRequest) TimeRange(timeRange string) LibraryApiGetUsersTopArtistsAndTracksRequest {
 	r.timeRange = &timeRange
 	return r
 }
 
-func (r LibraryApiGetUsersTopArtistsRequest) Limit(limit int32) LibraryApiGetUsersTopArtistsRequest {
+func (r LibraryApiGetUsersTopArtistsAndTracksRequest) Limit(limit int32) LibraryApiGetUsersTopArtistsAndTracksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r LibraryApiGetUsersTopArtistsRequest) Offset(offset int32) LibraryApiGetUsersTopArtistsRequest {
+func (r LibraryApiGetUsersTopArtistsAndTracksRequest) Offset(offset int32) LibraryApiGetUsersTopArtistsAndTracksRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r LibraryApiGetUsersTopArtistsRequest) Execute() (*PagingArtistObject, *http.Response, error) {
-	return r.ApiService.GetUsersTopArtistsExecute(r)
+func (r LibraryApiGetUsersTopArtistsAndTracksRequest) Execute() (*GetUsersTopArtistsAndTracks200Response, *http.Response, error) {
+	return r.ApiService.GetUsersTopArtistsAndTracksExecute(r)
 }
 
 /*
-GetUsersTopArtists Get User's Top Artists 
+GetUsersTopArtistsAndTracks Get User's Top Items 
 
-Get the current user's top artists based on calculated affinity.
+Get the current user's top artists or tracks based on calculated affinity.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return LibraryApiGetUsersTopArtistsRequest
+ @param type_
+ @return LibraryApiGetUsersTopArtistsAndTracksRequest
 */
-func (a *LibraryApiService) GetUsersTopArtists(ctx context.Context) LibraryApiGetUsersTopArtistsRequest {
-	return LibraryApiGetUsersTopArtistsRequest{
+func (a *LibraryApiService) GetUsersTopArtistsAndTracks(ctx context.Context, type_ string) LibraryApiGetUsersTopArtistsAndTracksRequest {
+	return LibraryApiGetUsersTopArtistsAndTracksRequest{
 		ApiService: a,
 		ctx: ctx,
+		type_: type_,
 	}
 }
 
 // Execute executes the request
-//  @return PagingArtistObject
-func (a *LibraryApiService) GetUsersTopArtistsExecute(r LibraryApiGetUsersTopArtistsRequest) (*PagingArtistObject, *http.Response, error) {
+//  @return GetUsersTopArtistsAndTracks200Response
+func (a *LibraryApiService) GetUsersTopArtistsAndTracksExecute(r LibraryApiGetUsersTopArtistsAndTracksRequest) (*GetUsersTopArtistsAndTracks200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PagingArtistObject
+		localVarReturnValue  *GetUsersTopArtistsAndTracks200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LibraryApiService.GetUsersTopArtists")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LibraryApiService.GetUsersTopArtistsAndTracks")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/me/top/artists"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.timeRange != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "time_range", r.timeRange, "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetAnAlbum401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetAnAlbum401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v GetAnAlbum401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type LibraryApiGetUsersTopTracksRequest struct {
-	ctx context.Context
-	ApiService *LibraryApiService
-	timeRange *string
-	limit *int32
-	offset *int32
-}
-
-func (r LibraryApiGetUsersTopTracksRequest) TimeRange(timeRange string) LibraryApiGetUsersTopTracksRequest {
-	r.timeRange = &timeRange
-	return r
-}
-
-func (r LibraryApiGetUsersTopTracksRequest) Limit(limit int32) LibraryApiGetUsersTopTracksRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r LibraryApiGetUsersTopTracksRequest) Offset(offset int32) LibraryApiGetUsersTopTracksRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r LibraryApiGetUsersTopTracksRequest) Execute() (*PagingTrackObject, *http.Response, error) {
-	return r.ApiService.GetUsersTopTracksExecute(r)
-}
-
-/*
-GetUsersTopTracks Get User's Top Tracks 
-
-Get the current user's top tracks based on calculated affinity.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return LibraryApiGetUsersTopTracksRequest
-*/
-func (a *LibraryApiService) GetUsersTopTracks(ctx context.Context) LibraryApiGetUsersTopTracksRequest {
-	return LibraryApiGetUsersTopTracksRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return PagingTrackObject
-func (a *LibraryApiService) GetUsersTopTracksExecute(r LibraryApiGetUsersTopTracksRequest) (*PagingTrackObject, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PagingTrackObject
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LibraryApiService.GetUsersTopTracks")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/me/top/tracks"
+	localVarPath := localBasePath + "/me/top/{type}"
+	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3014,7 +2861,8 @@ func (r LibraryApiRemoveEpisodesUserRequest) Execute() (*http.Response, error) {
 /*
 RemoveEpisodesUser Remove User's Saved Episodes 
 
-Remove one or more episodes from the current user's library.
+Remove one or more episodes from the current user's library.<br/>
+This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -3710,7 +3558,8 @@ func (r LibraryApiSaveEpisodesUserRequest) Execute() (*http.Response, error) {
 /*
 SaveEpisodesUser Save Episodes for Current User 
 
-Save one or more episodes to the current user's library.
+Save one or more episodes to the current user's library.<br/>
+This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

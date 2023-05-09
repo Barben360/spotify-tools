@@ -4,8 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Episode** | Pointer to **bool** | Fix by Barben360  | [optional] 
-**Track** | Pointer to **bool** | Fix by Barben360  | [optional] 
 **Album** | Pointer to [**TrackObjectAlbum**](TrackObjectAlbum.md) |  | [optional] 
 **Artists** | Pointer to [**[]ArtistObject**](ArtistObject.md) | The artists who performed the track. Each artist object includes a link in &#x60;href&#x60; to more detailed information about the artist.  | [optional] 
 **AvailableMarkets** | Pointer to **[]string** | A list of the countries in which the track can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.  | [optional] 
@@ -15,16 +13,16 @@ Name | Type | Description | Notes
 **ExternalIds** | Pointer to [**TrackObjectExternalIds**](TrackObjectExternalIds.md) |  | [optional] 
 **ExternalUrls** | Pointer to [**LinkedTrackObjectExternalUrls**](LinkedTrackObjectExternalUrls.md) |  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint providing full details of the track.  | [optional] 
-**Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the track.  | [optional] 
-**IsPlayable** | Pointer to **bool** | Part of the response when [Track Relinking](/documentation/general/guides/track-relinking-guide/) is applied. If &#x60;true&#x60;, the track is playable in the given market. Otherwise &#x60;false&#x60;.  | [optional] 
-**LinkedFrom** | Pointer to [**SimplifiedTrackObjectLinkedFrom**](SimplifiedTrackObjectLinkedFrom.md) |  | [optional] 
+**Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.  | [optional] 
+**IsPlayable** | Pointer to **bool** | Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied. If &#x60;true&#x60;, the track is playable in the given market. Otherwise &#x60;false&#x60;.  | [optional] 
+**LinkedFrom** | Pointer to [**TrackObjectLinkedFrom**](TrackObjectLinkedFrom.md) |  | [optional] 
 **Restrictions** | Pointer to [**SimplifiedTrackObjectRestrictions**](SimplifiedTrackObjectRestrictions.md) |  | [optional] 
 **Name** | Pointer to **string** | The name of the track.  | [optional] 
 **Popularity** | Pointer to **int32** | The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.&lt;br/&gt;The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.&lt;br/&gt;Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently. Artist and album popularity is derived mathematically from track popularity. _**Note**: the popularity value may lag actual popularity by a few days: the value is not updated in real time._  | [optional] 
 **PreviewUrl** | Pointer to **string** | A link to a 30 second preview (MP3 format) of the track. Can be &#x60;null&#x60;  | [optional] 
 **TrackNumber** | Pointer to **int32** | The number of the track. If an album has several discs, the track number is the number on the specified disc.  | [optional] 
 **Type** | Pointer to **string** | The object type: \&quot;track\&quot;.  | [optional] 
-**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the track.  | [optional] 
+**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.  | [optional] 
 **IsLocal** | Pointer to **bool** | Whether or not the track is from a local file.  | [optional] 
 
 ## Methods
@@ -45,56 +43,6 @@ will change when the set of required properties is changed
 NewSavedTrackObjectTrackWithDefaults instantiates a new SavedTrackObjectTrack object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetEpisode
-
-`func (o *SavedTrackObjectTrack) GetEpisode() bool`
-
-GetEpisode returns the Episode field if non-nil, zero value otherwise.
-
-### GetEpisodeOk
-
-`func (o *SavedTrackObjectTrack) GetEpisodeOk() (*bool, bool)`
-
-GetEpisodeOk returns a tuple with the Episode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEpisode
-
-`func (o *SavedTrackObjectTrack) SetEpisode(v bool)`
-
-SetEpisode sets Episode field to given value.
-
-### HasEpisode
-
-`func (o *SavedTrackObjectTrack) HasEpisode() bool`
-
-HasEpisode returns a boolean if a field has been set.
-
-### GetTrack
-
-`func (o *SavedTrackObjectTrack) GetTrack() bool`
-
-GetTrack returns the Track field if non-nil, zero value otherwise.
-
-### GetTrackOk
-
-`func (o *SavedTrackObjectTrack) GetTrackOk() (*bool, bool)`
-
-GetTrackOk returns a tuple with the Track field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTrack
-
-`func (o *SavedTrackObjectTrack) SetTrack(v bool)`
-
-SetTrack sets Track field to given value.
-
-### HasTrack
-
-`func (o *SavedTrackObjectTrack) HasTrack() bool`
-
-HasTrack returns a boolean if a field has been set.
 
 ### GetAlbum
 
@@ -373,20 +321,20 @@ HasIsPlayable returns a boolean if a field has been set.
 
 ### GetLinkedFrom
 
-`func (o *SavedTrackObjectTrack) GetLinkedFrom() SimplifiedTrackObjectLinkedFrom`
+`func (o *SavedTrackObjectTrack) GetLinkedFrom() TrackObjectLinkedFrom`
 
 GetLinkedFrom returns the LinkedFrom field if non-nil, zero value otherwise.
 
 ### GetLinkedFromOk
 
-`func (o *SavedTrackObjectTrack) GetLinkedFromOk() (*SimplifiedTrackObjectLinkedFrom, bool)`
+`func (o *SavedTrackObjectTrack) GetLinkedFromOk() (*TrackObjectLinkedFrom, bool)`
 
 GetLinkedFromOk returns a tuple with the LinkedFrom field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinkedFrom
 
-`func (o *SavedTrackObjectTrack) SetLinkedFrom(v SimplifiedTrackObjectLinkedFrom)`
+`func (o *SavedTrackObjectTrack) SetLinkedFrom(v TrackObjectLinkedFrom)`
 
 SetLinkedFrom sets LinkedFrom field to given value.
 

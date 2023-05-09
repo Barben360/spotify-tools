@@ -19,7 +19,7 @@ var _ MappedNullable = &SimplifiedTrackObjectExternalUrls{}
 
 // SimplifiedTrackObjectExternalUrls External URLs for this track. 
 type SimplifiedTrackObjectExternalUrls struct {
-	// The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object. 
+	// The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object. 
 	Spotify *string `json:"spotify,omitempty"`
 }
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Type** | Pointer to **string** | The object type, e.g. \&quot;artist\&quot;, \&quot;playlist\&quot;, \&quot;album\&quot;, \&quot;show\&quot;.  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint providing full details of the track. | [optional] 
 **ExternalUrls** | Pointer to [**ContextObjectExternalUrls**](ContextObjectExternalUrls.md) |  | [optional] 
-**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the context.  | [optional] 
+**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the context.  | [optional] 
 
 ## Methods
 

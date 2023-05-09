@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Country** | Pointer to **string** | The country of the user, as set in the user&#39;s account profile. An [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _This field is only available when the current user has granted access to the [user-read-private](/documentation/general/guides/authorization-guide/#list-of-scopes) scope._  | [optional] 
+**Country** | Pointer to **string** | The country of the user, as set in the user&#39;s account profile. An [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _This field is only available when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._  | [optional] 
 **DisplayName** | Pointer to **string** | The name displayed on the user&#39;s profile. &#x60;null&#x60; if not available.  | [optional] 
-**Email** | Pointer to **string** | The user&#39;s email address, as entered by the user when creating their account. _**Important!** This email address is unverified; there is no proof that it actually belongs to the user._ _This field is only available when the current user has granted access to the [user-read-email](/documentation/general/guides/authorization-guide/#list-of-scopes) scope._  | [optional] 
+**Email** | Pointer to **string** | The user&#39;s email address, as entered by the user when creating their account. _**Important!** This email address is unverified; there is no proof that it actually belongs to the user._ _This field is only available when the current user has granted access to the [user-read-email](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._  | [optional] 
 **ExplicitContent** | Pointer to [**PrivateUserObjectExplicitContent**](PrivateUserObjectExplicitContent.md) |  | [optional] 
 **ExternalUrls** | Pointer to [**PrivateUserObjectExternalUrls**](PrivateUserObjectExternalUrls.md) |  | [optional] 
 **Followers** | Pointer to [**PrivateUserObjectFollowers**](PrivateUserObjectFollowers.md) |  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint for this user.  | [optional] 
-**Id** | Pointer to **string** | The [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids) for the user.  | [optional] 
+**Id** | Pointer to **string** | The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for the user.  | [optional] 
 **Images** | Pointer to [**[]ImageObject**](ImageObject.md) | The user&#39;s profile image. | [optional] 
-**Product** | Pointer to **string** | The user&#39;s Spotify subscription level: \&quot;premium\&quot;, \&quot;free\&quot;, etc. (The subscription level \&quot;open\&quot; can be considered the same as \&quot;free\&quot;.) _This field is only available when the current user has granted access to the [user-read-private](/documentation/general/guides/authorization-guide/#list-of-scopes) scope._  | [optional] 
+**Product** | Pointer to **string** | The user&#39;s Spotify subscription level: \&quot;premium\&quot;, \&quot;free\&quot;, etc. (The subscription level \&quot;open\&quot; can be considered the same as \&quot;free\&quot;.) _This field is only available when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._  | [optional] 
 **Type** | Pointer to **string** | The object type: \&quot;user\&quot;  | [optional] 
-**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the user.  | [optional] 
+**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the user.  | [optional] 
 
 ## Methods
 

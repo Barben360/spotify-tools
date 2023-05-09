@@ -4,8 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Episode** | Pointer to **bool** | Fix by Barben360  | [optional] 
-**Track** | Pointer to **bool** | Fix by Barben360  | [optional] 
 **AudioPreviewUrl** | **string** | A URL to a 30 second preview (MP3 format) of the episode. &#x60;null&#x60; if not available.  | 
 **Description** | **string** | A description of the episode. HTML tags are stripped away from this field, use &#x60;html_description&#x60; field in case HTML tags are needed.  | 
 **HtmlDescription** | **string** | A description of the episode. This field may contain HTML tags.  | 
@@ -13,7 +11,7 @@ Name | Type | Description | Notes
 **Explicit** | **bool** | Whether or not the episode has explicit content (true &#x3D; yes it does; false &#x3D; no it does not OR unknown).  | 
 **ExternalUrls** | [**EpisodeBaseExternalUrls**](EpisodeBaseExternalUrls.md) |  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the episode.  | 
-**Id** | **string** | The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the episode.  | 
+**Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the episode.  | 
 **Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the episode in various sizes, widest first.  | 
 **IsExternallyHosted** | **bool** | True if the episode is hosted outside of Spotify&#39;s CDN.  | 
 **IsPlayable** | **bool** | True if the episode is playable in the given market. Otherwise false.  | 
@@ -24,7 +22,7 @@ Name | Type | Description | Notes
 **ReleaseDatePrecision** | **string** | The precision with which &#x60;release_date&#x60; value is known.  | 
 **ResumePoint** | [**EpisodeBaseResumePoint**](EpisodeBaseResumePoint.md) |  | 
 **Type** | **string** | The object type.  | 
-**Uri** | **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the episode.  | 
+**Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode.  | 
 **Restrictions** | Pointer to [**EpisodeBaseRestrictions**](EpisodeBaseRestrictions.md) |  | [optional] 
 
 ## Methods
@@ -45,56 +43,6 @@ will change when the set of required properties is changed
 NewEpisodeBaseWithDefaults instantiates a new EpisodeBase object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetEpisode
-
-`func (o *EpisodeBase) GetEpisode() bool`
-
-GetEpisode returns the Episode field if non-nil, zero value otherwise.
-
-### GetEpisodeOk
-
-`func (o *EpisodeBase) GetEpisodeOk() (*bool, bool)`
-
-GetEpisodeOk returns a tuple with the Episode field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEpisode
-
-`func (o *EpisodeBase) SetEpisode(v bool)`
-
-SetEpisode sets Episode field to given value.
-
-### HasEpisode
-
-`func (o *EpisodeBase) HasEpisode() bool`
-
-HasEpisode returns a boolean if a field has been set.
-
-### GetTrack
-
-`func (o *EpisodeBase) GetTrack() bool`
-
-GetTrack returns the Track field if non-nil, zero value otherwise.
-
-### GetTrackOk
-
-`func (o *EpisodeBase) GetTrackOk() (*bool, bool)`
-
-GetTrackOk returns a tuple with the Track field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTrack
-
-`func (o *EpisodeBase) SetTrack(v bool)`
-
-SetTrack sets Track field to given value.
-
-### HasTrack
-
-`func (o *EpisodeBase) HasTrack() bool`
-
-HasTrack returns a boolean if a field has been set.
 
 ### GetAudioPreviewUrl
 

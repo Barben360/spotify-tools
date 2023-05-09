@@ -23,11 +23,11 @@ type PlaylistObjectOwner struct {
 	Followers *PublicUserObjectFollowers `json:"followers,omitempty"`
 	// A link to the Web API endpoint for this user. 
 	Href *string `json:"href,omitempty"`
-	// The [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids) for this user. 
+	// The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for this user. 
 	Id *string `json:"id,omitempty"`
 	// The object type. 
 	Type *string `json:"type,omitempty"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for this user. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for this user. 
 	Uri *string `json:"uri,omitempty"`
 	// The name displayed on the user's profile. `null` if not available. 
 	DisplayName NullableString `json:"display_name,omitempty"`

@@ -1186,224 +1186,69 @@ func (a *UsersApiService) GetUsersProfileExecute(r UsersApiGetUsersProfileReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type UsersApiGetUsersTopArtistsRequest struct {
+type UsersApiGetUsersTopArtistsAndTracksRequest struct {
 	ctx context.Context
 	ApiService *UsersApiService
+	type_ string
 	timeRange *string
 	limit *int32
 	offset *int32
 }
 
-func (r UsersApiGetUsersTopArtistsRequest) TimeRange(timeRange string) UsersApiGetUsersTopArtistsRequest {
+func (r UsersApiGetUsersTopArtistsAndTracksRequest) TimeRange(timeRange string) UsersApiGetUsersTopArtistsAndTracksRequest {
 	r.timeRange = &timeRange
 	return r
 }
 
-func (r UsersApiGetUsersTopArtistsRequest) Limit(limit int32) UsersApiGetUsersTopArtistsRequest {
+func (r UsersApiGetUsersTopArtistsAndTracksRequest) Limit(limit int32) UsersApiGetUsersTopArtistsAndTracksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r UsersApiGetUsersTopArtistsRequest) Offset(offset int32) UsersApiGetUsersTopArtistsRequest {
+func (r UsersApiGetUsersTopArtistsAndTracksRequest) Offset(offset int32) UsersApiGetUsersTopArtistsAndTracksRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r UsersApiGetUsersTopArtistsRequest) Execute() (*PagingArtistObject, *http.Response, error) {
-	return r.ApiService.GetUsersTopArtistsExecute(r)
+func (r UsersApiGetUsersTopArtistsAndTracksRequest) Execute() (*GetUsersTopArtistsAndTracks200Response, *http.Response, error) {
+	return r.ApiService.GetUsersTopArtistsAndTracksExecute(r)
 }
 
 /*
-GetUsersTopArtists Get User's Top Artists 
+GetUsersTopArtistsAndTracks Get User's Top Items 
 
-Get the current user's top artists based on calculated affinity.
+Get the current user's top artists or tracks based on calculated affinity.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return UsersApiGetUsersTopArtistsRequest
+ @param type_
+ @return UsersApiGetUsersTopArtistsAndTracksRequest
 */
-func (a *UsersApiService) GetUsersTopArtists(ctx context.Context) UsersApiGetUsersTopArtistsRequest {
-	return UsersApiGetUsersTopArtistsRequest{
+func (a *UsersApiService) GetUsersTopArtistsAndTracks(ctx context.Context, type_ string) UsersApiGetUsersTopArtistsAndTracksRequest {
+	return UsersApiGetUsersTopArtistsAndTracksRequest{
 		ApiService: a,
 		ctx: ctx,
+		type_: type_,
 	}
 }
 
 // Execute executes the request
-//  @return PagingArtistObject
-func (a *UsersApiService) GetUsersTopArtistsExecute(r UsersApiGetUsersTopArtistsRequest) (*PagingArtistObject, *http.Response, error) {
+//  @return GetUsersTopArtistsAndTracks200Response
+func (a *UsersApiService) GetUsersTopArtistsAndTracksExecute(r UsersApiGetUsersTopArtistsAndTracksRequest) (*GetUsersTopArtistsAndTracks200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PagingArtistObject
+		localVarReturnValue  *GetUsersTopArtistsAndTracks200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersApiService.GetUsersTopArtists")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersApiService.GetUsersTopArtistsAndTracks")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/me/top/artists"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.timeRange != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "time_range", r.timeRange, "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "offset", r.offset, "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v GetAnAlbum401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v GetAnAlbum401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 429 {
-			var v GetAnAlbum401Response
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type UsersApiGetUsersTopTracksRequest struct {
-	ctx context.Context
-	ApiService *UsersApiService
-	timeRange *string
-	limit *int32
-	offset *int32
-}
-
-func (r UsersApiGetUsersTopTracksRequest) TimeRange(timeRange string) UsersApiGetUsersTopTracksRequest {
-	r.timeRange = &timeRange
-	return r
-}
-
-func (r UsersApiGetUsersTopTracksRequest) Limit(limit int32) UsersApiGetUsersTopTracksRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r UsersApiGetUsersTopTracksRequest) Offset(offset int32) UsersApiGetUsersTopTracksRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r UsersApiGetUsersTopTracksRequest) Execute() (*PagingTrackObject, *http.Response, error) {
-	return r.ApiService.GetUsersTopTracksExecute(r)
-}
-
-/*
-GetUsersTopTracks Get User's Top Tracks 
-
-Get the current user's top tracks based on calculated affinity.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return UsersApiGetUsersTopTracksRequest
-*/
-func (a *UsersApiService) GetUsersTopTracks(ctx context.Context) UsersApiGetUsersTopTracksRequest {
-	return UsersApiGetUsersTopTracksRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return PagingTrackObject
-func (a *UsersApiService) GetUsersTopTracksExecute(r UsersApiGetUsersTopTracksRequest) (*PagingTrackObject, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PagingTrackObject
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersApiService.GetUsersTopTracks")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/me/top/tracks"
+	localVarPath := localBasePath + "/me/top/{type}"
+	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

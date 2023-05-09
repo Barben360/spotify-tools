@@ -41,7 +41,8 @@ func (r EpisodesApiCheckUsersSavedEpisodesRequest) Execute() ([]bool, *http.Resp
 /*
 CheckUsersSavedEpisodes Check User's Saved Episodes 
 
-Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.
+Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.<br/>
+This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer)..
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -655,7 +656,8 @@ func (r EpisodesApiGetUsersSavedEpisodesRequest) Execute() (*PagingSavedEpisodeO
 /*
 GetUsersSavedEpisodes Get User's Saved Episodes 
 
-Get a list of the episodes saved in the current Spotify user's library.
+Get a list of the episodes saved in the current Spotify user's library.<br/>
+This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -808,7 +810,8 @@ func (r EpisodesApiRemoveEpisodesUserRequest) Execute() (*http.Response, error) 
 /*
 RemoveEpisodesUser Remove User's Saved Episodes 
 
-Remove one or more episodes from the current user's library.
+Remove one or more episodes from the current user's library.<br/>
+This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -947,7 +950,8 @@ func (r EpisodesApiSaveEpisodesUserRequest) Execute() (*http.Response, error) {
 /*
 SaveEpisodesUser Save Episodes for Current User 
 
-Save one or more episodes to the current user's library.
+Save one or more episodes to the current user's library.<br/>
+This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

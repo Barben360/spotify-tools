@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExternalUrls** | Pointer to [**ArtistObjectExternalUrls**](ArtistObjectExternalUrls.md) |  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint providing full details of the artist.  | [optional] 
-**Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the artist.  | [optional] 
+**Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.  | [optional] 
 **Name** | Pointer to **string** | The name of the artist.  | [optional] 
 **Type** | Pointer to **string** | The object type.  | [optional] 
-**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the artist.  | [optional] 
+**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist.  | [optional] 
 
 ## Methods
 

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Explicit** | **bool** | Whether or not the show has explicit content (true &#x3D; yes it does; false &#x3D; no it does not OR unknown).  | 
 **ExternalUrls** | [**ShowBaseExternalUrls**](ShowBaseExternalUrls.md) |  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the show.  | 
-**Id** | **string** | The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the show.  | 
+**Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.  | 
 **Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the show in various sizes, widest first.  | 
 **IsExternallyHosted** | **bool** | True if all of the shows episodes are hosted outside of Spotify&#39;s CDN. This field might be &#x60;null&#x60; in some cases.  | 
 **Languages** | **[]string** | A list of the languages used in the show, identified by their [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code.  | 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the episode.  | 
 **Publisher** | **string** | The publisher of the show.  | 
 **Type** | **string** | The object type.  | 
-**Uri** | **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the show.  | 
+**Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the show.  | 
 **TotalEpisodes** | **int32** | The total number of episodes in the show.  | 
 **Episodes** | [**ShowObjectAllOfEpisodes**](ShowObjectAllOfEpisodes.md) |  | 
 

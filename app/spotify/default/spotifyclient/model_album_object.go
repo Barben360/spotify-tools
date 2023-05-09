@@ -28,7 +28,7 @@ type AlbumObject struct {
 	ExternalUrls AlbumBaseExternalUrls `json:"external_urls"`
 	// A link to the Web API endpoint providing full details of the album. 
 	Href string `json:"href"`
-	// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the album. 
+	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the album. 
 	Id string `json:"id"`
 	// The cover art for the album in various sizes, widest first. 
 	Images []ImageObject `json:"images"`
@@ -41,10 +41,8 @@ type AlbumObject struct {
 	Restrictions *AlbumBaseRestrictions `json:"restrictions,omitempty"`
 	// The object type. 
 	Type string `json:"type"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the album. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the album. 
 	Uri string `json:"uri"`
-	// Fix by Barben360 
-	IsPlayable *bool `json:"is_playable,omitempty"`
 	// The artists of the album. Each artist object includes a link in `href` to more detailed information about the artist. 
 	Artists []SimplifiedArtistObject `json:"artists,omitempty"`
 	Tracks *AlbumObjectAllOfTracks `json:"tracks,omitempty"`
@@ -408,38 +406,6 @@ func (o *AlbumObject) SetUri(v string) {
 	o.Uri = v
 }
 
-// GetIsPlayable returns the IsPlayable field value if set, zero value otherwise.
-func (o *AlbumObject) GetIsPlayable() bool {
-	if o == nil || IsNil(o.IsPlayable) {
-		var ret bool
-		return ret
-	}
-	return *o.IsPlayable
-}
-
-// GetIsPlayableOk returns a tuple with the IsPlayable field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AlbumObject) GetIsPlayableOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsPlayable) {
-		return nil, false
-	}
-	return o.IsPlayable, true
-}
-
-// HasIsPlayable returns a boolean if a field has been set.
-func (o *AlbumObject) HasIsPlayable() bool {
-	if o != nil && !IsNil(o.IsPlayable) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsPlayable gets a reference to the given bool and assigns it to the IsPlayable field.
-func (o *AlbumObject) SetIsPlayable(v bool) {
-	o.IsPlayable = &v
-}
-
 // GetArtists returns the Artists field value if set, zero value otherwise.
 func (o *AlbumObject) GetArtists() []SimplifiedArtistObject {
 	if o == nil || IsNil(o.Artists) {
@@ -689,9 +655,6 @@ func (o AlbumObject) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["type"] = o.Type
 	toSerialize["uri"] = o.Uri
-	if !IsNil(o.IsPlayable) {
-		toSerialize["is_playable"] = o.IsPlayable
-	}
 	if !IsNil(o.Artists) {
 		toSerialize["artists"] = o.Artists
 	}

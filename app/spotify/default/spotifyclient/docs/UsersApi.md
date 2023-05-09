@@ -12,8 +12,7 @@ Method | HTTP request | Description
 [**GetFollowed**](UsersApi.md#GetFollowed) | **Get** /me/following | Get Followed Artists 
 [**GetListUsersPlaylists**](UsersApi.md#GetListUsersPlaylists) | **Get** /users/{user_id}/playlists | Get User&#39;s Playlists 
 [**GetUsersProfile**](UsersApi.md#GetUsersProfile) | **Get** /users/{user_id} | Get User&#39;s Profile 
-[**GetUsersTopArtists**](UsersApi.md#GetUsersTopArtists) | **Get** /me/top/artists | Get User&#39;s Top Artists 
-[**GetUsersTopTracks**](UsersApi.md#GetUsersTopTracks) | **Get** /me/top/tracks | Get User&#39;s Top Tracks 
+[**GetUsersTopArtistsAndTracks**](UsersApi.md#GetUsersTopArtistsAndTracks) | **Get** /me/top/{type} | Get User&#39;s Top Items 
 [**UnfollowArtistsUsers**](UsersApi.md#UnfollowArtistsUsers) | **Delete** /me/following | Unfollow Artists or Users 
 [**UnfollowPlaylist**](UsersApi.md#UnfollowPlaylist) | **Delete** /playlists/{playlist_id}/followers | Unfollow Playlist 
 
@@ -572,81 +571,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetUsersTopArtists
+## GetUsersTopArtistsAndTracks
 
-> PagingArtistObject GetUsersTopArtists(ctx).TimeRange(timeRange).Limit(limit).Offset(offset).Execute()
+> GetUsersTopArtistsAndTracks200Response GetUsersTopArtistsAndTracks(ctx, type_).TimeRange(timeRange).Limit(limit).Offset(offset).Execute()
 
-Get User's Top Artists 
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/Barben360/spotify-tools/app/default/spotifyclient"
-)
-
-func main() {
-    timeRange := "medium_term" // string |  (optional) (default to "medium_term")
-    limit := int32(10) // int32 |  (optional) (default to 20)
-    offset := int32(5) // int32 |  (optional) (default to 0)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersApi.GetUsersTopArtists(context.Background()).TimeRange(timeRange).Limit(limit).Offset(offset).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.GetUsersTopArtists``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetUsersTopArtists`: PagingArtistObject
-    fmt.Fprintf(os.Stdout, "Response from `UsersApi.GetUsersTopArtists`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetUsersTopArtistsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **timeRange** | **string** |  | [default to &quot;medium_term&quot;]
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
-
-### Return type
-
-[**PagingArtistObject**](PagingArtistObject.md)
-
-### Authorization
-
-[oauth_2_0](../README.md#oauth_2_0)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetUsersTopTracks
-
-> PagingTrackObject GetUsersTopTracks(ctx).TimeRange(timeRange).Limit(limit).Offset(offset).Execute()
-
-Get User's Top Tracks 
+Get User's Top Items 
 
 
 
@@ -663,40 +592,46 @@ import (
 )
 
 func main() {
+    type_ := "type__example" // string | 
     timeRange := "medium_term" // string |  (optional) (default to "medium_term")
     limit := int32(10) // int32 |  (optional) (default to 20)
     offset := int32(5) // int32 |  (optional) (default to 0)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UsersApi.GetUsersTopTracks(context.Background()).TimeRange(timeRange).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.UsersApi.GetUsersTopArtistsAndTracks(context.Background(), type_).TimeRange(timeRange).Limit(limit).Offset(offset).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.GetUsersTopTracks``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UsersApi.GetUsersTopArtistsAndTracks``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetUsersTopTracks`: PagingTrackObject
-    fmt.Fprintf(os.Stdout, "Response from `UsersApi.GetUsersTopTracks`: %v\n", resp)
+    // response from `GetUsersTopArtistsAndTracks`: GetUsersTopArtistsAndTracks200Response
+    fmt.Fprintf(os.Stdout, "Response from `UsersApi.GetUsersTopArtistsAndTracks`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**type_** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetUsersTopTracksRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetUsersTopArtistsAndTracksRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **timeRange** | **string** |  | [default to &quot;medium_term&quot;]
  **limit** | **int32** |  | [default to 20]
  **offset** | **int32** |  | [default to 0]
 
 ### Return type
 
-[**PagingTrackObject**](PagingTrackObject.md)
+[**GetUsersTopArtistsAndTracks200Response**](GetUsersTopArtistsAndTracks200Response.md)
 
 ### Authorization
 

@@ -2245,65 +2245,69 @@ func (a *TracksApiService) GetUsersSavedTracksExecute(r TracksApiGetUsersSavedTr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type TracksApiGetUsersTopTracksRequest struct {
+type TracksApiGetUsersTopArtistsAndTracksRequest struct {
 	ctx context.Context
 	ApiService *TracksApiService
+	type_ string
 	timeRange *string
 	limit *int32
 	offset *int32
 }
 
-func (r TracksApiGetUsersTopTracksRequest) TimeRange(timeRange string) TracksApiGetUsersTopTracksRequest {
+func (r TracksApiGetUsersTopArtistsAndTracksRequest) TimeRange(timeRange string) TracksApiGetUsersTopArtistsAndTracksRequest {
 	r.timeRange = &timeRange
 	return r
 }
 
-func (r TracksApiGetUsersTopTracksRequest) Limit(limit int32) TracksApiGetUsersTopTracksRequest {
+func (r TracksApiGetUsersTopArtistsAndTracksRequest) Limit(limit int32) TracksApiGetUsersTopArtistsAndTracksRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r TracksApiGetUsersTopTracksRequest) Offset(offset int32) TracksApiGetUsersTopTracksRequest {
+func (r TracksApiGetUsersTopArtistsAndTracksRequest) Offset(offset int32) TracksApiGetUsersTopArtistsAndTracksRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r TracksApiGetUsersTopTracksRequest) Execute() (*PagingTrackObject, *http.Response, error) {
-	return r.ApiService.GetUsersTopTracksExecute(r)
+func (r TracksApiGetUsersTopArtistsAndTracksRequest) Execute() (*GetUsersTopArtistsAndTracks200Response, *http.Response, error) {
+	return r.ApiService.GetUsersTopArtistsAndTracksExecute(r)
 }
 
 /*
-GetUsersTopTracks Get User's Top Tracks 
+GetUsersTopArtistsAndTracks Get User's Top Items 
 
-Get the current user's top tracks based on calculated affinity.
+Get the current user's top artists or tracks based on calculated affinity.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return TracksApiGetUsersTopTracksRequest
+ @param type_
+ @return TracksApiGetUsersTopArtistsAndTracksRequest
 */
-func (a *TracksApiService) GetUsersTopTracks(ctx context.Context) TracksApiGetUsersTopTracksRequest {
-	return TracksApiGetUsersTopTracksRequest{
+func (a *TracksApiService) GetUsersTopArtistsAndTracks(ctx context.Context, type_ string) TracksApiGetUsersTopArtistsAndTracksRequest {
+	return TracksApiGetUsersTopArtistsAndTracksRequest{
 		ApiService: a,
 		ctx: ctx,
+		type_: type_,
 	}
 }
 
 // Execute executes the request
-//  @return PagingTrackObject
-func (a *TracksApiService) GetUsersTopTracksExecute(r TracksApiGetUsersTopTracksRequest) (*PagingTrackObject, *http.Response, error) {
+//  @return GetUsersTopArtistsAndTracks200Response
+func (a *TracksApiService) GetUsersTopArtistsAndTracksExecute(r TracksApiGetUsersTopArtistsAndTracksRequest) (*GetUsersTopArtistsAndTracks200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *PagingTrackObject
+		localVarReturnValue  *GetUsersTopArtistsAndTracks200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TracksApiService.GetUsersTopTracks")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TracksApiService.GetUsersTopArtistsAndTracks")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/me/top/tracks"
+	localVarPath := localBasePath + "/me/top/{type}"
+	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

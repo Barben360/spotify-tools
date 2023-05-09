@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**GetSeveralTracks**](TracksApi.md#GetSeveralTracks) | **Get** /tracks | Get Several Tracks 
 [**GetTrack**](TracksApi.md#GetTrack) | **Get** /tracks/{id} | Get Track 
 [**GetUsersSavedTracks**](TracksApi.md#GetUsersSavedTracks) | **Get** /me/tracks | Get User&#39;s Saved Tracks 
-[**GetUsersTopTracks**](TracksApi.md#GetUsersTopTracks) | **Get** /me/top/tracks | Get User&#39;s Top Tracks 
+[**GetUsersTopArtistsAndTracks**](TracksApi.md#GetUsersTopArtistsAndTracks) | **Get** /me/top/{type} | Get User&#39;s Top Items 
 [**RemoveTracksPlaylist**](TracksApi.md#RemoveTracksPlaylist) | **Delete** /playlists/{playlist_id}/tracks | Remove Playlist Items 
 [**RemoveTracksUser**](TracksApi.md#RemoveTracksUser) | **Delete** /me/tracks | Remove User&#39;s Saved Tracks 
 [**ReorderOrReplacePlaylistsTracks**](TracksApi.md#ReorderOrReplacePlaylistsTracks) | **Put** /playlists/{playlist_id}/tracks | Update Playlist Items 
@@ -968,11 +968,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetUsersTopTracks
+## GetUsersTopArtistsAndTracks
 
-> PagingTrackObject GetUsersTopTracks(ctx).TimeRange(timeRange).Limit(limit).Offset(offset).Execute()
+> GetUsersTopArtistsAndTracks200Response GetUsersTopArtistsAndTracks(ctx, type_).TimeRange(timeRange).Limit(limit).Offset(offset).Execute()
 
-Get User's Top Tracks 
+Get User's Top Items 
 
 
 
@@ -989,40 +989,46 @@ import (
 )
 
 func main() {
+    type_ := "type__example" // string | 
     timeRange := "medium_term" // string |  (optional) (default to "medium_term")
     limit := int32(10) // int32 |  (optional) (default to 20)
     offset := int32(5) // int32 |  (optional) (default to 0)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TracksApi.GetUsersTopTracks(context.Background()).TimeRange(timeRange).Limit(limit).Offset(offset).Execute()
+    resp, r, err := apiClient.TracksApi.GetUsersTopArtistsAndTracks(context.Background(), type_).TimeRange(timeRange).Limit(limit).Offset(offset).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TracksApi.GetUsersTopTracks``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TracksApi.GetUsersTopArtistsAndTracks``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetUsersTopTracks`: PagingTrackObject
-    fmt.Fprintf(os.Stdout, "Response from `TracksApi.GetUsersTopTracks`: %v\n", resp)
+    // response from `GetUsersTopArtistsAndTracks`: GetUsersTopArtistsAndTracks200Response
+    fmt.Fprintf(os.Stdout, "Response from `TracksApi.GetUsersTopArtistsAndTracks`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**type_** | **string** |  | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetUsersTopTracksRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetUsersTopArtistsAndTracksRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
  **timeRange** | **string** |  | [default to &quot;medium_term&quot;]
  **limit** | **int32** |  | [default to 20]
  **offset** | **int32** |  | [default to 0]
 
 ### Return type
 
-[**PagingTrackObject**](PagingTrackObject.md)
+[**GetUsersTopArtistsAndTracks200Response**](GetUsersTopArtistsAndTracks200Response.md)
 
 ### Authorization
 

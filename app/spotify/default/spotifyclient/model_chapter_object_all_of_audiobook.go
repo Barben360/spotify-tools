@@ -36,7 +36,7 @@ type ChapterObjectAllOfAudiobook struct {
 	ExternalUrls AudiobookBaseExternalUrls `json:"external_urls"`
 	// A link to the Web API endpoint providing full details of the audiobook. 
 	Href string `json:"href"`
-	// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the audiobook. 
+	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook. 
 	Id string `json:"id"`
 	// The cover art for the audiobook in various sizes, widest first. 
 	Images []ImageObject `json:"images"`
@@ -52,7 +52,7 @@ type ChapterObjectAllOfAudiobook struct {
 	Publisher string `json:"publisher"`
 	// The object type. 
 	Type string `json:"type"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the audiobook. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook. 
 	Uri string `json:"uri"`
 	// The number of chapters in this audiobook. 
 	TotalChapters int32 `json:"total_chapters"`

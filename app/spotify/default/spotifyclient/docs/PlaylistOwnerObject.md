@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **ExternalUrls** | Pointer to [**PublicUserObjectExternalUrls**](PublicUserObjectExternalUrls.md) |  | [optional] 
 **Followers** | Pointer to [**PublicUserObjectFollowers**](PublicUserObjectFollowers.md) |  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint for this user.  | [optional] 
-**Id** | Pointer to **string** | The [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids) for this user.  | [optional] 
+**Id** | Pointer to **string** | The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for this user.  | [optional] 
 **Type** | Pointer to **string** | The object type.  | [optional] 
-**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for this user.  | [optional] 
+**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for this user.  | [optional] 
 **DisplayName** | Pointer to **NullableString** | The name displayed on the user&#39;s profile. &#x60;null&#x60; if not available.  | [optional] 
 
 ## Methods

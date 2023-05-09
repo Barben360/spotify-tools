@@ -24,7 +24,7 @@ type PlayHistoryObjectContext struct {
 	// A link to the Web API endpoint providing full details of the track.
 	Href *string `json:"href,omitempty"`
 	ExternalUrls *ContextObjectExternalUrls `json:"external_urls,omitempty"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the context. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the context. 
 	Uri *string `json:"uri,omitempty"`
 }
 

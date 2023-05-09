@@ -25,13 +25,13 @@ type PublicUserObject struct {
 	Followers *PublicUserObjectFollowers `json:"followers,omitempty"`
 	// A link to the Web API endpoint for this user. 
 	Href *string `json:"href,omitempty"`
-	// The [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids) for this user. 
+	// The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for this user. 
 	Id *string `json:"id,omitempty"`
 	// The user's profile image. 
 	Images []ImageObject `json:"images,omitempty"`
 	// The object type. 
 	Type *string `json:"type,omitempty"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for this user. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for this user. 
 	Uri *string `json:"uri,omitempty"`
 }
 

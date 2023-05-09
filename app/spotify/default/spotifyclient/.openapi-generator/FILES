@@ -108,6 +108,9 @@ docs/GetNewReleases200Response.md
 docs/GetRecommendationGenres200Response.md
 docs/GetSeveralAudioFeatures200Response.md
 docs/GetSeveralChapters200Response.md
+docs/GetUsersTopArtistsAndTracks200Response.md
+docs/GetUsersTopArtistsAndTracks200ResponseAllOf.md
+docs/GetUsersTopArtistsAndTracks200ResponseAllOfItemsInner.md
 docs/ImageObject.md
 docs/LibraryApi.md
 docs/LinkedTrackObject.md
@@ -225,6 +228,7 @@ docs/TimeIntervalObject.md
 docs/TrackObject.md
 docs/TrackObjectAlbum.md
 docs/TrackObjectExternalIds.md
+docs/TrackObjectLinkedFrom.md
 docs/TrackRestrictionObject.md
 docs/TracksApi.md
 docs/TransferAUsersPlaybackRequest.md
@@ -315,6 +319,9 @@ model_get_new_releases_200_response.go
 model_get_recommendation_genres_200_response.go
 model_get_several_audio_features_200_response.go
 model_get_several_chapters_200_response.go
+model_get_users_top_artists_and_tracks_200_response.go
+model_get_users_top_artists_and_tracks_200_response_all_of.go
+model_get_users_top_artists_and_tracks_200_response_all_of_items_inner.go
 model_image_object.go
 model_linked_track_object.go
 model_linked_track_object_external_urls.go
@@ -426,6 +433,7 @@ model_time_interval_object.go
 model_track_object.go
 model_track_object_album.go
 model_track_object_external_ids.go
+model_track_object_linked_from.go
 model_track_restriction_object.go
 model_transfer_a_users_playback_request.go
 model_tuneable_track_object.go

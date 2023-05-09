@@ -27,21 +27,21 @@ type PlaylistObject struct {
 	Followers *PlaylistObjectFollowers `json:"followers,omitempty"`
 	// A link to the Web API endpoint providing full details of the playlist. 
 	Href *string `json:"href,omitempty"`
-	// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the playlist. 
+	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the playlist. 
 	Id *string `json:"id,omitempty"`
-	// Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/general/guides/working-with-playlists/). _**Note**: If returned, the source URL for the image (`url`) is temporary and will expire in less than a day._ 
+	// Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/web-api/concepts/playlists). _**Note**: If returned, the source URL for the image (`url`) is temporary and will expire in less than a day._ 
 	Images []ImageObject `json:"images,omitempty"`
 	// The name of the playlist. 
 	Name *string `json:"name,omitempty"`
 	Owner *PlaylistObjectOwner `json:"owner,omitempty"`
-	// The playlist's public/private status: `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/general/guides/working-with-playlists/) 
+	// The playlist's public/private status: `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists) 
 	Public *bool `json:"public,omitempty"`
 	// The version identifier for the current playlist. Can be supplied in other requests to target a specific playlist version 
 	SnapshotId *string `json:"snapshot_id,omitempty"`
 	Tracks *PlaylistObjectTracks `json:"tracks,omitempty"`
 	// The object type: \"playlist\" 
 	Type *string `json:"type,omitempty"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the playlist. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the playlist. 
 	Uri *string `json:"uri,omitempty"`
 }
 

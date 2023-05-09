@@ -11,15 +11,15 @@ Name | Type | Description | Notes
 **Explicit** | Pointer to **bool** | Whether or not the track has explicit lyrics ( &#x60;true&#x60; &#x3D; yes it does; &#x60;false&#x60; &#x3D; no it does not OR unknown). | [optional] 
 **ExternalUrls** | Pointer to [**SimplifiedTrackObjectExternalUrls**](SimplifiedTrackObjectExternalUrls.md) |  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint providing full details of the track. | [optional] 
-**Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the track.  | [optional] 
-**IsPlayable** | Pointer to **bool** | Part of the response when [Track Relinking](/documentation/general/guides/track-relinking-guide/) is applied. If &#x60;true&#x60;, the track is playable in the given market. Otherwise &#x60;false&#x60;.  | [optional] 
+**Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.  | [optional] 
+**IsPlayable** | Pointer to **bool** | Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking/) is applied. If &#x60;true&#x60;, the track is playable in the given market. Otherwise &#x60;false&#x60;.  | [optional] 
 **LinkedFrom** | Pointer to [**SimplifiedTrackObjectLinkedFrom**](SimplifiedTrackObjectLinkedFrom.md) |  | [optional] 
 **Restrictions** | Pointer to [**SimplifiedTrackObjectRestrictions**](SimplifiedTrackObjectRestrictions.md) |  | [optional] 
 **Name** | Pointer to **string** | The name of the track. | [optional] 
 **PreviewUrl** | Pointer to **string** | A URL to a 30 second preview (MP3 format) of the track.  | [optional] 
 **TrackNumber** | Pointer to **int32** | The number of the track. If an album has several discs, the track number is the number on the specified disc.  | [optional] 
 **Type** | Pointer to **string** | The object type: \&quot;track\&quot;.  | [optional] 
-**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the track.  | [optional] 
+**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.  | [optional] 
 **IsLocal** | Pointer to **bool** | Whether or not the track is from a local file.  | [optional] 
 
 ## Methods

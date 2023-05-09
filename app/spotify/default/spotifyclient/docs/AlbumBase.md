@@ -9,15 +9,14 @@ Name | Type | Description | Notes
 **AvailableMarkets** | **[]string** | The markets in which the album is available: [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _**NOTE**: an album is considered available in a market when at least 1 of its tracks is available in that market._  | 
 **ExternalUrls** | [**AlbumBaseExternalUrls**](AlbumBaseExternalUrls.md) |  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the album.  | 
-**Id** | **string** | The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the album.  | 
+**Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the album.  | 
 **Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the album in various sizes, widest first.  | 
 **Name** | **string** | The name of the album. In case of an album takedown, the value may be an empty string.  | 
 **ReleaseDate** | **string** | The date the album was first released.  | 
 **ReleaseDatePrecision** | **string** | The precision with which &#x60;release_date&#x60; value is known.  | 
 **Restrictions** | Pointer to [**AlbumBaseRestrictions**](AlbumBaseRestrictions.md) |  | [optional] 
 **Type** | **string** | The object type.  | 
-**Uri** | **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the album.  | 
-**IsPlayable** | Pointer to **bool** | Fix by Barben360  | [optional] 
+**Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the album.  | 
 
 ## Methods
 
@@ -302,31 +301,6 @@ and a boolean to check if the value has been set.
 
 SetUri sets Uri field to given value.
 
-
-### GetIsPlayable
-
-`func (o *AlbumBase) GetIsPlayable() bool`
-
-GetIsPlayable returns the IsPlayable field if non-nil, zero value otherwise.
-
-### GetIsPlayableOk
-
-`func (o *AlbumBase) GetIsPlayableOk() (*bool, bool)`
-
-GetIsPlayableOk returns a tuple with the IsPlayable field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsPlayable
-
-`func (o *AlbumBase) SetIsPlayable(v bool)`
-
-SetIsPlayable sets IsPlayable field to given value.
-
-### HasIsPlayable
-
-`func (o *AlbumBase) HasIsPlayable() bool`
-
-HasIsPlayable returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

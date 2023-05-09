@@ -25,7 +25,7 @@ type ArtistObject struct {
 	Genres []string `json:"genres,omitempty"`
 	// A link to the Web API endpoint providing full details of the artist. 
 	Href *string `json:"href,omitempty"`
-	// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the artist. 
+	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist. 
 	Id *string `json:"id,omitempty"`
 	// Images of the artist in various sizes, widest first. 
 	Images []ImageObject `json:"images,omitempty"`
@@ -35,7 +35,7 @@ type ArtistObject struct {
 	Popularity *int32 `json:"popularity,omitempty"`
 	// The object type. 
 	Type *string `json:"type,omitempty"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the artist. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist. 
 	Uri *string `json:"uri,omitempty"`
 }
 

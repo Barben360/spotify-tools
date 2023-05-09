@@ -23,7 +23,7 @@ type PlaylistTrackObject struct {
 	// The date and time the track or episode was added. _**Note**: some very old playlists may return `null` in this field._ 
 	AddedAt *time.Time `json:"added_at,omitempty"`
 	AddedBy *PlaylistTrackObjectAddedBy `json:"added_by,omitempty"`
-	// Whether this track or episode is a [local file](https://developer.spotify.com/web-api/local-files-spotify-playlists/) or not. 
+	// Whether this track or episode is a [local file](/documentation/web-api/concepts/playlists/#local-files) or not. 
 	IsLocal *bool `json:"is_local,omitempty"`
 	Track *PlaylistTrackObjectTrack `json:"track,omitempty"`
 }

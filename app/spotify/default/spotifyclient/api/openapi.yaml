@@ -29,7 +29,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the album.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the album.
           example: 4aawyAB9vmqN3uQ7FjRGTy
           title: Spotify Album ID
           type: string
@@ -86,10 +86,6 @@ paths:
         Get Album
       tags:
       - Albums
-      x-spotify-docs-endpoint-name: Get an Album
-      x-spotify-docs-console-url: /console/get-album/?id=0sNOF9WDwhWunNAHPD3Baj
-    x-spotify-docs-display-name: album
-    x-spotify-docs-category: Albums
   /albums:
     get:
       description: |
@@ -102,7 +98,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for the albums. Maximum: 20 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the albums. Maximum: 20 IDs.
           example: "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc"
           title: Spotify Album IDs
           type: string
@@ -159,10 +155,6 @@ paths:
         Get Several Albums
       tags:
       - Albums
-      x-spotify-docs-endpoint-name: Get Multiple Albums
-      x-spotify-docs-console-url: /console/get-several-albums/
-    x-spotify-docs-display-name: several-albums
-    x-spotify-docs-category: Albums
   /albums/{id}/tracks:
     get:
       description: |
@@ -176,7 +168,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the album.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the album.
           example: 4aawyAB9vmqN3uQ7FjRGTy
           title: Spotify Album ID
           type: string
@@ -260,10 +252,6 @@ paths:
       tags:
       - Albums
       - Tracks
-      x-spotify-docs-endpoint-name: Get an Album's Tracks
-      x-spotify-docs-console-url: /console/get-album-tracks/
-    x-spotify-docs-display-name: album-tracks
-    x-spotify-docs-category: Albums
   /artists/{id}:
     get:
       description: |
@@ -276,7 +264,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the artist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the artist.
           example: 0TnOYISbd1XYRBk9myaseg
           title: Spotify Artist ID
           type: string
@@ -317,10 +305,6 @@ paths:
         Get Artist
       tags:
       - Artists
-      x-spotify-docs-endpoint-name: Get an Artist
-      x-spotify-docs-console-url: /console/get-artist/?id=0OdUWJ0sBjDrqHygGUXeCF
-    x-spotify-docs-display-name: artist
-    x-spotify-docs-category: Artists
   /artists:
     get:
       description: |
@@ -333,7 +317,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for the artists. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the artists. Maximum: 50 IDs.
           example: "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
           title: Spotify Artist IDs
           type: string
@@ -374,10 +358,6 @@ paths:
         Get Several Artists
       tags:
       - Artists
-      x-spotify-docs-endpoint-name: Get Multiple Artists
-      x-spotify-docs-console-url: "/console/get-several-artists/?ids=0oSGxfWSnnOXhD2fKuz2Gy,3dBVyJ7JuOMt4GE9607Qin"
-    x-spotify-docs-display-name: several-artists
-    x-spotify-docs-category: Artists
   /artists/{id}/albums:
     get:
       description: |
@@ -390,7 +370,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the artist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the artist.
           example: 0TnOYISbd1XYRBk9myaseg
           title: Spotify Artist ID
           type: string
@@ -486,10 +466,6 @@ paths:
       tags:
       - Artists
       - Albums
-      x-spotify-docs-endpoint-name: Get an Artist's Albums
-      x-spotify-docs-console-url: /console/get-artist-albums/?album_type=single&amp;limit=2&amp;market=ES&amp;id=1vCWHaC5f2uS3yhpwWbIA6
-    x-spotify-docs-display-name: artist-albums
-    x-spotify-docs-category: Artists
   /artists/{id}/top-tracks:
     get:
       description: |
@@ -502,7 +478,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the artist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the artist.
           example: 0TnOYISbd1XYRBk9myaseg
           title: Spotify Artist ID
           type: string
@@ -560,10 +536,6 @@ paths:
       tags:
       - Artists
       - Tracks
-      x-spotify-docs-endpoint-name: Get an Artist's Top Tracks
-      x-spotify-docs-console-url: /console/get-artist-top-tracks/?country=SE&amp;id=43ZHCT0cAZBISjO8DG9PnE
-    x-spotify-docs-display-name: artist-top-tracks
-    x-spotify-docs-category: Artists
   /artists/{id}/related-artists:
     get:
       description: |
@@ -576,7 +548,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the artist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the artist.
           example: 0TnOYISbd1XYRBk9myaseg
           title: Spotify Artist ID
           type: string
@@ -617,10 +589,6 @@ paths:
         Get Artist's Related Artists
       tags:
       - Artists
-      x-spotify-docs-endpoint-name: Get an Artist's Related Artists
-      x-spotify-docs-console-url: /console/get-artist-related-artists/?id=43ZHCT0cAZBISjO8DG9PnE
-    x-spotify-docs-display-name: artist-related-artists
-    x-spotify-docs-category: Artists
   /shows/{id}:
     get:
       description: |
@@ -650,7 +618,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids)
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
             for the show.
           example: 38bS44xjbVVZ3No3ByF1dJ
           title: Spotify Show ID
@@ -693,10 +661,6 @@ paths:
         Get Show
       tags:
       - Shows
-      x-spotify-docs-endpoint-name: Get a Show
-      x-spotify-docs-console-url: /console/get-show/?id=38bS44xjbVVZ3No3ByF1dJ
-    x-spotify-docs-display-name: show
-    x-spotify-docs-category: Shows
   /shows:
     get:
       description: |
@@ -725,7 +689,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for the shows. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the shows. Maximum: 50 IDs.
           example: "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ"
           title: Ids
           type: string
@@ -766,10 +730,6 @@ paths:
         Get Several Shows
       tags:
       - Shows
-      x-spotify-docs-endpoint-name: Get Multiple Shows
-      x-spotify-docs-console-url: "/console/get-several-shows/?ids=5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ"
-    x-spotify-docs-display-name: several-shows
-    x-spotify-docs-category: Shows
   /shows/{id}/episodes:
     get:
       description: |
@@ -782,7 +742,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids)
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
             for the show.
           example: 38bS44xjbVVZ3No3ByF1dJ
           title: Spotify Show ID
@@ -868,10 +828,6 @@ paths:
       tags:
       - Shows
       - Episodes
-      x-spotify-docs-endpoint-name: Get a Show's Episodes
-      x-spotify-docs-console-url: /console/get-show-episodes/
-    x-spotify-docs-display-name: show-episodes
-    x-spotify-docs-category: Shows
   /episodes/{id}:
     get:
       description: |
@@ -884,7 +840,7 @@ paths:
         name: id
         required: true
         schema:
-          description: "The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids)\
+          description: "The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)\
             \ for the episode."
           example: 512ojhOuo1ktJprKbVcKyQ
           title: Get an Episode
@@ -943,10 +899,6 @@ paths:
         Get Episode
       tags:
       - Episodes
-      x-spotify-docs-endpoint-name: Get an Episode
-      x-spotify-docs-console-url: /console/get-episode/?id=512ojhOuo1ktJprKbVcKyQ
-    x-spotify-docs-display-name: episode
-    x-spotify-docs-category: Episodes
   /episodes:
     get:
       description: |
@@ -959,7 +911,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for the episodes. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the episodes. Maximum: 50 IDs.
           example: "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf"
           title: Ids
           type: string
@@ -1017,10 +969,6 @@ paths:
         Get Several Episodes
       tags:
       - Episodes
-      x-spotify-docs-endpoint-name: Get Multiple Episodes
-      x-spotify-docs-console-url: "/console/get-several-episodes/?ids=77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf"
-    x-spotify-docs-display-name: several-episodes
-    x-spotify-docs-category: Episodes
   /audiobooks/{id}:
     get:
       description: |
@@ -1034,7 +982,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids)
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
             for the audiobook.
           example: 7iHfbu1YPACw6oZPAFJtqe
           title: Spotify Audiobook ID
@@ -1063,6 +1011,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/AudiobookObject'
           description: An Audiobook
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_an_album_401_response'
+          description: |
+            The request contains malformed data in path, query parameters, or body.
         "401":
           content:
             application/json:
@@ -1079,6 +1034,13 @@ paths:
           description: |
             Bad OAuth request (wrong consumer key, bad nonce, expired
             timestamp...). Unfortunately, re-authenticating the user won't help here.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_an_album_401_response'
+          description: |
+            The requested resource cannot be found.
         "429":
           content:
             application/json:
@@ -1092,10 +1054,6 @@ paths:
         Get an Audiobook
       tags:
       - Audiobooks
-      x-spotify-docs-endpoint-name: Get an Audiobook
-      x-spotify-docs-console-url: /console/get-audiobook/?id=5thw29eqjomhIDMY1XKsLk
-    x-spotify-docs-display-name: audiobook
-    x-spotify-docs-category: Audiobooks
   /audiobooks:
     get:
       description: |
@@ -1109,7 +1067,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
           example: "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe"
           title: Spotify Audiobook IDs
           type: string
@@ -1166,10 +1124,6 @@ paths:
         Get Several Audiobooks
       tags:
       - Audiobooks
-      x-spotify-docs-endpoint-name: Get Several Audiobooks
-      x-spotify-docs-console-url: "/console/get-several-audiobooks/?ids=5thw29eqjomhIDMY1XKsLk,2IEBhnu61ieYGFRPEJIO40"
-    x-spotify-docs-display-name: several-audiobooks
-    x-spotify-docs-category: Audiobooks
   /audiobooks/{id}/chapters:
     get:
       description: |
@@ -1183,7 +1137,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids)
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
             for the audiobook.
           example: 7iHfbu1YPACw6oZPAFJtqe
           title: Spotify Audiobook ID
@@ -1268,10 +1222,6 @@ paths:
       tags:
       - Audiobooks
       - Chapters
-      x-spotify-docs-endpoint-name: Get an Audiobook's Chapters
-      x-spotify-docs-console-url: /console/get-audiobook-chapters/?id=5thw29eqjomhIDMY1XKsLk
-    x-spotify-docs-display-name: audiobook-chapters
-    x-spotify-docs-category: Audiobooks
   /me/audiobooks:
     delete:
       description: |
@@ -1284,7 +1234,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
           example: "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe"
           title: Spotify Audiobook IDs
           type: string
@@ -1323,8 +1273,6 @@ paths:
       tags:
       - Audiobooks
       - Library
-      x-spotify-docs-endpoint-name: Remove Audiobooks for Current User
-      x-spotify-docs-console-url: /console/delete-current-user-saved-audiobooks/?ids=07bYtmE3bPsLB6ZbmmFi8d%2C48JYNjh7GMie6NjqYHMmtT%2C27cZdqrQiKt3IT00338dws
     get:
       description: |
         Get a list of the audiobooks saved in the current Spotify user's 'Your Music' library.
@@ -1394,8 +1342,6 @@ paths:
       tags:
       - Audiobooks
       - Library
-      x-spotify-docs-endpoint-name: Get User's Saved Audiobooks
-      x-spotify-docs-console-url: /console/get-current-user-saved-audiobooks/?limit=1
     put:
       description: |
         Save one or more audiobooks to the current Spotify user's library.
@@ -1407,7 +1353,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
           example: "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe"
           title: Spotify Audiobook IDs
           type: string
@@ -1446,10 +1392,6 @@ paths:
       tags:
       - Audiobooks
       - Library
-      x-spotify-docs-endpoint-name: Save Audiobooks for Current User
-      x-spotify-docs-console-url: /console/put-current-user-saved-audiobooks/?ids=07bYtmE3bPsLB6ZbmmFi8d%2C48JYNjh7GMie6NjqYHMmtT%2C27cZdqrQiKt3IT00338dws
-    x-spotify-docs-display-name: current-user-saved-audiobooks
-    x-spotify-docs-category: Library
   /me/audiobooks/contains:
     get:
       description: |
@@ -1462,7 +1404,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
           example: "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe"
           title: Spotify Audiobook IDs
           type: string
@@ -1510,10 +1452,6 @@ paths:
       tags:
       - Audiobooks
       - Library
-      x-spotify-docs-endpoint-name: Check User's Saved Audiobooks
-      x-spotify-docs-console-url: /console/get-current-user-contains-saved-audiobooks/?ids=0pJJgBzj26qnE1nSQUxaB0%2C5ZAKzV4ZIa5Gt7z29OYHv0
-    x-spotify-docs-display-name: current-user-contains-saved-audiobooks
-    x-spotify-docs-category: Library
   /chapters/{id}:
     get:
       description: |
@@ -1527,7 +1465,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids)
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
             for the chapter.
           example: 0D5wENdkdwbqlrHoaJ9g29
           title: Spotify Chapter ID
@@ -1585,10 +1523,6 @@ paths:
         Get a Chapter
       tags:
       - Chapters
-      x-spotify-docs-endpoint-name: Get a Chapter
-      x-spotify-docs-console-url: /console/get-chapter/?id=2i47HuOBSV2XaJNy0NCZXM
-    x-spotify-docs-display-name: chapters
-    x-spotify-docs-category: Chapters
   /chapters:
     get:
       description: |
@@ -1602,7 +1536,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `ids=0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU`. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU`. Maximum: 50 IDs.
           example: "0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29"
           title: Spotify Chapter IDs
           type: string
@@ -1659,10 +1593,6 @@ paths:
         Get Several Chapters
       tags:
       - Chapters
-      x-spotify-docs-endpoint-name: Get Several Chapters
-      x-spotify-docs-console-url: "/console/get-several-chapters/?ids=2i47HuOBSV2XaJNy0NCZXM,2GUbORsUnP1qVVlLwd9DzP"
-    x-spotify-docs-display-name: several-chapters
-    x-spotify-docs-category: Chapters
   /tracks/{id}:
     get:
       description: |
@@ -1676,7 +1606,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids)
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
             for the track.
           example: 11dFghVXANMlKmJXsNCbNl
           title: Spotify Track ID
@@ -1734,10 +1664,6 @@ paths:
         Get Track
       tags:
       - Tracks
-      x-spotify-docs-endpoint-name: Get a Track
-      x-spotify-docs-console-url: /console/get-track/?id=3n3Ppam7vgaVa1iaRUc9Lp
-    x-spotify-docs-display-name: track
-    x-spotify-docs-category: Tracks
   /tracks:
     get:
       description: |
@@ -1766,7 +1692,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
           example: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
           title: Spotify Track IDs
           type: string
@@ -1807,10 +1733,6 @@ paths:
         Get Several Tracks
       tags:
       - Tracks
-      x-spotify-docs-endpoint-name: Get Several Tracks
-      x-spotify-docs-console-url: "/console/get-several-tracks/?ids=3n3Ppam7vgaVa1iaRUc9Lp,3twNvmDtFQtAd5gMKedhLD"
-    x-spotify-docs-display-name: several-tracks
-    x-spotify-docs-category: Tracks
   /search:
     get:
       description: |
@@ -1954,10 +1876,6 @@ paths:
         Search for Item
       tags:
       - Search
-      x-spotify-docs-endpoint-name: Search for an Item
-      x-spotify-docs-console-url: /console/get-search-item/?q=tania+bowra&amp;type=artist
-    x-spotify-docs-display-name: search-item
-    x-spotify-docs-category: Search
   /me:
     get:
       description: |
@@ -2002,10 +1920,6 @@ paths:
         Get Current User's Profile
       tags:
       - Users
-      x-spotify-docs-endpoint-name: Get Current User's Profile
-      x-spotify-docs-console-url: /console/get-current-user/
-    x-spotify-docs-display-name: current-user
-    x-spotify-docs-category: Users Profile
   /playlists/{playlist_id}:
     get:
       description: |
@@ -2018,7 +1932,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the playlist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playlist.
           example: 3cEYpjA9oz9GiPac4AsH4n
           title: Playlist ID
           type: string
@@ -2106,8 +2020,6 @@ paths:
         Get Playlist
       tags:
       - Playlists
-      x-spotify-docs-endpoint-name: Get a Playlist
-      x-spotify-docs-console-url: /console/get-playlist/?playlist_id=59ZbFPES4DQwEjBpWHzrtC&amp;user_id=spotify
     put:
       description: |
         Change a playlist's name and public/private state. (The user must, of
@@ -2120,7 +2032,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the playlist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playlist.
           example: 3cEYpjA9oz9GiPac4AsH4n
           title: Playlist ID
           type: string
@@ -2165,10 +2077,6 @@ paths:
       tags:
       - Playlists
       - Library
-      x-spotify-docs-endpoint-name: Change a Playlist's Details
-      x-spotify-docs-console-url: /console/put-playlist/
-    x-spotify-docs-display-name: playlist
-    x-spotify-docs-category: Playlists
   /playlists/{playlist_id}/tracks:
     delete:
       description: |
@@ -2181,7 +2089,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the playlist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playlist.
           example: 3cEYpjA9oz9GiPac4AsH4n
           title: Playlist ID
           type: string
@@ -2230,8 +2138,6 @@ paths:
       tags:
       - Playlists
       - Tracks
-      x-spotify-docs-endpoint-name: Remove Items from a Playlist
-      x-spotify-docs-console-url: /console/delete-playlist-tracks/
     get:
       description: |
         Get full details of the items of a playlist owned by a Spotify user.
@@ -2243,7 +2149,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the playlist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playlist.
           example: 3cEYpjA9oz9GiPac4AsH4n
           title: Playlist ID
           type: string
@@ -2358,8 +2264,6 @@ paths:
       tags:
       - Playlists
       - Tracks
-      x-spotify-docs-endpoint-name: Get a Playlist's Items
-      x-spotify-docs-console-url: /console/get-playlist-tracks/?playlist_id=21THa8j9TaSGuXYNBU5tsC&amp;user_id=spotify_espa%C3%B1a
     post:
       description: |
         Add one or more items to a user's playlist.
@@ -2371,7 +2275,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the playlist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playlist.
           example: 3cEYpjA9oz9GiPac4AsH4n
           title: Playlist ID
           type: string
@@ -2393,7 +2297,7 @@ paths:
         required: false
         schema:
           description: |
-            A comma-separated list of [Spotify URIs](/documentation/web-api/#spotify-uris-and-ids) to add, can be track or episode URIs. For example:<br/>`uris=spotify:track:4iV5W9uYEdYUVa79Axb7Rh, spotify:track:1301WleyT98MSxVHPZCA6M, spotify:episode:512ojhOuo1ktJprKbVcKyQ`<br/>A maximum of 100 items can be added in one request. <br/>
+            A comma-separated list of [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add, can be track or episode URIs. For example:<br/>`uris=spotify:track:4iV5W9uYEdYUVa79Axb7Rh, spotify:track:1301WleyT98MSxVHPZCA6M, spotify:episode:512ojhOuo1ktJprKbVcKyQ`<br/>A maximum of 100 items can be added in one request. <br/>
             _**Note**: it is likely that passing a large number of item URIs as a query parameter will exceed the maximum length of the request URI. When adding a large number of items, it is recommended to pass them in the request body, see below._
           example: "spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M"
           title: Spotify Track URIs
@@ -2443,8 +2347,6 @@ paths:
       tags:
       - Playlists
       - Tracks
-      x-spotify-docs-endpoint-name: Add Items to a Playlist
-      x-spotify-docs-console-url: /console/post-playlist-tracks/
     put:
       description: |
         Either reorder or replace items in a playlist depending on the request's parameters.
@@ -2462,7 +2364,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the playlist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playlist.
           example: 3cEYpjA9oz9GiPac4AsH4n
           title: Playlist ID
           type: string
@@ -2473,7 +2375,7 @@ paths:
         required: false
         schema:
           description: |
-            A comma-separated list of [Spotify URIs](/documentation/web-api/#spotify-uris-and-ids) to set, can be track or episode URIs. For example: `uris=spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M,spotify:episode:512ojhOuo1ktJprKbVcKyQ`<br/>A maximum of 100 items can be set in one request.
+            A comma-separated list of [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to set, can be track or episode URIs. For example: `uris=spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M,spotify:episode:512ojhOuo1ktJprKbVcKyQ`<br/>A maximum of 100 items can be set in one request.
           title: Spotify Track URIs
           type: string
         style: form
@@ -2521,10 +2423,6 @@ paths:
       tags:
       - Playlists
       - Tracks
-      x-spotify-docs-endpoint-name: Reorder or Replace a Playlist's Items
-      x-spotify-docs-console-url: /console/put-playlist-tracks/
-    x-spotify-docs-display-name: playlist-tracks
-    x-spotify-docs-category: Playlists
   /me/playlists:
     get:
       description: |
@@ -2598,10 +2496,6 @@ paths:
       tags:
       - Playlists
       - Library
-      x-spotify-docs-endpoint-name: Get a List of Current User's Playlists
-      x-spotify-docs-console-url: /console/get-current-user-playlists/
-    x-spotify-docs-display-name: current-user-playlists
-    x-spotify-docs-category: Playlists
   /me/albums:
     delete:
       description: |
@@ -2614,7 +2508,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for the albums. Maximum: 20 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the albums. Maximum: 20 IDs.
           example: "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc"
           title: Spotify Album IDs
           type: string
@@ -2658,8 +2552,6 @@ paths:
       tags:
       - Albums
       - Library
-      x-spotify-docs-endpoint-name: Remove Albums for Current User
-      x-spotify-docs-console-url: /console/delete-current-user-saved-albums/?ids=07bYtmE3bPsLB6ZbmmFi8d%2C48JYNjh7GMie6NjqYHMmtT%2C27cZdqrQiKt3IT00338dws
     get:
       description: |
         Get a list of the albums saved in the current Spotify user's 'Your Music' library.
@@ -2745,8 +2637,6 @@ paths:
       tags:
       - Albums
       - Library
-      x-spotify-docs-endpoint-name: Get User's Saved Albums
-      x-spotify-docs-console-url: /console/get-current-user-saved-albums/?limit=1
     put:
       description: |
         Save one or more albums to the current user's 'Your Music' library.
@@ -2758,7 +2648,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for the albums. Maximum: 20 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the albums. Maximum: 20 IDs.
           example: "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc"
           title: Spotify Album IDs
           type: string
@@ -2802,10 +2692,6 @@ paths:
       tags:
       - Albums
       - Library
-      x-spotify-docs-endpoint-name: Save Albums for Current User
-      x-spotify-docs-console-url: /console/put-current-user-saved-albums/?ids=07bYtmE3bPsLB6ZbmmFi8d%2C48JYNjh7GMie6NjqYHMmtT%2C27cZdqrQiKt3IT00338dws
-    x-spotify-docs-display-name: current-user-saved-albums
-    x-spotify-docs-category: Library
   /me/albums/contains:
     get:
       description: |
@@ -2818,7 +2704,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for the albums. Maximum: 20 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the albums. Maximum: 20 IDs.
           example: "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc"
           title: Spotify Album IDs
           type: string
@@ -2866,10 +2752,6 @@ paths:
       tags:
       - Albums
       - Library
-      x-spotify-docs-endpoint-name: Check User's Saved Albums
-      x-spotify-docs-console-url: /console/get-current-user-contains-saved-albums/?ids=0pJJgBzj26qnE1nSQUxaB0%2C5ZAKzV4ZIa5Gt7z29OYHv0
-    x-spotify-docs-display-name: current-user-contains-saved-albums
-    x-spotify-docs-category: Library
   /me/tracks:
     delete:
       description: |
@@ -2882,7 +2764,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
           example: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
           title: Spotify Track IDs
           type: string
@@ -2926,8 +2808,6 @@ paths:
       tags:
       - Tracks
       - Library
-      x-spotify-docs-endpoint-name: Remove User's Saved Tracks
-      x-spotify-docs-console-url: /console/delete-current-user-saved-tracks/?ids=7ouMYWpwJ422jRcDASZB7P%2C4VqPOruhp5EdPBeR92t6lQ%2C2takcwOaAZWiXQijPHIx7B
     get:
       description: |
         Get a list of the songs saved in the current Spotify user's 'Your Music' library.
@@ -3013,8 +2893,6 @@ paths:
       tags:
       - Tracks
       - Library
-      x-spotify-docs-endpoint-name: Get User's Saved Tracks
-      x-spotify-docs-console-url: /console/get-current-user-saved-tracks/
     put:
       description: |
         Save one or more tracks to the current user's 'Your Music' library.
@@ -3026,7 +2904,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
           example: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
           title: Spotify Track IDs
           type: string
@@ -3070,10 +2948,6 @@ paths:
       tags:
       - Tracks
       - Library
-      x-spotify-docs-endpoint-name: Save Tracks for User
-      x-spotify-docs-console-url: /console/put-current-user-saved-tracks/?ids=7ouMYWpwJ422jRcDASZB7P%2C4VqPOruhp5EdPBeR92t6lQ%2C2takcwOaAZWiXQijPHIx7B
-    x-spotify-docs-display-name: current-user-saved-tracks
-    x-spotify-docs-category: Library
   /me/tracks/contains:
     get:
       description: |
@@ -3086,7 +2960,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
           example: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
           title: Spotify Track IDs
           type: string
@@ -3134,14 +3008,11 @@ paths:
       tags:
       - Tracks
       - Library
-      x-spotify-docs-endpoint-name: Check User's Saved Tracks
-      x-spotify-docs-console-url: /console/get-current-user-contains-saved-tracks/?ids=0udZHhCi7p1YzMlvI4fXoK%2C3SF5puV5eb6bgRSxBeMOk9
-    x-spotify-docs-display-name: current-user-contains-saved-tracks
-    x-spotify-docs-category: Library
   /me/episodes:
     delete:
       description: |
-        Remove one or more episodes from the current user's library.
+        Remove one or more episodes from the current user's library.<br/>
+        This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
       operationId: remove-episodes-user
       parameters:
       - explode: true
@@ -3150,7 +3021,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
           example: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
           title: Spotify Track IDs
           type: string
@@ -3194,11 +3065,10 @@ paths:
       tags:
       - Episodes
       - Library
-      x-spotify-docs-endpoint-name: Remove User's Saved Episodes
-      x-spotify-docs-console-url: /console/delete-current-user-saved-episodes/?ids=77o6BIVlYM3msb4MMIL1jH%2C0Q86acNRm6V9GYx55SXKwf
     get:
       description: |
-        Get a list of the episodes saved in the current Spotify user's library.
+        Get a list of the episodes saved in the current Spotify user's library.<br/>
+        This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
       operationId: get-users-saved-episodes
       parameters:
       - explode: true
@@ -3282,11 +3152,10 @@ paths:
       tags:
       - Episodes
       - Library
-      x-spotify-docs-endpoint-name: Get User's Saved Episodes
-      x-spotify-docs-console-url: /console/get-current-user-saved-episodes/
     put:
       description: |
-        Save one or more episodes to the current user's library.
+        Save one or more episodes to the current user's library.<br/>
+        This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer).
       operationId: save-episodes-user
       parameters:
       - explode: true
@@ -3295,7 +3164,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). Maximum: 50 IDs.
           example: "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf"
           title: Spotify Episodes IDs
           type: string
@@ -3339,14 +3208,11 @@ paths:
       tags:
       - Episodes
       - Library
-      x-spotify-docs-endpoint-name: Save Episodes for Current User
-      x-spotify-docs-console-url: /console/put-current-user-saved-episodes/?ids=77o6BIVlYM3msb4MMIL1jH%2C0Q86acNRm6V9GYx55SXKwf
-    x-spotify-docs-display-name: current-user-saved-episodes
-    x-spotify-docs-category: Library
   /me/episodes/contains:
     get:
       description: |
-        Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.
+        Check if one or more episodes is already saved in the current Spotify user's 'Your Episodes' library.<br/>
+        This API endpoint is in __beta__ and could change without warning. Please share any feedback that you have, or issues that you discover, in our [developer community forum](https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer)..
       operationId: check-users-saved-episodes
       parameters:
       - explode: true
@@ -3355,7 +3221,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for the episodes. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the episodes. Maximum: 50 IDs.
           example: "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf"
           title: Spotify Episode IDs
           type: string
@@ -3403,10 +3269,6 @@ paths:
       tags:
       - Episodes
       - Library
-      x-spotify-docs-endpoint-name: Check User's Saved Episodes
-      x-spotify-docs-console-url: /console/get-current-user-contains-saved-episodes/?ids=77o6BIVlYM3msb4MMIL1jH%2C0Q86acNRm6V9GYx55SXKwf
-    x-spotify-docs-display-name: current-user-contains-saved-episodes
-    x-spotify-docs-category: Library
   /me/shows:
     delete:
       description: |
@@ -3419,7 +3281,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for the shows. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the shows. Maximum: 50 IDs.
           example: "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ"
           title: Ids
           type: string
@@ -3479,8 +3341,6 @@ paths:
       tags:
       - Shows
       - Library
-      x-spotify-docs-endpoint-name: Remove User's Saved Shows
-      x-spotify-docs-console-url: /console/delete-current-user-saved-shows/?ids=5AvwZVawapvyhJUIx71pdJ%2C6ups0LMt1G8n81XLlkbsPo%2C5AvwZVawapvyhJUIx71pdJ
     get:
       description: |
         Get a list of shows saved in the current Spotify user's library. Optional parameters can be used to limit the number of shows returned.
@@ -3550,8 +3410,6 @@ paths:
       tags:
       - Shows
       - Library
-      x-spotify-docs-endpoint-name: Get User's Saved Shows
-      x-spotify-docs-console-url: /console/get-current-user-saved-shows/
     put:
       description: |
         Save one or more shows to current Spotify user's library.
@@ -3563,7 +3421,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for the shows. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the shows. Maximum: 50 IDs.
           example: "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ"
           title: Ids
           type: string
@@ -3607,10 +3465,6 @@ paths:
       tags:
       - Shows
       - Library
-      x-spotify-docs-endpoint-name: Save Shows for Current User
-      x-spotify-docs-console-url: /console/put-current-user-saved-shows/?ids=5AvwZVawapvyhJUIx71pdJ%2C6ups0LMt1G8n81XLlkbsPo%2C5AvwZVawapvyhJUIx71pdJ
-    x-spotify-docs-display-name: current-user-saved-shows
-    x-spotify-docs-category: Library
   /me/shows/contains:
     get:
       description: |
@@ -3623,7 +3477,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for the shows. Maximum: 50 IDs.
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the shows. Maximum: 50 IDs.
           example: "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ"
           title: Ids
           type: string
@@ -3671,10 +3525,102 @@ paths:
       tags:
       - Shows
       - Library
-      x-spotify-docs-endpoint-name: Check User's Saved Shows
-      x-spotify-docs-console-url: /console/get-current-user-contains-saved-shows/?ids=5AvwZVawapvyhJUIx71pdJ%2C6ups0LMt1G8n81XLlkbsPo%2C5AvwZVawapvyhJUIx71pdJ
-    x-spotify-docs-display-name: current-user-contains-saved-shows
-    x-spotify-docs-category: Library
+  /me/top/{type}:
+    get:
+      description: |
+        Get the current user's top artists or tracks based on calculated affinity.
+      operationId: get-users-top-artists-and-tracks
+      parameters:
+      - explode: false
+        in: path
+        name: type
+        required: true
+        schema:
+          description: |
+            The type of entity to return. Valid values: `artists` or `tracks`
+          enum:
+          - artists
+          - tracks
+          title: Type
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: time_range
+        required: false
+        schema:
+          default: medium_term
+          description: |
+            Over what time frame the affinities are computed. Valid values: `long_term` (calculated from several years of data and including all new data as it becomes available), `medium_term` (approximately last 6 months), `short_term` (approximately last 4 weeks). Default: `medium_term`
+          example: medium_term
+          title: Time Range
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 20
+          description: |
+            The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
+          example: 10
+          maximum: 50
+          minimum: 1
+          title: Limit
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          default: 0
+          description: |
+            The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
+          example: 5
+          title: Offset
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_users_top_artists_and_tracks_200_response'
+          description: Pages of artists or tracks
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_an_album_401_response'
+          description: |
+            Bad or expired token. This can happen if the user revoked a token or
+            the access token has expired. You should re-authenticate the user.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_an_album_401_response'
+          description: |
+            Bad OAuth request (wrong consumer key, bad nonce, expired
+            timestamp...). Unfortunately, re-authenticating the user won't help here.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_an_album_401_response'
+          description: |
+            The app has exceeded its rate limits.
+      security:
+      - oauth_2_0:
+        - user-top-read
+      summary: |
+        Get User's Top Items
+      tags:
+      - Users
+      - Tracks
+      - Library
   /users/{user_id}:
     get:
       description: |
@@ -3687,7 +3633,7 @@ paths:
         required: true
         schema:
           description: |
-            The user's [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids).
+            The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
           example: smedjan
           title: User ID
           type: string
@@ -3728,10 +3674,6 @@ paths:
         Get User's Profile
       tags:
       - Users
-      x-spotify-docs-endpoint-name: Get a User's Profile
-      x-spotify-docs-console-url: /console/get-users-profile/?user_id=wizzler
-    x-spotify-docs-display-name: users-profile
-    x-spotify-docs-category: Users Profile
   /users/{user_id}/playlists:
     get:
       description: |
@@ -3744,7 +3686,7 @@ paths:
         required: true
         schema:
           description: |
-            The user's [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids).
+            The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
           example: smedjan
           title: User ID
           type: string
@@ -3816,12 +3758,10 @@ paths:
       tags:
       - Playlists
       - Users
-      x-spotify-docs-endpoint-name: Get a List of a User's Playlists
-      x-spotify-docs-console-url: /console/get-playlists/?user_id=wizzler
     post:
       description: |
         Create a playlist for a Spotify user. (The playlist will be empty until
-        you [add tracks](/documentation/web-api/reference/#/operations/add-tracks-to-playlist).)
+        you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)
       operationId: create-playlist
       parameters:
       - explode: false
@@ -3830,7 +3770,7 @@ paths:
         required: true
         schema:
           description: |
-            The user's [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids).
+            The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
           example: smedjan
           title: User ID
           type: string
@@ -3879,10 +3819,6 @@ paths:
       tags:
       - Playlists
       - Library
-      x-spotify-docs-endpoint-name: Create a Playlist
-      x-spotify-docs-console-url: /console/post-playlists/
-    x-spotify-docs-display-name: playlists
-    x-spotify-docs-category: Playlists
   /playlists/{playlist_id}/followers:
     delete:
       description: |
@@ -3895,7 +3831,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the playlist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playlist.
           example: 3cEYpjA9oz9GiPac4AsH4n
           title: Playlist ID
           type: string
@@ -3935,8 +3871,6 @@ paths:
       tags:
       - Users
       - Playlists
-      x-spotify-docs-endpoint-name: Unfollow Playlist
-      x-spotify-docs-console-url: /console/delete-playlist-followers/?playlist_id=2v3iNvBX8Ay1Gt2uXtUKUT&amp;user_id=jmperezperez
     put:
       description: |
         Add the current user as a follower of a playlist.
@@ -3948,7 +3882,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the playlist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playlist.
           example: 3cEYpjA9oz9GiPac4AsH4n
           title: Playlist ID
           type: string
@@ -3993,10 +3927,6 @@ paths:
       tags:
       - Users
       - Playlists
-      x-spotify-docs-endpoint-name: Follow a Playlist
-      x-spotify-docs-console-url: /console/put-playlist-followers/?playlist_id=2v3iNvBX8Ay1Gt2uXtUKUT&amp;body-json=%7B%0D%0A++%22public%22%3A+true%0D%0A%7D&amp;user_id=jmperezperez
-    x-spotify-docs-display-name: playlist-followers
-    x-spotify-docs-category: Follow
   /browse/featured-playlists:
     get:
       description: |
@@ -4099,10 +4029,6 @@ paths:
         Get Featured Playlists
       tags:
       - Playlists
-      x-spotify-docs-endpoint-name: Get All Featured Playlists
-      x-spotify-docs-console-url: /console/get-featured-playlists/?country=SE&amp;limit=2
-    x-spotify-docs-display-name: featured-playlists
-    x-spotify-docs-category: Browse
   /browse/categories:
     get:
       description: |
@@ -4194,10 +4120,6 @@ paths:
         Get Several Browse Categories
       tags:
       - Categories
-      x-spotify-docs-endpoint-name: Get All Categories
-      x-spotify-docs-console-url: /console/get-browse-categories/
-    x-spotify-docs-display-name: browse-categories
-    x-spotify-docs-category: Browse
   /browse/categories/{category_id}:
     get:
       description: |
@@ -4210,7 +4132,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify category ID](/documentation/web-api/#spotify-uris-and-ids) for the category.
+            The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) for the category.
           example: dinner
           title: Category ID
           type: string
@@ -4273,10 +4195,6 @@ paths:
         Get Single Browse Category
       tags:
       - Categories
-      x-spotify-docs-endpoint-name: Get a Category
-      x-spotify-docs-console-url: /console/get-browse-category/
-    x-spotify-docs-display-name: browse-category
-    x-spotify-docs-category: Browse
   /browse/categories/{category_id}/playlists:
     get:
       description: |
@@ -4289,7 +4207,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify category ID](/documentation/web-api/#spotify-uris-and-ids) for the category.
+            The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) for the category.
           example: dinner
           title: Category ID
           type: string
@@ -4368,10 +4286,6 @@ paths:
       tags:
       - Playlists
       - Categories
-      x-spotify-docs-endpoint-name: Get a Category's Playlists
-      x-spotify-docs-console-url: /console/get-category-playlists/?country=BR&amp;category_id=party&amp;limit=2
-    x-spotify-docs-display-name: category-playlists
-    x-spotify-docs-category: Browse
   /playlists/{playlist_id}/images:
     get:
       description: |
@@ -4384,7 +4298,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the playlist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playlist.
           example: 3cEYpjA9oz9GiPac4AsH4n
           title: Playlist ID
           type: string
@@ -4427,8 +4341,6 @@ paths:
         Get Playlist Cover Image
       tags:
       - Playlists
-      x-spotify-docs-endpoint-name: Get a Playlist Cover Image
-      x-spotify-docs-console-url: /console/get-playlist-images?playlist_id=3cEYpjA9oz9GiPac4AsH4n
     put:
       description: |
         Replace the image used to represent a specific playlist.
@@ -4440,7 +4352,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the playlist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playlist.
           example: 3cEYpjA9oz9GiPac4AsH4n
           title: Playlist ID
           type: string
@@ -4449,13 +4361,14 @@ paths:
         content:
           image/jpeg:
             schema:
+              description: "Base64 encoded JPEG image data, maximum payload size is\
+                \ 256 KB."
+              example: /9j/2wCEABoZGSccJz4lJT5CLy8vQkc9Ozs9R0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0cBHCcnMyYzPSYmPUc9Mj1HR0dEREdHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR//dAAQAAf/uAA5BZG9iZQBkwAAAAAH/wAARCAABAAEDACIAAREBAhEB/8QASwABAQAAAAAAAAAAAAAAAAAAAAYBAQAAAAAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAARAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwAAARECEQA/AJgAH//Z
               format: base64
               type: string
-        description: The new cover image of the playlist as a Base64 encoded JPEG
-          image. Maximum payload size is 256KB.
         required: true
       responses:
-        "200":
+        "202":
           description: Image uploaded
         "401":
           content:
@@ -4489,10 +4402,6 @@ paths:
         Add Custom Playlist Cover Image
       tags:
       - Playlists
-      x-spotify-docs-endpoint-name: Upload a Custom Playlist Cover Image
-      x-spotify-docs-console-url: /console/put-playlist-images?playlist_id=3cEYpjA9oz9GiPac4AsH4n
-    x-spotify-docs-display-name: playlist-images
-    x-spotify-docs-category: Playlists
   /browse/new-releases:
     get:
       description: |
@@ -4572,10 +4481,6 @@ paths:
         Get New Releases
       tags:
       - Albums
-      x-spotify-docs-endpoint-name: Get All New Releases
-      x-spotify-docs-console-url: /console/get-new-releases/?country=SE
-    x-spotify-docs-display-name: new-releases
-    x-spotify-docs-category: Browse
   /me/following:
     delete:
       description: |
@@ -4602,7 +4507,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the artist or the user [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `ids=74ASZWbe4lXaubB36ztrGX,08td7MxkoHQkXnWAYD8d6Q`. A maximum of 50 IDs can be sent in one request.
+            A comma-separated list of the artist or the user [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=74ASZWbe4lXaubB36ztrGX,08td7MxkoHQkXnWAYD8d6Q`. A maximum of 50 IDs can be sent in one request.
           example: "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
           title: Spotify IDs
           type: string
@@ -4647,8 +4552,6 @@ paths:
       - Users
       - Artists
       - Library
-      x-spotify-docs-endpoint-name: Unfollow Artists or Users
-      x-spotify-docs-console-url: /console/delete-following/?type=user&amp;ids=exampleuser01
     get:
       description: |
         Get the current user's followed artists.
@@ -4731,8 +4634,6 @@ paths:
       - Users
       - Library
       - Artists
-      x-spotify-docs-endpoint-name: Get User's Followed Artists
-      x-spotify-docs-console-url: /console/get-following/?type=artist&amp;limit=20
     put:
       description: |
         Add the current user as a follower of one or more artists or other Spotify users.
@@ -4758,7 +4659,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the artist or the user [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids).
+            A comma-separated list of the artist or the user [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids).
             A maximum of 50 IDs can be sent in one request.
           example: "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
           title: Spotify IDs
@@ -4804,10 +4705,6 @@ paths:
       - Users
       - Artists
       - Library
-      x-spotify-docs-endpoint-name: Follow Artists or Users
-      x-spotify-docs-console-url: /console/put-following/?type=user&amp;ids=exampleuser01
-    x-spotify-docs-display-name: following
-    x-spotify-docs-category: Follow
   /me/following/contains:
     get:
       description: |
@@ -4834,7 +4731,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the artist or the user [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) to check. For example: `ids=74ASZWbe4lXaubB36ztrGX,08td7MxkoHQkXnWAYD8d6Q`. A maximum of 50 IDs can be sent in one request.
+            A comma-separated list of the artist or the user [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) to check. For example: `ids=74ASZWbe4lXaubB36ztrGX,08td7MxkoHQkXnWAYD8d6Q`. A maximum of 50 IDs can be sent in one request.
           example: "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
           title: Spotify IDs
           type: string
@@ -4883,10 +4780,6 @@ paths:
       - Users
       - Artists
       - Library
-      x-spotify-docs-endpoint-name: Get Following State for Artists/Users
-      x-spotify-docs-console-url: /console/get-following-contains/?type=user&amp;ids=exampleuser01
-    x-spotify-docs-display-name: following-contains
-    x-spotify-docs-category: Follow
   /playlists/{playlist_id}/followers/contains:
     get:
       description: |
@@ -4899,7 +4792,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the playlist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playlist.
           example: 3cEYpjA9oz9GiPac4AsH4n
           title: Playlist ID
           type: string
@@ -4910,7 +4803,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of [Spotify User IDs](/documentation/web-api/#spotify-uris-and-ids) ; the ids of the users that you want to check to see if they follow the playlist. Maximum: 5 ids.
+            A comma-separated list of [Spotify User IDs](/documentation/web-api/concepts/spotify-uris-ids) ; the ids of the users that you want to check to see if they follow the playlist. Maximum: 5 ids.
           example: "jmperezperez,thelinmichael,wizzler"
           title: Spotify user IDs
           type: string
@@ -4957,10 +4850,6 @@ paths:
       tags:
       - Users
       - Playlists
-      x-spotify-docs-endpoint-name: Check if Users Follow a Playlist
-      x-spotify-docs-console-url: "/console/get-playlist-followers-contains/?ids=possan,elogain&amp;user_id=jmperezperez&amp;playlist_id=2v3iNvBX8Ay1Gt2uXtUKUT"
-    x-spotify-docs-display-name: playlist-followers-contains
-    x-spotify-docs-category: Follow
   /audio-features:
     get:
       description: |
@@ -4973,7 +4862,7 @@ paths:
         required: true
         schema:
           description: |
-            A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids)
+            A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids)
             for the tracks. Maximum: 100 IDs.
           example: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
           title: Spotify Track IDs
@@ -5015,10 +4904,6 @@ paths:
         Get Tracks' Audio Features
       tags:
       - Tracks
-      x-spotify-docs-endpoint-name: Get Audio Features for Several Tracks
-      x-spotify-docs-console-url: "/console/get-audio-features-several-tracks/?ids=4JpKVNYnVcJ8tuMKjAj50A,2NRANZE9UCmPAS5XVbXL40,24JygzOLM0EmRQeGtFcIcG"
-    x-spotify-docs-display-name: audio-features-several-tracks
-    x-spotify-docs-category: Tracks
   /audio-features/{id}:
     get:
       description: |
@@ -5032,7 +4917,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the track.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.
           example: 11dFghVXANMlKmJXsNCbNl
           title: Spotify Track ID
           type: string
@@ -5073,10 +4958,6 @@ paths:
         Get Track's Audio Features
       tags:
       - Tracks
-      x-spotify-docs-endpoint-name: Get Audio Features for a Track
-      x-spotify-docs-console-url: /console/get-audio-features-track/?id=06AKEBrKUckW0KREUWRnvT
-    x-spotify-docs-display-name: audio-features-track
-    x-spotify-docs-category: Tracks
   /audio-analysis/{id}:
     get:
       description: |
@@ -5089,7 +4970,7 @@ paths:
         required: true
         schema:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids)
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
             for the track.
           example: 11dFghVXANMlKmJXsNCbNl
           title: Spotify Track ID
@@ -5131,10 +5012,6 @@ paths:
         Get Track's Audio Analysis
       tags:
       - Tracks
-      x-spotify-docs-endpoint-name: Get Audio Analysis for a Track
-      x-spotify-docs-console-url: /console/get-audio-analysis-track/?id=06AKEBrKUckW0KREUWRnvT
-    x-spotify-docs-display-name: audio-analysis-track
-    x-spotify-docs-category: Tracks
   /recommendations:
     get:
       description: |
@@ -5179,7 +5056,7 @@ paths:
         required: false
         schema:
           description: |
-            A comma separated list of [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for seed artists.  Up to 5 seed values may be provided in any combination of `seed_artists`, `seed_tracks` and `seed_genres`.
+            A comma separated list of [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for seed artists.  Up to 5 seed values may be provided in any combination of `seed_artists`, `seed_tracks` and `seed_genres`.
           example: 4NHQUGzhtTLFvgF5SZesLK
           title: Spotify Artist ID Seeds
           type: string
@@ -5201,7 +5078,7 @@ paths:
         required: false
         schema:
           description: |
-            A comma separated list of [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for a seed track.  Up to 5 seed values may be provided in any combination of `seed_artists`, `seed_tracks` and `seed_genres`.
+            A comma separated list of [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for a seed track.  Up to 5 seed values may be provided in any combination of `seed_artists`, `seed_tracks` and `seed_genres`.
           example: 0c6xIDDpzE81m2q797ordA
           title: Spotify Track ID Seeds
           type: string
@@ -5721,14 +5598,10 @@ paths:
         Get Recommendations
       tags:
       - Tracks
-      x-spotify-docs-endpoint-name: Get Recommendations
-      x-spotify-docs-console-url: /console/get-recommendations/?seed_artists=4NHQUGzhtTLFvgF5SZesLK&amp;seed_tracks=0c6xIDDpzE81m2q797ordA&amp;min_energy=0.4&amp;min_popularity=50&amp;market=US
-    x-spotify-docs-display-name: recommendations
-    x-spotify-docs-category: Browse
   /recommendations/available-genre-seeds:
     get:
       description: |
-        Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/#/operations/get-recommendations).
+        Retrieve a list of available genres seed parameter values for [recommendations](/documentation/web-api/reference/get-recommendations).
       operationId: get-recommendation-genres
       responses:
         "200":
@@ -5766,10 +5639,6 @@ paths:
         Get Available Genre Seeds
       tags:
       - Genres
-      x-spotify-docs-endpoint-name: Get Recommendation Genres
-      x-spotify-docs-console-url: /console/get-available-genre-seeds/
-    x-spotify-docs-display-name: available-genre-seeds
-    x-spotify-docs-category: Browse
   /me/player:
     get:
       description: |
@@ -5843,8 +5712,6 @@ paths:
         Get Playback State
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Get Information About The User's Current Playback
-      x-spotify-docs-console-url: /console/get-user-player/
     put:
       description: |
         Transfer playback to a new device and determine if it should start playing.
@@ -5887,10 +5754,6 @@ paths:
         Transfer Playback
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Transfer a User's Playback
-      x-spotify-docs-console-url: /console/put-user-player
-    x-spotify-docs-display-name: user-player
-    x-spotify-docs-category: Player
   /me/player/devices:
     get:
       description: |
@@ -5933,10 +5796,6 @@ paths:
         Get Available Devices
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Get a User's Available Devices
-      x-spotify-docs-console-url: /console/get-users-available-devices/
-    x-spotify-docs-display-name: users-available-devices
-    x-spotify-docs-category: Player
   /me/player/currently-playing:
     get:
       description: |
@@ -6008,10 +5867,6 @@ paths:
         Get Currently Playing Track
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Get the User's Currently Playing Track
-      x-spotify-docs-console-url: /console/get-users-currently-playing-track/
-    x-spotify-docs-display-name: users-currently-playing-track
-    x-spotify-docs-category: Player
   /me/player/play:
     put:
       description: |
@@ -6067,10 +5922,6 @@ paths:
         Start/Resume Playback
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Start/Resume a User's Playback
-      x-spotify-docs-console-url: /console/put-play/
-    x-spotify-docs-display-name: play
-    x-spotify-docs-category: Player
   /me/player/pause:
     put:
       description: |
@@ -6121,10 +5972,6 @@ paths:
         Pause Playback
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Pause a User's Playback
-      x-spotify-docs-console-url: /console/put-pause/
-    x-spotify-docs-display-name: pause
-    x-spotify-docs-category: Player
   /me/player/next:
     post:
       description: |
@@ -6175,10 +6022,6 @@ paths:
         Skip To Next
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Skip User’s Playback To Next Track
-      x-spotify-docs-console-url: /console/post-next/
-    x-spotify-docs-display-name: next
-    x-spotify-docs-category: Player
   /me/player/previous:
     post:
       description: |
@@ -6230,10 +6073,6 @@ paths:
         Skip To Previous
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Skip User’s Playback To Previous Track
-      x-spotify-docs-console-url: /console/post-previous/
-    x-spotify-docs-display-name: previous
-    x-spotify-docs-category: Player
   /me/player/seek:
     put:
       description: |
@@ -6298,10 +6137,6 @@ paths:
         Seek To Position
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Seek To Position In Currently Playing Track
-      x-spotify-docs-console-url: /console/put-seek/
-    x-spotify-docs-display-name: seek
-    x-spotify-docs-category: Player
   /me/player/repeat:
     put:
       description: |
@@ -6368,10 +6203,6 @@ paths:
         Set Repeat Mode
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Set Repeat Mode On User’s Playback
-      x-spotify-docs-console-url: /console/put-repeat/
-    x-spotify-docs-display-name: repeat
-    x-spotify-docs-category: Player
   /me/player/volume:
     put:
       description: |
@@ -6433,10 +6264,6 @@ paths:
         Set Playback Volume
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Set Volume For User's Playback
-      x-spotify-docs-console-url: /console/put-volume/
-    x-spotify-docs-display-name: volume
-    x-spotify-docs-category: Player
   /me/player/shuffle:
     put:
       description: |
@@ -6500,10 +6327,6 @@ paths:
         Toggle Playback Shuffle
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Toggle Shuffle For User’s Playback
-      x-spotify-docs-console-url: /console/put-shuffle/?state=true
-    x-spotify-docs-display-name: shuffle
-    x-spotify-docs-category: Player
   /me/player/recently-played:
     get:
       description: |
@@ -6587,10 +6410,6 @@ paths:
         Get Recently Played Tracks
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Get Current User's Recently Played Tracks
-      x-spotify-docs-console-url: /console/get-recently-played/
-    x-spotify-docs-display-name: recently-played
-    x-spotify-docs-category: Player
   /me/player/queue:
     get:
       description: |
@@ -6633,8 +6452,6 @@ paths:
         Get the User's Queue
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Get the User's Queue
-      x-spotify-docs-console-url: /console/get-queue/
     post:
       description: |
         Add an item to the end of the user's current playback queue.
@@ -6696,10 +6513,6 @@ paths:
         Add Item to Playback Queue
       tags:
       - Player
-      x-spotify-docs-endpoint-name: Add an item to queue
-      x-spotify-docs-console-url: /console/post-queue/
-    x-spotify-docs-display-name: queue
-    x-spotify-docs-category: Player
   /markets:
     get:
       description: |
@@ -6741,184 +6554,6 @@ paths:
         Get Available Markets
       tags:
       - Markets
-      x-spotify-docs-endpoint-name: Get Available Markets
-      x-spotify-docs-console-url: /console/get-available-markets/
-    x-spotify-docs-display-name: available-markets
-    x-spotify-docs-category: Markets
-  /me/top/artists:
-    get:
-      description: |
-        Get the current user's top artists based on calculated affinity.
-      operationId: get-users-top-artists
-      parameters:
-      - explode: true
-        in: query
-        name: time_range
-        required: false
-        schema:
-          default: medium_term
-          description: |
-            Over what time frame the affinities are computed. Valid values: `long_term` (calculated from several years of data and including all new data as it becomes available), `medium_term` (approximately last 6 months), `short_term` (approximately last 4 weeks). Default: `medium_term`
-          example: medium_term
-          title: Time Range
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 20
-          description: |
-            The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-          example: 10
-          maximum: 50
-          minimum: 1
-          title: Limit
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          description: |
-            The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
-          example: 5
-          title: Offset
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagingArtistObject'
-          description: Pages of artists
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/get_an_album_401_response'
-          description: |
-            Bad or expired token. This can happen if the user revoked a token or
-            the access token has expired. You should re-authenticate the user.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/get_an_album_401_response'
-          description: |
-            Bad OAuth request (wrong consumer key, bad nonce, expired
-            timestamp...). Unfortunately, re-authenticating the user won't help here.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/get_an_album_401_response'
-          description: |
-            The app has exceeded its rate limits.
-      security:
-      - oauth_2_0:
-        - user-top-read
-      summary: |
-        Get User's Top Artists
-      tags:
-      - Users
-      - Artists
-      - Library
-      x-spotify-docs-endpoint-name: Get a User's Top Artists
-      x-spotify-docs-console-url: /console/get-current-user-top-artists-and-tracks/?type=artists
-    x-spotify-docs-display-name: current-user-top-artists
-    x-spotify-docs-category: Personalization
-  /me/top/tracks:
-    get:
-      description: |
-        Get the current user's top tracks based on calculated affinity.
-      operationId: get-users-top-tracks
-      parameters:
-      - explode: true
-        in: query
-        name: time_range
-        required: false
-        schema:
-          default: medium_term
-          description: |
-            Over what time frame the affinities are computed. Valid values: `long_term` (calculated from several years of data and including all new data as it becomes available), `medium_term` (approximately last 6 months), `short_term` (approximately last 4 weeks). Default: `medium_term`
-          example: medium_term
-          title: Time Range
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 20
-          description: |
-            The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
-          example: 10
-          maximum: 50
-          minimum: 1
-          title: Limit
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          description: |
-            The index of the first item to return. Default: 0 (the first item). Use with limit to get the next set of items.
-          example: 5
-          title: Offset
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PagingTrackObject'
-          description: Pages of tracks
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/get_an_album_401_response'
-          description: |
-            Bad or expired token. This can happen if the user revoked a token or
-            the access token has expired. You should re-authenticate the user.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/get_an_album_401_response'
-          description: |
-            Bad OAuth request (wrong consumer key, bad nonce, expired
-            timestamp...). Unfortunately, re-authenticating the user won't help here.
-        "429":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/get_an_album_401_response'
-          description: |
-            The app has exceeded its rate limits.
-      security:
-      - oauth_2_0:
-        - user-top-read
-      summary: |
-        Get User's Top Tracks
-      tags:
-      - Users
-      - Tracks
-      - Library
-      x-spotify-docs-endpoint-name: Get a User's Top Tracks
-      x-spotify-docs-console-url: /console/get-current-user-top-artists-and-tracks/?type=tracks
-    x-spotify-docs-display-name: current-user-top-tracks
-    x-spotify-docs-category: Personalization
 components:
   parameters:
     PathAlbumId:
@@ -6928,7 +6563,7 @@ components:
       required: true
       schema:
         description: |
-          The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the album.
+          The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the album.
         example: 4aawyAB9vmqN3uQ7FjRGTy
         title: Spotify Album ID
         type: string
@@ -6940,7 +6575,7 @@ components:
       required: true
       schema:
         description: |
-          The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the playlist.
+          The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the playlist.
         example: 3cEYpjA9oz9GiPac4AsH4n
         title: Playlist ID
         type: string
@@ -7010,7 +6645,7 @@ components:
       required: true
       schema:
         description: |
-          A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for the albums. Maximum: 20 IDs.
+          A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the albums. Maximum: 20 IDs.
         example: "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc"
         title: Spotify Album IDs
         type: string
@@ -7022,7 +6657,7 @@ components:
       required: true
       schema:
         description: |
-          The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) of the artist.
+          The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) of the artist.
         example: 0TnOYISbd1XYRBk9myaseg
         title: Spotify Artist ID
         type: string
@@ -7034,7 +6669,7 @@ components:
       required: true
       schema:
         description: |
-          The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids)
+          The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
           for the show.
         example: 38bS44xjbVVZ3No3ByF1dJ
         title: Spotify Show ID
@@ -7047,7 +6682,7 @@ components:
       required: true
       schema:
         description: |
-          The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids)
+          The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
           for the audiobook.
         example: 7iHfbu1YPACw6oZPAFJtqe
         title: Spotify Audiobook ID
@@ -7060,7 +6695,7 @@ components:
       required: true
       schema:
         description: |
-          A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
+          A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ`. Maximum: 50 IDs.
         example: "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe"
         title: Spotify Audiobook IDs
         type: string
@@ -7072,7 +6707,7 @@ components:
       required: true
       schema:
         description: |
-          The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids)
+          The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids)
           for the chapter.
         example: 0D5wENdkdwbqlrHoaJ9g29
         title: Spotify Chapter ID
@@ -7085,7 +6720,7 @@ components:
       required: true
       schema:
         description: |
-          A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `ids=0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU`. Maximum: 50 IDs.
+          A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU`. Maximum: 50 IDs.
         example: "0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29"
         title: Spotify Chapter IDs
         type: string
@@ -7097,7 +6732,7 @@ components:
       required: true
       schema:
         description: |
-          A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
+          A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `ids=4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M`. Maximum: 50 IDs.
         example: "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
         title: Spotify Track IDs
         type: string
@@ -7122,7 +6757,7 @@ components:
       required: true
       schema:
         description: |
-          A comma-separated list of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids) for the shows. Maximum: 50 IDs.
+          A comma-separated list of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids) for the shows. Maximum: 50 IDs.
         example: "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ"
         title: Ids
         type: string
@@ -7134,7 +6769,7 @@ components:
       required: true
       schema:
         description: |
-          The user's [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids).
+          The user's [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids).
         example: smedjan
         title: User ID
         type: string
@@ -7156,6 +6791,20 @@ components:
       description: |
         Bad OAuth request (wrong consumer key, bad nonce, expired
         timestamp...). Unfortunately, re-authenticating the user won't help here.
+    NotFound:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/get_an_album_401_response'
+      description: |
+        The requested resource cannot be found.
+    BadRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/get_an_album_401_response'
+      description: |
+        The request contains malformed data in path, query parameters, or body.
     TooManyRequests:
       content:
         application/json:
@@ -7417,6 +7066,12 @@ components:
           schema:
             $ref: '#/components/schemas/PagingSimplifiedChapterObject'
       description: Pages of chapters
+    PagingArtistOrTrackObject:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/get_users_top_artists_and_tracks_200_response'
+      description: Pages of artists or tracks
     SearchItems:
       content:
         application/json:
@@ -7499,7 +7154,7 @@ components:
           type: string
         id:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the track.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.
           type: string
         type:
           description: |
@@ -7507,7 +7162,7 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the track.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.
           type: string
       type: object
       x-spotify-docs-type: LinkedTrackObject
@@ -7609,7 +7264,7 @@ components:
           type: string
         id:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the artist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
           type: string
         images:
           description: |
@@ -7633,7 +7288,7 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the artist.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
           type: string
       type: object
       x-spotify-docs-type: ArtistObject
@@ -7647,7 +7302,7 @@ components:
           type: string
         id:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the artist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
           type: string
         name:
           description: |
@@ -7661,7 +7316,7 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the artist.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist.
           type: string
       type: object
       x-spotify-docs-type: SimplifiedArtistObject
@@ -7690,7 +7345,7 @@ components:
           $ref: '#/components/schemas/PlaylistTrackObject_added_by'
         is_local:
           description: |
-            Whether this track or episode is a [local file](https://developer.spotify.com/web-api/local-files-spotify-playlists/) or not.
+            Whether this track or episode is a [local file](/documentation/web-api/concepts/playlists/#local-files) or not.
           type: boolean
         track:
           $ref: '#/components/schemas/PlaylistTrackObject_track'
@@ -7822,7 +7477,7 @@ components:
       properties:
         status:
           description: |
-            The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/#response-status-codes) for more information).
+            The HTTP status code (also returned in the response header; see [Response Status Codes](/documentation/web-api/concepts/api-calls#response-status-codes) for more information).
           maximum: 599
           minimum: 400
           type: integer
@@ -7915,7 +7570,7 @@ components:
       properties:
         country:
           description: |
-            The country of the user, as set in the user's account profile. An [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _This field is only available when the current user has granted access to the [user-read-private](/documentation/general/guides/authorization-guide/#list-of-scopes) scope._
+            The country of the user, as set in the user's account profile. An [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _This field is only available when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._
           type: string
         display_name:
           description: |
@@ -7923,7 +7578,7 @@ components:
           type: string
         email:
           description: |
-            The user's email address, as entered by the user when creating their account. _**Important!** This email address is unverified; there is no proof that it actually belongs to the user._ _This field is only available when the current user has granted access to the [user-read-email](/documentation/general/guides/authorization-guide/#list-of-scopes) scope._
+            The user's email address, as entered by the user when creating their account. _**Important!** This email address is unverified; there is no proof that it actually belongs to the user._ _This field is only available when the current user has granted access to the [user-read-email](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._
           type: string
         explicit_content:
           $ref: '#/components/schemas/PrivateUserObject_explicit_content'
@@ -7937,7 +7592,7 @@ components:
           type: string
         id:
           description: |
-            The [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids) for the user.
+            The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for the user.
           type: string
         images:
           description: The user's profile image.
@@ -7946,7 +7601,7 @@ components:
           type: array
         product:
           description: |
-            The user's Spotify subscription level: "premium", "free", etc. (The subscription level "open" can be considered the same as "free".) _This field is only available when the current user has granted access to the [user-read-private](/documentation/general/guides/authorization-guide/#list-of-scopes) scope._
+            The user's Spotify subscription level: "premium", "free", etc. (The subscription level "open" can be considered the same as "free".) _This field is only available when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._
           type: string
         type:
           description: |
@@ -7954,7 +7609,7 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the user.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the user.
           type: string
       type: object
       x-spotify-docs-type: PrivateUserObject
@@ -7992,7 +7647,7 @@ components:
           type: string
         id:
           description: |
-            The [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids) for this user.
+            The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for this user.
           type: string
         images:
           description: |
@@ -8008,7 +7663,7 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for this user.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for this user.
           type: string
       type: object
       x-spotify-docs-type: PublicUserObject
@@ -8591,11 +8246,11 @@ components:
           type: string
         id:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the track.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.
           type: string
         is_playable:
           description: |
-            Part of the response when [Track Relinking](/documentation/general/guides/track-relinking-guide/) is applied. If `true`, the track is playable in the given market. Otherwise `false`.
+            Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking/) is applied. If `true`, the track is playable in the given market. Otherwise `false`.
           type: boolean
         linked_from:
           $ref: '#/components/schemas/SimplifiedTrackObject_linked_from'
@@ -8618,7 +8273,7 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the track.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.
           type: string
         is_local:
           description: |
@@ -8905,7 +8560,6 @@ components:
           - available_markets
           - available_markets
           restrictions: null
-          episode: true
           type: track
           external_ids: null
           uri: uri
@@ -8960,7 +8614,6 @@ components:
           track_number: 5
           href: href
           id: id
-          track: true
           is_local: true
           external_urls: null
         - disc_number: 0
@@ -8969,7 +8622,6 @@ components:
           - available_markets
           - available_markets
           restrictions: null
-          episode: true
           type: track
           external_ids: null
           uri: uri
@@ -9024,7 +8676,6 @@ components:
           track_number: 5
           href: href
           id: id
-          track: true
           is_local: true
           external_urls: null
       properties:
@@ -9192,7 +8843,7 @@ components:
           type: integer
         popularity:
           description: |
-            The popularity of the track. The value will be between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are. _**Note**: When applying track relinking via the `market` parameter, it is expected to find relinked tracks with popularities that do not match `min_*`, `max_*`and `target_*` popularities. These relinked tracks are accurate replacements for unplayable tracks with the expected popularity scores. Original, non-relinked tracks are available via the `linked_from` attribute of the [relinked track response](/documentation/general/guides/track-relinking-guide)._
+            The popularity of the track. The value will be between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are. _**Note**: When applying track relinking via the `market` parameter, it is expected to find relinked tracks with popularities that do not match `min_*`, `max_*`and `target_*` popularities. These relinked tracks are accurate replacements for unplayable tracks with the expected popularity scores. Original, non-relinked tracks are available via the `linked_from` attribute of the [relinked track response](/documentation/web-api/concepts/track-relinking)._
           format: float
           type: number
           x-spotify-docs-type: Float
@@ -9270,11 +8921,11 @@ components:
           type: string
         id:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the playlist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.
           type: string
         images:
           description: |
-            Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/general/guides/working-with-playlists/). _**Note**: If returned, the source URL for the image (`url`) is temporary and will expire in less than a day._
+            Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/web-api/concepts/playlists). _**Note**: If returned, the source URL for the image (`url`) is temporary and will expire in less than a day._
           items:
             $ref: '#/components/schemas/ImageObject'
           type: array
@@ -9286,7 +8937,7 @@ components:
           $ref: '#/components/schemas/PlaylistObject_owner'
         public:
           description: |
-            The playlist's public/private status: `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/general/guides/working-with-playlists/)
+            The playlist's public/private status: `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
           type: boolean
         snapshot_id:
           description: |
@@ -9300,7 +8951,7 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the playlist.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.
           type: string
       type: object
       x-spotify-docs-type: PlaylistObject
@@ -9322,11 +8973,11 @@ components:
           type: string
         id:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the playlist.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.
           type: string
         images:
           description: |
-            Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/general/guides/working-with-playlists/). _**Note**: If returned, the source URL for the image (`url`) is temporary and will expire in less than a day._
+            Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/web-api/concepts/playlists). _**Note**: If returned, the source URL for the image (`url`) is temporary and will expire in less than a day._
           items:
             $ref: '#/components/schemas/ImageObject'
           type: array
@@ -9338,7 +8989,7 @@ components:
           $ref: '#/components/schemas/PlaylistObject_owner'
         public:
           description: |
-            The playlist's public/private status: `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/general/guides/working-with-playlists/)
+            The playlist's public/private status: `true` the playlist is public, `false` the playlist is private, `null` the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)
           type: boolean
         snapshot_id:
           description: |
@@ -9352,7 +9003,7 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the playlist.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.
           type: string
       type: object
       x-spotify-docs-type: SimplifiedPlaylistObject
@@ -9380,7 +9031,7 @@ components:
           type: string
         id:
           description: |
-            The [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids) for this user.
+            The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for this user.
           type: string
         type:
           description: |
@@ -9390,7 +9041,7 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for this user.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for this user.
           type: string
       type: object
       x-spotify-docs-type: PlaylistUserObject
@@ -9425,7 +9076,7 @@ components:
           type: array
         id:
           description: |
-            The [Spotify category ID](/documentation/web-api/#spotify-uris-and-ids) of the category.
+            The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) of the category.
           example: equal
           type: string
         name:
@@ -9448,7 +9099,6 @@ components:
         - available_markets
         - available_markets
         restrictions: null
-        episode: true
         type: track
         external_ids: null
         uri: uri
@@ -9503,18 +9153,9 @@ components:
         track_number: 5
         href: href
         id: id
-        track: true
         is_local: true
         external_urls: null
       properties:
-        episode:
-          description: |
-            Fix by Barben360
-          type: boolean
-        track:
-          description: |
-            Fix by Barben360
-          type: boolean
         album:
           $ref: '#/components/schemas/TrackObject_album'
         artists:
@@ -9551,14 +9192,14 @@ components:
           type: string
         id:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the track.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.
           type: string
         is_playable:
           description: |
-            Part of the response when [Track Relinking](/documentation/general/guides/track-relinking-guide/) is applied. If `true`, the track is playable in the given market. Otherwise `false`.
+            Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied. If `true`, the track is playable in the given market. Otherwise `false`.
           type: boolean
         linked_from:
-          $ref: '#/components/schemas/SimplifiedTrackObject_linked_from'
+          $ref: '#/components/schemas/TrackObject_linked_from'
         restrictions:
           $ref: '#/components/schemas/SimplifiedTrackObject_restrictions'
         name:
@@ -9585,7 +9226,7 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the track.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.
           type: string
         is_local:
           description: |
@@ -9606,14 +9247,6 @@ components:
       x-spotify-docs-type: SimplifiedEpisodeObject
     EpisodeBase:
       properties:
-        episode:
-          description: |
-            Fix by Barben360
-          type: boolean
-        track:
-          description: |
-            Fix by Barben360
-          type: boolean
         audio_preview_url:
           description: |
             A URL to a 30 second preview (MP3 format) of the episode. `null` if not available.
@@ -9649,7 +9282,7 @@ components:
           type: string
         id:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the episode.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the episode.
           example: 5Xt5DXGzch68nYYamXrNxZ
           type: string
         images:
@@ -9711,7 +9344,7 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the episode.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode.
           example: spotify:episode:0zLhl3WsOCQHbe1BPTiHgr
           type: string
         restrictions:
@@ -9782,7 +9415,7 @@ components:
           type: string
         id:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the show.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.
           type: string
         images:
           description: |
@@ -9820,7 +9453,7 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the show.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the show.
           type: string
         total_episodes:
           description: |
@@ -9899,7 +9532,7 @@ components:
           type: string
         id:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the audiobook.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.
           type: string
         images:
           description: |
@@ -9939,7 +9572,7 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the audiobook.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.
           type: string
         total_chapters:
           description: |
@@ -10007,7 +9640,7 @@ components:
           type: string
         id:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the album.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the album.
           example: 2up3OPMp9Tb4dAKM2erWXQ
           type: string
         images:
@@ -10044,13 +9677,9 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the album.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the album.
           example: spotify:album:2up3OPMp9Tb4dAKM2erWXQ
           type: string
-        is_playable:
-          description: |
-            Fix by Barben360
-          type: boolean
       required:
       - album_type
       - available_markets
@@ -10129,7 +9758,7 @@ components:
           type: string
         id:
           description: |
-            The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the episode.
+            The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the episode.
           example: 5Xt5DXGzch68nYYamXrNxZ
           type: string
         images:
@@ -10181,7 +9810,7 @@ components:
           type: string
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the episode.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode.
           example: spotify:episode:0zLhl3WsOCQHbe1BPTiHgr
           type: string
         restrictions:
@@ -10225,7 +9854,7 @@ components:
           $ref: '#/components/schemas/ContextObject_external_urls'
         uri:
           description: |
-            The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the context.
+            The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the context.
           type: string
       type: object
       x-spotify-docs-type: ContextObject
@@ -10271,17 +9900,13 @@ components:
           description: |
             [Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code)
           type: string
-        spotify:
-          description: |
-            Fix by Barben360
-          type: string
       type: object
       x-spotify-docs-type: ExternalIdObject
     ExternalUrlObject:
       properties:
         spotify:
           description: |
-            The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object.
+            The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object.
           type: string
       type: object
       x-spotify-docs-type: ExternalUrlObject
@@ -10440,7 +10065,6 @@ components:
           - available_markets
           - available_markets
           restrictions: null
-          episode: true
           type: track
           external_ids: null
           uri: uri
@@ -10495,7 +10119,6 @@ components:
           track_number: 5
           href: href
           id: id
-          track: true
           is_local: true
           external_urls: null
         - disc_number: 0
@@ -10504,7 +10127,6 @@ components:
           - available_markets
           - available_markets
           restrictions: null
-          episode: true
           type: track
           external_ids: null
           uri: uri
@@ -10559,7 +10181,6 @@ components:
           track_number: 5
           href: href
           id: id
-          track: true
           is_local: true
           external_urls: null
       properties:
@@ -10713,7 +10334,7 @@ components:
       properties:
         uris:
           description: |
-            A JSON array of the [Spotify URIs](/documentation/web-api/#spotify-uris-and-ids) to add. For example: `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M", "spotify:episode:512ojhOuo1ktJprKbVcKyQ"]}`<br/>A maximum of 100 items can be added in one request. _**Note**: if the `uris` parameter is present in the query string, any URIs listed here in the body will be ignored._
+            A JSON array of the [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) to add. For example: `{"uris": ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M", "spotify:episode:512ojhOuo1ktJprKbVcKyQ"]}`<br/>A maximum of 100 items can be added in one request. _**Note**: if the `uris` parameter is present in the query string, any URIs listed here in the body will be ignored._
           items:
             type: string
           type: array
@@ -10732,7 +10353,7 @@ components:
       properties:
         tracks:
           description: |
-            An array of objects containing [Spotify URIs](https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids) of the tracks or episodes to remove.
+            An array of objects containing [Spotify URIs](/documentation/web-api/concepts/spotify-uris-ids) of the tracks or episodes to remove.
             For example: `{ "tracks": [{ "uri": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh" },{ "uri": "spotify:track:1301WleyT98MSxVHPZCA6M" }] }`. A maximum of 100 objects can be sent at once.
           items:
             $ref: '#/components/schemas/remove_tracks_playlist_request_tracks_inner'
@@ -10751,7 +10372,7 @@ components:
       properties:
         ids:
           description: |
-            A JSON array of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+            A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
           items:
             type: string
           type: array
@@ -10761,7 +10382,7 @@ components:
       properties:
         ids:
           description: |
-            A JSON array of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+            A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `["4iV5W9uYEdYUVa79Axb7Rh", "1301WleyT98MSxVHPZCA6M"]`<br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
           items:
             type: string
           type: array
@@ -10773,7 +10394,7 @@ components:
       properties:
         ids:
           description: |
-            A JSON array of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). <br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+            A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). <br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
           items:
             type: string
           type: array
@@ -10785,7 +10406,7 @@ components:
       properties:
         ids:
           description: |
-            A JSON array of the [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). <br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+            A JSON array of the [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). <br/>A maximum of 50 items can be specified in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
           items:
             type: string
           type: array
@@ -10801,6 +10422,25 @@ components:
             type: string
           type: array
       type: object
+    get_users_top_artists_and_tracks_200_response_allOf_items_inner:
+      discriminator:
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/ArtistObject'
+      - $ref: '#/components/schemas/TrackObject'
+      type: object
+    get_users_top_artists_and_tracks_200_response_allOf:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/get_users_top_artists_and_tracks_200_response_allOf_items_inner'
+          type: array
+      type: object
+    get_users_top_artists_and_tracks_200_response:
+      allOf:
+      - $ref: '#/components/schemas/PagingObject'
+      - $ref: '#/components/schemas/get_users_top_artists_and_tracks_200_response_allOf'
+      type: object
     create_playlist_request:
       additionalProperties: true
       example:
@@ -10814,11 +10454,11 @@ components:
           type: string
         public:
           description: |
-            Defaults to `true`. If `true` the playlist will be public, if `false` it will be private. To be able to create private playlists, the user must have granted the `playlist-modify-private` [scope](/documentation/general/guides/authorization-guide/#list-of-scopes)
+            Defaults to `true`. If `true` the playlist will be public, if `false` it will be private. To be able to create private playlists, the user must have granted the `playlist-modify-private` [scope](/documentation/web-api/concepts/scopes/#list-of-scopes)
           type: boolean
         collaborative:
           description: |
-            Defaults to `false`. If `true` the playlist will be collaborative. _**Note**: to create a collaborative playlist you must also set `public` to `false`. To create collaborative playlists you must have granted `playlist-modify-private` and `playlist-modify-public` [scopes](/documentation/general/guides/authorization-guide/#list-of-scopes)._
+            Defaults to `false`. If `true` the playlist will be collaborative. _**Note**: to create a collaborative playlist you must also set `public` to `false`. To create collaborative playlists you must have granted `playlist-modify-private` and `playlist-modify-public` [scopes](/documentation/web-api/concepts/scopes/#list-of-scopes)._
           type: boolean
         description:
           description: |
@@ -10880,7 +10520,7 @@ components:
       properties:
         ids:
           description: |
-            A JSON array of the artist or user [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids).
+            A JSON array of the artist or user [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids).
             For example: `{ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}`. A maximum of 50 IDs can be sent in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
           items:
             type: string
@@ -10893,7 +10533,7 @@ components:
       properties:
         ids:
           description: |
-            A JSON array of the artist or user [Spotify IDs](/documentation/web-api/#spotify-uris-and-ids). For example: `{ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}`. A maximum of 50 IDs can be sent in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
+            A JSON array of the artist or user [Spotify IDs](/documentation/web-api/concepts/spotify-uris-ids). For example: `{ids:["74ASZWbe4lXaubB36ztrGX", "08td7MxkoHQkXnWAYD8d6Q"]}`. A maximum of 50 IDs can be sent in one request. _**Note**: if the `ids` parameter is present in the query string, any IDs listed here in the body will be ignored._
           items:
             type: string
           type: array
@@ -11102,7 +10742,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/ExplicitContentSettingsObject'
       description: |
-        The user's explicit content settings. _This field is only available when the current user has granted access to the [user-read-private](/documentation/general/guides/authorization-guide/#list-of-scopes) scope._
+        The user's explicit content settings. _This field is only available when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._
     PrivateUserObject_external_urls:
       allOf:
       - $ref: '#/components/schemas/ExternalUrlObject'
@@ -11343,7 +10983,7 @@ components:
     SimplifiedTrackObject_linked_from:
       allOf:
       - $ref: '#/components/schemas/LinkedTrackObject'
-      description: "Part of the response when [Track Relinking](/documentation/general/guides/track-relinking-guide/)\
+      description: "Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking/)\
         \ is applied and is only part of the response if the track linking, in fact,\
         \ exists. The requested track has been replaced with a different track. The\
         \ track in the `linked_from` object contains information about the originally\
@@ -11545,6 +11185,13 @@ components:
       - $ref: '#/components/schemas/ExternalIdObject'
       description: |
         Known external IDs for the track.
+    TrackObject_linked_from:
+      allOf:
+      - $ref: '#/components/schemas/LinkedTrackObject'
+      description: "Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking)\
+        \ is applied, and the requested track has been replaced with different track.\
+        \ The track in the `linked_from` object contains information about the originally\
+        \ requested track."
     EpisodeObject_allOf_show:
       allOf:
       - $ref: '#/components/schemas/SimplifiedShowObject'

@@ -22,11 +22,11 @@ type LinkedTrackObject struct {
 	ExternalUrls *LinkedTrackObjectExternalUrls `json:"external_urls,omitempty"`
 	// A link to the Web API endpoint providing full details of the track. 
 	Href *string `json:"href,omitempty"`
-	// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the track. 
+	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track. 
 	Id *string `json:"id,omitempty"`
 	// The object type: \"track\". 
 	Type *string `json:"type,omitempty"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the track. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track. 
 	Uri *string `json:"uri,omitempty"`
 }
 

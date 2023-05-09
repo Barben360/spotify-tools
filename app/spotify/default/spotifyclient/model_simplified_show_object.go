@@ -32,7 +32,7 @@ type SimplifiedShowObject struct {
 	ExternalUrls ShowBaseExternalUrls `json:"external_urls"`
 	// A link to the Web API endpoint providing full details of the show. 
 	Href string `json:"href"`
-	// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the show. 
+	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show. 
 	Id string `json:"id"`
 	// The cover art for the show in various sizes, widest first. 
 	Images []ImageObject `json:"images"`
@@ -48,7 +48,7 @@ type SimplifiedShowObject struct {
 	Publisher string `json:"publisher"`
 	// The object type. 
 	Type string `json:"type"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the show. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the show. 
 	Uri string `json:"uri"`
 	// The total number of episodes in the show. 
 	TotalEpisodes int32 `json:"total_episodes"`

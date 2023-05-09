@@ -19,7 +19,7 @@ var _ MappedNullable = &EpisodeBaseExternalUrls{}
 
 // EpisodeBaseExternalUrls External URLs for this episode. 
 type EpisodeBaseExternalUrls struct {
-	// The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object. 
+	// The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object. 
 	Spotify *string `json:"spotify,omitempty"`
 }
 

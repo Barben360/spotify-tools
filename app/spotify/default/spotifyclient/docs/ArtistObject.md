@@ -8,12 +8,12 @@ Name | Type | Description | Notes
 **Followers** | Pointer to [**ArtistObjectFollowers**](ArtistObjectFollowers.md) |  | [optional] 
 **Genres** | Pointer to **[]string** | A list of the genres the artist is associated with. If not yet classified, the array is empty.  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint providing full details of the artist.  | [optional] 
-**Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the artist.  | [optional] 
+**Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.  | [optional] 
 **Images** | Pointer to [**[]ImageObject**](ImageObject.md) | Images of the artist in various sizes, widest first.  | [optional] 
 **Name** | Pointer to **string** | The name of the artist.  | [optional] 
 **Popularity** | Pointer to **int32** | The popularity of the artist. The value will be between 0 and 100, with 100 being the most popular. The artist&#39;s popularity is calculated from the popularity of all the artist&#39;s tracks.  | [optional] 
 **Type** | Pointer to **string** | The object type.  | [optional] 
-**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the artist.  | [optional] 
+**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist.  | [optional] 
 
 ## Methods
 

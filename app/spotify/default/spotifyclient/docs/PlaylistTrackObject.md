@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddedAt** | Pointer to **time.Time** | The date and time the track or episode was added. _**Note**: some very old playlists may return &#x60;null&#x60; in this field._  | [optional] 
 **AddedBy** | Pointer to [**PlaylistTrackObjectAddedBy**](PlaylistTrackObjectAddedBy.md) |  | [optional] 
-**IsLocal** | Pointer to **bool** | Whether this track or episode is a [local file](https://developer.spotify.com/web-api/local-files-spotify-playlists/) or not.  | [optional] 
+**IsLocal** | Pointer to **bool** | Whether this track or episode is a [local file](/documentation/web-api/concepts/playlists/#local-files) or not.  | [optional] 
 **Track** | Pointer to [**PlaylistTrackObjectTrack**](PlaylistTrackObjectTrack.md) |  | [optional] 
 
 ## Methods

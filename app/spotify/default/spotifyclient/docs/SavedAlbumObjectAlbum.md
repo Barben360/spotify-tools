@@ -9,15 +9,14 @@ Name | Type | Description | Notes
 **AvailableMarkets** | **[]string** | The markets in which the album is available: [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _**NOTE**: an album is considered available in a market when at least 1 of its tracks is available in that market._  | 
 **ExternalUrls** | [**AlbumBaseExternalUrls**](AlbumBaseExternalUrls.md) |  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the album.  | 
-**Id** | **string** | The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the album.  | 
+**Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the album.  | 
 **Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the album in various sizes, widest first.  | 
 **Name** | **string** | The name of the album. In case of an album takedown, the value may be an empty string.  | 
 **ReleaseDate** | **string** | The date the album was first released.  | 
 **ReleaseDatePrecision** | **string** | The precision with which &#x60;release_date&#x60; value is known.  | 
 **Restrictions** | Pointer to [**AlbumBaseRestrictions**](AlbumBaseRestrictions.md) |  | [optional] 
 **Type** | **string** | The object type.  | 
-**Uri** | **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the album.  | 
-**IsPlayable** | Pointer to **bool** | Fix by Barben360  | [optional] 
+**Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the album.  | 
 **Artists** | Pointer to [**[]SimplifiedArtistObject**](SimplifiedArtistObject.md) | The artists of the album. Each artist object includes a link in &#x60;href&#x60; to more detailed information about the artist.  | [optional] 
 **Tracks** | Pointer to [**AlbumObjectAllOfTracks**](AlbumObjectAllOfTracks.md) |  | [optional] 
 **Popularity** | Pointer to **int32** | The popularity of the album, with 100 being the most popular. The popularity is calculated from the popularity of the album&#39;s individual tracks. | [optional] 
@@ -309,31 +308,6 @@ and a boolean to check if the value has been set.
 
 SetUri sets Uri field to given value.
 
-
-### GetIsPlayable
-
-`func (o *SavedAlbumObjectAlbum) GetIsPlayable() bool`
-
-GetIsPlayable returns the IsPlayable field if non-nil, zero value otherwise.
-
-### GetIsPlayableOk
-
-`func (o *SavedAlbumObjectAlbum) GetIsPlayableOk() (*bool, bool)`
-
-GetIsPlayableOk returns a tuple with the IsPlayable field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsPlayable
-
-`func (o *SavedAlbumObjectAlbum) SetIsPlayable(v bool)`
-
-SetIsPlayable sets IsPlayable field to given value.
-
-### HasIsPlayable
-
-`func (o *SavedAlbumObjectAlbum) HasIsPlayable() bool`
-
-HasIsPlayable returns a boolean if a field has been set.
 
 ### GetArtists
 

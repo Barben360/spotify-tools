@@ -19,10 +19,6 @@ var _ MappedNullable = &SavedTrackObjectTrack{}
 
 // SavedTrackObjectTrack Information about the track.
 type SavedTrackObjectTrack struct {
-	// Fix by Barben360 
-	Episode *bool `json:"episode,omitempty"`
-	// Fix by Barben360 
-	Track *bool `json:"track,omitempty"`
 	Album *TrackObjectAlbum `json:"album,omitempty"`
 	// The artists who performed the track. Each artist object includes a link in `href` to more detailed information about the artist. 
 	Artists []ArtistObject `json:"artists,omitempty"`
@@ -38,11 +34,11 @@ type SavedTrackObjectTrack struct {
 	ExternalUrls *LinkedTrackObjectExternalUrls `json:"external_urls,omitempty"`
 	// A link to the Web API endpoint providing full details of the track. 
 	Href *string `json:"href,omitempty"`
-	// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the track. 
+	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track. 
 	Id *string `json:"id,omitempty"`
-	// Part of the response when [Track Relinking](/documentation/general/guides/track-relinking-guide/) is applied. If `true`, the track is playable in the given market. Otherwise `false`. 
+	// Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied. If `true`, the track is playable in the given market. Otherwise `false`. 
 	IsPlayable *bool `json:"is_playable,omitempty"`
-	LinkedFrom *SimplifiedTrackObjectLinkedFrom `json:"linked_from,omitempty"`
+	LinkedFrom *TrackObjectLinkedFrom `json:"linked_from,omitempty"`
 	Restrictions *SimplifiedTrackObjectRestrictions `json:"restrictions,omitempty"`
 	// The name of the track. 
 	Name *string `json:"name,omitempty"`
@@ -54,7 +50,7 @@ type SavedTrackObjectTrack struct {
 	TrackNumber *int32 `json:"track_number,omitempty"`
 	// The object type: \"track\". 
 	Type *string `json:"type,omitempty"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the track. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track. 
 	Uri *string `json:"uri,omitempty"`
 	// Whether or not the track is from a local file. 
 	IsLocal *bool `json:"is_local,omitempty"`
@@ -75,70 +71,6 @@ func NewSavedTrackObjectTrack() *SavedTrackObjectTrack {
 func NewSavedTrackObjectTrackWithDefaults() *SavedTrackObjectTrack {
 	this := SavedTrackObjectTrack{}
 	return &this
-}
-
-// GetEpisode returns the Episode field value if set, zero value otherwise.
-func (o *SavedTrackObjectTrack) GetEpisode() bool {
-	if o == nil || IsNil(o.Episode) {
-		var ret bool
-		return ret
-	}
-	return *o.Episode
-}
-
-// GetEpisodeOk returns a tuple with the Episode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SavedTrackObjectTrack) GetEpisodeOk() (*bool, bool) {
-	if o == nil || IsNil(o.Episode) {
-		return nil, false
-	}
-	return o.Episode, true
-}
-
-// HasEpisode returns a boolean if a field has been set.
-func (o *SavedTrackObjectTrack) HasEpisode() bool {
-	if o != nil && !IsNil(o.Episode) {
-		return true
-	}
-
-	return false
-}
-
-// SetEpisode gets a reference to the given bool and assigns it to the Episode field.
-func (o *SavedTrackObjectTrack) SetEpisode(v bool) {
-	o.Episode = &v
-}
-
-// GetTrack returns the Track field value if set, zero value otherwise.
-func (o *SavedTrackObjectTrack) GetTrack() bool {
-	if o == nil || IsNil(o.Track) {
-		var ret bool
-		return ret
-	}
-	return *o.Track
-}
-
-// GetTrackOk returns a tuple with the Track field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SavedTrackObjectTrack) GetTrackOk() (*bool, bool) {
-	if o == nil || IsNil(o.Track) {
-		return nil, false
-	}
-	return o.Track, true
-}
-
-// HasTrack returns a boolean if a field has been set.
-func (o *SavedTrackObjectTrack) HasTrack() bool {
-	if o != nil && !IsNil(o.Track) {
-		return true
-	}
-
-	return false
-}
-
-// SetTrack gets a reference to the given bool and assigns it to the Track field.
-func (o *SavedTrackObjectTrack) SetTrack(v bool) {
-	o.Track = &v
 }
 
 // GetAlbum returns the Album field value if set, zero value otherwise.
@@ -494,9 +426,9 @@ func (o *SavedTrackObjectTrack) SetIsPlayable(v bool) {
 }
 
 // GetLinkedFrom returns the LinkedFrom field value if set, zero value otherwise.
-func (o *SavedTrackObjectTrack) GetLinkedFrom() SimplifiedTrackObjectLinkedFrom {
+func (o *SavedTrackObjectTrack) GetLinkedFrom() TrackObjectLinkedFrom {
 	if o == nil || IsNil(o.LinkedFrom) {
-		var ret SimplifiedTrackObjectLinkedFrom
+		var ret TrackObjectLinkedFrom
 		return ret
 	}
 	return *o.LinkedFrom
@@ -504,7 +436,7 @@ func (o *SavedTrackObjectTrack) GetLinkedFrom() SimplifiedTrackObjectLinkedFrom 
 
 // GetLinkedFromOk returns a tuple with the LinkedFrom field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SavedTrackObjectTrack) GetLinkedFromOk() (*SimplifiedTrackObjectLinkedFrom, bool) {
+func (o *SavedTrackObjectTrack) GetLinkedFromOk() (*TrackObjectLinkedFrom, bool) {
 	if o == nil || IsNil(o.LinkedFrom) {
 		return nil, false
 	}
@@ -520,8 +452,8 @@ func (o *SavedTrackObjectTrack) HasLinkedFrom() bool {
 	return false
 }
 
-// SetLinkedFrom gets a reference to the given SimplifiedTrackObjectLinkedFrom and assigns it to the LinkedFrom field.
-func (o *SavedTrackObjectTrack) SetLinkedFrom(v SimplifiedTrackObjectLinkedFrom) {
+// SetLinkedFrom gets a reference to the given TrackObjectLinkedFrom and assigns it to the LinkedFrom field.
+func (o *SavedTrackObjectTrack) SetLinkedFrom(v TrackObjectLinkedFrom) {
 	o.LinkedFrom = &v
 }
 
@@ -791,12 +723,6 @@ func (o SavedTrackObjectTrack) MarshalJSON() ([]byte, error) {
 
 func (o SavedTrackObjectTrack) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Episode) {
-		toSerialize["episode"] = o.Episode
-	}
-	if !IsNil(o.Track) {
-		toSerialize["track"] = o.Track
-	}
 	if !IsNil(o.Album) {
 		toSerialize["album"] = o.Album
 	}

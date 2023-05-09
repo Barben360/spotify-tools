@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **ExternalUrls** | Pointer to [**PublicUserObjectExternalUrls**](PublicUserObjectExternalUrls.md) |  | [optional] 
 **Followers** | Pointer to [**PublicUserObjectFollowers**](PublicUserObjectFollowers.md) |  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint for this user.  | [optional] 
-**Id** | Pointer to **string** | The [Spotify user ID](/documentation/web-api/#spotify-uris-and-ids) for this user.  | [optional] 
+**Id** | Pointer to **string** | The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for this user.  | [optional] 
 **Images** | Pointer to [**[]ImageObject**](ImageObject.md) | The user&#39;s profile image.  | [optional] 
 **Type** | Pointer to **string** | The object type.  | [optional] 
-**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for this user.  | [optional] 
+**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for this user.  | [optional] 
 
 ## Methods
 

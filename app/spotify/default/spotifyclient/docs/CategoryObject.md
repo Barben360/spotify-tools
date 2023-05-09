@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Href** | **string** | A link to the Web API endpoint returning full details of the category.  | 
 **Icons** | [**[]ImageObject**](ImageObject.md) | The category icon, in various sizes.  | 
-**Id** | **string** | The [Spotify category ID](/documentation/web-api/#spotify-uris-and-ids) of the category.  | 
+**Id** | **string** | The [Spotify category ID](/documentation/web-api/concepts/spotify-uris-ids) of the category.  | 
 **Name** | **string** | The name of the category.  | 
 
 ## Methods

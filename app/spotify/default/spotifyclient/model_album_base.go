@@ -28,7 +28,7 @@ type AlbumBase struct {
 	ExternalUrls AlbumBaseExternalUrls `json:"external_urls"`
 	// A link to the Web API endpoint providing full details of the album. 
 	Href string `json:"href"`
-	// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the album. 
+	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the album. 
 	Id string `json:"id"`
 	// The cover art for the album in various sizes, widest first. 
 	Images []ImageObject `json:"images"`
@@ -41,10 +41,8 @@ type AlbumBase struct {
 	Restrictions *AlbumBaseRestrictions `json:"restrictions,omitempty"`
 	// The object type. 
 	Type string `json:"type"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the album. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the album. 
 	Uri string `json:"uri"`
-	// Fix by Barben360 
-	IsPlayable *bool `json:"is_playable,omitempty"`
 }
 
 // NewAlbumBase instantiates a new AlbumBase object
@@ -396,38 +394,6 @@ func (o *AlbumBase) SetUri(v string) {
 	o.Uri = v
 }
 
-// GetIsPlayable returns the IsPlayable field value if set, zero value otherwise.
-func (o *AlbumBase) GetIsPlayable() bool {
-	if o == nil || IsNil(o.IsPlayable) {
-		var ret bool
-		return ret
-	}
-	return *o.IsPlayable
-}
-
-// GetIsPlayableOk returns a tuple with the IsPlayable field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AlbumBase) GetIsPlayableOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsPlayable) {
-		return nil, false
-	}
-	return o.IsPlayable, true
-}
-
-// HasIsPlayable returns a boolean if a field has been set.
-func (o *AlbumBase) HasIsPlayable() bool {
-	if o != nil && !IsNil(o.IsPlayable) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsPlayable gets a reference to the given bool and assigns it to the IsPlayable field.
-func (o *AlbumBase) SetIsPlayable(v bool) {
-	o.IsPlayable = &v
-}
-
 func (o AlbumBase) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -453,9 +419,6 @@ func (o AlbumBase) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["type"] = o.Type
 	toSerialize["uri"] = o.Uri
-	if !IsNil(o.IsPlayable) {
-		toSerialize["is_playable"] = o.IsPlayable
-	}
 	return toSerialize, nil
 }
 

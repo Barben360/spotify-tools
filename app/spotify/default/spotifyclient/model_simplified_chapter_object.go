@@ -36,7 +36,7 @@ type SimplifiedChapterObject struct {
 	ExternalUrls EpisodeBaseExternalUrls `json:"external_urls"`
 	// A link to the Web API endpoint providing full details of the episode. 
 	Href string `json:"href"`
-	// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the episode. 
+	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the episode. 
 	Id string `json:"id"`
 	// The cover art for the episode in various sizes, widest first. 
 	Images []ImageObject `json:"images"`
@@ -53,7 +53,7 @@ type SimplifiedChapterObject struct {
 	ResumePoint EpisodeBaseResumePoint `json:"resume_point"`
 	// The object type. 
 	Type string `json:"type"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the episode. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode. 
 	Uri string `json:"uri"`
 	Restrictions *ChapterBaseRestrictions `json:"restrictions,omitempty"`
 }

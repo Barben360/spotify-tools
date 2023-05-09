@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Explicit** | **bool** | Whether or not the episode has explicit content (true &#x3D; yes it does; false &#x3D; no it does not OR unknown).  | 
 **ExternalUrls** | [**EpisodeBaseExternalUrls**](EpisodeBaseExternalUrls.md) |  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the episode.  | 
-**Id** | **string** | The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the episode.  | 
+**Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the episode.  | 
 **Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the episode in various sizes, widest first.  | 
 **IsPlayable** | **bool** | True if the episode is playable in the given market. Otherwise false.  | 
 **Languages** | **[]string** | A list of the languages used in the episode, identified by their [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639) code.  | 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **ReleaseDatePrecision** | **string** | The precision with which &#x60;release_date&#x60; value is known.  | 
 **ResumePoint** | [**EpisodeBaseResumePoint**](EpisodeBaseResumePoint.md) |  | 
 **Type** | **string** | The object type.  | 
-**Uri** | **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the episode.  | 
+**Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode.  | 
 **Restrictions** | Pointer to [**ChapterBaseRestrictions**](ChapterBaseRestrictions.md) |  | [optional] 
 
 ## Methods

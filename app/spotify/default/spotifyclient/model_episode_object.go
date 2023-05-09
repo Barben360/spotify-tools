@@ -19,10 +19,6 @@ var _ MappedNullable = &EpisodeObject{}
 
 // EpisodeObject struct for EpisodeObject
 type EpisodeObject struct {
-	// Fix by Barben360 
-	Episode *bool `json:"episode,omitempty"`
-	// Fix by Barben360 
-	Track *bool `json:"track,omitempty"`
 	// A URL to a 30 second preview (MP3 format) of the episode. `null` if not available. 
 	AudioPreviewUrl string `json:"audio_preview_url"`
 	// A description of the episode. HTML tags are stripped away from this field, use `html_description` field in case HTML tags are needed. 
@@ -36,7 +32,7 @@ type EpisodeObject struct {
 	ExternalUrls EpisodeBaseExternalUrls `json:"external_urls"`
 	// A link to the Web API endpoint providing full details of the episode. 
 	Href string `json:"href"`
-	// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the episode. 
+	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the episode. 
 	Id string `json:"id"`
 	// The cover art for the episode in various sizes, widest first. 
 	Images []ImageObject `json:"images"`
@@ -58,7 +54,7 @@ type EpisodeObject struct {
 	ResumePoint EpisodeBaseResumePoint `json:"resume_point"`
 	// The object type. 
 	Type string `json:"type"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the episode. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode. 
 	Uri string `json:"uri"`
 	Restrictions *EpisodeBaseRestrictions `json:"restrictions,omitempty"`
 	Show EpisodeObjectAllOfShow `json:"show"`
@@ -98,70 +94,6 @@ func NewEpisodeObject(audioPreviewUrl string, description string, htmlDescriptio
 func NewEpisodeObjectWithDefaults() *EpisodeObject {
 	this := EpisodeObject{}
 	return &this
-}
-
-// GetEpisode returns the Episode field value if set, zero value otherwise.
-func (o *EpisodeObject) GetEpisode() bool {
-	if o == nil || IsNil(o.Episode) {
-		var ret bool
-		return ret
-	}
-	return *o.Episode
-}
-
-// GetEpisodeOk returns a tuple with the Episode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EpisodeObject) GetEpisodeOk() (*bool, bool) {
-	if o == nil || IsNil(o.Episode) {
-		return nil, false
-	}
-	return o.Episode, true
-}
-
-// HasEpisode returns a boolean if a field has been set.
-func (o *EpisodeObject) HasEpisode() bool {
-	if o != nil && !IsNil(o.Episode) {
-		return true
-	}
-
-	return false
-}
-
-// SetEpisode gets a reference to the given bool and assigns it to the Episode field.
-func (o *EpisodeObject) SetEpisode(v bool) {
-	o.Episode = &v
-}
-
-// GetTrack returns the Track field value if set, zero value otherwise.
-func (o *EpisodeObject) GetTrack() bool {
-	if o == nil || IsNil(o.Track) {
-		var ret bool
-		return ret
-	}
-	return *o.Track
-}
-
-// GetTrackOk returns a tuple with the Track field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EpisodeObject) GetTrackOk() (*bool, bool) {
-	if o == nil || IsNil(o.Track) {
-		return nil, false
-	}
-	return o.Track, true
-}
-
-// HasTrack returns a boolean if a field has been set.
-func (o *EpisodeObject) HasTrack() bool {
-	if o != nil && !IsNil(o.Track) {
-		return true
-	}
-
-	return false
-}
-
-// SetTrack gets a reference to the given bool and assigns it to the Track field.
-func (o *EpisodeObject) SetTrack(v bool) {
-	o.Track = &v
 }
 
 // GetAudioPreviewUrl returns the AudioPreviewUrl field value
@@ -697,12 +629,6 @@ func (o EpisodeObject) MarshalJSON() ([]byte, error) {
 
 func (o EpisodeObject) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Episode) {
-		toSerialize["episode"] = o.Episode
-	}
-	if !IsNil(o.Track) {
-		toSerialize["track"] = o.Track
-	}
 	toSerialize["audio_preview_url"] = o.AudioPreviewUrl
 	toSerialize["description"] = o.Description
 	toSerialize["html_description"] = o.HtmlDescription

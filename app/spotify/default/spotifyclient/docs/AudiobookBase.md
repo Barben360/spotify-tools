@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Explicit** | **bool** | Whether or not the audiobook has explicit content (true &#x3D; yes it does; false &#x3D; no it does not OR unknown).  | 
 **ExternalUrls** | [**AudiobookBaseExternalUrls**](AudiobookBaseExternalUrls.md) |  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the audiobook.  | 
-**Id** | **string** | The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the audiobook.  | 
+**Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.  | 
 **Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the audiobook in various sizes, widest first.  | 
 **Languages** | **[]string** | A list of the languages used in the audiobook, identified by their [ISO 639](https://en.wikipedia.org/wiki/ISO_639) code.  | 
 **MediaType** | **string** | The media type of the audiobook.  | 
@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **Narrators** | [**[]NarratorObject**](NarratorObject.md) | The narrator(s) for the audiobook.  | 
 **Publisher** | **string** | The publisher of the audiobook.  | 
 **Type** | **string** | The object type.  | 
-**Uri** | **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the audiobook.  | 
+**Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.  | 
 **TotalChapters** | **int32** | The number of chapters in this audiobook.  | 
 
 ## Methods

@@ -485,7 +485,7 @@ func (r PlaylistsApiCreatePlaylistRequest) Execute() (*PlaylistObject, *http.Res
 CreatePlaylist Create Playlist 
 
 Create a playlist for a Spotify user. (The playlist will be empty until
-you [add tracks](/documentation/web-api/reference/#/operations/add-tracks-to-playlist).)
+you [add tracks](/documentation/web-api/reference/add-tracks-to-playlist).)
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2303,7 +2303,6 @@ type PlaylistsApiUploadCustomPlaylistCoverRequest struct {
 	body *string
 }
 
-// The new cover image of the playlist as a Base64 encoded JPEG image. Maximum payload size is 256KB.
 func (r PlaylistsApiUploadCustomPlaylistCoverRequest) Body(body string) PlaylistsApiUploadCustomPlaylistCoverRequest {
 	r.body = &body
 	return r

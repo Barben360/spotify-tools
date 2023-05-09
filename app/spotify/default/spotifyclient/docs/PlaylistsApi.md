@@ -1137,7 +1137,7 @@ import (
 
 func main() {
     playlistId := "3cEYpjA9oz9GiPac4AsH4n" // string | 
-    body := "body_example" // string | The new cover image of the playlist as a Base64 encoded JPEG image. Maximum payload size is 256KB.
+    body := "body_example" // string | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -1165,7 +1165,7 @@ Other parameters are passed through a pointer to a apiUploadCustomPlaylistCoverR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **string** | The new cover image of the playlist as a Base64 encoded JPEG image. Maximum payload size is 256KB. | 
+ **body** | **string** |  | 
 
 ### Return type
 

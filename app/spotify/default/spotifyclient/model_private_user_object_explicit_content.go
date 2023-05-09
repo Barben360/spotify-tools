@@ -17,7 +17,7 @@ import (
 // checks if the PrivateUserObjectExplicitContent type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PrivateUserObjectExplicitContent{}
 
-// PrivateUserObjectExplicitContent The user's explicit content settings. _This field is only available when the current user has granted access to the [user-read-private](/documentation/general/guides/authorization-guide/#list-of-scopes) scope._ 
+// PrivateUserObjectExplicitContent The user's explicit content settings. _This field is only available when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._ 
 type PrivateUserObjectExplicitContent struct {
 	// When `true`, indicates that explicit content should not be played. 
 	FilterEnabled *bool `json:"filter_enabled,omitempty"`

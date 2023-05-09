@@ -12,7 +12,6 @@ Method | HTTP request | Description
 [**GetAnArtistsTopTracks**](ArtistsApi.md#GetAnArtistsTopTracks) | **Get** /artists/{id}/top-tracks | Get Artist&#39;s Top Tracks 
 [**GetFollowed**](ArtistsApi.md#GetFollowed) | **Get** /me/following | Get Followed Artists 
 [**GetMultipleArtists**](ArtistsApi.md#GetMultipleArtists) | **Get** /artists | Get Several Artists 
-[**GetUsersTopArtists**](ArtistsApi.md#GetUsersTopArtists) | **Get** /me/top/artists | Get User&#39;s Top Artists 
 [**UnfollowArtistsUsers**](ArtistsApi.md#UnfollowArtistsUsers) | **Delete** /me/following | Unfollow Artists or Users 
 
 
@@ -564,76 +563,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetMultipleArtists200Response**](GetMultipleArtists200Response.md)
-
-### Authorization
-
-[oauth_2_0](../README.md#oauth_2_0)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetUsersTopArtists
-
-> PagingArtistObject GetUsersTopArtists(ctx).TimeRange(timeRange).Limit(limit).Offset(offset).Execute()
-
-Get User's Top Artists 
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/Barben360/spotify-tools/app/default/spotifyclient"
-)
-
-func main() {
-    timeRange := "medium_term" // string |  (optional) (default to "medium_term")
-    limit := int32(10) // int32 |  (optional) (default to 20)
-    offset := int32(5) // int32 |  (optional) (default to 0)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ArtistsApi.GetUsersTopArtists(context.Background()).TimeRange(timeRange).Limit(limit).Offset(offset).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ArtistsApi.GetUsersTopArtists``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetUsersTopArtists`: PagingArtistObject
-    fmt.Fprintf(os.Stdout, "Response from `ArtistsApi.GetUsersTopArtists`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetUsersTopArtistsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **timeRange** | **string** |  | [default to &quot;medium_term&quot;]
- **limit** | **int32** |  | [default to 20]
- **offset** | **int32** |  | [default to 0]
-
-### Return type
-
-[**PagingArtistObject**](PagingArtistObject.md)
 
 ### Authorization
 

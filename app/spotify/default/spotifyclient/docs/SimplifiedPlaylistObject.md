@@ -8,15 +8,15 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | The playlist description. _Only returned for modified, verified playlists, otherwise_ &#x60;null&#x60;.  | [optional] 
 **ExternalUrls** | Pointer to [**PlaylistObjectExternalUrls**](PlaylistObjectExternalUrls.md) |  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint providing full details of the playlist.  | [optional] 
-**Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the playlist.  | [optional] 
-**Images** | Pointer to [**[]ImageObject**](ImageObject.md) | Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/general/guides/working-with-playlists/). _**Note**: If returned, the source URL for the image (&#x60;url&#x60;) is temporary and will expire in less than a day._  | [optional] 
+**Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.  | [optional] 
+**Images** | Pointer to [**[]ImageObject**](ImageObject.md) | Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/web-api/concepts/playlists). _**Note**: If returned, the source URL for the image (&#x60;url&#x60;) is temporary and will expire in less than a day._  | [optional] 
 **Name** | Pointer to **string** | The name of the playlist.  | [optional] 
 **Owner** | Pointer to [**PlaylistObjectOwner**](PlaylistObjectOwner.md) |  | [optional] 
-**Public** | Pointer to **bool** | The playlist&#39;s public/private status: &#x60;true&#x60; the playlist is public, &#x60;false&#x60; the playlist is private, &#x60;null&#x60; the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/general/guides/working-with-playlists/)  | [optional] 
+**Public** | Pointer to **bool** | The playlist&#39;s public/private status: &#x60;true&#x60; the playlist is public, &#x60;false&#x60; the playlist is private, &#x60;null&#x60; the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)  | [optional] 
 **SnapshotId** | Pointer to **string** | The version identifier for the current playlist. Can be supplied in other requests to target a specific playlist version  | [optional] 
 **Tracks** | Pointer to [**SimplifiedPlaylistObjectTracks**](SimplifiedPlaylistObjectTracks.md) |  | [optional] 
 **Type** | Pointer to **string** | The object type: \&quot;playlist\&quot;  | [optional] 
-**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the playlist.  | [optional] 
+**Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.  | [optional] 
 
 ## Methods
 

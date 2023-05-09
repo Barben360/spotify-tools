@@ -25,8 +25,6 @@ type AlbumObjectAllOfExternalIds struct {
 	Ean *string `json:"ean,omitempty"`
 	// [Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code) 
 	Upc *string `json:"upc,omitempty"`
-	// Fix by Barben360 
-	Spotify *string `json:"spotify,omitempty"`
 }
 
 // NewAlbumObjectAllOfExternalIds instantiates a new AlbumObjectAllOfExternalIds object
@@ -142,38 +140,6 @@ func (o *AlbumObjectAllOfExternalIds) SetUpc(v string) {
 	o.Upc = &v
 }
 
-// GetSpotify returns the Spotify field value if set, zero value otherwise.
-func (o *AlbumObjectAllOfExternalIds) GetSpotify() string {
-	if o == nil || IsNil(o.Spotify) {
-		var ret string
-		return ret
-	}
-	return *o.Spotify
-}
-
-// GetSpotifyOk returns a tuple with the Spotify field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AlbumObjectAllOfExternalIds) GetSpotifyOk() (*string, bool) {
-	if o == nil || IsNil(o.Spotify) {
-		return nil, false
-	}
-	return o.Spotify, true
-}
-
-// HasSpotify returns a boolean if a field has been set.
-func (o *AlbumObjectAllOfExternalIds) HasSpotify() bool {
-	if o != nil && !IsNil(o.Spotify) {
-		return true
-	}
-
-	return false
-}
-
-// SetSpotify gets a reference to the given string and assigns it to the Spotify field.
-func (o *AlbumObjectAllOfExternalIds) SetSpotify(v string) {
-	o.Spotify = &v
-}
-
 func (o AlbumObjectAllOfExternalIds) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -192,9 +158,6 @@ func (o AlbumObjectAllOfExternalIds) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Upc) {
 		toSerialize["upc"] = o.Upc
-	}
-	if !IsNil(o.Spotify) {
-		toSerialize["spotify"] = o.Spotify
 	}
 	return toSerialize, nil
 }

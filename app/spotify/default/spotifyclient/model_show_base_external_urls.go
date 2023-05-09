@@ -19,7 +19,7 @@ var _ MappedNullable = &ShowBaseExternalUrls{}
 
 // ShowBaseExternalUrls External URLs for this show. 
 type ShowBaseExternalUrls struct {
-	// The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object. 
+	// The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object. 
 	Spotify *string `json:"spotify,omitempty"`
 }
 

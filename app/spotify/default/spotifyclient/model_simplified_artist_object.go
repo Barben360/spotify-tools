@@ -22,13 +22,13 @@ type SimplifiedArtistObject struct {
 	ExternalUrls *ArtistObjectExternalUrls `json:"external_urls,omitempty"`
 	// A link to the Web API endpoint providing full details of the artist. 
 	Href *string `json:"href,omitempty"`
-	// The [Spotify ID](/documentation/web-api/#spotify-uris-and-ids) for the artist. 
+	// The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist. 
 	Id *string `json:"id,omitempty"`
 	// The name of the artist. 
 	Name *string `json:"name,omitempty"`
 	// The object type. 
 	Type *string `json:"type,omitempty"`
-	// The [Spotify URI](/documentation/web-api/#spotify-uris-and-ids) for the artist. 
+	// The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the artist. 
 	Uri *string `json:"uri,omitempty"`
 }
 

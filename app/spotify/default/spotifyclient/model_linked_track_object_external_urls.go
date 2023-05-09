@@ -19,7 +19,7 @@ var _ MappedNullable = &LinkedTrackObjectExternalUrls{}
 
 // LinkedTrackObjectExternalUrls Known external URLs for this track. 
 type LinkedTrackObjectExternalUrls struct {
-	// The [Spotify URL](/documentation/web-api/#spotify-uris-and-ids) for the object. 
+	// The [Spotify URL](/documentation/web-api/concepts/spotify-uris-ids) for the object. 
 	Spotify *string `json:"spotify,omitempty"`
 }
 
