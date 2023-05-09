@@ -22,6 +22,7 @@ import (
 //go:generate rm -rf spotifyclient
 //go:generate openapi-generator-cli generate -g go --additional-properties=packageName=spotifyclient,isGoSubmodule=true,structPrefix=true -o spotifyclient -i assets/spotify-open-api.yml --git-repo-id=spotify-tools/app/default --git-user-id Barben360
 //go:generate rm -rf openapitools.json spotifyclient/go.mod spotifyclient/go.sum spotifyclient/git_push.sh spotifyclient/.openapi-generator/VERSION spotifyclient/test
+//go:generate git apply --whitespace=nowarn assets/patches/0001-Make-oneof-less-strict.patch
 
 type Spotify struct {
 	accessToken            string
