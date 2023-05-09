@@ -1,0 +1,83 @@
+From 975e10cd13662578badfe734bd0a10dfe02a147a Mon Sep 17 00:00:00 2001
+From: Benjamin Barrois <github@bbarrois.tech>
+Date: Tue, 9 May 2023 22:29:09 +0200
+Subject: [PATCH] =?UTF-8?q?=E2=9C=A8=20Use=20non-strict=20oneof?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Benjamin Barrois <github@bbarrois.tech>
+---
+ .../model_playlist_track_object_track.go      | 46 +++++--------------
+ 1 file changed, 12 insertions(+), 34 deletions(-)
+
+diff --git a/app/spotify/default/spotifyclient/model_playlist_track_object_track.go b/app/spotify/default/spotifyclient/model_playlist_track_object_track.go
+index 08bc567..89a23d5 100644
+--- a/app/spotify/default/spotifyclient/model_playlist_track_object_track.go
++++ b/app/spotify/default/spotifyclient/model_playlist_track_object_track.go
+@@ -39,44 +39,24 @@ func TrackObjectAsPlaylistTrackObjectTrack(v *TrackObject) PlaylistTrackObjectTr
+ // Unmarshal JSON data into one of the pointers in the struct
+ func (dst *PlaylistTrackObjectTrack) UnmarshalJSON(data []byte) error {
+ 	var err error
+-	match := 0
+ 	// try to unmarshal data into EpisodeObject
+-	err = newStrictDecoder(data).Decode(&dst.EpisodeObject)
+-	if err == nil {
+-		jsonEpisodeObject, _ := json.Marshal(dst.EpisodeObject)
+-		if string(jsonEpisodeObject) == "{}" { // empty struct
+-			dst.EpisodeObject = nil
+-		} else {
+-			match++
+-		}
++	err = json.Unmarshal(data, &dst.EpisodeObject)
++	if err == nil && dst.EpisodeObject.Type == "episode" { 
++			return nil
+ 	} else {
+ 		dst.EpisodeObject = nil
+-	}
+-
+-	// try to unmarshal data into TrackObject
+-	err = newStrictDecoder(data).Decode(&dst.TrackObject)
+-	if err == nil {
+-		jsonTrackObject, _ := json.Marshal(dst.TrackObject)
+-		if string(jsonTrackObject) == "{}" { // empty struct
+-			dst.TrackObject = nil
++		// try to unmarshal data into TrackObject
++		err = json.Unmarshal(data, &dst.TrackObject)
++		if err == nil {
++			jsonTrackObject, _ := json.Marshal(dst.TrackObject)
++			if string(jsonTrackObject) == "{}" { // empty struct
++				return fmt.Errorf("data failed to match schemas in oneOf(PlaylistTrackObjectTrack)")
++			} 
+ 		} else {
+-			match++
++			return fmt.Errorf("data failed to match schemas in oneOf(PlaylistTrackObjectTrack)")
+ 		}
+-	} else {
+-		dst.TrackObject = nil
+-	}
+-
+-	if match > 1 { // more than 1 match
+-		// reset to nil
+-		dst.EpisodeObject = nil
+-		dst.TrackObject = nil
+-
+-		return fmt.Errorf("data matches more than one schema in oneOf(PlaylistTrackObjectTrack)")
+-	} else if match == 1 {
+-		return nil // exactly one match
+-	} else { // no match
+-		return fmt.Errorf("data failed to match schemas in oneOf(PlaylistTrackObjectTrack)")
+ 	}
++	return nil
+ }
+ 
+ // Marshal data from the first non-nil pointers in the struct to JSON
+@@ -144,5 +124,3 @@ func (v *NullablePlaylistTrackObjectTrack) UnmarshalJSON(src []byte) error {
+ 	v.isSet = true
+ 	return json.Unmarshal(src, &v.value)
+ }
+-
+-
+-- 
+2.34.1
+
