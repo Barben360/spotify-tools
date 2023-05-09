@@ -30,7 +30,11 @@ func (s *Spotify) GetPlaylist(ctx context.Context, playlistID string) (*spotify.
 	tracks := resp.GetTracks()
 	itemsRet := make([]*spotify.Item, 0, tracks.GetTotal())
 	for _, item := range tracks.GetItems() {
-		track := item.GetTrack()
+		track, ok := item.GetTrackOk()
+		if !ok {
+			logger.FromContext(ctx).Warn("track is undefined, this element may not be available any more, skipping.")
+			continue
+		}
 		if track.TrackObject != nil {
 			itemsRet = append(itemsRet, &spotify.Item{
 				ID:          track.TrackObject.GetId(),
@@ -72,7 +76,11 @@ func (s *Spotify) GetPlaylist(ctx context.Context, playlistID string) (*spotify.
 		offset = resp.GetOffset()
 		// Using the default limit
 		for _, item := range resp.GetItems() {
-			track := item.GetTrack()
+			track, ok := item.GetTrackOk()
+			if !ok {
+				logger.FromContext(ctx).Warn("track is undefined, this element may not be available any more, skipping.")
+				continue
+			}
 			if track.TrackObject != nil {
 				itemsRet = append(itemsRet, &spotify.Item{
 					ID:       track.TrackObject.GetId(),
