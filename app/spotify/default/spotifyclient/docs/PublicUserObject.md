@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayName** | Pointer to **NullableString** | The name displayed on the user&#39;s profile. &#x60;null&#x60; if not available.  | [optional] 
-**ExternalUrls** | Pointer to [**PublicUserObjectExternalUrls**](PublicUserObjectExternalUrls.md) |  | [optional] 
-**Followers** | Pointer to [**PublicUserObjectFollowers**](PublicUserObjectFollowers.md) |  | [optional] 
+**ExternalUrls** | Pointer to [**ExternalUrlObject**](ExternalUrlObject.md) | Known public external URLs for this user.  | [optional] 
+**Followers** | Pointer to [**FollowersObject**](FollowersObject.md) | Information about the followers of this user.  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint for this user.  | [optional] 
 **Id** | Pointer to **string** | The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for this user.  | [optional] 
 **Images** | Pointer to [**[]ImageObject**](ImageObject.md) | The user&#39;s profile image.  | [optional] 
@@ -69,20 +69,20 @@ HasDisplayName returns a boolean if a field has been set.
 UnsetDisplayName ensures that no value is present for DisplayName, not even an explicit nil
 ### GetExternalUrls
 
-`func (o *PublicUserObject) GetExternalUrls() PublicUserObjectExternalUrls`
+`func (o *PublicUserObject) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *PublicUserObject) GetExternalUrlsOk() (*PublicUserObjectExternalUrls, bool)`
+`func (o *PublicUserObject) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *PublicUserObject) SetExternalUrls(v PublicUserObjectExternalUrls)`
+`func (o *PublicUserObject) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 
@@ -94,20 +94,20 @@ HasExternalUrls returns a boolean if a field has been set.
 
 ### GetFollowers
 
-`func (o *PublicUserObject) GetFollowers() PublicUserObjectFollowers`
+`func (o *PublicUserObject) GetFollowers() FollowersObject`
 
 GetFollowers returns the Followers field if non-nil, zero value otherwise.
 
 ### GetFollowersOk
 
-`func (o *PublicUserObject) GetFollowersOk() (*PublicUserObjectFollowers, bool)`
+`func (o *PublicUserObject) GetFollowersOk() (*FollowersObject, bool)`
 
 GetFollowersOk returns a tuple with the Followers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFollowers
 
-`func (o *PublicUserObject) SetFollowers(v PublicUserObjectFollowers)`
+`func (o *PublicUserObject) SetFollowers(v FollowersObject)`
 
 SetFollowers sets Followers field to given value.
 

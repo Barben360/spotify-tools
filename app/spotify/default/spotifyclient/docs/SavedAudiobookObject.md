@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddedAt** | Pointer to **time.Time** | The date and time the audiobook was saved Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ. If the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object.  | [optional] 
-**Audiobook** | Pointer to [**SavedAudiobookObjectAudiobook**](SavedAudiobookObjectAudiobook.md) |  | [optional] 
+**Audiobook** | Pointer to [**AudiobookObject**](AudiobookObject.md) | Information about the audiobook. | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasAddedAt returns a boolean if a field has been set.
 
 ### GetAudiobook
 
-`func (o *SavedAudiobookObject) GetAudiobook() SavedAudiobookObjectAudiobook`
+`func (o *SavedAudiobookObject) GetAudiobook() AudiobookObject`
 
 GetAudiobook returns the Audiobook field if non-nil, zero value otherwise.
 
 ### GetAudiobookOk
 
-`func (o *SavedAudiobookObject) GetAudiobookOk() (*SavedAudiobookObjectAudiobook, bool)`
+`func (o *SavedAudiobookObject) GetAudiobookOk() (*AudiobookObject, bool)`
 
 GetAudiobookOk returns a tuple with the Audiobook field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAudiobook
 
-`func (o *SavedAudiobookObject) SetAudiobook(v SavedAudiobookObjectAudiobook)`
+`func (o *SavedAudiobookObject) SetAudiobook(v AudiobookObject)`
 
 SetAudiobook sets Audiobook field to given value.
 

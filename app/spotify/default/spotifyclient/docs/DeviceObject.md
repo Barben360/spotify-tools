@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **NullableString** | The device ID. | [optional] 
+**Id** | Pointer to **NullableString** | The device ID. This ID is unique and persistent to some extent. However, this is not guaranteed and any cached &#x60;device_id&#x60; should periodically be cleared out and refetched as necessary. | [optional] 
 **IsActive** | Pointer to **bool** | If this device is the currently active device. | [optional] 
 **IsPrivateSession** | Pointer to **bool** | If this device is currently in a private session. | [optional] 
 **IsRestricted** | Pointer to **bool** | Whether controlling this device is restricted. At present if this is \&quot;true\&quot; then no Web API commands will be accepted by this device. | [optional] 
 **Name** | Pointer to **string** | A human-readable name for the device. Some devices have a name that the user can configure (e.g. \\\&quot;Loudest speaker\\\&quot;) and some devices have a generic name associated with the manufacturer or device model. | [optional] 
 **Type** | Pointer to **string** | Device type, such as \&quot;computer\&quot;, \&quot;smartphone\&quot; or \&quot;speaker\&quot;. | [optional] 
 **VolumePercent** | Pointer to **NullableInt32** | The current volume in percent. | [optional] 
+**SupportsVolume** | Pointer to **bool** | If this device can be used to set the volume. | [optional] 
 
 ## Methods
 
@@ -226,6 +227,31 @@ HasVolumePercent returns a boolean if a field has been set.
 `func (o *DeviceObject) UnsetVolumePercent()`
 
 UnsetVolumePercent ensures that no value is present for VolumePercent, not even an explicit nil
+### GetSupportsVolume
+
+`func (o *DeviceObject) GetSupportsVolume() bool`
+
+GetSupportsVolume returns the SupportsVolume field if non-nil, zero value otherwise.
+
+### GetSupportsVolumeOk
+
+`func (o *DeviceObject) GetSupportsVolumeOk() (*bool, bool)`
+
+GetSupportsVolumeOk returns a tuple with the SupportsVolume field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupportsVolume
+
+`func (o *DeviceObject) SetSupportsVolume(v bool)`
+
+SetSupportsVolume sets SupportsVolume field to given value.
+
+### HasSupportsVolume
+
+`func (o *DeviceObject) HasSupportsVolume() bool`
+
+HasSupportsVolume returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

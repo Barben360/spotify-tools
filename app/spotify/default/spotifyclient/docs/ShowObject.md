@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Description** | **string** | A description of the show. HTML tags are stripped away from this field, use &#x60;html_description&#x60; field in case HTML tags are needed.  | 
 **HtmlDescription** | **string** | A description of the show. This field may contain HTML tags.  | 
 **Explicit** | **bool** | Whether or not the show has explicit content (true &#x3D; yes it does; false &#x3D; no it does not OR unknown).  | 
-**ExternalUrls** | [**ShowBaseExternalUrls**](ShowBaseExternalUrls.md) |  | 
+**ExternalUrls** | [**ExternalUrlObject**](ExternalUrlObject.md) | External URLs for this show.  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the show.  | 
 **Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.  | 
 **Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the show in various sizes, widest first.  | 
@@ -21,13 +21,13 @@ Name | Type | Description | Notes
 **Type** | **string** | The object type.  | 
 **Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the show.  | 
 **TotalEpisodes** | **int32** | The total number of episodes in the show.  | 
-**Episodes** | [**ShowObjectAllOfEpisodes**](ShowObjectAllOfEpisodes.md) |  | 
+**Episodes** | **map[string]interface{}** | The episodes of the show.  | 
 
 ## Methods
 
 ### NewShowObject
 
-`func NewShowObject(availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ShowBaseExternalUrls, href string, id string, images []ImageObject, isExternallyHosted bool, languages []string, mediaType string, name string, publisher string, type_ string, uri string, totalEpisodes int32, episodes ShowObjectAllOfEpisodes, ) *ShowObject`
+`func NewShowObject(availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isExternallyHosted bool, languages []string, mediaType string, name string, publisher string, type_ string, uri string, totalEpisodes int32, episodes map[string]interface{}, ) *ShowObject`
 
 NewShowObject instantiates a new ShowObject object
 This constructor will assign default values to properties that have it defined,
@@ -144,20 +144,20 @@ SetExplicit sets Explicit field to given value.
 
 ### GetExternalUrls
 
-`func (o *ShowObject) GetExternalUrls() ShowBaseExternalUrls`
+`func (o *ShowObject) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *ShowObject) GetExternalUrlsOk() (*ShowBaseExternalUrls, bool)`
+`func (o *ShowObject) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *ShowObject) SetExternalUrls(v ShowBaseExternalUrls)`
+`func (o *ShowObject) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 
@@ -384,20 +384,20 @@ SetTotalEpisodes sets TotalEpisodes field to given value.
 
 ### GetEpisodes
 
-`func (o *ShowObject) GetEpisodes() ShowObjectAllOfEpisodes`
+`func (o *ShowObject) GetEpisodes() map[string]interface{}`
 
 GetEpisodes returns the Episodes field if non-nil, zero value otherwise.
 
 ### GetEpisodesOk
 
-`func (o *ShowObject) GetEpisodesOk() (*ShowObjectAllOfEpisodes, bool)`
+`func (o *ShowObject) GetEpisodesOk() (*map[string]interface{}, bool)`
 
 GetEpisodesOk returns a tuple with the Episodes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEpisodes
 
-`func (o *ShowObject) SetEpisodes(v ShowObjectAllOfEpisodes)`
+`func (o *ShowObject) SetEpisodes(v map[string]interface{})`
 
 SetEpisodes sets Episodes field to given value.
 

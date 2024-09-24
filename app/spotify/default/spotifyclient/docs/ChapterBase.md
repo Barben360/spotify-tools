@@ -4,32 +4,32 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AudioPreviewUrl** | **string** | A URL to a 30 second preview (MP3 format) of the episode. &#x60;null&#x60; if not available.  | 
+**AudioPreviewUrl** | **NullableString** | A URL to a 30 second preview (MP3 format) of the chapter. &#x60;null&#x60; if not available.  | 
 **AvailableMarkets** | Pointer to **[]string** | A list of the countries in which the chapter can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.  | [optional] 
 **ChapterNumber** | **int32** | The number of the chapter  | 
-**Description** | **string** | A description of the episode. HTML tags are stripped away from this field, use &#x60;html_description&#x60; field in case HTML tags are needed.  | 
-**HtmlDescription** | **string** | A description of the episode. This field may contain HTML tags.  | 
-**DurationMs** | **int32** | The episode length in milliseconds.  | 
-**Explicit** | **bool** | Whether or not the episode has explicit content (true &#x3D; yes it does; false &#x3D; no it does not OR unknown).  | 
-**ExternalUrls** | [**EpisodeBaseExternalUrls**](EpisodeBaseExternalUrls.md) |  | 
-**Href** | **string** | A link to the Web API endpoint providing full details of the episode.  | 
-**Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the episode.  | 
-**Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the episode in various sizes, widest first.  | 
-**IsPlayable** | **bool** | True if the episode is playable in the given market. Otherwise false.  | 
-**Languages** | **[]string** | A list of the languages used in the episode, identified by their [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639) code.  | 
-**Name** | **string** | The name of the episode.  | 
-**ReleaseDate** | **string** | The date the episode was first released, for example &#x60;\&quot;1981-12-15\&quot;&#x60;. Depending on the precision, it might be shown as &#x60;\&quot;1981\&quot;&#x60; or &#x60;\&quot;1981-12\&quot;&#x60;.  | 
+**Description** | **string** | A description of the chapter. HTML tags are stripped away from this field, use &#x60;html_description&#x60; field in case HTML tags are needed.  | 
+**HtmlDescription** | **string** | A description of the chapter. This field may contain HTML tags.  | 
+**DurationMs** | **int32** | The chapter length in milliseconds.  | 
+**Explicit** | **bool** | Whether or not the chapter has explicit content (true &#x3D; yes it does; false &#x3D; no it does not OR unknown).  | 
+**ExternalUrls** | [**ExternalUrlObject**](ExternalUrlObject.md) | External URLs for this chapter.  | 
+**Href** | **string** | A link to the Web API endpoint providing full details of the chapter.  | 
+**Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the chapter.  | 
+**Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the chapter in various sizes, widest first.  | 
+**IsPlayable** | **bool** | True if the chapter is playable in the given market. Otherwise false.  | 
+**Languages** | **[]string** | A list of the languages used in the chapter, identified by their [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639) code.  | 
+**Name** | **string** | The name of the chapter.  | 
+**ReleaseDate** | **string** | The date the chapter was first released, for example &#x60;\&quot;1981-12-15\&quot;&#x60;. Depending on the precision, it might be shown as &#x60;\&quot;1981\&quot;&#x60; or &#x60;\&quot;1981-12\&quot;&#x60;.  | 
 **ReleaseDatePrecision** | **string** | The precision with which &#x60;release_date&#x60; value is known.  | 
-**ResumePoint** | [**EpisodeBaseResumePoint**](EpisodeBaseResumePoint.md) |  | 
+**ResumePoint** | Pointer to [**ResumePointObject**](ResumePointObject.md) | The user&#39;s most recent position in the chapter. Set if the supplied access token is a user token and has the scope &#39;user-read-playback-position&#39;.  | [optional] 
 **Type** | **string** | The object type.  | 
-**Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode.  | 
-**Restrictions** | Pointer to [**ChapterBaseRestrictions**](ChapterBaseRestrictions.md) |  | [optional] 
+**Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the chapter.  | 
+**Restrictions** | Pointer to [**ChapterRestrictionObject**](ChapterRestrictionObject.md) | Included in the response when a content restriction is applied.  | [optional] 
 
 ## Methods
 
 ### NewChapterBase
 
-`func NewChapterBase(audioPreviewUrl string, chapterNumber int32, description string, htmlDescription string, durationMs int32, explicit bool, externalUrls EpisodeBaseExternalUrls, href string, id string, images []ImageObject, isPlayable bool, languages []string, name string, releaseDate string, releaseDatePrecision string, resumePoint EpisodeBaseResumePoint, type_ string, uri string, ) *ChapterBase`
+`func NewChapterBase(audioPreviewUrl NullableString, chapterNumber int32, description string, htmlDescription string, durationMs int32, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isPlayable bool, languages []string, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, ) *ChapterBase`
 
 NewChapterBase instantiates a new ChapterBase object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +64,16 @@ and a boolean to check if the value has been set.
 SetAudioPreviewUrl sets AudioPreviewUrl field to given value.
 
 
+### SetAudioPreviewUrlNil
+
+`func (o *ChapterBase) SetAudioPreviewUrlNil(b bool)`
+
+ SetAudioPreviewUrlNil sets the value for AudioPreviewUrl to be an explicit nil
+
+### UnsetAudioPreviewUrl
+`func (o *ChapterBase) UnsetAudioPreviewUrl()`
+
+UnsetAudioPreviewUrl ensures that no value is present for AudioPreviewUrl, not even an explicit nil
 ### GetAvailableMarkets
 
 `func (o *ChapterBase) GetAvailableMarkets() []string`
@@ -191,20 +201,20 @@ SetExplicit sets Explicit field to given value.
 
 ### GetExternalUrls
 
-`func (o *ChapterBase) GetExternalUrls() EpisodeBaseExternalUrls`
+`func (o *ChapterBase) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *ChapterBase) GetExternalUrlsOk() (*EpisodeBaseExternalUrls, bool)`
+`func (o *ChapterBase) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *ChapterBase) SetExternalUrls(v EpisodeBaseExternalUrls)`
+`func (o *ChapterBase) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 
@@ -371,23 +381,28 @@ SetReleaseDatePrecision sets ReleaseDatePrecision field to given value.
 
 ### GetResumePoint
 
-`func (o *ChapterBase) GetResumePoint() EpisodeBaseResumePoint`
+`func (o *ChapterBase) GetResumePoint() ResumePointObject`
 
 GetResumePoint returns the ResumePoint field if non-nil, zero value otherwise.
 
 ### GetResumePointOk
 
-`func (o *ChapterBase) GetResumePointOk() (*EpisodeBaseResumePoint, bool)`
+`func (o *ChapterBase) GetResumePointOk() (*ResumePointObject, bool)`
 
 GetResumePointOk returns a tuple with the ResumePoint field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResumePoint
 
-`func (o *ChapterBase) SetResumePoint(v EpisodeBaseResumePoint)`
+`func (o *ChapterBase) SetResumePoint(v ResumePointObject)`
 
 SetResumePoint sets ResumePoint field to given value.
 
+### HasResumePoint
+
+`func (o *ChapterBase) HasResumePoint() bool`
+
+HasResumePoint returns a boolean if a field has been set.
 
 ### GetType
 
@@ -431,20 +446,20 @@ SetUri sets Uri field to given value.
 
 ### GetRestrictions
 
-`func (o *ChapterBase) GetRestrictions() ChapterBaseRestrictions`
+`func (o *ChapterBase) GetRestrictions() ChapterRestrictionObject`
 
 GetRestrictions returns the Restrictions field if non-nil, zero value otherwise.
 
 ### GetRestrictionsOk
 
-`func (o *ChapterBase) GetRestrictionsOk() (*ChapterBaseRestrictions, bool)`
+`func (o *ChapterBase) GetRestrictionsOk() (*ChapterRestrictionObject, bool)`
 
 GetRestrictionsOk returns a tuple with the Restrictions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRestrictions
 
-`func (o *ChapterBase) SetRestrictions(v ChapterBaseRestrictions)`
+`func (o *ChapterBase) SetRestrictions(v ChapterRestrictionObject)`
 
 SetRestrictions sets Restrictions field to given value.
 

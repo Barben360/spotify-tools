@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **AlbumType** | **string** | The type of the album.  | 
 **TotalTracks** | **int32** | The number of tracks in the album. | 
 **AvailableMarkets** | **[]string** | The markets in which the album is available: [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _**NOTE**: an album is considered available in a market when at least 1 of its tracks is available in that market._  | 
-**ExternalUrls** | [**AlbumBaseExternalUrls**](AlbumBaseExternalUrls.md) |  | 
+**ExternalUrls** | [**ExternalUrlObject**](ExternalUrlObject.md) | Known external URLs for this album.  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the album.  | 
 **Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the album.  | 
 **Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the album in various sizes, widest first.  | 
 **Name** | **string** | The name of the album. In case of an album takedown, the value may be an empty string.  | 
 **ReleaseDate** | **string** | The date the album was first released.  | 
 **ReleaseDatePrecision** | **string** | The precision with which &#x60;release_date&#x60; value is known.  | 
-**Restrictions** | Pointer to [**AlbumBaseRestrictions**](AlbumBaseRestrictions.md) |  | [optional] 
+**Restrictions** | Pointer to [**AlbumRestrictionObject**](AlbumRestrictionObject.md) | Included in the response when a content restriction is applied.  | [optional] 
 **Type** | **string** | The object type.  | 
 **Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the album.  | 
 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewAlbumBase
 
-`func NewAlbumBase(albumType string, totalTracks int32, availableMarkets []string, externalUrls AlbumBaseExternalUrls, href string, id string, images []ImageObject, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, ) *AlbumBase`
+`func NewAlbumBase(albumType string, totalTracks int32, availableMarkets []string, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, ) *AlbumBase`
 
 NewAlbumBase instantiates a new AlbumBase object
 This constructor will assign default values to properties that have it defined,
@@ -99,20 +99,20 @@ SetAvailableMarkets sets AvailableMarkets field to given value.
 
 ### GetExternalUrls
 
-`func (o *AlbumBase) GetExternalUrls() AlbumBaseExternalUrls`
+`func (o *AlbumBase) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *AlbumBase) GetExternalUrlsOk() (*AlbumBaseExternalUrls, bool)`
+`func (o *AlbumBase) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *AlbumBase) SetExternalUrls(v AlbumBaseExternalUrls)`
+`func (o *AlbumBase) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 
@@ -239,20 +239,20 @@ SetReleaseDatePrecision sets ReleaseDatePrecision field to given value.
 
 ### GetRestrictions
 
-`func (o *AlbumBase) GetRestrictions() AlbumBaseRestrictions`
+`func (o *AlbumBase) GetRestrictions() AlbumRestrictionObject`
 
 GetRestrictions returns the Restrictions field if non-nil, zero value otherwise.
 
 ### GetRestrictionsOk
 
-`func (o *AlbumBase) GetRestrictionsOk() (*AlbumBaseRestrictions, bool)`
+`func (o *AlbumBase) GetRestrictionsOk() (*AlbumRestrictionObject, bool)`
 
 GetRestrictionsOk returns a tuple with the Restrictions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRestrictions
 
-`func (o *AlbumBase) SetRestrictions(v AlbumBaseRestrictions)`
+`func (o *AlbumBase) SetRestrictions(v AlbumRestrictionObject)`
 
 SetRestrictions sets Restrictions field to given value.
 

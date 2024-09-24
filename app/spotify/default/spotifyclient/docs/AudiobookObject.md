@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **HtmlDescription** | **string** | A description of the audiobook. This field may contain HTML tags.  | 
 **Edition** | Pointer to **string** | The edition of the audiobook.  | [optional] 
 **Explicit** | **bool** | Whether or not the audiobook has explicit content (true &#x3D; yes it does; false &#x3D; no it does not OR unknown).  | 
-**ExternalUrls** | [**AudiobookBaseExternalUrls**](AudiobookBaseExternalUrls.md) |  | 
+**ExternalUrls** | [**ExternalUrlObject**](ExternalUrlObject.md) | External URLs for this audiobook.  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the audiobook.  | 
 **Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.  | 
 **Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the audiobook in various sizes, widest first.  | 
@@ -23,13 +23,13 @@ Name | Type | Description | Notes
 **Type** | **string** | The object type.  | 
 **Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.  | 
 **TotalChapters** | **int32** | The number of chapters in this audiobook.  | 
-**Chapters** | [**AudiobookObjectAllOfChapters**](AudiobookObjectAllOfChapters.md) |  | 
+**Chapters** | **map[string]interface{}** | The chapters of the audiobook.  | 
 
 ## Methods
 
 ### NewAudiobookObject
 
-`func NewAudiobookObject(authors []AuthorObject, availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls AudiobookBaseExternalUrls, href string, id string, images []ImageObject, languages []string, mediaType string, name string, narrators []NarratorObject, publisher string, type_ string, uri string, totalChapters int32, chapters AudiobookObjectAllOfChapters, ) *AudiobookObject`
+`func NewAudiobookObject(authors []AuthorObject, availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, languages []string, mediaType string, name string, narrators []NarratorObject, publisher string, type_ string, uri string, totalChapters int32, chapters map[string]interface{}, ) *AudiobookObject`
 
 NewAudiobookObject instantiates a new AudiobookObject object
 This constructor will assign default values to properties that have it defined,
@@ -191,20 +191,20 @@ SetExplicit sets Explicit field to given value.
 
 ### GetExternalUrls
 
-`func (o *AudiobookObject) GetExternalUrls() AudiobookBaseExternalUrls`
+`func (o *AudiobookObject) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *AudiobookObject) GetExternalUrlsOk() (*AudiobookBaseExternalUrls, bool)`
+`func (o *AudiobookObject) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *AudiobookObject) SetExternalUrls(v AudiobookBaseExternalUrls)`
+`func (o *AudiobookObject) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 
@@ -431,20 +431,20 @@ SetTotalChapters sets TotalChapters field to given value.
 
 ### GetChapters
 
-`func (o *AudiobookObject) GetChapters() AudiobookObjectAllOfChapters`
+`func (o *AudiobookObject) GetChapters() map[string]interface{}`
 
 GetChapters returns the Chapters field if non-nil, zero value otherwise.
 
 ### GetChaptersOk
 
-`func (o *AudiobookObject) GetChaptersOk() (*AudiobookObjectAllOfChapters, bool)`
+`func (o *AudiobookObject) GetChaptersOk() (*map[string]interface{}, bool)`
 
 GetChaptersOk returns a tuple with the Chapters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChapters
 
-`func (o *AudiobookObject) SetChapters(v AudiobookObjectAllOfChapters)`
+`func (o *AudiobookObject) SetChapters(v map[string]interface{})`
 
 SetChapters sets Chapters field to given value.
 

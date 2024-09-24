@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Description** | **string** | A description of the show. HTML tags are stripped away from this field, use &#x60;html_description&#x60; field in case HTML tags are needed.  | 
 **HtmlDescription** | **string** | A description of the show. This field may contain HTML tags.  | 
 **Explicit** | **bool** | Whether or not the show has explicit content (true &#x3D; yes it does; false &#x3D; no it does not OR unknown).  | 
-**ExternalUrls** | [**ShowBaseExternalUrls**](ShowBaseExternalUrls.md) |  | 
+**ExternalUrls** | [**ExternalUrlObject**](ExternalUrlObject.md) | External URLs for this show.  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the show.  | 
 **Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the show.  | 
 **Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the show in various sizes, widest first.  | 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewSimplifiedShowObject
 
-`func NewSimplifiedShowObject(availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ShowBaseExternalUrls, href string, id string, images []ImageObject, isExternallyHosted bool, languages []string, mediaType string, name string, publisher string, type_ string, uri string, totalEpisodes int32, ) *SimplifiedShowObject`
+`func NewSimplifiedShowObject(availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isExternallyHosted bool, languages []string, mediaType string, name string, publisher string, type_ string, uri string, totalEpisodes int32, ) *SimplifiedShowObject`
 
 NewSimplifiedShowObject instantiates a new SimplifiedShowObject object
 This constructor will assign default values to properties that have it defined,
@@ -143,20 +143,20 @@ SetExplicit sets Explicit field to given value.
 
 ### GetExternalUrls
 
-`func (o *SimplifiedShowObject) GetExternalUrls() ShowBaseExternalUrls`
+`func (o *SimplifiedShowObject) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *SimplifiedShowObject) GetExternalUrlsOk() (*ShowBaseExternalUrls, bool)`
+`func (o *SimplifiedShowObject) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *SimplifiedShowObject) SetExternalUrls(v ShowBaseExternalUrls)`
+`func (o *SimplifiedShowObject) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 

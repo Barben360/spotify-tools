@@ -9,14 +9,14 @@ Name | Type | Description | Notes
 **DiscNumber** | Pointer to **int32** | The disc number (usually &#x60;1&#x60; unless the album consists of more than one disc). | [optional] 
 **DurationMs** | Pointer to **int32** | The track length in milliseconds. | [optional] 
 **Explicit** | Pointer to **bool** | Whether or not the track has explicit lyrics ( &#x60;true&#x60; &#x3D; yes it does; &#x60;false&#x60; &#x3D; no it does not OR unknown). | [optional] 
-**ExternalUrls** | Pointer to [**SimplifiedTrackObjectExternalUrls**](SimplifiedTrackObjectExternalUrls.md) |  | [optional] 
+**ExternalUrls** | Pointer to [**ExternalUrlObject**](ExternalUrlObject.md) | External URLs for this track.  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint providing full details of the track. | [optional] 
 **Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.  | [optional] 
 **IsPlayable** | Pointer to **bool** | Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking/) is applied. If &#x60;true&#x60;, the track is playable in the given market. Otherwise &#x60;false&#x60;.  | [optional] 
-**LinkedFrom** | Pointer to [**SimplifiedTrackObjectLinkedFrom**](SimplifiedTrackObjectLinkedFrom.md) |  | [optional] 
-**Restrictions** | Pointer to [**SimplifiedTrackObjectRestrictions**](SimplifiedTrackObjectRestrictions.md) |  | [optional] 
+**LinkedFrom** | Pointer to [**LinkedTrackObject**](LinkedTrackObject.md) | Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking/) is applied and is only part of the response if the track linking, in fact, exists. The requested track has been replaced with a different track. The track in the &#x60;linked_from&#x60; object contains information about the originally requested track. | [optional] 
+**Restrictions** | Pointer to [**TrackRestrictionObject**](TrackRestrictionObject.md) | Included in the response when a content restriction is applied.  | [optional] 
 **Name** | Pointer to **string** | The name of the track. | [optional] 
-**PreviewUrl** | Pointer to **string** | A URL to a 30 second preview (MP3 format) of the track.  | [optional] 
+**PreviewUrl** | Pointer to **NullableString** | A URL to a 30 second preview (MP3 format) of the track.  | [optional] 
 **TrackNumber** | Pointer to **int32** | The number of the track. If an album has several discs, the track number is the number on the specified disc.  | [optional] 
 **Type** | Pointer to **string** | The object type: \&quot;track\&quot;.  | [optional] 
 **Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.  | [optional] 
@@ -168,20 +168,20 @@ HasExplicit returns a boolean if a field has been set.
 
 ### GetExternalUrls
 
-`func (o *SimplifiedTrackObject) GetExternalUrls() SimplifiedTrackObjectExternalUrls`
+`func (o *SimplifiedTrackObject) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *SimplifiedTrackObject) GetExternalUrlsOk() (*SimplifiedTrackObjectExternalUrls, bool)`
+`func (o *SimplifiedTrackObject) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *SimplifiedTrackObject) SetExternalUrls(v SimplifiedTrackObjectExternalUrls)`
+`func (o *SimplifiedTrackObject) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 
@@ -268,20 +268,20 @@ HasIsPlayable returns a boolean if a field has been set.
 
 ### GetLinkedFrom
 
-`func (o *SimplifiedTrackObject) GetLinkedFrom() SimplifiedTrackObjectLinkedFrom`
+`func (o *SimplifiedTrackObject) GetLinkedFrom() LinkedTrackObject`
 
 GetLinkedFrom returns the LinkedFrom field if non-nil, zero value otherwise.
 
 ### GetLinkedFromOk
 
-`func (o *SimplifiedTrackObject) GetLinkedFromOk() (*SimplifiedTrackObjectLinkedFrom, bool)`
+`func (o *SimplifiedTrackObject) GetLinkedFromOk() (*LinkedTrackObject, bool)`
 
 GetLinkedFromOk returns a tuple with the LinkedFrom field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinkedFrom
 
-`func (o *SimplifiedTrackObject) SetLinkedFrom(v SimplifiedTrackObjectLinkedFrom)`
+`func (o *SimplifiedTrackObject) SetLinkedFrom(v LinkedTrackObject)`
 
 SetLinkedFrom sets LinkedFrom field to given value.
 
@@ -293,20 +293,20 @@ HasLinkedFrom returns a boolean if a field has been set.
 
 ### GetRestrictions
 
-`func (o *SimplifiedTrackObject) GetRestrictions() SimplifiedTrackObjectRestrictions`
+`func (o *SimplifiedTrackObject) GetRestrictions() TrackRestrictionObject`
 
 GetRestrictions returns the Restrictions field if non-nil, zero value otherwise.
 
 ### GetRestrictionsOk
 
-`func (o *SimplifiedTrackObject) GetRestrictionsOk() (*SimplifiedTrackObjectRestrictions, bool)`
+`func (o *SimplifiedTrackObject) GetRestrictionsOk() (*TrackRestrictionObject, bool)`
 
 GetRestrictionsOk returns a tuple with the Restrictions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRestrictions
 
-`func (o *SimplifiedTrackObject) SetRestrictions(v SimplifiedTrackObjectRestrictions)`
+`func (o *SimplifiedTrackObject) SetRestrictions(v TrackRestrictionObject)`
 
 SetRestrictions sets Restrictions field to given value.
 
@@ -366,6 +366,16 @@ SetPreviewUrl sets PreviewUrl field to given value.
 
 HasPreviewUrl returns a boolean if a field has been set.
 
+### SetPreviewUrlNil
+
+`func (o *SimplifiedTrackObject) SetPreviewUrlNil(b bool)`
+
+ SetPreviewUrlNil sets the value for PreviewUrl to be an explicit nil
+
+### UnsetPreviewUrl
+`func (o *SimplifiedTrackObject) UnsetPreviewUrl()`
+
+UnsetPreviewUrl ensures that no value is present for PreviewUrl, not even an explicit nil
 ### GetTrackNumber
 
 `func (o *SimplifiedTrackObject) GetTrackNumber() int32`

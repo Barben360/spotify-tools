@@ -10,16 +10,24 @@ import (
 )
 
 func (s *Spotify) GetShow(ctx context.Context, showID string) (*spotify.Show, error) {
-	var resp *spotifyclient.ShowObject
+	var show *spotifyclient.ShowObject
 	if _, err := s.authExec(ctx, func(ctx context.Context) (*http.Response, error) {
 		var err error
 		var httpResp *http.Response
-		resp, httpResp, err = s.httpOpenAPIClient.ShowsApi.GetAShow(ctx, showID).Execute()
+		show, httpResp, err = s.httpOpenAPIClient.ShowsAPI.GetAShow(ctx, showID).Execute()
 		return httpResp, err
 	}); err != nil {
 		return nil, err
 	}
-	episodes := resp.GetEpisodes()
+	var episodes *spotifyclient.PagingSimplifiedEpisodeObject
+	if _, err := s.authExec(ctx, func(ctx context.Context) (*http.Response, error) {
+		var err error
+		var httpResp *http.Response
+		episodes, httpResp, err = s.httpOpenAPIClient.ShowsAPI.GetAShowsEpisodes(ctx, showID).Execute()
+		return httpResp, err
+	}); err != nil {
+		return nil, err
+	}
 	itemsRet := make([]*spotify.Item, 0, episodes.GetTotal())
 	for _, item := range episodes.GetItems() {
 		itemsRet = append(itemsRet, &spotify.Item{
@@ -39,7 +47,7 @@ func (s *Spotify) GetShow(ctx context.Context, showID string) (*spotify.Show, er
 		if _, err := s.authExec(ctx, func(ctx context.Context) (*http.Response, error) {
 			var err error
 			var httpResp *http.Response
-			resp, httpResp, err = s.httpOpenAPIClient.ShowsApi.GetAShowsEpisodes(ctx, showID).Offset(offset + limit).Limit(limit).Execute()
+			resp, httpResp, err = s.httpOpenAPIClient.ShowsAPI.GetAShowsEpisodes(ctx, showID).Offset(offset + limit).Limit(limit).Execute()
 			return httpResp, err
 		}); err != nil {
 			return nil, err
@@ -62,9 +70,9 @@ func (s *Spotify) GetShow(ctx context.Context, showID string) (*spotify.Show, er
 		item.TryResolveReleaseDate(ctx)
 	}
 	return &spotify.Show{
-		ID:          resp.GetId(),
-		Name:        resp.GetName(),
-		Description: resp.GetDescription(),
+		ID:          show.GetId(),
+		Name:        show.GetName(),
+		Description: show.GetDescription(),
 		Episodes:    itemsRet,
 	}, nil
 }

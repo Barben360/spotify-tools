@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | The new name for the playlist, for example &#x60;\&quot;My New Playlist Title\&quot;&#x60;  | [optional] 
-**Public** | Pointer to **bool** | If &#x60;true&#x60; the playlist will be public, if &#x60;false&#x60; it will be private.  | [optional] 
+**Public** | Pointer to **bool** | The playlist&#39;s public/private status (if it should be added to the user&#39;s profile or not): &#x60;true&#x60; the playlist will be public, &#x60;false&#x60; the playlist will be private, &#x60;null&#x60; the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)  | [optional] 
 **Collaborative** | Pointer to **bool** | If &#x60;true&#x60;, the playlist will become collaborative and other users will be able to modify the playlist in their Spotify client. &lt;br/&gt; _**Note**: You can only set &#x60;collaborative&#x60; to &#x60;true&#x60; on non-public playlists._  | [optional] 
 **Description** | Pointer to **string** | Value for playlist description as displayed in Spotify Clients and in the Web API.  | [optional] 
 

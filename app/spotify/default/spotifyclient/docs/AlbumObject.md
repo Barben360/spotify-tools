@@ -7,29 +7,29 @@ Name | Type | Description | Notes
 **AlbumType** | **string** | The type of the album.  | 
 **TotalTracks** | **int32** | The number of tracks in the album. | 
 **AvailableMarkets** | **[]string** | The markets in which the album is available: [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _**NOTE**: an album is considered available in a market when at least 1 of its tracks is available in that market._  | 
-**ExternalUrls** | [**AlbumBaseExternalUrls**](AlbumBaseExternalUrls.md) |  | 
+**ExternalUrls** | [**ExternalUrlObject**](ExternalUrlObject.md) | Known external URLs for this album.  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the album.  | 
 **Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the album.  | 
 **Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the album in various sizes, widest first.  | 
 **Name** | **string** | The name of the album. In case of an album takedown, the value may be an empty string.  | 
 **ReleaseDate** | **string** | The date the album was first released.  | 
 **ReleaseDatePrecision** | **string** | The precision with which &#x60;release_date&#x60; value is known.  | 
-**Restrictions** | Pointer to [**AlbumBaseRestrictions**](AlbumBaseRestrictions.md) |  | [optional] 
+**Restrictions** | Pointer to [**AlbumRestrictionObject**](AlbumRestrictionObject.md) | Included in the response when a content restriction is applied.  | [optional] 
 **Type** | **string** | The object type.  | 
 **Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the album.  | 
-**Artists** | Pointer to [**[]SimplifiedArtistObject**](SimplifiedArtistObject.md) | The artists of the album. Each artist object includes a link in &#x60;href&#x60; to more detailed information about the artist.  | [optional] 
-**Tracks** | Pointer to [**AlbumObjectAllOfTracks**](AlbumObjectAllOfTracks.md) |  | [optional] 
-**Popularity** | Pointer to **int32** | The popularity of the album, with 100 being the most popular. The popularity is calculated from the popularity of the album&#39;s individual tracks. | [optional] 
-**Label** | Pointer to **string** | The label for the album. | [optional] 
-**ExternalIds** | Pointer to [**AlbumObjectAllOfExternalIds**](AlbumObjectAllOfExternalIds.md) |  | [optional] 
-**Genres** | Pointer to **[]string** | A list of the genres used to classify the album. (If not yet classified, the array is empty.) | [optional] 
-**Copyrights** | Pointer to [**[]CopyrightObject**](CopyrightObject.md) | The copyright statements of the album. | [optional] 
+**Artists** | [**[]SimplifiedArtistObject**](SimplifiedArtistObject.md) | The artists of the album. Each artist object includes a link in &#x60;href&#x60; to more detailed information about the artist.  | 
+**Tracks** | [**PagingSimplifiedTrackObject**](PagingSimplifiedTrackObject.md) | The tracks of the album.  | 
+**Copyrights** | [**[]CopyrightObject**](CopyrightObject.md) | The copyright statements of the album.  | 
+**ExternalIds** | [**ExternalIdObject**](ExternalIdObject.md) | Known external IDs for the album.  | 
+**Genres** | **[]string** | A list of the genres the album is associated with. If not yet classified, the array is empty.  | 
+**Label** | **string** | The label associated with the album.  | 
+**Popularity** | **int32** | The popularity of the album. The value will be between 0 and 100, with 100 being the most popular.  | 
 
 ## Methods
 
 ### NewAlbumObject
 
-`func NewAlbumObject(albumType string, totalTracks int32, availableMarkets []string, externalUrls AlbumBaseExternalUrls, href string, id string, images []ImageObject, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, ) *AlbumObject`
+`func NewAlbumObject(albumType string, totalTracks int32, availableMarkets []string, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, artists []SimplifiedArtistObject, tracks PagingSimplifiedTrackObject, copyrights []CopyrightObject, externalIds ExternalIdObject, genres []string, label string, popularity int32, ) *AlbumObject`
 
 NewAlbumObject instantiates a new AlbumObject object
 This constructor will assign default values to properties that have it defined,
@@ -106,20 +106,20 @@ SetAvailableMarkets sets AvailableMarkets field to given value.
 
 ### GetExternalUrls
 
-`func (o *AlbumObject) GetExternalUrls() AlbumBaseExternalUrls`
+`func (o *AlbumObject) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *AlbumObject) GetExternalUrlsOk() (*AlbumBaseExternalUrls, bool)`
+`func (o *AlbumObject) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *AlbumObject) SetExternalUrls(v AlbumBaseExternalUrls)`
+`func (o *AlbumObject) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 
@@ -246,20 +246,20 @@ SetReleaseDatePrecision sets ReleaseDatePrecision field to given value.
 
 ### GetRestrictions
 
-`func (o *AlbumObject) GetRestrictions() AlbumBaseRestrictions`
+`func (o *AlbumObject) GetRestrictions() AlbumRestrictionObject`
 
 GetRestrictions returns the Restrictions field if non-nil, zero value otherwise.
 
 ### GetRestrictionsOk
 
-`func (o *AlbumObject) GetRestrictionsOk() (*AlbumBaseRestrictions, bool)`
+`func (o *AlbumObject) GetRestrictionsOk() (*AlbumRestrictionObject, bool)`
 
 GetRestrictionsOk returns a tuple with the Restrictions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRestrictions
 
-`func (o *AlbumObject) SetRestrictions(v AlbumBaseRestrictions)`
+`func (o *AlbumObject) SetRestrictions(v AlbumRestrictionObject)`
 
 SetRestrictions sets Restrictions field to given value.
 
@@ -328,136 +328,26 @@ and a boolean to check if the value has been set.
 
 SetArtists sets Artists field to given value.
 
-### HasArtists
-
-`func (o *AlbumObject) HasArtists() bool`
-
-HasArtists returns a boolean if a field has been set.
 
 ### GetTracks
 
-`func (o *AlbumObject) GetTracks() AlbumObjectAllOfTracks`
+`func (o *AlbumObject) GetTracks() PagingSimplifiedTrackObject`
 
 GetTracks returns the Tracks field if non-nil, zero value otherwise.
 
 ### GetTracksOk
 
-`func (o *AlbumObject) GetTracksOk() (*AlbumObjectAllOfTracks, bool)`
+`func (o *AlbumObject) GetTracksOk() (*PagingSimplifiedTrackObject, bool)`
 
 GetTracksOk returns a tuple with the Tracks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTracks
 
-`func (o *AlbumObject) SetTracks(v AlbumObjectAllOfTracks)`
+`func (o *AlbumObject) SetTracks(v PagingSimplifiedTrackObject)`
 
 SetTracks sets Tracks field to given value.
 
-### HasTracks
-
-`func (o *AlbumObject) HasTracks() bool`
-
-HasTracks returns a boolean if a field has been set.
-
-### GetPopularity
-
-`func (o *AlbumObject) GetPopularity() int32`
-
-GetPopularity returns the Popularity field if non-nil, zero value otherwise.
-
-### GetPopularityOk
-
-`func (o *AlbumObject) GetPopularityOk() (*int32, bool)`
-
-GetPopularityOk returns a tuple with the Popularity field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPopularity
-
-`func (o *AlbumObject) SetPopularity(v int32)`
-
-SetPopularity sets Popularity field to given value.
-
-### HasPopularity
-
-`func (o *AlbumObject) HasPopularity() bool`
-
-HasPopularity returns a boolean if a field has been set.
-
-### GetLabel
-
-`func (o *AlbumObject) GetLabel() string`
-
-GetLabel returns the Label field if non-nil, zero value otherwise.
-
-### GetLabelOk
-
-`func (o *AlbumObject) GetLabelOk() (*string, bool)`
-
-GetLabelOk returns a tuple with the Label field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLabel
-
-`func (o *AlbumObject) SetLabel(v string)`
-
-SetLabel sets Label field to given value.
-
-### HasLabel
-
-`func (o *AlbumObject) HasLabel() bool`
-
-HasLabel returns a boolean if a field has been set.
-
-### GetExternalIds
-
-`func (o *AlbumObject) GetExternalIds() AlbumObjectAllOfExternalIds`
-
-GetExternalIds returns the ExternalIds field if non-nil, zero value otherwise.
-
-### GetExternalIdsOk
-
-`func (o *AlbumObject) GetExternalIdsOk() (*AlbumObjectAllOfExternalIds, bool)`
-
-GetExternalIdsOk returns a tuple with the ExternalIds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetExternalIds
-
-`func (o *AlbumObject) SetExternalIds(v AlbumObjectAllOfExternalIds)`
-
-SetExternalIds sets ExternalIds field to given value.
-
-### HasExternalIds
-
-`func (o *AlbumObject) HasExternalIds() bool`
-
-HasExternalIds returns a boolean if a field has been set.
-
-### GetGenres
-
-`func (o *AlbumObject) GetGenres() []string`
-
-GetGenres returns the Genres field if non-nil, zero value otherwise.
-
-### GetGenresOk
-
-`func (o *AlbumObject) GetGenresOk() (*[]string, bool)`
-
-GetGenresOk returns a tuple with the Genres field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGenres
-
-`func (o *AlbumObject) SetGenres(v []string)`
-
-SetGenres sets Genres field to given value.
-
-### HasGenres
-
-`func (o *AlbumObject) HasGenres() bool`
-
-HasGenres returns a boolean if a field has been set.
 
 ### GetCopyrights
 
@@ -478,11 +368,86 @@ and a boolean to check if the value has been set.
 
 SetCopyrights sets Copyrights field to given value.
 
-### HasCopyrights
 
-`func (o *AlbumObject) HasCopyrights() bool`
+### GetExternalIds
 
-HasCopyrights returns a boolean if a field has been set.
+`func (o *AlbumObject) GetExternalIds() ExternalIdObject`
+
+GetExternalIds returns the ExternalIds field if non-nil, zero value otherwise.
+
+### GetExternalIdsOk
+
+`func (o *AlbumObject) GetExternalIdsOk() (*ExternalIdObject, bool)`
+
+GetExternalIdsOk returns a tuple with the ExternalIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalIds
+
+`func (o *AlbumObject) SetExternalIds(v ExternalIdObject)`
+
+SetExternalIds sets ExternalIds field to given value.
+
+
+### GetGenres
+
+`func (o *AlbumObject) GetGenres() []string`
+
+GetGenres returns the Genres field if non-nil, zero value otherwise.
+
+### GetGenresOk
+
+`func (o *AlbumObject) GetGenresOk() (*[]string, bool)`
+
+GetGenresOk returns a tuple with the Genres field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGenres
+
+`func (o *AlbumObject) SetGenres(v []string)`
+
+SetGenres sets Genres field to given value.
+
+
+### GetLabel
+
+`func (o *AlbumObject) GetLabel() string`
+
+GetLabel returns the Label field if non-nil, zero value otherwise.
+
+### GetLabelOk
+
+`func (o *AlbumObject) GetLabelOk() (*string, bool)`
+
+GetLabelOk returns a tuple with the Label field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLabel
+
+`func (o *AlbumObject) SetLabel(v string)`
+
+SetLabel sets Label field to given value.
+
+
+### GetPopularity
+
+`func (o *AlbumObject) GetPopularity() int32`
+
+GetPopularity returns the Popularity field if non-nil, zero value otherwise.
+
+### GetPopularityOk
+
+`func (o *AlbumObject) GetPopularityOk() (*int32, bool)`
+
+GetPopularityOk returns a tuple with the Popularity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPopularity
+
+`func (o *AlbumObject) SetPopularity(v int32)`
+
+SetPopularity sets Popularity field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

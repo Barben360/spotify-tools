@@ -9,6 +9,7 @@ require (
 	github.com/spf13/cobra v1.7.0
 	go.uber.org/zap v1.24.0
 	golang.org/x/oauth2 v0.7.0
+	gopkg.in/validator.v2 v2.0.1
 )
 
 require (

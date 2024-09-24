@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Album** | Pointer to [**TrackObjectAlbum**](TrackObjectAlbum.md) |  | [optional] 
+**Album** | Pointer to [**SimplifiedAlbumObject**](SimplifiedAlbumObject.md) | The album on which the track appears. The album object includes a link in &#x60;href&#x60; to full information about the album.  | [optional] 
 **Artists** | Pointer to [**[]ArtistObject**](ArtistObject.md) | The artists who performed the track. Each artist object includes a link in &#x60;href&#x60; to more detailed information about the artist.  | [optional] 
 **AvailableMarkets** | Pointer to **[]string** | A list of the countries in which the track can be played, identified by their [ISO 3166-1 alpha-2](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code.  | [optional] 
 **DiscNumber** | Pointer to **int32** | The disc number (usually &#x60;1&#x60; unless the album consists of more than one disc).  | [optional] 
 **DurationMs** | Pointer to **int32** | The track length in milliseconds.  | [optional] 
 **Explicit** | Pointer to **bool** | Whether or not the track has explicit lyrics ( &#x60;true&#x60; &#x3D; yes it does; &#x60;false&#x60; &#x3D; no it does not OR unknown).  | [optional] 
-**ExternalIds** | Pointer to [**TrackObjectExternalIds**](TrackObjectExternalIds.md) |  | [optional] 
-**ExternalUrls** | Pointer to [**LinkedTrackObjectExternalUrls**](LinkedTrackObjectExternalUrls.md) |  | [optional] 
+**ExternalIds** | Pointer to [**ExternalIdObject**](ExternalIdObject.md) | Known external IDs for the track.  | [optional] 
+**ExternalUrls** | Pointer to [**ExternalUrlObject**](ExternalUrlObject.md) | Known external URLs for this track.  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint providing full details of the track.  | [optional] 
 **Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the track.  | [optional] 
 **IsPlayable** | Pointer to **bool** | Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied. If &#x60;true&#x60;, the track is playable in the given market. Otherwise &#x60;false&#x60;.  | [optional] 
-**LinkedFrom** | Pointer to [**TrackObjectLinkedFrom**](TrackObjectLinkedFrom.md) |  | [optional] 
-**Restrictions** | Pointer to [**SimplifiedTrackObjectRestrictions**](SimplifiedTrackObjectRestrictions.md) |  | [optional] 
+**LinkedFrom** | Pointer to [**LinkedTrackObject**](LinkedTrackObject.md) | Part of the response when [Track Relinking](/documentation/web-api/concepts/track-relinking) is applied, and the requested track has been replaced with different track. The track in the &#x60;linked_from&#x60; object contains information about the originally requested track. | [optional] 
+**Restrictions** | Pointer to [**TrackRestrictionObject**](TrackRestrictionObject.md) | Included in the response when a content restriction is applied.  | [optional] 
 **Name** | Pointer to **string** | The name of the track.  | [optional] 
 **Popularity** | Pointer to **int32** | The popularity of the track. The value will be between 0 and 100, with 100 being the most popular.&lt;br/&gt;The popularity of a track is a value between 0 and 100, with 100 being the most popular. The popularity is calculated by algorithm and is based, in the most part, on the total number of plays the track has had and how recent those plays are.&lt;br/&gt;Generally speaking, songs that are being played a lot now will have a higher popularity than songs that were played a lot in the past. Duplicate tracks (e.g. the same track from a single and an album) are rated independently. Artist and album popularity is derived mathematically from track popularity. _**Note**: the popularity value may lag actual popularity by a few days: the value is not updated in real time._  | [optional] 
-**PreviewUrl** | Pointer to **string** | A link to a 30 second preview (MP3 format) of the track. Can be &#x60;null&#x60;  | [optional] 
+**PreviewUrl** | Pointer to **NullableString** | A link to a 30 second preview (MP3 format) of the track. Can be &#x60;null&#x60;  | [optional] 
 **TrackNumber** | Pointer to **int32** | The number of the track. If an album has several discs, the track number is the number on the specified disc.  | [optional] 
 **Type** | Pointer to **string** | The object type: \&quot;track\&quot;.  | [optional] 
 **Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the track.  | [optional] 
@@ -46,20 +46,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAlbum
 
-`func (o *TrackObject) GetAlbum() TrackObjectAlbum`
+`func (o *TrackObject) GetAlbum() SimplifiedAlbumObject`
 
 GetAlbum returns the Album field if non-nil, zero value otherwise.
 
 ### GetAlbumOk
 
-`func (o *TrackObject) GetAlbumOk() (*TrackObjectAlbum, bool)`
+`func (o *TrackObject) GetAlbumOk() (*SimplifiedAlbumObject, bool)`
 
 GetAlbumOk returns a tuple with the Album field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAlbum
 
-`func (o *TrackObject) SetAlbum(v TrackObjectAlbum)`
+`func (o *TrackObject) SetAlbum(v SimplifiedAlbumObject)`
 
 SetAlbum sets Album field to given value.
 
@@ -196,20 +196,20 @@ HasExplicit returns a boolean if a field has been set.
 
 ### GetExternalIds
 
-`func (o *TrackObject) GetExternalIds() TrackObjectExternalIds`
+`func (o *TrackObject) GetExternalIds() ExternalIdObject`
 
 GetExternalIds returns the ExternalIds field if non-nil, zero value otherwise.
 
 ### GetExternalIdsOk
 
-`func (o *TrackObject) GetExternalIdsOk() (*TrackObjectExternalIds, bool)`
+`func (o *TrackObject) GetExternalIdsOk() (*ExternalIdObject, bool)`
 
 GetExternalIdsOk returns a tuple with the ExternalIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalIds
 
-`func (o *TrackObject) SetExternalIds(v TrackObjectExternalIds)`
+`func (o *TrackObject) SetExternalIds(v ExternalIdObject)`
 
 SetExternalIds sets ExternalIds field to given value.
 
@@ -221,20 +221,20 @@ HasExternalIds returns a boolean if a field has been set.
 
 ### GetExternalUrls
 
-`func (o *TrackObject) GetExternalUrls() LinkedTrackObjectExternalUrls`
+`func (o *TrackObject) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *TrackObject) GetExternalUrlsOk() (*LinkedTrackObjectExternalUrls, bool)`
+`func (o *TrackObject) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *TrackObject) SetExternalUrls(v LinkedTrackObjectExternalUrls)`
+`func (o *TrackObject) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 
@@ -321,20 +321,20 @@ HasIsPlayable returns a boolean if a field has been set.
 
 ### GetLinkedFrom
 
-`func (o *TrackObject) GetLinkedFrom() TrackObjectLinkedFrom`
+`func (o *TrackObject) GetLinkedFrom() LinkedTrackObject`
 
 GetLinkedFrom returns the LinkedFrom field if non-nil, zero value otherwise.
 
 ### GetLinkedFromOk
 
-`func (o *TrackObject) GetLinkedFromOk() (*TrackObjectLinkedFrom, bool)`
+`func (o *TrackObject) GetLinkedFromOk() (*LinkedTrackObject, bool)`
 
 GetLinkedFromOk returns a tuple with the LinkedFrom field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinkedFrom
 
-`func (o *TrackObject) SetLinkedFrom(v TrackObjectLinkedFrom)`
+`func (o *TrackObject) SetLinkedFrom(v LinkedTrackObject)`
 
 SetLinkedFrom sets LinkedFrom field to given value.
 
@@ -346,20 +346,20 @@ HasLinkedFrom returns a boolean if a field has been set.
 
 ### GetRestrictions
 
-`func (o *TrackObject) GetRestrictions() SimplifiedTrackObjectRestrictions`
+`func (o *TrackObject) GetRestrictions() TrackRestrictionObject`
 
 GetRestrictions returns the Restrictions field if non-nil, zero value otherwise.
 
 ### GetRestrictionsOk
 
-`func (o *TrackObject) GetRestrictionsOk() (*SimplifiedTrackObjectRestrictions, bool)`
+`func (o *TrackObject) GetRestrictionsOk() (*TrackRestrictionObject, bool)`
 
 GetRestrictionsOk returns a tuple with the Restrictions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRestrictions
 
-`func (o *TrackObject) SetRestrictions(v SimplifiedTrackObjectRestrictions)`
+`func (o *TrackObject) SetRestrictions(v TrackRestrictionObject)`
 
 SetRestrictions sets Restrictions field to given value.
 
@@ -444,6 +444,16 @@ SetPreviewUrl sets PreviewUrl field to given value.
 
 HasPreviewUrl returns a boolean if a field has been set.
 
+### SetPreviewUrlNil
+
+`func (o *TrackObject) SetPreviewUrlNil(b bool)`
+
+ SetPreviewUrlNil sets the value for PreviewUrl to be an explicit nil
+
+### UnsetPreviewUrl
+`func (o *TrackObject) UnsetPreviewUrl()`
+
+UnsetPreviewUrl ensures that no value is present for PreviewUrl, not even an explicit nil
 ### GetTrackNumber
 
 `func (o *TrackObject) GetTrackNumber() int32`

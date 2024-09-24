@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CurrentlyPlaying** | Pointer to [**CurrentlyPlayingObjectItem**](CurrentlyPlayingObjectItem.md) |  | [optional] 
+**CurrentlyPlaying** | Pointer to [**QueueObjectCurrentlyPlaying**](QueueObjectCurrentlyPlaying.md) |  | [optional] 
 **Queue** | Pointer to [**[]QueueObjectQueueInner**](QueueObjectQueueInner.md) | The tracks or episodes in the queue. Can be empty. | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCurrentlyPlaying
 
-`func (o *QueueObject) GetCurrentlyPlaying() CurrentlyPlayingObjectItem`
+`func (o *QueueObject) GetCurrentlyPlaying() QueueObjectCurrentlyPlaying`
 
 GetCurrentlyPlaying returns the CurrentlyPlaying field if non-nil, zero value otherwise.
 
 ### GetCurrentlyPlayingOk
 
-`func (o *QueueObject) GetCurrentlyPlayingOk() (*CurrentlyPlayingObjectItem, bool)`
+`func (o *QueueObject) GetCurrentlyPlayingOk() (*QueueObjectCurrentlyPlaying, bool)`
 
 GetCurrentlyPlayingOk returns a tuple with the CurrentlyPlaying field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrentlyPlaying
 
-`func (o *QueueObject) SetCurrentlyPlaying(v CurrentlyPlayingObjectItem)`
+`func (o *QueueObject) SetCurrentlyPlaying(v QueueObjectCurrentlyPlaying)`
 
 SetCurrentlyPlaying sets CurrentlyPlaying field to given value.
 

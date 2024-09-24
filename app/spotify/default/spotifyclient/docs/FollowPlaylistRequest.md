@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Public** | Pointer to **bool** | Defaults to &#x60;true&#x60;. If &#x60;true&#x60; the playlist will be included in user&#39;s public playlists, if &#x60;false&#x60; it will remain private.  | [optional] 
+**Public** | Pointer to **bool** | Defaults to &#x60;true&#x60;. If &#x60;true&#x60; the playlist will be included in user&#39;s public playlists (added to profile), if &#x60;false&#x60; it will remain private. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)  | [optional] 
 
 ## Methods
 

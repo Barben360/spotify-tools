@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Href** | Pointer to **string** | A link to the Web API endpoint returning the full result of the request. | [optional] 
 **Limit** | Pointer to **int32** | The maximum number of items in the response (as set in the query or by default). | [optional] 
 **Next** | Pointer to **string** | URL to the next page of items. ( &#x60;null&#x60; if none) | [optional] 
-**Cursors** | Pointer to [**CursorPagingObjectCursors**](CursorPagingObjectCursors.md) |  | [optional] 
+**Cursors** | Pointer to [**CursorObject**](CursorObject.md) | The cursors used to find the next set of items. | [optional] 
 **Total** | Pointer to **int32** | The total number of items available to return. | [optional] 
 **Items** | Pointer to [**[]ArtistObject**](ArtistObject.md) |  | [optional] 
 
@@ -107,20 +107,20 @@ HasNext returns a boolean if a field has been set.
 
 ### GetCursors
 
-`func (o *CursorPagingSimplifiedArtistObject) GetCursors() CursorPagingObjectCursors`
+`func (o *CursorPagingSimplifiedArtistObject) GetCursors() CursorObject`
 
 GetCursors returns the Cursors field if non-nil, zero value otherwise.
 
 ### GetCursorsOk
 
-`func (o *CursorPagingSimplifiedArtistObject) GetCursorsOk() (*CursorPagingObjectCursors, bool)`
+`func (o *CursorPagingSimplifiedArtistObject) GetCursorsOk() (*CursorObject, bool)`
 
 GetCursorsOk returns a tuple with the Cursors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCursors
 
-`func (o *CursorPagingSimplifiedArtistObject) SetCursors(v CursorPagingObjectCursors)`
+`func (o *CursorPagingSimplifiedArtistObject) SetCursors(v CursorObject)`
 
 SetCursors sets Cursors field to given value.
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddedAt** | Pointer to **time.Time** | The date and time the album was saved Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ. If the time is imprecise (for example, the date/time of an album release), an additional field indicates the precision; see for example, release_date in an album object.  | [optional] 
-**Album** | Pointer to [**SavedAlbumObjectAlbum**](SavedAlbumObjectAlbum.md) |  | [optional] 
+**Album** | Pointer to [**AlbumObject**](AlbumObject.md) | Information about the album. | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasAddedAt returns a boolean if a field has been set.
 
 ### GetAlbum
 
-`func (o *SavedAlbumObject) GetAlbum() SavedAlbumObjectAlbum`
+`func (o *SavedAlbumObject) GetAlbum() AlbumObject`
 
 GetAlbum returns the Album field if non-nil, zero value otherwise.
 
 ### GetAlbumOk
 
-`func (o *SavedAlbumObject) GetAlbumOk() (*SavedAlbumObjectAlbum, bool)`
+`func (o *SavedAlbumObject) GetAlbumOk() (*AlbumObject, bool)`
 
 GetAlbumOk returns a tuple with the Album field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAlbum
 
-`func (o *SavedAlbumObject) SetAlbum(v SavedAlbumObjectAlbum)`
+`func (o *SavedAlbumObject) SetAlbum(v AlbumObject)`
 
 SetAlbum sets Album field to given value.
 

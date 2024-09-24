@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExternalUrls** | Pointer to [**PublicUserObjectExternalUrls**](PublicUserObjectExternalUrls.md) |  | [optional] 
-**Followers** | Pointer to [**PublicUserObjectFollowers**](PublicUserObjectFollowers.md) |  | [optional] 
+**ExternalUrls** | Pointer to [**ExternalUrlObject**](ExternalUrlObject.md) | Known public external URLs for this user.  | [optional] 
+**Followers** | Pointer to [**FollowersObject**](FollowersObject.md) | Information about the followers of this user.  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint for this user.  | [optional] 
 **Id** | Pointer to **string** | The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for this user.  | [optional] 
 **Type** | Pointer to **string** | The object type.  | [optional] 
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetExternalUrls
 
-`func (o *PlaylistOwnerObject) GetExternalUrls() PublicUserObjectExternalUrls`
+`func (o *PlaylistOwnerObject) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *PlaylistOwnerObject) GetExternalUrlsOk() (*PublicUserObjectExternalUrls, bool)`
+`func (o *PlaylistOwnerObject) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *PlaylistOwnerObject) SetExternalUrls(v PublicUserObjectExternalUrls)`
+`func (o *PlaylistOwnerObject) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 
@@ -58,20 +58,20 @@ HasExternalUrls returns a boolean if a field has been set.
 
 ### GetFollowers
 
-`func (o *PlaylistOwnerObject) GetFollowers() PublicUserObjectFollowers`
+`func (o *PlaylistOwnerObject) GetFollowers() FollowersObject`
 
 GetFollowers returns the Followers field if non-nil, zero value otherwise.
 
 ### GetFollowersOk
 
-`func (o *PlaylistOwnerObject) GetFollowersOk() (*PublicUserObjectFollowers, bool)`
+`func (o *PlaylistOwnerObject) GetFollowersOk() (*FollowersObject, bool)`
 
 GetFollowersOk returns a tuple with the Followers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFollowers
 
-`func (o *PlaylistOwnerObject) SetFollowers(v PublicUserObjectFollowers)`
+`func (o *PlaylistOwnerObject) SetFollowers(v FollowersObject)`
 
 SetFollowers sets Followers field to given value.
 

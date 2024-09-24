@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExternalUrls** | Pointer to [**ArtistObjectExternalUrls**](ArtistObjectExternalUrls.md) |  | [optional] 
-**Followers** | Pointer to [**ArtistObjectFollowers**](ArtistObjectFollowers.md) |  | [optional] 
+**ExternalUrls** | Pointer to [**ExternalUrlObject**](ExternalUrlObject.md) | Known external URLs for this artist.  | [optional] 
+**Followers** | Pointer to [**FollowersObject**](FollowersObject.md) | Information about the followers of the artist.  | [optional] 
 **Genres** | Pointer to **[]string** | A list of the genres the artist is associated with. If not yet classified, the array is empty.  | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint providing full details of the artist.  | [optional] 
 **Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the artist.  | [optional] 
@@ -36,20 +36,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetExternalUrls
 
-`func (o *ArtistObject) GetExternalUrls() ArtistObjectExternalUrls`
+`func (o *ArtistObject) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *ArtistObject) GetExternalUrlsOk() (*ArtistObjectExternalUrls, bool)`
+`func (o *ArtistObject) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *ArtistObject) SetExternalUrls(v ArtistObjectExternalUrls)`
+`func (o *ArtistObject) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 
@@ -61,20 +61,20 @@ HasExternalUrls returns a boolean if a field has been set.
 
 ### GetFollowers
 
-`func (o *ArtistObject) GetFollowers() ArtistObjectFollowers`
+`func (o *ArtistObject) GetFollowers() FollowersObject`
 
 GetFollowers returns the Followers field if non-nil, zero value otherwise.
 
 ### GetFollowersOk
 
-`func (o *ArtistObject) GetFollowersOk() (*ArtistObjectFollowers, bool)`
+`func (o *ArtistObject) GetFollowersOk() (*FollowersObject, bool)`
 
 GetFollowersOk returns a tuple with the Followers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFollowers
 
-`func (o *ArtistObject) SetFollowers(v ArtistObjectFollowers)`
+`func (o *ArtistObject) SetFollowers(v FollowersObject)`
 
 SetFollowers sets Followers field to given value.
 

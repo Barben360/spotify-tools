@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **HtmlDescription** | **string** | A description of the audiobook. This field may contain HTML tags.  | 
 **Edition** | Pointer to **string** | The edition of the audiobook.  | [optional] 
 **Explicit** | **bool** | Whether or not the audiobook has explicit content (true &#x3D; yes it does; false &#x3D; no it does not OR unknown).  | 
-**ExternalUrls** | [**AudiobookBaseExternalUrls**](AudiobookBaseExternalUrls.md) |  | 
+**ExternalUrls** | [**ExternalUrlObject**](ExternalUrlObject.md) | External URLs for this audiobook.  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the audiobook.  | 
 **Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the audiobook.  | 
 **Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the audiobook in various sizes, widest first.  | 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewSimplifiedAudiobookObject
 
-`func NewSimplifiedAudiobookObject(authors []AuthorObject, availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls AudiobookBaseExternalUrls, href string, id string, images []ImageObject, languages []string, mediaType string, name string, narrators []NarratorObject, publisher string, type_ string, uri string, totalChapters int32, ) *SimplifiedAudiobookObject`
+`func NewSimplifiedAudiobookObject(authors []AuthorObject, availableMarkets []string, copyrights []CopyrightObject, description string, htmlDescription string, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, languages []string, mediaType string, name string, narrators []NarratorObject, publisher string, type_ string, uri string, totalChapters int32, ) *SimplifiedAudiobookObject`
 
 NewSimplifiedAudiobookObject instantiates a new SimplifiedAudiobookObject object
 This constructor will assign default values to properties that have it defined,
@@ -190,20 +190,20 @@ SetExplicit sets Explicit field to given value.
 
 ### GetExternalUrls
 
-`func (o *SimplifiedAudiobookObject) GetExternalUrls() AudiobookBaseExternalUrls`
+`func (o *SimplifiedAudiobookObject) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *SimplifiedAudiobookObject) GetExternalUrlsOk() (*AudiobookBaseExternalUrls, bool)`
+`func (o *SimplifiedAudiobookObject) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *SimplifiedAudiobookObject) SetExternalUrls(v AudiobookBaseExternalUrls)`
+`func (o *SimplifiedAudiobookObject) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 

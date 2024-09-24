@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **Country** | Pointer to **string** | The country of the user, as set in the user&#39;s account profile. An [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _This field is only available when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._  | [optional] 
 **DisplayName** | Pointer to **string** | The name displayed on the user&#39;s profile. &#x60;null&#x60; if not available.  | [optional] 
 **Email** | Pointer to **string** | The user&#39;s email address, as entered by the user when creating their account. _**Important!** This email address is unverified; there is no proof that it actually belongs to the user._ _This field is only available when the current user has granted access to the [user-read-email](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._  | [optional] 
-**ExplicitContent** | Pointer to [**PrivateUserObjectExplicitContent**](PrivateUserObjectExplicitContent.md) |  | [optional] 
-**ExternalUrls** | Pointer to [**PrivateUserObjectExternalUrls**](PrivateUserObjectExternalUrls.md) |  | [optional] 
-**Followers** | Pointer to [**PrivateUserObjectFollowers**](PrivateUserObjectFollowers.md) |  | [optional] 
+**ExplicitContent** | Pointer to [**ExplicitContentSettingsObject**](ExplicitContentSettingsObject.md) | The user&#39;s explicit content settings. _This field is only available when the current user has granted access to the [user-read-private](/documentation/web-api/concepts/scopes/#list-of-scopes) scope._  | [optional] 
+**ExternalUrls** | Pointer to [**ExternalUrlObject**](ExternalUrlObject.md) | Known external URLs for this user. | [optional] 
+**Followers** | Pointer to [**FollowersObject**](FollowersObject.md) | Information about the followers of the user. | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint for this user.  | [optional] 
 **Id** | Pointer to **string** | The [Spotify user ID](/documentation/web-api/concepts/spotify-uris-ids) for the user.  | [optional] 
 **Images** | Pointer to [**[]ImageObject**](ImageObject.md) | The user&#39;s profile image. | [optional] 
@@ -113,20 +113,20 @@ HasEmail returns a boolean if a field has been set.
 
 ### GetExplicitContent
 
-`func (o *PrivateUserObject) GetExplicitContent() PrivateUserObjectExplicitContent`
+`func (o *PrivateUserObject) GetExplicitContent() ExplicitContentSettingsObject`
 
 GetExplicitContent returns the ExplicitContent field if non-nil, zero value otherwise.
 
 ### GetExplicitContentOk
 
-`func (o *PrivateUserObject) GetExplicitContentOk() (*PrivateUserObjectExplicitContent, bool)`
+`func (o *PrivateUserObject) GetExplicitContentOk() (*ExplicitContentSettingsObject, bool)`
 
 GetExplicitContentOk returns a tuple with the ExplicitContent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExplicitContent
 
-`func (o *PrivateUserObject) SetExplicitContent(v PrivateUserObjectExplicitContent)`
+`func (o *PrivateUserObject) SetExplicitContent(v ExplicitContentSettingsObject)`
 
 SetExplicitContent sets ExplicitContent field to given value.
 
@@ -138,20 +138,20 @@ HasExplicitContent returns a boolean if a field has been set.
 
 ### GetExternalUrls
 
-`func (o *PrivateUserObject) GetExternalUrls() PrivateUserObjectExternalUrls`
+`func (o *PrivateUserObject) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *PrivateUserObject) GetExternalUrlsOk() (*PrivateUserObjectExternalUrls, bool)`
+`func (o *PrivateUserObject) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *PrivateUserObject) SetExternalUrls(v PrivateUserObjectExternalUrls)`
+`func (o *PrivateUserObject) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 
@@ -163,20 +163,20 @@ HasExternalUrls returns a boolean if a field has been set.
 
 ### GetFollowers
 
-`func (o *PrivateUserObject) GetFollowers() PrivateUserObjectFollowers`
+`func (o *PrivateUserObject) GetFollowers() FollowersObject`
 
 GetFollowers returns the Followers field if non-nil, zero value otherwise.
 
 ### GetFollowersOk
 
-`func (o *PrivateUserObject) GetFollowersOk() (*PrivateUserObjectFollowers, bool)`
+`func (o *PrivateUserObject) GetFollowersOk() (*FollowersObject, bool)`
 
 GetFollowersOk returns a tuple with the Followers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFollowers
 
-`func (o *PrivateUserObject) SetFollowers(v PrivateUserObjectFollowers)`
+`func (o *PrivateUserObject) SetFollowers(v FollowersObject)`
 
 SetFollowers sets Followers field to given value.
 

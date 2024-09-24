@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Track** | Pointer to [**PlayHistoryObjectTrack**](PlayHistoryObjectTrack.md) |  | [optional] 
+**Track** | Pointer to [**TrackObject**](TrackObject.md) | The track the user listened to. | [optional] 
 **PlayedAt** | Pointer to **time.Time** | The date and time the track was played. | [optional] 
-**Context** | Pointer to [**PlayHistoryObjectContext**](PlayHistoryObjectContext.md) |  | [optional] 
+**Context** | Pointer to [**ContextObject**](ContextObject.md) | The context the track was played from. | [optional] 
 
 ## Methods
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetTrack
 
-`func (o *PlayHistoryObject) GetTrack() PlayHistoryObjectTrack`
+`func (o *PlayHistoryObject) GetTrack() TrackObject`
 
 GetTrack returns the Track field if non-nil, zero value otherwise.
 
 ### GetTrackOk
 
-`func (o *PlayHistoryObject) GetTrackOk() (*PlayHistoryObjectTrack, bool)`
+`func (o *PlayHistoryObject) GetTrackOk() (*TrackObject, bool)`
 
 GetTrackOk returns a tuple with the Track field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTrack
 
-`func (o *PlayHistoryObject) SetTrack(v PlayHistoryObjectTrack)`
+`func (o *PlayHistoryObject) SetTrack(v TrackObject)`
 
 SetTrack sets Track field to given value.
 
@@ -79,20 +79,20 @@ HasPlayedAt returns a boolean if a field has been set.
 
 ### GetContext
 
-`func (o *PlayHistoryObject) GetContext() PlayHistoryObjectContext`
+`func (o *PlayHistoryObject) GetContext() ContextObject`
 
 GetContext returns the Context field if non-nil, zero value otherwise.
 
 ### GetContextOk
 
-`func (o *PlayHistoryObject) GetContextOk() (*PlayHistoryObjectContext, bool)`
+`func (o *PlayHistoryObject) GetContextOk() (*ContextObject, bool)`
 
 GetContextOk returns a tuple with the Context field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContext
 
-`func (o *PlayHistoryObject) SetContext(v PlayHistoryObjectContext)`
+`func (o *PlayHistoryObject) SetContext(v ContextObject)`
 
 SetContext sets Context field to given value.
 

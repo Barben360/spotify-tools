@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Device** | Pointer to [**CurrentlyPlayingContextObjectDevice**](CurrentlyPlayingContextObjectDevice.md) |  | [optional] 
+**Device** | Pointer to [**DeviceObject**](DeviceObject.md) | The device that is currently active.  | [optional] 
 **RepeatState** | Pointer to **string** | off, track, context | [optional] 
 **ShuffleState** | Pointer to **bool** | If shuffle is on or off. | [optional] 
-**Context** | Pointer to [**CurrentlyPlayingObjectContext**](CurrentlyPlayingObjectContext.md) |  | [optional] 
-**Timestamp** | Pointer to **int32** | Unix Millisecond Timestamp when data was fetched. | [optional] 
+**Context** | Pointer to [**ContextObject**](ContextObject.md) | A Context Object. Can be &#x60;null&#x60;. | [optional] 
+**Timestamp** | Pointer to **int64** | Unix Millisecond Timestamp when playback state was last changed (play, pause, skip, scrub, new song, etc.). | [optional] 
 **ProgressMs** | Pointer to **int32** | Progress into the currently playing track or episode. Can be &#x60;null&#x60;. | [optional] 
 **IsPlaying** | Pointer to **bool** | If something is currently playing, return &#x60;true&#x60;. | [optional] 
-**Item** | Pointer to [**CurrentlyPlayingObjectItem**](CurrentlyPlayingObjectItem.md) |  | [optional] 
+**Item** | Pointer to [**QueueObjectCurrentlyPlaying**](QueueObjectCurrentlyPlaying.md) |  | [optional] 
 **CurrentlyPlayingType** | Pointer to **string** | The object type of the currently playing item. Can be one of &#x60;track&#x60;, &#x60;episode&#x60;, &#x60;ad&#x60; or &#x60;unknown&#x60;.  | [optional] 
-**Actions** | Pointer to [**CurrentlyPlayingContextObjectActions**](CurrentlyPlayingContextObjectActions.md) |  | [optional] 
+**Actions** | Pointer to [**DisallowsObject**](DisallowsObject.md) | Allows to update the user interface based on which playback actions are available within the current context.  | [optional] 
 
 ## Methods
 
@@ -36,20 +36,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDevice
 
-`func (o *CurrentlyPlayingContextObject) GetDevice() CurrentlyPlayingContextObjectDevice`
+`func (o *CurrentlyPlayingContextObject) GetDevice() DeviceObject`
 
 GetDevice returns the Device field if non-nil, zero value otherwise.
 
 ### GetDeviceOk
 
-`func (o *CurrentlyPlayingContextObject) GetDeviceOk() (*CurrentlyPlayingContextObjectDevice, bool)`
+`func (o *CurrentlyPlayingContextObject) GetDeviceOk() (*DeviceObject, bool)`
 
 GetDeviceOk returns a tuple with the Device field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDevice
 
-`func (o *CurrentlyPlayingContextObject) SetDevice(v CurrentlyPlayingContextObjectDevice)`
+`func (o *CurrentlyPlayingContextObject) SetDevice(v DeviceObject)`
 
 SetDevice sets Device field to given value.
 
@@ -111,20 +111,20 @@ HasShuffleState returns a boolean if a field has been set.
 
 ### GetContext
 
-`func (o *CurrentlyPlayingContextObject) GetContext() CurrentlyPlayingObjectContext`
+`func (o *CurrentlyPlayingContextObject) GetContext() ContextObject`
 
 GetContext returns the Context field if non-nil, zero value otherwise.
 
 ### GetContextOk
 
-`func (o *CurrentlyPlayingContextObject) GetContextOk() (*CurrentlyPlayingObjectContext, bool)`
+`func (o *CurrentlyPlayingContextObject) GetContextOk() (*ContextObject, bool)`
 
 GetContextOk returns a tuple with the Context field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContext
 
-`func (o *CurrentlyPlayingContextObject) SetContext(v CurrentlyPlayingObjectContext)`
+`func (o *CurrentlyPlayingContextObject) SetContext(v ContextObject)`
 
 SetContext sets Context field to given value.
 
@@ -136,20 +136,20 @@ HasContext returns a boolean if a field has been set.
 
 ### GetTimestamp
 
-`func (o *CurrentlyPlayingContextObject) GetTimestamp() int32`
+`func (o *CurrentlyPlayingContextObject) GetTimestamp() int64`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *CurrentlyPlayingContextObject) GetTimestampOk() (*int32, bool)`
+`func (o *CurrentlyPlayingContextObject) GetTimestampOk() (*int64, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *CurrentlyPlayingContextObject) SetTimestamp(v int32)`
+`func (o *CurrentlyPlayingContextObject) SetTimestamp(v int64)`
 
 SetTimestamp sets Timestamp field to given value.
 
@@ -211,20 +211,20 @@ HasIsPlaying returns a boolean if a field has been set.
 
 ### GetItem
 
-`func (o *CurrentlyPlayingContextObject) GetItem() CurrentlyPlayingObjectItem`
+`func (o *CurrentlyPlayingContextObject) GetItem() QueueObjectCurrentlyPlaying`
 
 GetItem returns the Item field if non-nil, zero value otherwise.
 
 ### GetItemOk
 
-`func (o *CurrentlyPlayingContextObject) GetItemOk() (*CurrentlyPlayingObjectItem, bool)`
+`func (o *CurrentlyPlayingContextObject) GetItemOk() (*QueueObjectCurrentlyPlaying, bool)`
 
 GetItemOk returns a tuple with the Item field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetItem
 
-`func (o *CurrentlyPlayingContextObject) SetItem(v CurrentlyPlayingObjectItem)`
+`func (o *CurrentlyPlayingContextObject) SetItem(v QueueObjectCurrentlyPlaying)`
 
 SetItem sets Item field to given value.
 
@@ -261,20 +261,20 @@ HasCurrentlyPlayingType returns a boolean if a field has been set.
 
 ### GetActions
 
-`func (o *CurrentlyPlayingContextObject) GetActions() CurrentlyPlayingContextObjectActions`
+`func (o *CurrentlyPlayingContextObject) GetActions() DisallowsObject`
 
 GetActions returns the Actions field if non-nil, zero value otherwise.
 
 ### GetActionsOk
 
-`func (o *CurrentlyPlayingContextObject) GetActionsOk() (*CurrentlyPlayingContextObjectActions, bool)`
+`func (o *CurrentlyPlayingContextObject) GetActionsOk() (*DisallowsObject, bool)`
 
 GetActionsOk returns a tuple with the Actions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetActions
 
-`func (o *CurrentlyPlayingContextObject) SetActions(v CurrentlyPlayingContextObjectActions)`
+`func (o *CurrentlyPlayingContextObject) SetActions(v DisallowsObject)`
 
 SetActions sets Actions field to given value.
 

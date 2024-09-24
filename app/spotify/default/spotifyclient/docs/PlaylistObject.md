@@ -6,16 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Collaborative** | Pointer to **bool** | &#x60;true&#x60; if the owner allows other users to modify the playlist.  | [optional] 
 **Description** | Pointer to **NullableString** | The playlist description. _Only returned for modified, verified playlists, otherwise_ &#x60;null&#x60;.  | [optional] 
-**ExternalUrls** | Pointer to [**PlaylistObjectExternalUrls**](PlaylistObjectExternalUrls.md) |  | [optional] 
-**Followers** | Pointer to [**PlaylistObjectFollowers**](PlaylistObjectFollowers.md) |  | [optional] 
+**ExternalUrls** | Pointer to [**ExternalUrlObject**](ExternalUrlObject.md) | Known external URLs for this playlist.  | [optional] 
+**Followers** | Pointer to [**FollowersObject**](FollowersObject.md) | Information about the followers of the playlist. | [optional] 
 **Href** | Pointer to **string** | A link to the Web API endpoint providing full details of the playlist.  | [optional] 
 **Id** | Pointer to **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.  | [optional] 
 **Images** | Pointer to [**[]ImageObject**](ImageObject.md) | Images for the playlist. The array may be empty or contain up to three images. The images are returned by size in descending order. See [Working with Playlists](/documentation/web-api/concepts/playlists). _**Note**: If returned, the source URL for the image (&#x60;url&#x60;) is temporary and will expire in less than a day._  | [optional] 
 **Name** | Pointer to **string** | The name of the playlist.  | [optional] 
-**Owner** | Pointer to [**PlaylistObjectOwner**](PlaylistObjectOwner.md) |  | [optional] 
-**Public** | Pointer to **bool** | The playlist&#39;s public/private status: &#x60;true&#x60; the playlist is public, &#x60;false&#x60; the playlist is private, &#x60;null&#x60; the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)  | [optional] 
+**Owner** | Pointer to [**PlaylistOwnerObject**](PlaylistOwnerObject.md) | The user who owns the playlist  | [optional] 
+**Public** | Pointer to **bool** | The playlist&#39;s public/private status (if it is added to the user&#39;s profile): &#x60;true&#x60; the playlist is public, &#x60;false&#x60; the playlist is private, &#x60;null&#x60; the playlist status is not relevant. For more about public/private status, see [Working with Playlists](/documentation/web-api/concepts/playlists)  | [optional] 
 **SnapshotId** | Pointer to **string** | The version identifier for the current playlist. Can be supplied in other requests to target a specific playlist version  | [optional] 
-**Tracks** | Pointer to [**PlaylistObjectTracks**](PlaylistObjectTracks.md) |  | [optional] 
+**Tracks** | Pointer to [**PagingPlaylistTrackObject**](PagingPlaylistTrackObject.md) | The tracks of the playlist.  | [optional] 
 **Type** | Pointer to **string** | The object type: \&quot;playlist\&quot;  | [optional] 
 **Uri** | Pointer to **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the playlist.  | [optional] 
 
@@ -100,20 +100,20 @@ HasDescription returns a boolean if a field has been set.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetExternalUrls
 
-`func (o *PlaylistObject) GetExternalUrls() PlaylistObjectExternalUrls`
+`func (o *PlaylistObject) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *PlaylistObject) GetExternalUrlsOk() (*PlaylistObjectExternalUrls, bool)`
+`func (o *PlaylistObject) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *PlaylistObject) SetExternalUrls(v PlaylistObjectExternalUrls)`
+`func (o *PlaylistObject) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 
@@ -125,20 +125,20 @@ HasExternalUrls returns a boolean if a field has been set.
 
 ### GetFollowers
 
-`func (o *PlaylistObject) GetFollowers() PlaylistObjectFollowers`
+`func (o *PlaylistObject) GetFollowers() FollowersObject`
 
 GetFollowers returns the Followers field if non-nil, zero value otherwise.
 
 ### GetFollowersOk
 
-`func (o *PlaylistObject) GetFollowersOk() (*PlaylistObjectFollowers, bool)`
+`func (o *PlaylistObject) GetFollowersOk() (*FollowersObject, bool)`
 
 GetFollowersOk returns a tuple with the Followers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFollowers
 
-`func (o *PlaylistObject) SetFollowers(v PlaylistObjectFollowers)`
+`func (o *PlaylistObject) SetFollowers(v FollowersObject)`
 
 SetFollowers sets Followers field to given value.
 
@@ -250,20 +250,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetOwner
 
-`func (o *PlaylistObject) GetOwner() PlaylistObjectOwner`
+`func (o *PlaylistObject) GetOwner() PlaylistOwnerObject`
 
 GetOwner returns the Owner field if non-nil, zero value otherwise.
 
 ### GetOwnerOk
 
-`func (o *PlaylistObject) GetOwnerOk() (*PlaylistObjectOwner, bool)`
+`func (o *PlaylistObject) GetOwnerOk() (*PlaylistOwnerObject, bool)`
 
 GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOwner
 
-`func (o *PlaylistObject) SetOwner(v PlaylistObjectOwner)`
+`func (o *PlaylistObject) SetOwner(v PlaylistOwnerObject)`
 
 SetOwner sets Owner field to given value.
 
@@ -325,20 +325,20 @@ HasSnapshotId returns a boolean if a field has been set.
 
 ### GetTracks
 
-`func (o *PlaylistObject) GetTracks() PlaylistObjectTracks`
+`func (o *PlaylistObject) GetTracks() PagingPlaylistTrackObject`
 
 GetTracks returns the Tracks field if non-nil, zero value otherwise.
 
 ### GetTracksOk
 
-`func (o *PlaylistObject) GetTracksOk() (*PlaylistObjectTracks, bool)`
+`func (o *PlaylistObject) GetTracksOk() (*PagingPlaylistTrackObject, bool)`
 
 GetTracksOk returns a tuple with the Tracks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTracks
 
-`func (o *PlaylistObject) SetTracks(v PlaylistObjectTracks)`
+`func (o *PlaylistObject) SetTracks(v PagingPlaylistTrackObject)`
 
 SetTracks sets Tracks field to given value.
 

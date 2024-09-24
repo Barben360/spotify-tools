@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Platform** | Pointer to **string** | The platform used to read the track&#39;s audio data. | [optional] 
 **DetailedStatus** | Pointer to **string** | A detailed status code for this track. If analysis data is missing, this code may explain why. | [optional] 
 **StatusCode** | Pointer to **int32** | The return code of the analyzer process. 0 if successful, 1 if any errors occurred. | [optional] 
-**Timestamp** | Pointer to **int32** | The Unix timestamp (in seconds) at which this track was analyzed. | [optional] 
+**Timestamp** | Pointer to **int64** | The Unix timestamp (in seconds) at which this track was analyzed. | [optional] 
 **AnalysisTime** | Pointer to **float32** | The amount of time taken to analyze this track. | [optional] 
 **InputProcess** | Pointer to **string** | The method used to read the track&#39;s audio data. | [optional] 
 
@@ -133,20 +133,20 @@ HasStatusCode returns a boolean if a field has been set.
 
 ### GetTimestamp
 
-`func (o *AudioAnalysisObjectMeta) GetTimestamp() int32`
+`func (o *AudioAnalysisObjectMeta) GetTimestamp() int64`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *AudioAnalysisObjectMeta) GetTimestampOk() (*int32, bool)`
+`func (o *AudioAnalysisObjectMeta) GetTimestampOk() (*int64, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *AudioAnalysisObjectMeta) SetTimestamp(v int32)`
+`func (o *AudioAnalysisObjectMeta) SetTimestamp(v int64)`
 
 SetTimestamp sets Timestamp field to given value.
 

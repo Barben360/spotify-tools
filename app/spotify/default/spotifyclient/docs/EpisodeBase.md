@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AudioPreviewUrl** | **string** | A URL to a 30 second preview (MP3 format) of the episode. &#x60;null&#x60; if not available.  | 
+**AudioPreviewUrl** | **NullableString** | A URL to a 30 second preview (MP3 format) of the episode. &#x60;null&#x60; if not available.  | 
 **Description** | **string** | A description of the episode. HTML tags are stripped away from this field, use &#x60;html_description&#x60; field in case HTML tags are needed.  | 
 **HtmlDescription** | **string** | A description of the episode. This field may contain HTML tags.  | 
 **DurationMs** | **int32** | The episode length in milliseconds.  | 
 **Explicit** | **bool** | Whether or not the episode has explicit content (true &#x3D; yes it does; false &#x3D; no it does not OR unknown).  | 
-**ExternalUrls** | [**EpisodeBaseExternalUrls**](EpisodeBaseExternalUrls.md) |  | 
+**ExternalUrls** | [**ExternalUrlObject**](ExternalUrlObject.md) | External URLs for this episode.  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the episode.  | 
 **Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the episode.  | 
 **Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the episode in various sizes, widest first.  | 
@@ -20,16 +20,16 @@ Name | Type | Description | Notes
 **Name** | **string** | The name of the episode.  | 
 **ReleaseDate** | **string** | The date the episode was first released, for example &#x60;\&quot;1981-12-15\&quot;&#x60;. Depending on the precision, it might be shown as &#x60;\&quot;1981\&quot;&#x60; or &#x60;\&quot;1981-12\&quot;&#x60;.  | 
 **ReleaseDatePrecision** | **string** | The precision with which &#x60;release_date&#x60; value is known.  | 
-**ResumePoint** | [**EpisodeBaseResumePoint**](EpisodeBaseResumePoint.md) |  | 
+**ResumePoint** | Pointer to [**ResumePointObject**](ResumePointObject.md) | The user&#39;s most recent position in the episode. Set if the supplied access token is a user token and has the scope &#39;user-read-playback-position&#39;.  | [optional] 
 **Type** | **string** | The object type.  | 
 **Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the episode.  | 
-**Restrictions** | Pointer to [**EpisodeBaseRestrictions**](EpisodeBaseRestrictions.md) |  | [optional] 
+**Restrictions** | Pointer to [**EpisodeRestrictionObject**](EpisodeRestrictionObject.md) | Included in the response when a content restriction is applied.  | [optional] 
 
 ## Methods
 
 ### NewEpisodeBase
 
-`func NewEpisodeBase(audioPreviewUrl string, description string, htmlDescription string, durationMs int32, explicit bool, externalUrls EpisodeBaseExternalUrls, href string, id string, images []ImageObject, isExternallyHosted bool, isPlayable bool, languages []string, name string, releaseDate string, releaseDatePrecision string, resumePoint EpisodeBaseResumePoint, type_ string, uri string, ) *EpisodeBase`
+`func NewEpisodeBase(audioPreviewUrl NullableString, description string, htmlDescription string, durationMs int32, explicit bool, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, isExternallyHosted bool, isPlayable bool, languages []string, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, ) *EpisodeBase`
 
 NewEpisodeBase instantiates a new EpisodeBase object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +64,16 @@ and a boolean to check if the value has been set.
 SetAudioPreviewUrl sets AudioPreviewUrl field to given value.
 
 
+### SetAudioPreviewUrlNil
+
+`func (o *EpisodeBase) SetAudioPreviewUrlNil(b bool)`
+
+ SetAudioPreviewUrlNil sets the value for AudioPreviewUrl to be an explicit nil
+
+### UnsetAudioPreviewUrl
+`func (o *EpisodeBase) UnsetAudioPreviewUrl()`
+
+UnsetAudioPreviewUrl ensures that no value is present for AudioPreviewUrl, not even an explicit nil
 ### GetDescription
 
 `func (o *EpisodeBase) GetDescription() string`
@@ -146,20 +156,20 @@ SetExplicit sets Explicit field to given value.
 
 ### GetExternalUrls
 
-`func (o *EpisodeBase) GetExternalUrls() EpisodeBaseExternalUrls`
+`func (o *EpisodeBase) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *EpisodeBase) GetExternalUrlsOk() (*EpisodeBaseExternalUrls, bool)`
+`func (o *EpisodeBase) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *EpisodeBase) SetExternalUrls(v EpisodeBaseExternalUrls)`
+`func (o *EpisodeBase) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 
@@ -371,23 +381,28 @@ SetReleaseDatePrecision sets ReleaseDatePrecision field to given value.
 
 ### GetResumePoint
 
-`func (o *EpisodeBase) GetResumePoint() EpisodeBaseResumePoint`
+`func (o *EpisodeBase) GetResumePoint() ResumePointObject`
 
 GetResumePoint returns the ResumePoint field if non-nil, zero value otherwise.
 
 ### GetResumePointOk
 
-`func (o *EpisodeBase) GetResumePointOk() (*EpisodeBaseResumePoint, bool)`
+`func (o *EpisodeBase) GetResumePointOk() (*ResumePointObject, bool)`
 
 GetResumePointOk returns a tuple with the ResumePoint field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResumePoint
 
-`func (o *EpisodeBase) SetResumePoint(v EpisodeBaseResumePoint)`
+`func (o *EpisodeBase) SetResumePoint(v ResumePointObject)`
 
 SetResumePoint sets ResumePoint field to given value.
 
+### HasResumePoint
+
+`func (o *EpisodeBase) HasResumePoint() bool`
+
+HasResumePoint returns a boolean if a field has been set.
 
 ### GetType
 
@@ -431,20 +446,20 @@ SetUri sets Uri field to given value.
 
 ### GetRestrictions
 
-`func (o *EpisodeBase) GetRestrictions() EpisodeBaseRestrictions`
+`func (o *EpisodeBase) GetRestrictions() EpisodeRestrictionObject`
 
 GetRestrictions returns the Restrictions field if non-nil, zero value otherwise.
 
 ### GetRestrictionsOk
 
-`func (o *EpisodeBase) GetRestrictionsOk() (*EpisodeBaseRestrictions, bool)`
+`func (o *EpisodeBase) GetRestrictionsOk() (*EpisodeRestrictionObject, bool)`
 
 GetRestrictionsOk returns a tuple with the Restrictions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRestrictions
 
-`func (o *EpisodeBase) SetRestrictions(v EpisodeBaseRestrictions)`
+`func (o *EpisodeBase) SetRestrictions(v EpisodeRestrictionObject)`
 
 SetRestrictions sets Restrictions field to given value.
 

@@ -7,24 +7,23 @@ Name | Type | Description | Notes
 **AlbumType** | **string** | The type of the album.  | 
 **TotalTracks** | **int32** | The number of tracks in the album. | 
 **AvailableMarkets** | **[]string** | The markets in which the album is available: [ISO 3166-1 alpha-2 country codes](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). _**NOTE**: an album is considered available in a market when at least 1 of its tracks is available in that market._  | 
-**ExternalUrls** | [**AlbumBaseExternalUrls**](AlbumBaseExternalUrls.md) |  | 
+**ExternalUrls** | [**ExternalUrlObject**](ExternalUrlObject.md) | Known external URLs for this album.  | 
 **Href** | **string** | A link to the Web API endpoint providing full details of the album.  | 
 **Id** | **string** | The [Spotify ID](/documentation/web-api/concepts/spotify-uris-ids) for the album.  | 
 **Images** | [**[]ImageObject**](ImageObject.md) | The cover art for the album in various sizes, widest first.  | 
 **Name** | **string** | The name of the album. In case of an album takedown, the value may be an empty string.  | 
 **ReleaseDate** | **string** | The date the album was first released.  | 
 **ReleaseDatePrecision** | **string** | The precision with which &#x60;release_date&#x60; value is known.  | 
-**Restrictions** | Pointer to [**AlbumBaseRestrictions**](AlbumBaseRestrictions.md) |  | [optional] 
+**Restrictions** | Pointer to [**AlbumRestrictionObject**](AlbumRestrictionObject.md) | Included in the response when a content restriction is applied.  | [optional] 
 **Type** | **string** | The object type.  | 
 **Uri** | **string** | The [Spotify URI](/documentation/web-api/concepts/spotify-uris-ids) for the album.  | 
-**AlbumGroup** | Pointer to **string** | The field is present when getting an artist&#39;s albums. Compare to album_type this field represents relationship between the artist and the album.  | [optional] 
 **Artists** | [**[]SimplifiedArtistObject**](SimplifiedArtistObject.md) | The artists of the album. Each artist object includes a link in &#x60;href&#x60; to more detailed information about the artist.  | 
 
 ## Methods
 
 ### NewSimplifiedAlbumObject
 
-`func NewSimplifiedAlbumObject(albumType string, totalTracks int32, availableMarkets []string, externalUrls AlbumBaseExternalUrls, href string, id string, images []ImageObject, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, artists []SimplifiedArtistObject, ) *SimplifiedAlbumObject`
+`func NewSimplifiedAlbumObject(albumType string, totalTracks int32, availableMarkets []string, externalUrls ExternalUrlObject, href string, id string, images []ImageObject, name string, releaseDate string, releaseDatePrecision string, type_ string, uri string, artists []SimplifiedArtistObject, ) *SimplifiedAlbumObject`
 
 NewSimplifiedAlbumObject instantiates a new SimplifiedAlbumObject object
 This constructor will assign default values to properties that have it defined,
@@ -101,20 +100,20 @@ SetAvailableMarkets sets AvailableMarkets field to given value.
 
 ### GetExternalUrls
 
-`func (o *SimplifiedAlbumObject) GetExternalUrls() AlbumBaseExternalUrls`
+`func (o *SimplifiedAlbumObject) GetExternalUrls() ExternalUrlObject`
 
 GetExternalUrls returns the ExternalUrls field if non-nil, zero value otherwise.
 
 ### GetExternalUrlsOk
 
-`func (o *SimplifiedAlbumObject) GetExternalUrlsOk() (*AlbumBaseExternalUrls, bool)`
+`func (o *SimplifiedAlbumObject) GetExternalUrlsOk() (*ExternalUrlObject, bool)`
 
 GetExternalUrlsOk returns a tuple with the ExternalUrls field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalUrls
 
-`func (o *SimplifiedAlbumObject) SetExternalUrls(v AlbumBaseExternalUrls)`
+`func (o *SimplifiedAlbumObject) SetExternalUrls(v ExternalUrlObject)`
 
 SetExternalUrls sets ExternalUrls field to given value.
 
@@ -241,20 +240,20 @@ SetReleaseDatePrecision sets ReleaseDatePrecision field to given value.
 
 ### GetRestrictions
 
-`func (o *SimplifiedAlbumObject) GetRestrictions() AlbumBaseRestrictions`
+`func (o *SimplifiedAlbumObject) GetRestrictions() AlbumRestrictionObject`
 
 GetRestrictions returns the Restrictions field if non-nil, zero value otherwise.
 
 ### GetRestrictionsOk
 
-`func (o *SimplifiedAlbumObject) GetRestrictionsOk() (*AlbumBaseRestrictions, bool)`
+`func (o *SimplifiedAlbumObject) GetRestrictionsOk() (*AlbumRestrictionObject, bool)`
 
 GetRestrictionsOk returns a tuple with the Restrictions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRestrictions
 
-`func (o *SimplifiedAlbumObject) SetRestrictions(v AlbumBaseRestrictions)`
+`func (o *SimplifiedAlbumObject) SetRestrictions(v AlbumRestrictionObject)`
 
 SetRestrictions sets Restrictions field to given value.
 
@@ -303,31 +302,6 @@ and a boolean to check if the value has been set.
 
 SetUri sets Uri field to given value.
 
-
-### GetAlbumGroup
-
-`func (o *SimplifiedAlbumObject) GetAlbumGroup() string`
-
-GetAlbumGroup returns the AlbumGroup field if non-nil, zero value otherwise.
-
-### GetAlbumGroupOk
-
-`func (o *SimplifiedAlbumObject) GetAlbumGroupOk() (*string, bool)`
-
-GetAlbumGroupOk returns a tuple with the AlbumGroup field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAlbumGroup
-
-`func (o *SimplifiedAlbumObject) SetAlbumGroup(v string)`
-
-SetAlbumGroup sets AlbumGroup field to given value.
-
-### HasAlbumGroup
-
-`func (o *SimplifiedAlbumObject) HasAlbumGroup() bool`
-
-HasAlbumGroup returns a boolean if a field has been set.
 
 ### GetArtists
 

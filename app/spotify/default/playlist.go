@@ -2,6 +2,7 @@ package spotifydefault
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
@@ -22,7 +23,7 @@ func (s *Spotify) GetPlaylist(ctx context.Context, playlistID string) (*spotify.
 	if _, err := s.authExec(ctx, func(ctx context.Context) (*http.Response, error) {
 		var err error
 		var httpResp *http.Response
-		resp, httpResp, err = s.httpOpenAPIClient.PlaylistsApi.GetPlaylist(ctx, playlistID).Execute()
+		resp, httpResp, err = s.httpOpenAPIClient.PlaylistsAPI.GetPlaylist(ctx, playlistID).Execute()
 		return httpResp, err
 	}); err != nil {
 		return nil, err
@@ -67,7 +68,7 @@ func (s *Spotify) GetPlaylist(ctx context.Context, playlistID string) (*spotify.
 		if _, err := s.authExec(ctx, func(ctx context.Context) (*http.Response, error) {
 			var err error
 			var httpResp *http.Response
-			resp, httpResp, err = s.httpOpenAPIClient.PlaylistsApi.GetPlaylistsTracks(ctx, playlistID).Offset(offset + limit).Limit(limit).Execute()
+			resp, httpResp, err = s.httpOpenAPIClient.PlaylistsAPI.GetPlaylistsTracks(ctx, playlistID).Offset(offset + limit).Limit(limit).Execute()
 			return httpResp, err
 		}); err != nil {
 			return nil, err
@@ -303,8 +304,12 @@ func (s *Spotify) playlistAppendItems(ctx context.Context, playlistID string, it
 	}
 	for _, uris := range urisBatches {
 		if _, err := s.authExec(ctx, func(ctx context.Context) (*http.Response, error) {
+			urisJSONBytes, err := json.Marshal(uris)
+			if err != nil {
+				return nil, err
+			}
 			var httpResp *http.Response
-			_, httpResp, err := s.httpOpenAPIClient.PlaylistsApi.AddTracksToPlaylist(ctx, playlistID).RequestBody(map[string]interface{}{"uris": uris}).Execute()
+			_, httpResp, err = s.httpOpenAPIClient.PlaylistsAPI.AddTracksToPlaylist(ctx, playlistID).Uris(string(urisJSONBytes)).Execute()
 			return httpResp, err
 		}); err != nil {
 			return err
@@ -329,8 +334,12 @@ func (s *Spotify) playlistReorder(ctx context.Context, playlistID string, items 
 	}
 	for _, uris := range urisBatches {
 		if _, err := s.authExec(ctx, func(ctx context.Context) (*http.Response, error) {
+			urisJSONBytes, err := json.Marshal(uris)
+			if err != nil {
+				return nil, err
+			}
 			var httpResp *http.Response
-			_, httpResp, err := s.httpOpenAPIClient.PlaylistsApi.ReorderOrReplacePlaylistsTracks(ctx, playlistID).RequestBody(map[string]interface{}{"uris": uris}).Execute()
+			_, httpResp, err = s.httpOpenAPIClient.PlaylistsAPI.ReorderOrReplacePlaylistsTracks(ctx, playlistID).Uris(string(urisJSONBytes)).Execute()
 			return httpResp, err
 		}); err != nil {
 			return err
@@ -342,8 +351,8 @@ func (s *Spotify) playlistReorder(ctx context.Context, playlistID string, items 
 func (s *Spotify) playlistUpdateDescription(ctx context.Context, playlistID string, description string) error {
 	description = strings.TrimSpace(description)
 	if _, err := s.authExec(ctx, func(ctx context.Context) (*http.Response, error) {
-		httpResp, err := s.httpOpenAPIClient.PlaylistsApi.ChangePlaylistDetails(ctx, playlistID).RequestBody(map[string]interface{}{
-			"description": description,
+		httpResp, err := s.httpOpenAPIClient.PlaylistsAPI.ChangePlaylistDetails(ctx, playlistID).ChangePlaylistDetailsRequest(spotifyclient.ChangePlaylistDetailsRequest{
+			Description: &description,
 		}).Execute()
 		return httpResp, err
 	}); err != nil {

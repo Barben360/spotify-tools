@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddedAt** | Pointer to **time.Time** | The date and time the episode was saved. Timestamps are returned in ISO 8601 format as Coordinated Universal Time (UTC) with a zero offset: YYYY-MM-DDTHH:MM:SSZ.  | [optional] 
-**Episode** | Pointer to [**SavedEpisodeObjectEpisode**](SavedEpisodeObjectEpisode.md) |  | [optional] 
+**Episode** | Pointer to [**EpisodeObject**](EpisodeObject.md) | Information about the episode. | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasAddedAt returns a boolean if a field has been set.
 
 ### GetEpisode
 
-`func (o *SavedEpisodeObject) GetEpisode() SavedEpisodeObjectEpisode`
+`func (o *SavedEpisodeObject) GetEpisode() EpisodeObject`
 
 GetEpisode returns the Episode field if non-nil, zero value otherwise.
 
 ### GetEpisodeOk
 
-`func (o *SavedEpisodeObject) GetEpisodeOk() (*SavedEpisodeObjectEpisode, bool)`
+`func (o *SavedEpisodeObject) GetEpisodeOk() (*EpisodeObject, bool)`
 
 GetEpisodeOk returns a tuple with the Episode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEpisode
 
-`func (o *SavedEpisodeObject) SetEpisode(v SavedEpisodeObjectEpisode)`
+`func (o *SavedEpisodeObject) SetEpisode(v EpisodeObject)`
 
 SetEpisode sets Episode field to given value.
 

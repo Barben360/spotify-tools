@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Message** | Pointer to **string** |  | [optional] 
+**Message** | Pointer to **string** | The localized message of a playlist.  | [optional] 
 **Playlists** | Pointer to [**PagingPlaylistObject**](PagingPlaylistObject.md) |  | [optional] 
 
 ## Methods

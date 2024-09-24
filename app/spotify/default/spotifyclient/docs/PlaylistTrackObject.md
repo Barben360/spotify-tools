@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddedAt** | Pointer to **time.Time** | The date and time the track or episode was added. _**Note**: some very old playlists may return &#x60;null&#x60; in this field._  | [optional] 
-**AddedBy** | Pointer to [**PlaylistTrackObjectAddedBy**](PlaylistTrackObjectAddedBy.md) |  | [optional] 
+**AddedBy** | Pointer to [**PlaylistUserObject**](PlaylistUserObject.md) | The Spotify user who added the track or episode. _**Note**: some very old playlists may return &#x60;null&#x60; in this field._  | [optional] 
 **IsLocal** | Pointer to **bool** | Whether this track or episode is a [local file](/documentation/web-api/concepts/playlists/#local-files) or not.  | [optional] 
 **Track** | Pointer to [**PlaylistTrackObjectTrack**](PlaylistTrackObjectTrack.md) |  | [optional] 
 
@@ -55,20 +55,20 @@ HasAddedAt returns a boolean if a field has been set.
 
 ### GetAddedBy
 
-`func (o *PlaylistTrackObject) GetAddedBy() PlaylistTrackObjectAddedBy`
+`func (o *PlaylistTrackObject) GetAddedBy() PlaylistUserObject`
 
 GetAddedBy returns the AddedBy field if non-nil, zero value otherwise.
 
 ### GetAddedByOk
 
-`func (o *PlaylistTrackObject) GetAddedByOk() (*PlaylistTrackObjectAddedBy, bool)`
+`func (o *PlaylistTrackObject) GetAddedByOk() (*PlaylistUserObject, bool)`
 
 GetAddedByOk returns a tuple with the AddedBy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAddedBy
 
-`func (o *PlaylistTrackObject) SetAddedBy(v PlaylistTrackObjectAddedBy)`
+`func (o *PlaylistTrackObject) SetAddedBy(v PlaylistUserObject)`
 
 SetAddedBy sets AddedBy field to given value.
 
