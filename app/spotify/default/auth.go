@@ -329,6 +329,9 @@ func (s *Spotify) authExec(ctx context.Context, handler func(ctx context.Context
 		return httpResp, err
 	}
 
+	if httpResp == nil {
+		return nil, fmt.Errorf("unexpected error: %w", err)
+	}
 	if httpResp.StatusCode == http.StatusUnauthorized {
 		logger.FromContext(ctx).Info("got unauthorized error, trying to refresh access token")
 		if _, err := s.GetNewUserToken(ctx); err != nil {
