@@ -13,6 +13,9 @@ jobs:
   docker:
     name: Build and push Docker image
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout
@@ -24,11 +27,12 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Login to Docker Hub
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       # For manual runs: short commit SHA. For releases: the release tag (e.g. v1.2.3).
       - name: Compute version tag
@@ -44,7 +48,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: barben360/spotify-tools
+          images: ghcr.io/barben360/spotify-tools
           tags: |
             # Always tag with the version (SHA or release tag)
             type=raw,value=${{ steps.version.outputs.value }}
