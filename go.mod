@@ -1,6 +1,6 @@
 module github.com/Barben360/spotify-tools
 
-go 1.20
+go 1.26
 
 require (
 	github.com/go-playground/validator/v10 v10.13.0

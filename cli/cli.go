@@ -30,30 +30,46 @@ func New(ctx context.Context) *CLI {
 	c := &CLI{}
 
 	c.cmdRoot = &cobra.Command{
-		Use:     "spotify-tools",
-		Version: version,
-		Short:   "A Spotify automation tool",
+		Use:           "spotify-tools",
+		Version:       version,
+		Short:         "A Spotify automation tool",
+		SilenceUsage:  true,
+		SilenceErrors: true,
 	}
 
 	c.cmdRoot.PersistentFlags().StringVarP(&c.spotifyAppClientID, "spotify-app-client-id", "i", "", "Spotify App Client ID")
 	c.cmdRoot.PersistentFlags().StringVarP(&c.spotifyAppClientSecret, "spotify-app-client-secret", "s", "", "Spotify App Client Secret")
 
 	c.cmdRoot.PersistentFlags().BoolVar(&c.devMode, "dev", false, "Dev mode")
-	c.cmdRoot.PersistentFlags().StringVar(&c.publicAPIEndpoint, "public-api-endpoint", "http://localhost:8080", "Public API endpoint")
+	c.cmdRoot.PersistentFlags().StringVar(&c.publicAPIEndpoint, "public-api-endpoint", "http://127.0.0.1:8080", "Public API endpoint")
 	c.cmdRoot.PersistentFlags().Uint16Var(&c.serverListenPort, "server-listen-port", 8080, "Server listen port")
 
-	c.cmdRoot.AddCommand(&cobra.Command{
-		Use:   "auth-test",
-		Short: "Test Spotify user authentication and token refresh",
-		RunE:  c.runApp(ctx, c.authTestHandler),
+	// auth command group
+	cmdAuth := &cobra.Command{
+		Use:   "auth",
+		Short: "Manage Spotify authentication",
+	}
+
+	cmdAuth.AddCommand(&cobra.Command{
+		Use:   "status",
+		Short: "Check Spotify authentication status",
+		RunE:  c.runApp(ctx, c.authStatusHandler),
 	})
 
-	c.cmdRoot.AddCommand(&cobra.Command{
-		Use:   "reset",
-		Short: "Reset Spotify user authentication",
-		Long:  "Reset Spotify user authentication by deleting the config cache file. Use this command if you want to change the Spotify user or if you have a more general issue with authentication.",
-		RunE:  c.runApp(ctx, c.resetHandler),
+	cmdAuth.AddCommand(&cobra.Command{
+		Use:   "login",
+		Short: "Log in to Spotify via OAuth authorization flow",
+		RunE:  c.runApp(ctx, c.authLoginHandler),
 	})
+
+	cmdAuth.AddCommand(&cobra.Command{
+		Use:   "logout",
+		Short: "Log out of Spotify by removing cached tokens",
+		Long:  "Log out of Spotify by removing cached tokens from disk. Never fails, even if not currently logged in. Does not require Spotify app credentials.",
+		RunE:  c.authLogoutHandler,
+	})
+
+	c.cmdRoot.AddCommand(cmdAuth)
 
 	c.cmdRoot.AddCommand(&cobra.Command{
 		Use:   "get-playlist",

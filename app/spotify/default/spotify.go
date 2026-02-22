@@ -48,6 +48,9 @@ type authConfig struct {
 	RefreshToken string `json:"refresh_token,omitempty"`
 }
 
+// ConfigCacheFilePath is the path where auth tokens are cached on disk.
+var ConfigCacheFilePath = filepath.Join(os.TempDir(), ".spotify-tools-cache.json")
+
 func New(
 	ctx context.Context,
 	spotifyAppClientID string,
@@ -75,7 +78,7 @@ func New(
 			Transport: utils.NewTransport(ctx,
 				utils.WithLog(logger.FromContext(ctx), zap.DebugLevel)),
 		},
-		configCacheFilePath: filepath.Join(os.TempDir(), ".spotify-tools-cache.json"),
+		configCacheFilePath: ConfigCacheFilePath,
 	}
 
 	spotifyClientConfig := spotifyclient.NewConfiguration()

@@ -20,13 +20,48 @@ import (
 	"go.uber.org/zap"
 )
 
-func (s *Spotify) GetUserToken(ctx context.Context) (string, error) {
-	if s.accessToken != "" {
-		return s.accessToken, nil
-	}
-	return s.GetNewUserToken(ctx)
+// Login forces a new OAuth authorization flow, clearing any existing tokens first.
+func (s *Spotify) Login(ctx context.Context) error {
+	s.Logout(ctx)
+	_, err := s.GetNewUserToken(ctx)
+	return err
 }
 
+// Logout removes all tokens from memory and the cache file.
+// It never fails, even if the user is not logged in.
+func (s *Spotify) Logout(ctx context.Context) {
+	logger.FromContext(ctx).Info("logging out: removing user tokens and config cache file")
+	s.authLock.Lock()
+	s.accessToken = ""
+	s.refreshToken = ""
+	s.authLock.Unlock()
+	err := os.Remove(s.configCacheFilePath)
+	if err != nil && !os.IsNotExist(err) {
+		logger.FromContext(ctx).Error("could not remove config cache file, skipping", zap.Error(err))
+	}
+	logger.FromContext(ctx).Info("logged out successfully")
+}
+
+// AuthStatus checks if the user has a refresh token and whether it is still valid.
+// Returns (loggedIn bool, err error):
+//   - loggedIn=false, err=nil: not logged in (no refresh token present)
+//   - loggedIn=true, err=nil: logged in and refresh token is valid
+//   - loggedIn=true, err!=nil: tokens present but refresh failed
+func (s *Spotify) AuthStatus(ctx context.Context) (bool, error) {
+	s.authLock.Lock()
+	defer s.authLock.Unlock()
+	if s.refreshToken == "" {
+		return false, nil
+	}
+	err := s.requestTokenRefresh(ctx)
+	if err != nil {
+		return true, err
+	}
+	return true, nil
+}
+
+// GetNewUserToken returns a new user token, using the refresh token if present
+// or running the full authorization flow otherwise.
 func (s *Spotify) GetNewUserToken(ctx context.Context) (string, error) {
 	s.authLock.Lock()
 	defer s.authLock.Unlock()
@@ -292,7 +327,7 @@ func (s *Spotify) requestTokenRefresh(ctx context.Context) error {
 		zap.String("scope", tokenResponse.Scope),
 	)
 
-	// Checking that access and refresh tokens are present
+	// Checking that access token is present
 	if tokenResponse.AccessToken == "" {
 		return errors.New("access token is empty")
 	}
@@ -301,20 +336,15 @@ func (s *Spotify) requestTokenRefresh(ctx context.Context) error {
 	return nil
 }
 
-func (s *Spotify) ResetUserTokens(ctx context.Context) {
-	logger.FromContext(ctx).Info("resetting user tokens and config cache file")
-	s.accessToken = ""
-	s.refreshToken = ""
-	logger.FromContext(ctx).Info("user tokens were reset")
-	err := os.Remove(s.configCacheFilePath)
-	if err != nil {
-		logger.FromContext(ctx).Error("could not remove config cache file, skipping", zap.Error(err))
-	}
-}
-
 func (s *Spotify) authExec(ctx context.Context, handler func(ctx context.Context) (*http.Response, error)) (*http.Response, error) {
 	gotNewAccessToken := false
 	if s.accessToken == "" {
+		s.authLock.Lock()
+		hasRefreshToken := s.refreshToken != ""
+		s.authLock.Unlock()
+		if !hasRefreshToken {
+			return nil, errors.New("not authenticated: run 'spotify-tools auth login' to log in")
+		}
 		if _, err := s.GetNewUserToken(ctx); err != nil {
 			return nil, err
 		}

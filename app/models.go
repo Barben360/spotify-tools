@@ -1,7 +1,6 @@
 package app
 
 import (
-	"github.com/Barben360/spotify-tools/app/authtest"
 	"github.com/Barben360/spotify-tools/app/spotify"
 )
 
@@ -14,6 +13,5 @@ type AppConfig struct {
 }
 
 type features struct {
-	spotify  spotify.Spotifier
-	authTest authtest.AuthTester
+	spotify spotify.Spotifier
 }

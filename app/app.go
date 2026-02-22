@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"os"
 
-	authtestdefault "github.com/Barben360/spotify-tools/app/authtest/default"
 	"github.com/Barben360/spotify-tools/app/services/logger"
 	"github.com/Barben360/spotify-tools/app/spotify"
 	spotifydefault "github.com/Barben360/spotify-tools/app/spotify/default"
@@ -14,6 +14,18 @@ import (
 	"github.com/go-playground/validator/v10"
 	"go.uber.org/zap"
 )
+
+// ExitCodeError is an error that requests a specific process exit code.
+// The error message was already printed to stdout before this error is returned,
+// so callers should exit with Code without printing anything further.
+type ExitCodeError struct {
+	Code int
+	msg  string
+}
+
+func (e *ExitCodeError) Error() string {
+	return e.msg
+}
 
 type App struct {
 	log      *logger.Logger
@@ -63,8 +75,7 @@ func New(ctx context.Context, cfg *AppConfig) (*App, error) {
 		cfg.ServerListenPort,
 	)
 	features := &features{
-		spotify:  spotify,
-		authTest: authtestdefault.New(ctx, spotify),
+		spotify: spotify,
 	}
 
 	return &App{
@@ -73,14 +84,37 @@ func New(ctx context.Context, cfg *AppConfig) (*App, error) {
 	}, nil
 }
 
-func (a *App) RunAuthTest(ctx context.Context) error {
-	ctx = a.log.ToContext(ctx)
-	return a.features.authTest.TestUserAuthAndTokenRefresh(ctx)
+// LogoutFromDisk removes the cached Spotify auth tokens from disk without requiring
+// an initialized App instance. Useful for logout when credentials may not be available.
+// It never fails even if the user is not logged in.
+func LogoutFromDisk() {
+	_ = os.Remove(spotifydefault.ConfigCacheFilePath)
 }
 
-func (a *App) RunReset(ctx context.Context) error {
+func (a *App) Login(ctx context.Context) error {
 	ctx = a.log.ToContext(ctx)
-	a.features.spotify.ResetUserTokens(ctx)
+	return a.features.spotify.Login(ctx)
+}
+
+func (a *App) Logout(ctx context.Context) {
+	ctx = a.log.ToContext(ctx)
+	a.features.spotify.Logout(ctx)
+}
+
+// AuthStatus prints the current authentication status to stdout and returns nil on success.
+// Returns an *ExitCodeError with Code=2 if the user is not authenticated or tokens are invalid.
+func (a *App) AuthStatus(ctx context.Context) error {
+	ctx = a.log.ToContext(ctx)
+	loggedIn, err := a.features.spotify.AuthStatus(ctx)
+	if !loggedIn {
+		fmt.Println("Not authenticated (no tokens found)")
+		return &ExitCodeError{Code: 2, msg: "not authenticated"}
+	}
+	if err != nil {
+		fmt.Printf("Not authenticated (token refresh failed: %v)\n", err)
+		return &ExitCodeError{Code: 2, msg: "not authenticated"}
+	}
+	fmt.Println("Authenticated (tokens valid)")
 	return nil
 }
 

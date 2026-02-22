@@ -16,18 +16,6 @@
       "envFile": "${workspaceFolder}/.env"
     },
     {
-      "name": "Auth test",
-      "type": "go",
-      "request": "launch",
-      "mode": "auto",
-      "program": "${workspaceFolder}/main.go",
-      "args": [
-        "auth-test",
-        "--dev"
-      ],
-      "envFile": "${workspaceFolder}/.env"
-    },
-    {
       "name": "Get playlist",
       "type": "go",
       "request": "launch",

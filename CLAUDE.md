@@ -1,4 +1,6 @@
-# CLAUDE.md — spotify-tools
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
@@ -11,7 +13,6 @@
 ├── main.go                          # Entrypoint: wires up CLI with signal handling
 ├── go.mod / go.sum                  # Go module definition (module: github.com/Barben360/spotify-tools)
 ├── .env.example                     # Template for local env vars
-├── .gitignore
 ├── cli/
 │   ├── cli.go                       # CLI struct, cobra command registration, flag definitions
 │   ├── handlers.go                  # Per-command handler functions (delegates to app layer)
@@ -19,15 +20,12 @@
 ├── app/
 │   ├── app.go                       # App struct, constructor, public API methods
 │   ├── models.go                    # AppConfig struct and internal features aggregation
-│   ├── authtest/
-│   │   ├── authtest.go              # AuthTester interface
-│   │   └── default/authtest.go     # Default implementation of AuthTester
 │   ├── spotify/
 │   │   ├── spotify.go              # Spotifier interface (composed of sub-interfaces)
 │   │   ├── models.go               # Domain models: Playlist, Show, Item, PlaylistFilterConfig, etc.
 │   │   └── default/
 │   │       ├── spotify.go          # Spotify struct, constructor, token caching from disk
-│   │       ├── auth.go             # OAuth2 flow, token refresh, local callback server
+│   │       ├── auth.go             # OAuth2 flow: Login, Logout, AuthStatus, token refresh, local callback server
 │   │       ├── playlist.go         # Playlist CRUD + filter/reorder logic
 │   │       ├── show.go             # Show/episode fetching with pagination
 │   │       └── spotifyclient/      # Auto-generated OpenAPI client (do not edit manually)
@@ -39,7 +37,7 @@
 │   └── utils/
 │       └── httpclient.go           # Custom http.RoundTripper with logging & request transforms
 ├── docker/
-│   └── Dockerfile                  # Multi-stage build (golang:1.20-alpine → scratch)
+│   └── Dockerfile                  # Multi-stage build (golang:1.26-alpine → scratch)
 └── examples/
     ├── docker-compose.yml
     └── playlist-filter/
@@ -63,15 +61,16 @@ main.go
 - **Interface-driven**: `spotify.Spotifier` is an interface composed of `SpotifiyAuther`, `SpotifyPlaylister`, and `SpotifyShower`. The CLI and app layers depend only on the interface, not the concrete implementation.
 - **Context propagation**: The logger is stored in and retrieved from `context.Context` via `logger.ToContext` / `logger.FromContext`.
 - **Token caching on disk**: Access and refresh tokens are persisted to `/tmp/.spotify-tools-cache.json` to avoid re-authorization on every run.
-- **Auto-retry on 401**: `authExec` in `app/spotify/default/spotify.go` wraps all API calls with automatic token refresh on unauthorized responses.
+- **Auto-retry on 401**: `authExec` in `app/spotify/default/auth.go` wraps all API calls with automatic token refresh on unauthorized responses.
 - **Pagination**: Both playlist and show fetching loop over paginated API responses transparently.
 
 ## Available Commands
 
 | Command | Description |
 |---|---|
-| `auth-test` | Runs OAuth flow (if needed) then verifies token refresh works |
-| `reset` | Deletes the token cache file to force re-authorization |
+| `auth status` | Checks whether tokens exist and validates them via a refresh; exits 2 if unauthenticated |
+| `auth login` | Forces a new OAuth authorization flow (clears existing tokens first) |
+| `auth logout` | Removes cached tokens from disk; never fails; no credentials required |
 | `get-playlist <playlistID>` | Prints JSON of a playlist and all its items |
 | `get-show <showID>` | Prints JSON of a show and all its episodes |
 | `filter-playlists` | Reads a JSON config and populates/reorders target playlists |
@@ -132,7 +131,7 @@ Filter behaviour:
 
 ### Prerequisites
 
-- Go 1.20+
+- Go 1.26+
 - A Spotify developer app with the redirect URI `http://localhost:8080/authorize` (or your custom endpoint) configured.
 
 ### Local Environment
@@ -153,8 +152,14 @@ go build -o spotify-tools .
 ### Run (examples)
 
 ```sh
-# Auth test
-./spotify-tools auth-test -i <client-id> -s <client-secret>
+# Check authentication status
+./spotify-tools auth status -i <client-id> -s <client-secret>
+
+# Log in (opens browser for OAuth flow)
+./spotify-tools auth login -i <client-id> -s <client-secret>
+
+# Log out (no credentials required)
+./spotify-tools auth logout
 
 # Or via env vars
 export SPOTIFY_TOOLS_CLIENT_ID=<id>
@@ -172,6 +177,13 @@ export SPOTIFY_TOOLS_CLIENT_SECRET=<secret>
 
 There are no automated tests in this repository. Verify changes manually using the VS Code launch configurations in `.vscode/launch.json` or by running the binary directly.
 
+## CI/CD
+
+Two GitHub Actions workflows are defined in `.github/workflows/`:
+
+- **`ci.yml`**: Runs `go build ./...` on every push and pull request to any branch.
+- **`docker.yml`**: Builds and pushes a multi-platform (`linux/amd64`, `linux/arm64`) Docker image to `ghcr.io/barben360/spotify-tools`. Triggered manually (tags with short commit SHA) or automatically on a GitHub Release (tags with the release tag and `latest`).
+
 ## Docker
 
 ### Build
@@ -179,11 +191,11 @@ There are no automated tests in this repository. Verify changes manually using t
 ```sh
 export VERSION="v1.0.0"
 docker build --build-arg=SPOTIFY_TOOLS_VERSION=$VERSION \
-  -t barben360/spotify-tools:$VERSION \
+  -t ghcr.io/barben360/spotify-tools:$VERSION \
   -f ./docker/Dockerfile .
 ```
 
-The Dockerfile uses a two-stage build (builder on `golang:1.20-alpine`, final image on `scratch`) and applies `upx` compression to the binary.
+The Dockerfile uses a two-stage build (builder on `golang:1.26-alpine`, final image on `scratch`) and applies `upx` compression to the binary.
 
 ### Run
 
@@ -191,7 +203,7 @@ The Dockerfile uses a two-stage build (builder on `golang:1.20-alpine`, final im
 docker run -p 8080:8080 \
   -e SPOTIFY_TOOLS_CLIENT_ID=<id> \
   -e SPOTIFY_TOOLS_CLIENT_SECRET=<secret> \
-  barben360/spotify-tools:v1.0.0 filter-playlists -f /playlist-filter/config.json
+  ghcr.io/barben360/spotify-tools:v1.0.0 filter-playlists -f /playlist-filter/config.json
 ```
 
 See `examples/docker-compose.yml` for a daemon-mode compose setup.
@@ -230,6 +242,7 @@ This re-runs the generator and automatically applies `assets/patches/0001-Make-o
 - **Validation**: Struct validation uses `github.com/go-playground/validator/v10` tags (`validate:"required"`, `validate:"omitempty"`, etc.).
 - **Logging**: Always retrieve the logger from context (`logger.FromContext(ctx)`). Never create a new logger inside a function — propagate it via context.
 - **No global state**: All state lives on the `Spotify` struct, protected by `authLock` for token operations.
+- **Exit codes**: `main.go` checks for `app.ExitCodeError` to exit with a specific code. Currently used by `auth status` (exits 2 when unauthenticated). Regular errors exit 1. `SilenceErrors: true` is set on the root command so `main.go` owns all error printing.
 - **Batch size**: Spotify API calls that mutate playlists use a batch size of 100 items (API limit).
 - **Token storage**: Tokens are written to `/tmp/.spotify-tools-cache.json` (plaintext). Using Docker is recommended to limit exposure.
 - **Version injection**: The binary version is set at build time via `-ldflags "-X github.com/Barben360/spotify-tools/cli.version=<version>"`.
