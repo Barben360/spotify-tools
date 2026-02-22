@@ -28,13 +28,7 @@ type CLI struct {
 }
 
 func New(ctx context.Context) *CLI {
-	configCacheFilePath := os.Getenv("SPOTIFY_TOOLS_CACHE_FILE")
-	if configCacheFilePath == "" {
-		configCacheFilePath = app.DefaultConfigCacheFilePath
-	}
-	c := &CLI{
-		configCacheFilePath: configCacheFilePath,
-	}
+	c := &CLI{}
 
 	c.cmdRoot = &cobra.Command{
 		Use:           "spotify-tools",
@@ -50,6 +44,7 @@ func New(ctx context.Context) *CLI {
 	c.cmdRoot.PersistentFlags().BoolVar(&c.devMode, "dev", false, "Dev mode")
 	c.cmdRoot.PersistentFlags().StringVar(&c.publicAPIEndpoint, "public-api-endpoint", "http://127.0.0.1:8080", "Public API endpoint")
 	c.cmdRoot.PersistentFlags().Uint16Var(&c.serverListenPort, "server-listen-port", 8080, "Server listen port")
+	c.cmdRoot.PersistentFlags().StringVar(&c.configCacheFilePath, "config-cache-file", "", "Path to auth token cache file (env: SPOTIFY_TOOLS_CACHE_FILE)")
 
 	// auth command group
 	cmdAuth := &cobra.Command{
@@ -112,6 +107,16 @@ func (c *CLI) Run(ctx context.Context) error {
 	return c.cmdRoot.ExecuteContext(ctx)
 }
 
+func (c *CLI) effectiveCacheFilePath() string {
+	if c.configCacheFilePath != "" {
+		return c.configCacheFilePath
+	}
+	if v := os.Getenv("SPOTIFY_TOOLS_CACHE_FILE"); v != "" {
+		return v
+	}
+	return app.DefaultConfigCacheFilePath
+}
+
 func (c *CLI) runApp(ctx context.Context, handler func(ctx context.Context, appInstance *app.App, args []string) error) func(cmd *cobra.Command, args []string) error {
 	return func(cmd *cobra.Command, args []string) error {
 		cfg := app.AppConfig{
@@ -120,7 +125,7 @@ func (c *CLI) runApp(ctx context.Context, handler func(ctx context.Context, appI
 			SpotifyAppClientSecret: c.spotifyAppClientSecret,
 			PublicAPIEndpoint:      c.publicAPIEndpoint,
 			ServerListenPort:       c.serverListenPort,
-			ConfigCacheFilePath:    c.configCacheFilePath,
+			ConfigCacheFilePath:    c.effectiveCacheFilePath(),
 		}
 		if c.spotifyAppClientID == "" {
 			cfg.SpotifyAppClientID = os.Getenv("SPOTIFY_TOOLS_CLIENT_ID")

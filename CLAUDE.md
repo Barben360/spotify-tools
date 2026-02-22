@@ -84,7 +84,7 @@ main.go
 | `--dev` | — | `false` | Dev mode (verbose/development zap logger) |
 | `--public-api-endpoint` | — | `http://127.0.0.1:8080` | Public URL for the OAuth redirect URI |
 | `--server-listen-port` | — | `8080` | Port for the local OAuth callback server |
-| — | `SPOTIFY_TOOLS_CACHE_FILE` | `/tmp/.spotify-tools-cache.json` | Path to the auth token cache file on disk |
+| `--config-cache-file` | `SPOTIFY_TOOLS_CACHE_FILE` | `/tmp/.spotify-tools-cache.json` | Path to the auth token cache file on disk |
 
 ### `filter-playlists` Extra Flags
 
@@ -245,5 +245,5 @@ This re-runs the generator and automatically applies `assets/patches/0001-Make-o
 - **No global state**: All state lives on the `Spotify` struct, protected by `authLock` for token operations.
 - **Exit codes**: `main.go` checks for `app.ExitCodeError` to exit with a specific code. Currently used by `auth status` (exits 2 when unauthenticated). Regular errors exit 1. `SilenceErrors: true` is set on the root command so `main.go` owns all error printing.
 - **Batch size**: Spotify API calls that mutate playlists use a batch size of 100 items (API limit).
-- **Token storage**: Tokens are written to `/tmp/.spotify-tools-cache.json` (plaintext) by default; override the path with `SPOTIFY_TOOLS_CACHE_FILE`. Using Docker is recommended to limit exposure.
+- **Token storage**: Tokens are written to `/tmp/.spotify-tools-cache.json` (plaintext) by default; override the path with `--config-cache-file` or `SPOTIFY_TOOLS_CACHE_FILE`. Using Docker is recommended to limit exposure.
 - **Version injection**: The binary version is set at build time via `-ldflags "-X github.com/Barben360/spotify-tools/cli.version=<version>"`.
