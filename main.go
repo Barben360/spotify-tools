@@ -2,11 +2,13 @@ package main
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
 
+	"github.com/Barben360/spotify-tools/app"
 	"github.com/Barben360/spotify-tools/cli"
 )
 
@@ -24,6 +26,11 @@ func main() {
 	select {
 	case err := <-errChan:
 		if err != nil {
+			var exitCodeErr *app.ExitCodeError
+			if errors.As(err, &exitCodeErr) {
+				os.Exit(exitCodeErr.Code)
+			}
+			fmt.Fprintln(os.Stderr, "Error:", err)
 			os.Exit(1)
 		}
 	case <-sigTerm:
