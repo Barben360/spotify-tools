@@ -70,7 +70,7 @@ After authorizing, the browser will show:
 
 > Authorization successful! You may close this window now.
 
-Tokens are then cached in `/tmp/.spotify-tools-cache.json` for subsequent runs.
+Tokens are then cached in `/tmp/.spotify-tools-cache.json` for subsequent runs (configurable via the `SPOTIFY_TOOLS_CACHE_FILE` environment variable).
 
 #### Status
 
