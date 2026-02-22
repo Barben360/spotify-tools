@@ -22,7 +22,7 @@ func (c *CLI) authLoginHandler(ctx context.Context, appInstance *app.App, args [
 // authLogoutHandler removes cached tokens directly, without needing app initialization.
 // It never fails, even if the user is not logged in or credentials are not provided.
 func (c *CLI) authLogoutHandler(cmd *cobra.Command, args []string) error {
-	app.LogoutFromDisk()
+	app.LogoutFromDisk(c.configCacheFilePath)
 	fmt.Println("Logged out successfully")
 	return nil
 }

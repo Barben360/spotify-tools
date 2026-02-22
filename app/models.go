@@ -10,6 +10,7 @@ type AppConfig struct {
 	SpotifyAppClientSecret string `validate:"required"`
 	PublicAPIEndpoint      string `validate:"required"`
 	ServerListenPort       uint16 `validate:"required"`
+	ConfigCacheFilePath    string `validate:"required"`
 }
 
 type features struct {

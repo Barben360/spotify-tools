@@ -24,10 +24,17 @@ type CLI struct {
 	configJSON             string
 	daemonMode             bool
 	period                 time.Duration
+	configCacheFilePath    string
 }
 
 func New(ctx context.Context) *CLI {
-	c := &CLI{}
+	configCacheFilePath := os.Getenv("SPOTIFY_TOOLS_CACHE_FILE")
+	if configCacheFilePath == "" {
+		configCacheFilePath = app.DefaultConfigCacheFilePath
+	}
+	c := &CLI{
+		configCacheFilePath: configCacheFilePath,
+	}
 
 	c.cmdRoot = &cobra.Command{
 		Use:           "spotify-tools",
@@ -113,6 +120,7 @@ func (c *CLI) runApp(ctx context.Context, handler func(ctx context.Context, appI
 			SpotifyAppClientSecret: c.spotifyAppClientSecret,
 			PublicAPIEndpoint:      c.publicAPIEndpoint,
 			ServerListenPort:       c.serverListenPort,
+			ConfigCacheFilePath:    c.configCacheFilePath,
 		}
 		if c.spotifyAppClientID == "" {
 			cfg.SpotifyAppClientID = os.Getenv("SPOTIFY_TOOLS_CLIENT_ID")

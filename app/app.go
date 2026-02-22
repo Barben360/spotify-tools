@@ -15,6 +15,9 @@ import (
 	"go.uber.org/zap"
 )
 
+// DefaultConfigCacheFilePath is the default path where auth tokens are cached on disk.
+var DefaultConfigCacheFilePath = spotifydefault.DefaultConfigCacheFilePath
+
 // ExitCodeError is an error that requests a specific process exit code.
 // The error message was already printed to stdout before this error is returned,
 // so callers should exit with Code without printing anything further.
@@ -73,6 +76,7 @@ func New(ctx context.Context, cfg *AppConfig) (*App, error) {
 		cfg.SpotifyAppClientSecret,
 		cfg.PublicAPIEndpoint,
 		cfg.ServerListenPort,
+		cfg.ConfigCacheFilePath,
 	)
 	features := &features{
 		spotify: spotify,
@@ -87,8 +91,8 @@ func New(ctx context.Context, cfg *AppConfig) (*App, error) {
 // LogoutFromDisk removes the cached Spotify auth tokens from disk without requiring
 // an initialized App instance. Useful for logout when credentials may not be available.
 // It never fails even if the user is not logged in.
-func LogoutFromDisk() {
-	_ = os.Remove(spotifydefault.ConfigCacheFilePath)
+func LogoutFromDisk(configCacheFilePath string) {
+	_ = os.Remove(configCacheFilePath)
 }
 
 func (a *App) Login(ctx context.Context) error {

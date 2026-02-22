@@ -48,8 +48,8 @@ type authConfig struct {
 	RefreshToken string `json:"refresh_token,omitempty"`
 }
 
-// ConfigCacheFilePath is the path where auth tokens are cached on disk.
-var ConfigCacheFilePath = filepath.Join(os.TempDir(), ".spotify-tools-cache.json")
+// DefaultConfigCacheFilePath is the default path where auth tokens are cached on disk.
+var DefaultConfigCacheFilePath = filepath.Join(os.TempDir(), ".spotify-tools-cache.json")
 
 func New(
 	ctx context.Context,
@@ -57,6 +57,7 @@ func New(
 	spotifyAppClientSecret string,
 	publicAPIEndpoint string,
 	serverListenPort uint16,
+	configCacheFilePath string,
 ) spotify.Spotifier {
 	ret := &Spotify{
 		authLock:               sync.Mutex{},
@@ -78,7 +79,7 @@ func New(
 			Transport: utils.NewTransport(ctx,
 				utils.WithLog(logger.FromContext(ctx), zap.DebugLevel)),
 		},
-		configCacheFilePath: ConfigCacheFilePath,
+		configCacheFilePath: configCacheFilePath,
 	}
 
 	spotifyClientConfig := spotifyclient.NewConfiguration()
