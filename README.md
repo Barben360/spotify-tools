@@ -25,7 +25,7 @@ Available Commands:
 Flags:
       --dev                                Dev mode
   -h, --help                               help for spotify-tools
-      --public-api-endpoint string         Public API endpoint (default "http://localhost:8080")
+      --public-api-endpoint string         Public API endpoint (default "http://127.0.0.1:8080")
       --server-listen-port uint16          Server listen port (default 8080)
   -i, --spotify-app-client-id string       Spotify App Client ID
   -s, --spotify-app-client-secret string   Spotify App Client Secret
@@ -105,7 +105,7 @@ Note that you can pass your Spotify client ID/secret through the command line or
 ### Requirements
 
 - You must create an app from [Spotify developer website](https://developer.spotify.com/dashboard) and get the Client ID and Client secret that you will need when running the tool
-- In your app, you must add the following URI in `Redirect URIs`: `http://localhost:8080/authorize` (or you can replace `http://localhost:8080` by the public endpoint of where you run spotify-tools)
+- In your app, you must add the following URI in `Redirect URIs`: `http://127.0.0.1:8080/authorize` (or you can replace `http://127.0.0.1:8080` by the public endpoint of where you run spotify-tools)
 
 ### Run debug configurations
 

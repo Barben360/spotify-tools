@@ -82,7 +82,7 @@ main.go
 | `-i / --spotify-app-client-id` | `SPOTIFY_TOOLS_CLIENT_ID` | — | Spotify OAuth app Client ID |
 | `-s / --spotify-app-client-secret` | `SPOTIFY_TOOLS_CLIENT_SECRET` | — | Spotify OAuth app Client Secret |
 | `--dev` | — | `false` | Dev mode (verbose/development zap logger) |
-| `--public-api-endpoint` | — | `http://localhost:8080` | Public URL for the OAuth redirect URI |
+| `--public-api-endpoint` | — | `http://127.0.0.1:8080` | Public URL for the OAuth redirect URI |
 | `--server-listen-port` | — | `8080` | Port for the local OAuth callback server |
 
 ### `filter-playlists` Extra Flags
@@ -132,7 +132,7 @@ Filter behaviour:
 ### Prerequisites
 
 - Go 1.26+
-- A Spotify developer app with the redirect URI `http://localhost:8080/authorize` (or your custom endpoint) configured.
+- A Spotify developer app with the redirect URI `http://127.0.0.1:8080/authorize` (or your custom endpoint) configured.
 
 ### Local Environment
 
