@@ -15,7 +15,6 @@ Usage:
   spotify-tools [command]
 
 Available Commands:
-  auth-test        Test Spotify user authentication and token refresh
   completion       Generate the autocompletion script for the specified shell
   filter-playlists Update Spotify playlists based on filters on other playlists/shows
   get-playlist     Get basic info about a Spotify playlist and its items

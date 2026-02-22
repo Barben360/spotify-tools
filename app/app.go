@@ -6,7 +6,6 @@ import (
 	"errors"
 	"fmt"
 
-	authtestdefault "github.com/Barben360/spotify-tools/app/authtest/default"
 	"github.com/Barben360/spotify-tools/app/services/logger"
 	"github.com/Barben360/spotify-tools/app/spotify"
 	spotifydefault "github.com/Barben360/spotify-tools/app/spotify/default"
@@ -63,19 +62,13 @@ func New(ctx context.Context, cfg *AppConfig) (*App, error) {
 		cfg.ServerListenPort,
 	)
 	features := &features{
-		spotify:  spotify,
-		authTest: authtestdefault.New(ctx, spotify),
+		spotify: spotify,
 	}
 
 	return &App{
 		log:      log,
 		features: features,
 	}, nil
-}
-
-func (a *App) RunAuthTest(ctx context.Context) error {
-	ctx = a.log.ToContext(ctx)
-	return a.features.authTest.TestUserAuthAndTokenRefresh(ctx)
 }
 
 func (a *App) RunReset(ctx context.Context) error {

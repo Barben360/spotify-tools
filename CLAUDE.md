@@ -1,4 +1,6 @@
-# CLAUDE.md — spotify-tools
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
 
@@ -11,7 +13,6 @@
 ├── main.go                          # Entrypoint: wires up CLI with signal handling
 ├── go.mod / go.sum                  # Go module definition (module: github.com/Barben360/spotify-tools)
 ├── .env.example                     # Template for local env vars
-├── .gitignore
 ├── cli/
 │   ├── cli.go                       # CLI struct, cobra command registration, flag definitions
 │   ├── handlers.go                  # Per-command handler functions (delegates to app layer)
@@ -19,9 +20,6 @@
 ├── app/
 │   ├── app.go                       # App struct, constructor, public API methods
 │   ├── models.go                    # AppConfig struct and internal features aggregation
-│   ├── authtest/
-│   │   ├── authtest.go              # AuthTester interface
-│   │   └── default/authtest.go     # Default implementation of AuthTester
 │   ├── spotify/
 │   │   ├── spotify.go              # Spotifier interface (composed of sub-interfaces)
 │   │   ├── models.go               # Domain models: Playlist, Show, Item, PlaylistFilterConfig, etc.
@@ -39,7 +37,7 @@
 │   └── utils/
 │       └── httpclient.go           # Custom http.RoundTripper with logging & request transforms
 ├── docker/
-│   └── Dockerfile                  # Multi-stage build (golang:1.20-alpine → scratch)
+│   └── Dockerfile                  # Multi-stage build (golang:1.26-alpine → scratch)
 └── examples/
     ├── docker-compose.yml
     └── playlist-filter/
@@ -132,7 +130,7 @@ Filter behaviour:
 
 ### Prerequisites
 
-- Go 1.20+
+- Go 1.26+
 - A Spotify developer app with the redirect URI `http://localhost:8080/authorize` (or your custom endpoint) configured.
 
 ### Local Environment
@@ -172,6 +170,13 @@ export SPOTIFY_TOOLS_CLIENT_SECRET=<secret>
 
 There are no automated tests in this repository. Verify changes manually using the VS Code launch configurations in `.vscode/launch.json` or by running the binary directly.
 
+## CI/CD
+
+Two GitHub Actions workflows are defined in `.github/workflows/`:
+
+- **`ci.yml`**: Runs `go build ./...` on every push and pull request to any branch.
+- **`docker.yml`**: Builds and pushes a multi-platform (`linux/amd64`, `linux/arm64`) Docker image to `ghcr.io/barben360/spotify-tools`. Triggered manually (tags with short commit SHA) or automatically on a GitHub Release (tags with the release tag and `latest`).
+
 ## Docker
 
 ### Build
@@ -179,11 +184,11 @@ There are no automated tests in this repository. Verify changes manually using t
 ```sh
 export VERSION="v1.0.0"
 docker build --build-arg=SPOTIFY_TOOLS_VERSION=$VERSION \
-  -t barben360/spotify-tools:$VERSION \
+  -t ghcr.io/barben360/spotify-tools:$VERSION \
   -f ./docker/Dockerfile .
 ```
 
-The Dockerfile uses a two-stage build (builder on `golang:1.20-alpine`, final image on `scratch`) and applies `upx` compression to the binary.
+The Dockerfile uses a two-stage build (builder on `golang:1.26-alpine`, final image on `scratch`) and applies `upx` compression to the binary.
 
 ### Run
 
@@ -191,7 +196,7 @@ The Dockerfile uses a two-stage build (builder on `golang:1.20-alpine`, final im
 docker run -p 8080:8080 \
   -e SPOTIFY_TOOLS_CLIENT_ID=<id> \
   -e SPOTIFY_TOOLS_CLIENT_SECRET=<secret> \
-  barben360/spotify-tools:v1.0.0 filter-playlists -f /playlist-filter/config.json
+  ghcr.io/barben360/spotify-tools:v1.0.0 filter-playlists -f /playlist-filter/config.json
 ```
 
 See `examples/docker-compose.yml` for a daemon-mode compose setup.

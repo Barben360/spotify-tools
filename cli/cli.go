@@ -43,12 +43,6 @@ func New(ctx context.Context) *CLI {
 	c.cmdRoot.PersistentFlags().Uint16Var(&c.serverListenPort, "server-listen-port", 8080, "Server listen port")
 
 	c.cmdRoot.AddCommand(&cobra.Command{
-		Use:   "auth-test",
-		Short: "Test Spotify user authentication and token refresh",
-		RunE:  c.runApp(ctx, c.authTestHandler),
-	})
-
-	c.cmdRoot.AddCommand(&cobra.Command{
 		Use:   "reset",
 		Short: "Reset Spotify user authentication",
 		Long:  "Reset Spotify user authentication by deleting the config cache file. Use this command if you want to change the Spotify user or if you have a more general issue with authentication.",
