@@ -25,7 +25,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 │   │   ├── models.go               # Domain models: Playlist, Show, Item, PlaylistFilterConfig, etc.
 │   │   └── default/
 │   │       ├── spotify.go          # Spotify struct, constructor, token caching from disk
-│   │       ├── auth.go             # OAuth2 flow, token refresh, local callback server
+│   │       ├── auth.go             # OAuth2 flow: Login, Logout, AuthStatus, token refresh, local callback server
 │   │       ├── playlist.go         # Playlist CRUD + filter/reorder logic
 │   │       ├── show.go             # Show/episode fetching with pagination
 │   │       └── spotifyclient/      # Auto-generated OpenAPI client (do not edit manually)
@@ -61,15 +61,16 @@ main.go
 - **Interface-driven**: `spotify.Spotifier` is an interface composed of `SpotifiyAuther`, `SpotifyPlaylister`, and `SpotifyShower`. The CLI and app layers depend only on the interface, not the concrete implementation.
 - **Context propagation**: The logger is stored in and retrieved from `context.Context` via `logger.ToContext` / `logger.FromContext`.
 - **Token caching on disk**: Access and refresh tokens are persisted to `/tmp/.spotify-tools-cache.json` to avoid re-authorization on every run.
-- **Auto-retry on 401**: `authExec` in `app/spotify/default/spotify.go` wraps all API calls with automatic token refresh on unauthorized responses.
+- **Auto-retry on 401**: `authExec` in `app/spotify/default/auth.go` wraps all API calls with automatic token refresh on unauthorized responses.
 - **Pagination**: Both playlist and show fetching loop over paginated API responses transparently.
 
 ## Available Commands
 
 | Command | Description |
 |---|---|
-| `auth-test` | Runs OAuth flow (if needed) then verifies token refresh works |
-| `reset` | Deletes the token cache file to force re-authorization |
+| `auth status` | Checks whether tokens exist and validates them via a refresh; exits 2 if unauthenticated |
+| `auth login` | Forces a new OAuth authorization flow (clears existing tokens first) |
+| `auth logout` | Removes cached tokens from disk; never fails; no credentials required |
 | `get-playlist <playlistID>` | Prints JSON of a playlist and all its items |
 | `get-show <showID>` | Prints JSON of a show and all its episodes |
 | `filter-playlists` | Reads a JSON config and populates/reorders target playlists |
@@ -151,8 +152,14 @@ go build -o spotify-tools .
 ### Run (examples)
 
 ```sh
-# Auth test
-./spotify-tools auth-test -i <client-id> -s <client-secret>
+# Check authentication status
+./spotify-tools auth status -i <client-id> -s <client-secret>
+
+# Log in (opens browser for OAuth flow)
+./spotify-tools auth login -i <client-id> -s <client-secret>
+
+# Log out (no credentials required)
+./spotify-tools auth logout
 
 # Or via env vars
 export SPOTIFY_TOOLS_CLIENT_ID=<id>
@@ -235,6 +242,7 @@ This re-runs the generator and automatically applies `assets/patches/0001-Make-o
 - **Validation**: Struct validation uses `github.com/go-playground/validator/v10` tags (`validate:"required"`, `validate:"omitempty"`, etc.).
 - **Logging**: Always retrieve the logger from context (`logger.FromContext(ctx)`). Never create a new logger inside a function — propagate it via context.
 - **No global state**: All state lives on the `Spotify` struct, protected by `authLock` for token operations.
+- **Exit codes**: `main.go` checks for `app.ExitCodeError` to exit with a specific code. Currently used by `auth status` (exits 2 when unauthenticated). Regular errors exit 1. `SilenceErrors: true` is set on the root command so `main.go` owns all error printing.
 - **Batch size**: Spotify API calls that mutate playlists use a batch size of 100 items (API limit).
 - **Token storage**: Tokens are written to `/tmp/.spotify-tools-cache.json` (plaintext). Using Docker is recommended to limit exposure.
 - **Version injection**: The binary version is set at build time via `-ldflags "-X github.com/Barben360/spotify-tools/cli.version=<version>"`.

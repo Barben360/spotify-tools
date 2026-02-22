@@ -15,12 +15,12 @@ Usage:
   spotify-tools [command]
 
 Available Commands:
+  auth             Manage Spotify authentication
   completion       Generate the autocompletion script for the specified shell
   filter-playlists Update Spotify playlists based on filters on other playlists/shows
   get-playlist     Get basic info about a Spotify playlist and its items
   get-show         Get basic info of a Spotify show and its episodes
   help             Help about any command
-  reset            Reset Spotify user authentication
 
 Flags:
       --dev                                Dev mode
@@ -34,33 +34,71 @@ Flags:
 Use "spotify-tools [command] --help" for more information about a command.
 ```
 
-When running a command for the first time, you will get the following messages:
+### Authentication
+
+Authentication is managed explicitly via the `auth` subcommand. Commands that call the Spotify API (e.g. `get-playlist`, `filter-playlists`) will **not** trigger an OAuth flow automatically — you must log in first.
 
 ```
-2023-05-08T08:40:16.284Z        INFO    default/authtest.go:22  Testing user auth and token refresh
-2023-05-08T08:40:16.284Z        DEBUG   default/auth.go:41      no refresh token, doing authorization flow
-2023-05-08T08:40:16.284Z        INFO    default/auth.go:85      Please open this URL in a web browser to authorize the app to access your Spotify account       {"url": "https://accounts.spotify.com/authorize?response_type=code&client_id=d9cbe403222b4aa2ab4a6e952bb2abe0&scope=playlist-read-private%20playlist-read-collaborative%20playlist-modify-private%20playlist-modify-public&redirect_uri=http:%2F%2Flocalhost:8080%2Fauthorize&state=fce11587-ebf3-40cc-bafc-bc37f80b2c57"}
-2023-05-08T08:40:16.284Z        INFO    default/auth.go:126     starting authentication server
+> ./spotify-tools auth --help
+
+Manage Spotify authentication
+
+Usage:
+  spotify-tools auth [command]
+
+Available Commands:
+  login   Log in to Spotify via OAuth authorization flow
+  logout  Log out of Spotify by removing cached tokens
+  status  Check Spotify authentication status
+```
+
+#### Login
+
+```
+./spotify-tools auth login -i <client-id> -s <client-secret>
+```
+
+This starts a local web server and opens the Spotify authorization URL. Visit the URL in a browser:
+
+```
+2024-01-01T00:00:00.000Z  INFO  Please open this URL in a web browser to authorize the app...
+    {"url": "https://accounts.spotify.com/authorize?..."}
 ⇨ http server started on [::]:8080
 ```
 
-Open the link in a web browser, on a machine that has access to your service through the `Redirect URI` (see developer guide) and you should get a web page with a text:
+After authorizing, the browser will show:
 
 > Authorization successful! You may close this window now.
 
-Then the command you entered will continue.
+Tokens are then cached in `/tmp/.spotify-tools-cache.json` for subsequent runs.
 
-Note that your access/refresh tokens are written in clear in `/tmp/.spotify-tools-cache.json`. If you have any trouble, you can run the `reset` subcommand which will reset the authentication system.
+#### Status
+
+```
+./spotify-tools auth status -i <client-id> -s <client-secret>
+```
+
+Prints the authentication state and exits with:
+- **0** — authenticated and tokens are valid
+- **2** — not authenticated (no tokens, or token refresh failed)
+
+#### Logout
+
+```
+./spotify-tools auth logout
+```
+
+Removes the cached token file. Does not require Spotify app credentials. Never fails.
 
 ## Run in Docker
 
-Using this tool in Docker is strongly advised (access and refresh tokens are written in clear on the disk). You can use [this public Docker image](https://hub.docker.com/r/barben360/spotify-tools):
+Using this tool in Docker is strongly advised (access and refresh tokens are written in clear on the disk). You can use [this public Docker image](https://ghcr.io/barben360/spotify-tools):
 
 ```
-docker run -p 8080:8080 barben360/spotify-tools:v1.0.0 <your-command>
+docker run -p 8080:8080 ghcr.io/barben360/spotify-tools:latest <your-command>
 ```
 
-Note that you can pass your Spotify client ID/secret through the command line or through the environment (recommended as it should not appear in you Docker command).
+Note that you can pass your Spotify client ID/secret through the command line or through the environment (recommended as it should not appear in your Docker command).
 
 ## Developer guide
 
@@ -80,7 +118,7 @@ For production:
 ```shell
 export VERSION="<version>"
 
-docker build --build-arg=SPOTIFY_TOOLS_VERSION=$VERSION -t barben360/spotify-tools:$VERSION -f ./docker/Dockerfile .
+docker build --build-arg=SPOTIFY_TOOLS_VERSION=$VERSION -t ghcr.io/barben360/spotify-tools:$VERSION -f ./docker/Dockerfile .
 ```
 
 For development, you don't need the build arg and you can of course choose any tag you want.
