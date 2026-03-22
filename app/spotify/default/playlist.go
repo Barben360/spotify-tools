@@ -83,21 +83,23 @@ func (s *Spotify) GetPlaylist(ctx context.Context, playlistID string) (*spotify.
 			}
 			if track.TrackObject != nil {
 				itemsRet = append(itemsRet, &spotify.Item{
-					ID:       track.TrackObject.GetId(),
-					URI:      track.TrackObject.GetUri(),
-					Name:     track.TrackObject.GetName(),
-					Type:     spotify.ItemTypeTrack,
-					Duration: time.Duration(track.TrackObject.GetDurationMs()) * time.Millisecond,
-					AddedAt:  item.GetAddedAt(),
+					ID:          track.TrackObject.GetId(),
+					URI:         track.TrackObject.GetUri(),
+					Name:        track.TrackObject.GetName(),
+					Type:        spotify.ItemTypeTrack,
+					Duration:    time.Duration(track.TrackObject.GetDurationMs()) * time.Millisecond,
+					AddedAt:     item.GetAddedAt(),
+					ReleaseDate: track.TrackObject.Album.GetReleaseDate(),
 				})
 			} else if track.EpisodeObject != nil {
 				itemsRet = append(itemsRet, &spotify.Item{
-					ID:       track.EpisodeObject.GetId(),
-					URI:      track.EpisodeObject.GetUri(),
-					Name:     track.EpisodeObject.GetName(),
-					Type:     spotify.ItemTypeEpisode,
-					Duration: time.Duration(track.EpisodeObject.GetDurationMs()) * time.Millisecond,
-					AddedAt:  item.GetAddedAt(),
+					ID:          track.EpisodeObject.GetId(),
+					URI:         track.EpisodeObject.GetUri(),
+					Name:        track.EpisodeObject.GetName(),
+					Type:        spotify.ItemTypeEpisode,
+					Duration:    time.Duration(track.EpisodeObject.GetDurationMs()) * time.Millisecond,
+					AddedAt:     item.GetAddedAt(),
+					ReleaseDate: track.EpisodeObject.GetReleaseDate(),
 				})
 			} else {
 				return nil, fmt.Errorf("unknown track type")
@@ -315,22 +317,34 @@ func (s *Spotify) playlistAppendItems(ctx context.Context, playlistID string, it
 
 func (s *Spotify) playlistReorder(ctx context.Context, playlistID string, items []*spotify.Item) error {
 	const batchSize = 100
-	urisBatches := make([][]string, 0)
-	currURIs := make([]string, 0, batchSize)
+	allURIs := make([]string, 0, len(items))
 	for _, item := range items {
-		currURIs = append(currURIs, item.URI)
-		if len(currURIs) == batchSize {
-			urisBatches = append(urisBatches, currURIs)
-			currURIs = make([]string, 0, batchSize)
+		allURIs = append(allURIs, item.URI)
+	}
+
+	// First batch: PUT replaces the entire playlist with up to 100 items
+	firstBatch := allURIs
+	if len(firstBatch) > batchSize {
+		firstBatch = allURIs[:batchSize]
+	}
+	if _, err := s.authExec(ctx, func(ctx context.Context) (*http.Response, error) {
+		var httpResp *http.Response
+		_, httpResp, err := s.httpOpenAPIClient.PlaylistsApi.ReorderOrReplacePlaylistsTracks(ctx, playlistID).RequestBody(map[string]interface{}{"uris": firstBatch}).Execute()
+		return httpResp, err
+	}); err != nil {
+		return err
+	}
+
+	// Remaining batches: POST appends the rest
+	for i := batchSize; i < len(allURIs); i += batchSize {
+		end := i + batchSize
+		if end > len(allURIs) {
+			end = len(allURIs)
 		}
-	}
-	if len(currURIs) > 0 {
-		urisBatches = append(urisBatches, currURIs)
-	}
-	for _, uris := range urisBatches {
+		batch := allURIs[i:end]
 		if _, err := s.authExec(ctx, func(ctx context.Context) (*http.Response, error) {
 			var httpResp *http.Response
-			_, httpResp, err := s.httpOpenAPIClient.PlaylistsApi.ReorderOrReplacePlaylistsTracks(ctx, playlistID).RequestBody(map[string]interface{}{"uris": uris}).Execute()
+			_, httpResp, err := s.httpOpenAPIClient.PlaylistsApi.AddTracksToPlaylist(ctx, playlistID).RequestBody(map[string]interface{}{"uris": batch}).Execute()
 			return httpResp, err
 		}); err != nil {
 			return err
