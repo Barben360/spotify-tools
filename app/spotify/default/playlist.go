@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"html"
 	"net/http"
 	"regexp"
 	"sort"
@@ -110,9 +111,12 @@ func (s *Spotify) GetPlaylist(ctx context.Context, playlistID string) (*spotify.
 		item.TryResolveReleaseDate(ctx)
 	}
 	return &spotify.Playlist{
-		ID:          resp.GetId(),
-		Name:        resp.GetName(),
-		Description: resp.GetDescription(),
+		ID:   resp.GetId(),
+		Name: resp.GetName(),
+		// Spotify HTML-escapes special characters (e.g. ' -> &#x27;) when storing the
+		// description. Unescaping here keeps Description as plain text everywhere in the
+		// app, so re-submitting it for an update doesn't compound the escaping on every run.
+		Description: html.UnescapeString(resp.GetDescription()),
 		IsPublic:    resp.GetPublic(),
 		Items:       itemsRet,
 	}, nil
